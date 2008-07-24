@@ -25,7 +25,6 @@
 # contains UTF8-characters so take care with editor and terminal-settings, win98 doesn't work!
 #
 
-
 #$debug =10;
 #$debugcat=1;
 
@@ -43,7 +42,6 @@ $tool_url = "$tool_base$tool_path";
 if ( $ENV{"REMOTE_ADDR"} ) {
 	$online = 1;
 }
-
 
 #############################################################
 # no config below here
@@ -70,10 +68,8 @@ use utf8;
 use POSIX qw(locale_h);
 use URI::Escape 'uri_escape_utf8';
 
-
 setlocale(LC_CTYPE, "german");
 setlocale(LC_ALL, "german");
-
 
 binmode STDOUT, ":utf8";
 use open ':utf8';
@@ -88,9 +84,7 @@ $myname ="wikilint";
 #require "autoreview_t.pm";
 #$myname ="WP-autoreview_t.pl";
 
-
 if (param() || $debugdry ) {
-
 	# override stuff for testing
 	if ( $ARGV[0] eq "test" ) {
 		$debugdry=1;
@@ -172,16 +166,13 @@ if (param() || $debugdry ) {
 	}
 #print "seiteA: <pre>$page</pre>" if ( $developer);
 
-
 	# [^'] to avoid jumping on #REDIRECT [[',']]
 	if ( $page =~ /#REDIRECT ?\[\[([^']+?)\]\]/ ) {
 		$to = $1;
 		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$toolurl/$myname?l=de&lemma=$to\">$1</a></h3><p>\n";
 	}
 	else {
-
 		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = &do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
-
 
 		# to avoid strange reactions in <textarea>, e.g. wth comments like <!-- -- -- -- -->
 		$propose_page =~ s/&/&amp;/g;
@@ -212,9 +203,7 @@ print "</body></html>\n" if ( $online );
 exit;
 
 sub begin_html {
-
 	if ( $online ) {
-
 		# removed debug condition (Arnomane)
 
 		print header (-type => 'text/html; charset=utf-8'),
@@ -227,9 +216,7 @@ sub begin_html {
 				"<link rel=stylesheet type=\"text/css\" href=\"/~timl/wikilint/wp.css\">",
 				"<center>",
 			       h1("<font face=helvetica,arial>$title</font>"),"</center>";
-
 	}
-
 }
 #######################################################################
 
@@ -245,7 +232,6 @@ sub print_explanation {
 }
 
 sub print_form {
-
 	my ( $url ) = @_;
 
 	$url = $url || "http://de.wikipedia.org/wiki/Amphetamin";
@@ -286,12 +272,9 @@ sub print_form {
 
                submit(-name=>'Go!') ,
                end_form;
-
-
 }
 
 sub parse_form {
-
 	my $url = param('url');
 	my $language =param('l');
 	my $random_page=param('rnd');
@@ -401,7 +384,6 @@ print "lemma: $lemma - $lemma_conv<p>\n" if ( $developer && $debug > 8 );
 		# default to typo-check if lemma is passed
 		$do_typo_check = 1;
 
-
 		if ( $language eq "de" ) {
 			$url = "http://de.wikipedia.org/wiki/$lemma_conv";
 		}
@@ -421,8 +403,6 @@ print "lemma: $lemma - $lemma_conv<p>\n" if ( $developer && $debug > 8 );
 	#print "($url, $language, $random_pagem, $testpage, $remove_century, $action, $oldid);<br>" if ( $debug &&  $developer);
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
 }
-
-
 
 sub output {
 	my ( $page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words ) = @_;
@@ -458,7 +438,6 @@ sub output {
 
 		print br,"Problem-Quote f&uuml;r <a href=\"$url\">$search_lemma</a>: <b>$quotient</b> (nur bedingt aussagekräfig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)", p;
 
-
 		if ( $developer && $debug ) {
 			foreach my $grades ( @problem_quotient_grades ) {
 				my ( $from, $to, $grade ) = split(/-/, $grades );
@@ -468,7 +447,6 @@ sub output {
 			}
 			
 			print br,"Grobe Schulnote zum Vergleich: <b>$this_grade</b>", p;
-
 		}
 		&create_review_summary_html( $review_letters, $language );
 		#&create_review_summary_html( $review_letters, $language ) if ( !$developer);
@@ -483,13 +461,11 @@ sub output {
 			$fillwords_quot =0;
 		}
 		print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)<p>\n";
-
 	}
 	elsif ( $language eq "en" ) {
 		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path/$myname\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
 		&print_explanation();
 	}
-
 
 	print p,hr,p;
 
@@ -497,7 +473,6 @@ sub output {
 	my $times = $review_letters =~ s/K/K/g;
 	$times += $review_letters =~ s/L/L/g;
 	if ( $language eq "de" &&  $propose_page  && $removed_links > 1 ) {
-
 		print h3("Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen ($removed_links St&uuml;ck).")," (Am einfachsten kopieren durch \"reinklicken\", STRG-A & STRG-C, in Wikipedia einfügen mit STRG-A, STRG-V und dann mit \"Änderungen zeigen\" kontrollieren.)<br>\n";
 		print "\n\n<textarea readonly name=\"page_without_links_to_years_and_dates\" rows=10 cols=80>$propose_page\n</textarea>\n";
 	}
@@ -573,8 +548,6 @@ sub output {
 		print "<a name=\"BRACKET\">BRACKET = Ungleiche Anzahl von Klammern<p>\n";
 		print "<a name=\"BRACKET2\">BRACKET2 = Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.<p>\n";
 		print "<a name=\"QUOTATION\">QUOTATION = Einfache Anführungszeichen (\"...\") statt den typografisch korrekten („...“). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur\">Erzeugung von Anführungszeichen</a><p>\n";
-
-
 	}
 	else {
 		print "<h3>Explanation:</h3>\n";
@@ -585,7 +558,6 @@ sub output {
 		print "<a name=\"DL\">DL = Double link, reader can't recognize the border between the two<p>\n";
 		print "<a name=\"EM\">EM = Avoid exclamation marks<p>\n";
 		print "<a name=\"WORDS\">WORDS = Words to avoid, see <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Words_to_avoid\">WP: Words to avoid</a><p>\n";
-
 	}
 
 	# allow browsers to jump to anchors
@@ -593,9 +565,7 @@ sub output {
 
 	$dauer = ( time -$start_ts );
 	print "it took: $dauer seconds (incl download)<p>\n" if ( $developer );
-
 }
-
 
 sub show_textfile {
 	my ( $file ) = @_;

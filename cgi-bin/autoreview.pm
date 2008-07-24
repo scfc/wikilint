@@ -55,7 +55,6 @@ sub download_page {
 	$downlemma =~ s/&/%26/g;
 	$downlemma =~ s/’/%E2%80%99/g;
 
-
 	$lemma_org = $lemma;
 	$lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
 
@@ -63,7 +62,6 @@ sub download_page {
 
 	$search_lemma = $lemma;
 	$search_lemma =~ s/_/ /g;
-
 
 	if ( $oldid =~ /^\d+$/ ) {
 		$down_url= "http:\/\/$language.wikipedia.org\/w\/index.php?title=$downlemma&action=raw&oldid=$oldid";
@@ -83,8 +81,6 @@ sub download_page {
 	print "down-URL: $down_url<p>\n" if ( $debug && $developer);
 
 	#$down_url =~ s/’/%E2%80%99/g;
-
-
 
 	my ($page ) = &http_download($down_url, $ignore_error );
 
@@ -108,7 +104,6 @@ print "IS REDIR: recursion_depth: $recursion_depth - $page - $redir_to <br>\n" i
 }
 
 sub http_download {
-
 	my ( $down_url, $ignore_error ) = @_;
 
 	# Create a user agent object
@@ -132,7 +127,6 @@ sub http_download {
 	my $res;
 
 	do {
-
 		# Pass request to the user agent and get a response back
 		$res = $ua->request($req);
 
@@ -200,7 +194,6 @@ sub find_random_page {
 	$random_url=$1;
 
 	( $random_url );
-
 }
 
 sub do_review {
@@ -260,7 +253,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 		#push @units, qr/((\d+?[,\.])?\d+?$unit)(\B|)/;
 	}
 
-
 	# store original lines for building "modified wikisource for cut&paste"
 	my ( @lines_org_wiki ) = split(/\n/, $page);
 
@@ -269,7 +261,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 	( $page, $last_replaced_num ) = &remove_stuff_to_ignore( $page );
 
 #print "seite1: <pre>$page</pre>" if ( $developer);
-
 
 	# check for at least one image
 	$nopic=0;
@@ -284,7 +275,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 #|Wappen            = Wappen Hattersheim.jpg
 #|Bild=Friedrich-Ebert-Anlage 2, Frankfurt.jpg
 		$nopic =1;
-
 	}
 	else {
 		# don't count wappen/heraldics or maps as pic
@@ -293,12 +283,10 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 		}
 	}
 
-
 	if ( $nopic ) {
 		$review_letters .="h";
 
 		if ( $language eq "de" ) {
-
 			my ( $en_lemma, $eng_message );
 			$times = $page =~ /^\[\[en:(.+?)\]\]/m;
 #print "XXXXXXXXXX $ page XXXXX<p>\n";
@@ -322,7 +310,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 	( $page, $last_replaced_num, $count_ref ) = &remove_refs_and_images( $page, $last_replaced_num );
 
 #print "seite2: <pre>$page</pre>" if ( $developer);
-
 
 	# avoid marking comments <!-- as evil exclamation mark
 	$page =~ s/<!/&lt;&iexcl;/g; 
@@ -369,9 +356,7 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 	}
 	##########################################################
 
-
 	print "search_lemma: $search_lemma<p>\n" if ( $developer && $debug > 10 );
-
 
 	my $lola=0;
 
@@ -379,12 +364,9 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 
 #print "SSS: $page<p>\n" if ( $developer );
 
-
-
 	# 1. too much wiki-links to same page
 	# 2. http-links except <ref> or in ==weblinks==
 	foreach my $line ( @lines ) {
-
 #print "XX: $review_letters<br>\n" if ($developer);
 		$line_org_wiki = shift ( @lines_org_wiki );
 #print "DDD1: $line_org_wiki<br>\n" if ( $developer );
@@ -582,7 +564,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 			# bold everywhere is ok in english WP
 			# and only german WP doesn't like links to years & dates
 			if ( $language eq "de" ) {
-
 				# ignore bold in comments, tables (which is quite useless anyway ;)
 				if ( $line !~ /&lt;&iexcl;--.*?'''.*?--&gt;/ &&	
 					$line !~ /&lt;div.+?'''.+?'''.*?&lt;\/div&gt;/i &&
@@ -619,7 +600,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 						$times = $line =~ s/(￼STARTBOLD)(([^￼\[\n]*?\[\[[^￼\]\|]{4,}?\]\])[^￼\[\n]*?|([^￼\[\n]*?\[\[[^￼]+?\|[^￼\]]{4,}?\]\][^￼\[\n]*?)|([^￼\[]{4,}?))(￼ENDBOLD)/$seldom'''$2'''<\/span><sup class=reference><a href=#BOLD>[BOLD]<\/a><\/sup>/g;
 						$review_level += $times * $seldom_level;
 						$review_letters .="F" x $times;
-
 					}
 					$line =~ s/￼STARTBOLD(.+?)￼ENDBOLD/'''$1'''/g;
 
@@ -641,7 +621,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 					( $line_org_wiki, $times ) = &remove_year_and_date_links( $line_org_wiki , $remove_century);
 					$removed_links += $times;
 				}
-
 			}
 		}
 		else {
@@ -664,7 +643,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 					$removed_links += $times;
 				}
 			}
-
 		}
 	
 		if ( $line =~ /{{/ ||
@@ -680,7 +658,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 		) {
 			$inside_comment=1;
 		}
-
 
 	#print "XXX:		inside_template: $inside_template  - inside_comment:  $inside_comment  <br>\n";
 		# dont count short lines, textbox-lines, templates, ...
@@ -701,7 +678,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 		}
 
-
 		# PLENK & KLEMP
 
 		if ( !$inside_ref &&
@@ -710,7 +686,6 @@ print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 			# only look for plenk & klemp if line conains , or .
 			$line =~ /[,.]/
 		) {
-
 			# avoid complaining on dots in URLs by replacing . with PUNKTERSATZ
 			do {
 				$replaced = 0;
@@ -779,7 +754,6 @@ print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 			$section_title !~ /literatur/i &&
 			!$inside_ref 
 		) {
-
 			# check for too long sentences. lot's of cases have to be considered which dots are sentence
 			# endings or not. order is important in these checks!
 
@@ -791,7 +765,6 @@ print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 			$line_copy =~ s/&lt;ref(&gt;| name=).+?&lt;\/ref&gt;//g;
 			# remove <ref name="test">
 			$line_copy =~ s/&lt;ref [^&]+?&gt;//g;
-
 
 			# avoid using dot in "9. armee" as sentence-splitter
 			# but this should be 2 sentences: "... in the year 1990. Next sentence"
@@ -863,7 +836,6 @@ print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 			$line_copy =~ s/‚([^‘]*?)‘/￼QSLS%$1￼QELS%/g;
 			$line_copy =~ s/&lt;sic&gt;(.*?)&lt;\/sic&gt;/￼QSSIC%$1￼QESIC%/gi;
 
-
 			# avoid splitting on dot in {{Zitat|Dies ist Satz eins. Dies ist Satz zwei. Dies ist.}}
 			do {
 				$times = $line_copy =~ s/({{Zitat(-\w\w)?\|[^\}]*?)\.([^\}]*?}})/$1&#46;$2/;
@@ -929,7 +901,6 @@ print "TOSPLIT: $line_copy_tmp<p>\n"
 			my ( @sentences ) = split(/[\:.!\?;]/, $line_copy );
 
 			foreach my $sentence ( @sentences ) {
-
 				# put dots back in, see above
 				$sentence =~ s/&#46;/\./g;
 				$sentence =~ s/SEMIERS/;/g;
@@ -945,7 +916,6 @@ print "TOSPLIT: $line_copy_tmp<p>\n"
 print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\n" if ( $developer && $debug > 9 );
 
 				if ( !$dont_count_words_in_section_title ) {
-
 					my ( @words ) = split(/ +/, $sentence_tmp);
 					my $count_words=0;
 					foreach my $word ( @words ) {
@@ -1006,7 +976,6 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 
 						if ( $language eq "de" ) {
 							$extra_message .= $sometimes."Langer Satz (eventuell als Zitat markieren ?) ($count_words Wörter)</span> Siehe <a href=\"http://de.wikipedia.org/wiki/WP:WSIGA#Schreibe_in_ganzen_S.C3.A4tzen\">WP:WSIGA#Schreibe_in_ganzen_Sätzen</a>: <i>$sentence_tmp_restored.</i><br>\n";
-
 						}
 						else {
 							$extra_message .= $sometimes."Very long sentence ($count_words words)</span>: $sentence_tmp_restored. See <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Avoid_trite_expressions#Use_short_sentences_and_lists\">here</a><br>\n";
@@ -1104,7 +1073,6 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 						$review_level += $times * $sometimes_level;
 						$review_letters .="B" x $times;
 #print "AVOID: $avoid_word - BEG: $line :END<br>\n" if ( $developer );
-
 					}
 				}
 			}
@@ -1161,7 +1129,6 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 							$review_letters .="C" x $times;
 							$count_fillwords += $times;
 						}
-
 					}
 				}
 			}
@@ -1184,8 +1151,6 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 						$times = $line =~ s/$abbreviation/$sometimes$1<\/span><sup class=reference><a href=#ABBREVIATION>[ABBREVIATION]<\/a><\/sup>/gi;
 						$review_level += $times * $sometimes_level;
 						$review_letters .="D" x $times;
-
-
 					}
 				}
 			}
@@ -1201,8 +1166,6 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 				$times = $line =~ s/(\[\[[^\[\]]+?\]\]\[\[[^\[\]]+?\]\])/$never$1<\/span><sup class=reference><a href=#DL>[DL]<\/a><\/sup>/g;
 				$review_level += $times * $never_level;
 				$review_letters .="E" x $times;
-
-
 			}
 		}
 else {
@@ -1236,7 +1199,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 			# .. or is section-title 
 			$line =~/^(={2,9})(.+?)={2,9}/ 
 		) {
-
 			# ... then next sentence must begin uppercase
 			$open_ended_sentence = 0;
 		}
@@ -1272,7 +1234,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 			$line !~ /\[\[category:[^\]]+?\]\]/i  &&
 			$line =~ /\[\[(.+?)\]\]/ 
 		) {
-
 				my $wikilink = "";
 			while ( $line =~ /\[\[(.+?)\]\]/g ) {
 				$wikilink = $1;
@@ -1292,7 +1253,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 					}
 				}
 			}
-
 		}
 #print "111: $line<br>\n" if ( $developer );
 
@@ -1319,7 +1279,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 		my $inside_qoute_word=0;
 
 		foreach my $word ( @words ) {
-
 			if ( 
 				!$inside_weblinks &&
 				!$inside_literatur &&
@@ -1328,7 +1287,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 			) {
 				$num_words++;
 			}
-
 
 			# do [[wiki_link_hurray]] -> [[wiki_link_hurray]] to restore original version
 			my $replaced=0;
@@ -1357,7 +1315,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 				$linkto = lc($linkto_org);
 				$count_linkto{ $linkto }++;
 				print "X:$linkto ---- $word<br>\n" if ( $debug > 8 && $developer );
-
 			}
 			elsif ( 
 				$word =~ /\[{0,1}https{0,1}:\/\// && 
@@ -1425,7 +1382,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 				}
 			}
 
-
 			if ( $word =~ /(?<!')''(?!')\w/ ||
 				$word =~ /„/ 
 			){
@@ -1465,7 +1421,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 			){
 				$inside_ref_word = 0;
 			}
-
 
 			$last_word = $word;
 		}
@@ -1572,7 +1527,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	$review_level += $times * $never_level;
 	$review_letters .="i" x $times;
 
-
 	# bracket errors on templates, e.g. {ISSN|0097-8507}}
 	# expect template name to be not longer than 20 chars
 	$times = $page =~ s/(?<!{)({[^{}]{1,20}?\|[^{}]+?}})/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
@@ -1620,7 +1574,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	$review_level += $times * $sometimes_level;
 	$review_letters .="l" x $times;
 
-
 	# do self-wikilinks
 	$self_lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
         utf8::decode($self_lemma);
@@ -1655,8 +1608,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 		$review_level += $times * $never_level;
 		$review_letters .="m" x $times;
 	}
-
-
 
 	print "number of words: $num_words<p>\n" if ( $developer && $debug > 3 );
 
@@ -1746,7 +1697,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	if ( $page !~ /\{\{wiktionary\|/i ) {
 		$review_letters .="f";
 		if ( $language eq "de" ) {
-
 			$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zum Wiktionary, siehe beispielsweise <a href=\"http://de.wikipedia.org/wiki/Kunst#Weblinks\">Kunst#Weblinks</a>. <a href=\"http://de.wiktionary.org/wiki/Spezial:Suche?search=$search_lemma&go=Seite\">Prüfen ob einen Wiktionaryeintrag zu $search_lemma gibt</a>.\n";
 		}
 		else {
@@ -1755,11 +1705,9 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	}
 	# check for {{commons
 	if ( $page !~ /(\{\{commons(cat)?(\|)?)|({{commons}})/i ) {
-
 			$review_letters .="g";
 
 			if ( $language eq "de" ) {
-
 				my ( $en_lemma, $eng_message );
 				$times = $page =~ /^\[\[en:(.+?)\]\]/m;
 #print "XXXXXXXXXX $ page XXXXX<p>\n";
@@ -1775,8 +1723,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 			}
 		
 	}
-
-
 
 	# always propose "whatredirectshere"
 	$extra_message .= "${proposal}Vorschlag<\/span>: Weiterleitungen / #REDIRECTS zu [[$search_lemma]] <a href=\"http://toolserver.org/~tangotango/whatredirectshere.php?lang=$language&title=$search_lemma&subdom=$language&domain=.wikipedia.org\">prüfen</a> mit <a href=\"http://toolserver.org/~tangotango/whatredirectshere.php\">Whatredirectshere</a>\n";
@@ -1808,8 +1754,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 		# bsp: http://rupp.de/cgi-bin/WP-autoreview.pl?l=de&lemma=Deutsche_Milit%C3%A4rmission_im_Osmanischen_Reich
 		# test.html auf WP
 		# "setting", heute, ist offensichtlich avoidword
-
-
 	
 	# JS-gott suchen:
 		# per klick zu richtigen stelle springen, und zurück 
@@ -1835,7 +1779,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 			# BKL auswählen
 			# BOLD -> italic, raus (oder hinspringen)
 		# siehe auch - vorher wegmachen
-
 
 	# KÜR:
 	# http://meta.wikimedia.org/wiki/Alternative_parsers
@@ -1902,11 +1845,9 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	$new_page_org = &restore_stuff_to_ignore( $new_page_org );
 
 	($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $new_page_org, $removed_links, $count_ref, $count_fillwords );
-
 }
 
 sub read_files {
-
 	my ( $language) = @_;
 	die "language missing\n" if ( !$language );
 
@@ -1983,7 +1924,6 @@ sub read_files {
 			}
 		}
 		close(TYPO);
-
 	}
 	elsif ( $language eq "en" ) {
 		# words to avoid
@@ -2003,7 +1943,6 @@ sub remove_year_and_date_links {
 	my ( $line, $remove_century ) = @_;
 
 	my ( $times, $count_removed );
-
 
 	# [[1234]] or [[3 v. Chr.]]
 	$times = $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?)\]\]/$1/g;
@@ -2038,7 +1977,6 @@ sub remove_year_and_date_links {
 		$times = $line =~ s/\[\[(\d{1,4}er Jahre)[\]\|]\]?/$1/g;
 		$count_removed += $times;
 	}
-
 
 	( $line, $count_removed );
 }
@@ -2101,7 +2039,6 @@ sub tag_dates_rest_line {
 	$review_level += $times * $sometimes_level;
 	$review_letters .="V" x $times;
 
-
 	# links to days
 	foreach my $month ( @months ) {
 		# do [[12. Mai]] or [[12. Mai|...]]
@@ -2153,9 +2090,7 @@ sub create_perma_link {
 	($perma_link);
 }
 
-
 sub remove_stuff_to_ignore {
-
 	# inside <math>, <code> everything is allowed to remove before doing review and restore afterwards
 	my ( $page ) = @_;
 
@@ -2246,14 +2181,11 @@ sub restore_stuff_to_ignore {
 		$total += $times2;
 print "RESTORE REFS $1 $2 <br>\n" if ( $developer && $debug > 8 );
 	} until ( !$times2 || $total == $todo );
-
-
 	
 	($page );
 }
 
 sub restore_stuff_quote {
-
 	# restoring is a bit tricky because the removed stuff might be inside each other, e.g.
 	# a removed comment inside a quote, so it has to be repeated until everything is restored
 	my ( $page, $substitute_tags ) = @_;
@@ -2280,11 +2212,9 @@ sub check_unformated_refs {
 	my ( @lines ) = split(/\n/, $page);
 
 	foreach $line ( @lines ) {
-
 		my ( @words ) = split(/\s/, $line );
 
 		foreach my $word ( @words ) {
-
 			if ( 
 				$last_word !~ /^URL:/i &&
 				$word !~ /{{\w+?\|[^}]*https?:\/\// && 
@@ -2394,13 +2324,11 @@ print "DDD: $page\n" if ( $developer && $debug > 9 );
 }
 
 sub create_review_summary_html {
-
         my ( $review_letters, $language ) = @_;
         my ( $result );
 
 	print "<h3>Zusammenfassung</h3><font face=\"arial,helvetica\"><table border=1 >\n";
 	print "<tr><th>Prüfung<th>Ergebnis\n";
-
 
         my ( @letters ) = split(//, $review_letters );
         my %count_letters;
@@ -2432,18 +2360,12 @@ sub create_review_summary_html {
 			}
 			print "$result\n";
 		}
-
-
         }
 
 	print "</table>\n\n";
-
 }
 
-
-
 sub get_pic_parameters {
-
 	# get picture-paramters for wikimedia/wikipedia-picture:
 	# - resolution
 	# - exif:date taken
@@ -2513,7 +2435,6 @@ sub get_pic_parameters {
 		if ( $line =~ /\(Löschen\) \(Aktuell\) <a href=.+?>(.+?)<\/a>/ ) {
 			$date_upload = $1;
 		}
-
 	}
 
 	print "w: $width h: $heigth s: $size m: $mimetype d: $date_info du: $date_upload\n" if ( $developer );
@@ -2536,7 +2457,6 @@ sub selftest {
 	}
 
 	foreach my $line ( @lines ) {
-
 		if ( $line =~ /-R-.+?\d+-R-/ ) {
 			print "MISSED REPLACEMENT: $line$br\n";
 		}
@@ -2594,11 +2514,9 @@ sub selftest {
 			print "MISSING MESG: $evil\n";
 		}
 	}
-
 }
 
 sub restore_quotes {
-
 	my ( $line ) = @_;
 	$line =~ s/￼QSS.?%(.*?)￼QES.?%/''$1''/g;
 	$line =~ s/￼QSD%(.*?)￼QED%/\"$1\"/g;

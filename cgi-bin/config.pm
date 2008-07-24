@@ -16,7 +16,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-
 1;
 use utf8;
 
@@ -45,7 +44,6 @@ $wait_between_http_retry = 10;
 # try this often:
 $http_retry = 5;
 
-
 $never_level = 4;
 $seldom_level = 2;
 $sometimes_level = 1;
@@ -55,7 +53,6 @@ $never = "<span class=never>";
 $seldom = "<span class=seldom>";
 $sometimes = "<span class=sometimes>";
 $proposal = "<span class=proposal>";
-
 
 @problem_quotient_grades = (
 	'0-0-sehr gut',
