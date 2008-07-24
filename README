@@ -19,10 +19,6 @@ Directories:
 * Below the wikilint directory you can find all files needed
   by wikilint client side (browser).
 
-* At the spider directory there is the currently unused
-  spider extension which allows for batch processing
-  Wikipedia articles with wikilint.
-
 URLs:
 -----
 

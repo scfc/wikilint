@@ -38,11 +38,6 @@ $fillwords_per_words = 80;
 # quotes which have more characters this this don't count to complain on loooong sentences because they're real quotes
 $short_quote_length = 120;
 
-$max_links_spider_review=2000;
-#$max_links_spider_review=250;
-
-$spider_search_string="WP-autoreview-spider.pl";
-
 # $proxy = 'http://127.0.0.1:55212';
 
 # wait x seconds between HTTP-retry (500)
@@ -72,16 +67,6 @@ $proposal = "<span class=proposal>";
 );
 
 $redir_file = "/home/timl/public_html/cgi-bin/redirs.txt";
-
-# this one needs only read permission by "autoreview"-user:
-$spider_queue_file = "/home/timl/public_html/cgi-bin/WP-autoreview-spider.pl.queue";
-
-# the rest write permission:
-$spider_queue_file_last = "/home/timl/public_html/cgi-bin/WP-autoreview-spider.queue.last";
-$spider_queue_file_semaphore = "/home/timl/public_html/cgi-bin/WP-autoreview-spider.pl.queue.semaphore";
-$spider_queue_table_dir = "/home/timl/public_html/cgi-bin/tables";
-$spider_queue_log = "/home/timl/public_html/cgi-bin/spider_queue.log";
-$spider_queue_error_log = "/home/timl/public_html/cgi-bin/spider_queue_error.log";
 
 $botname = "Bot.Wikilint";
 $botpw = ""; # refill
@@ -164,6 +149,3 @@ $rush_hour_start = 9;
 $rush_hour_end = 23;
 
 $table_hint{"de"} = "Die Tabelle ist sortierbar über die Kästchen mit den Dreiecken, das dauert bei großen Tabellen allerdings ein paar Sekunden. Bitte nicht Artikel nur wegen eines einzigen Problems ändern, sonst gibt es unnötig viele Versionen auf den Wikipedia-Servern. Besser ist es einen Artikel nach dem anderen vollständig zu bearbeiten.";
-
-# for subcategories in spider-review
-$max_recursion_depth = 10;

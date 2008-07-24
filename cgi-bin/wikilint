@@ -206,9 +206,6 @@ else {
 		br,
 		"<b>Liste der <a href=\"$tool_path/$myname?action=show_avoid_words_de\">zu vermeidenden Wörter</a>, <a href=\"$tool_path/$myname?action=show_fill_words_de\">Füllwörter</a> und der <a href=\"$tool_path/$myname?action=show_abbr_de\">Abkürzungen</a></b><br>\n",
                "<hr />Veröffentlicht unter GPL. <br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt\">Tim&nbsp;Landscheidt</a>";
-
-# spider commented out (performance reasons and not much requested, Arnomane)
-#	print "<center><table border=1><tr><td><b><font color=red>Neues:</font></b> 100 Seiten auf einmal linten: <a href=\"http://rupp.de/cgi-bin/WP-autoreview-spider.pl\">Beta-Test Autoreview-Spider</a></table>";
 }
 
 print "</body></html>\n" if ( $online );
