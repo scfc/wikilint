@@ -16,9 +16,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-
 @months = ("Januar", ,"Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" );
-
 
 1;
 
@@ -218,11 +216,6 @@ sub do_review {
 	local (%remove_stuff_for_typo_check_array );
 	local ($global_removed_count )=0;
 
-# 'qqq'
-$t = Benchmark::Timer->new();
-
-$t->start('intro');
-
 	$self_lemma_tmp = $self_lemma;
 	$self_lemma_tmp =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
 
@@ -273,9 +266,7 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 
 	# remove <math>, <code>, <!-- -->, <poem> (any stuff to completetly ignore )
 #print "seite0: <pre>$page</pre>" if ( $developer);
-$t->start('remove_stuff_to_ignore');
 	( $page, $last_replaced_num ) = &remove_stuff_to_ignore( $page );
-$t->stop('remove_stuff_to_ignore');
 
 #print "seite1: <pre>$page</pre>" if ( $developer);
 
@@ -328,9 +319,7 @@ $t->stop('remove_stuff_to_ignore');
 	&check_unformated_refs( $page );
 
 	# remove <ref></ref>
-$t->start('remove_refs_and_images');
 	( $page, $last_replaced_num, $count_ref ) = &remove_refs_and_images( $page, $last_replaced_num );
-$t->stop('remove_refs_and_images');
 
 #print "seite2: <pre>$page</pre>" if ( $developer);
 
@@ -348,7 +337,6 @@ $t->stop('remove_refs_and_images');
 	$page =~ s/</&lt;/g;
 	$page =~ s/>/&gt;/g;
 
-$t->stop('intro');
 	##########################################################
 	# find common TYPOS from list
 
@@ -364,11 +352,8 @@ $t->stop('intro');
 			# other list: http://de.wikipedia.org/wiki/Benutzer:BWBot
 
 			# remove lines with <!--sic--> and {{Zitat...}}
-$t->start('removetypo');
 			( $page ) = &remove_stuff_for_typo_check( $page );
-$t->stop('removetypo');
 
-$t->start('typocheck');
 			if ( $language eq "de" ) {
 				foreach my $typo ( @is_typo ) {
 					# this one (?<!-) to avoid strange words i german double-names like "meier-pabst"
@@ -379,10 +364,7 @@ $t->start('typocheck');
 					print "lemma: $self_lemma - TYPO: $typo \n" if ( $times && $developer && $debug );
 				}
 			}
-$t->stop('typocheck');
-$t->start('restoretypo');
 			( $page ) = &restore_stuff_quote( $page );
-$t->stop('restoretypo');
 		}
 	}
 	##########################################################
@@ -401,7 +383,6 @@ $t->stop('restoretypo');
 
 	# 1. too much wiki-links to same page
 	# 2. http-links except <ref> or in ==weblinks==
-$t->start('foreachlines');
 	foreach my $line ( @lines ) {
 
 #print "XX: $review_letters<br>\n" if ($developer);
@@ -411,7 +392,6 @@ $t->start('foreachlines');
 
 		my $line_org = $line;
 
-$t->start('foreachlines1');
 		# normale " statt „“
 		if ( $line !~ /^({\||\|)/ &&
 			$line !~ /^{{/ &&
@@ -437,9 +417,6 @@ $t->start('foreachlines1');
 			$line =~ s/QM-ERS/"/g;
 	#print "XX: $line\n" if ( $developer );
 		}
-$t->stop('foreachlines1');
-
-$t->start('foreachlines2');
 
 		$last_section_level = $section_level;
 		$last_section_title = $section_title;
@@ -539,9 +516,6 @@ $t->start('foreachlines2');
 		else {
 			$dont_count_words_in_section_title = 0;
 		}
-$t->stop('foreachlines2');
-
-$t->start('foreachlines3');
 
 #print "lit: $inside_literatur web: $inside_weblinks  com: $inside_comment tmp: $inside_template: $line <br>\n" if ( $developer );
 		if ( 
@@ -601,10 +575,6 @@ $t->start('foreachlines3');
 			}
 			
 		}
-$t->stop('foreachlines3');
-
-$t->start('foreachlines4');
-
 
 		# check for bold text after some lines, should be only in the definition
 		# links to dates are also OK in 1st line
@@ -696,9 +666,6 @@ $t->start('foreachlines4');
 			}
 
 		}
-$t->stop('foreachlines4');
-
-$t->start('foreachlines5');
 	
 		if ( $line =~ /{{/ ||
 			$line =~ /{\|/ 
@@ -805,9 +772,6 @@ print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 			$line =~ s/PUNKTERSATZ/./g;
 			$line =~ s/KOMMAERSATZ/,/g;
 		}
-$t->stop('foreachlines5');
-
-
 
 		# check for avoid_words and fill_words except in weblinks and literatur
 		if (    
@@ -815,7 +779,6 @@ $t->stop('foreachlines5');
 			$section_title !~ /literatur/i &&
 			!$inside_ref 
 		) {
-$t->start('foreachlines6');
 
 			# check for too long sentences. lot's of cases have to be considered which dots are sentence
 			# endings or not. order is important in these checks!
@@ -957,16 +920,11 @@ $t->start('foreachlines6');
 				$times = $line_copy =~ s/(\[\[[^\]]{0,80}?):([^\]]{0,160}?\]\])/$1DPLPERS$2/;
 			} until ( !$times );
 			
-$t->stop('foreachlines6');
-
 if ( $debug > 8 && $developer ) {
 my $line_copy_tmp = $line_copy;
 $line_copy_tmp =~ s/&/&amp;/g;
 print "TOSPLIT: $line_copy_tmp<p>\n" 
 }
-
-
-$t->start('foreachlines7');
 
 			my ( @sentences ) = split(/[\:.!\?;]/, $line_copy );
 
@@ -1118,9 +1076,7 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 				$review_letters .="G" x $times;
 	#print "EM2: -$line-<p>\n";
 			}
-$t->stop('foreachlines7');
 
-$t->start('avoid');
 			foreach my $avoid_word ( @avoid_words ) {
 				# check if that word is used in <ref> or in quote(buggy because doesn't show same word outside <ref> in same line)
 				# or in {{Zitat ...}}
@@ -1152,9 +1108,6 @@ $t->start('avoid');
 					}
 				}
 			}
-$t->stop('avoid');
-
-$t->start('fill');
 
 #print "FFF: $page\n" if ( $developer );
 
@@ -1213,9 +1166,6 @@ $t->start('fill');
 				}
 			}
 
-$t->stop('fill');
-
-$t->start('abbr');
 			# abbreviation
 			foreach my $abbreviation ( @abbreviations ) {
 				# performance-thing: don't make all the following checks if there's no abbreviation anyway
@@ -1239,11 +1189,8 @@ $t->start('abbr');
 					}
 				}
 			}
-$t->stop('abbr');
 
-$t->start('restore_q');
 			$line = &restore_quotes($line);
-$t->stop('restore_q');
 
 			# evil: [[Automobil|Auto]][[bahn]] 
 			# ok: [[Bild:MIA index.jpg|thumb|Grafik der Startseite]][[Bild:CreativeCommond_logo_trademark.svg|right|120px|Logo der Creative Commons]]
@@ -1265,9 +1212,6 @@ $line_copy_tmp =~ s/&/&amp;/g;
 print "NOT AT ALL TOSPLIT: $line_copy_tmp<p>\n" 
 }
 }
-
-$t->start('foreachlines9');
-
 
 		# lower-case beginning of sentence
 		# the blank in the searchstring is to avoid e.g. "bild:image.jpg" inside a <gallery>
@@ -1373,10 +1317,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 		my $inside_comment_word = 0;
 		my $inside_ref_word=0;
 		my $inside_qoute_word=0;
-$t->stop('foreachlines9');
-
-$t->start('foreachlines10');
-
 
 		foreach my $word ( @words ) {
 
@@ -1529,9 +1469,7 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 
 			$last_word = $word;
 		}
-$t->stop('foreachlines10');
 
-$t->start('foreachlines11');
 		if ( $line !~ /^\|/ &&
 			!$inside_template &&
 			length( $line ) > $min_length_for_nbsp 
@@ -1550,8 +1488,6 @@ $t->start('foreachlines11');
 			$review_level += $times * $sometimes_level;
 			$review_letters .="T" x $times;
 		}
-$t->stop('foreachlines11');
-$t->start('foreachlines12');
 		
 		# Apostroph
 		# don't complain on ' in wikilinks
@@ -1568,9 +1504,7 @@ $t->start('foreachlines12');
 			$review_letters .="s" x $times;
 #print "APO: $line<br>\n\n" if ( $times && $developer );
 		}
-$t->stop('foreachlines12');
 
-$t->start('foreachlines13');
 		# Gedankenstrich -----
 		my $bad_search = qr/([[:alpha:]]+)( - )([[:alpha:]]+)/;
 		if ( $line !~ /\[\[[^\]]*?$bad_search[^\]]*?\]\]/o &&
@@ -1581,9 +1515,6 @@ $t->start('foreachlines13');
 			$review_letters .="t" x $times;
 #print "GS: $line<br>\n\n" if ( $times && $developer );
 		}
-$t->stop('foreachlines13');
-
-$t->start('foreachlines14');
 
 		# do(missing spaces(before brackts
 		$times = $line =~ s/([[:alpha:]]{3,}?\()([[:alpha:]]{3,})/$seldom$1<\/span><sup class=reference><a href=#BRACKET2>[BRACKET2 ?]<\/a><\/sup>$2/g;
@@ -1594,10 +1525,6 @@ $t->start('foreachlines14');
 		$review_level += $times * $seldom_level;
 		$review_letters .="v" x $times;
 
-$t->stop('foreachlines14');
-
-
-$t->start('foreachlines15');
 		$new_page .= "$line\n";
 		$new_page_org .= "$line_org_wiki\n";
 
@@ -1613,19 +1540,11 @@ $t->start('foreachlines15');
 		) {
 			$inside_comment=0;
 		}
-$t->stop('foreachlines15');
-
 	}
-$t->stop('foreachlines');
 
 	$page = $new_page;
 
 	##############################################################
-
-
-
-$t->start('endblock');
-
 
 	#	no weblinks in section titles
 	# ... except de.wikipedia to avoid tagging BKL-tag as weblink in section
@@ -1981,54 +1900,6 @@ $t->start('endblock');
 
 	$page = &restore_stuff_to_ignore( $page, "substitute_tags" );
 	$new_page_org = &restore_stuff_to_ignore( $new_page_org );
-
-$t->stop('endblock');
-
-if ( $developer && $debug  ) {
-print "####################################################<br>\n";
-print "####################################################<br>\n";
-print "####################################################<br>\n";
-print "#####".$t->report('intro')."<br>";
-print "#####".$t->report('remove_refs_and_images')."<br>";
-print "#####".$t->report('remove_stuff_to_ignore')."<br>";
-print "#####".$t->report('foreachlines')."<br>";
-print "#####".$t->report('foreachlines1')."<br>";
-print "#####".$t->report('foreachlines2')."<br>";
-print "#####".$t->report('foreachlines3')."<br>";
-print "#####".$t->report('foreachlines4')."<br>";
-print "#####".$t->report('foreachlines5')."<br>";
-print "#####".$t->report('foreachlines6')."<br>";
-print "#####".$t->report('foreachlines7')."<br>";
-print "#####".$t->report('avoid')."<br>";
-print "#####".$t->report('fill')."<br>";
-#print "#####".$t->report('fill2')."<br>";
-#print "#####".$t->report('fill3')."<br>";
-print "#####".$t->report('abbr')."<br>";
-print "#####".$t->report('restore_q')."<br>";
-print "#####".$t->report('foreachlines9')."<br>";
-print "#####".$t->report('foreachlines10')."<br>";
-print "#####".$t->report('foreachlines11')."<br>";
-print "#####".$t->report('foreachlines12')."<br>";
-print "#####".$t->report('foreachlines13')."<br>";
-print "#####".$t->report('foreachlines14')."<br>";
-print "#####".$t->report('foreachlines15')."<br>";
-print "#####".$t->report('endblock')."<br>";
-print "#####".$t->report('removetypo')."<br>";
-print "#####".$t->report('removetypo1')."<br>";
-print "#####".$t->report('removetypo2')."<br>";
-print "#####".$t->report('removetypo3')."<br>";
-print "#####".$t->report('removetypo4')."<br>";
-print "#####".$t->report('removetypo5')."<br>";
-print "#####".$t->report('typocheck')."<br>";
-print "#####".$t->report('restoretypo')."<br>";
-#print "#####".$t->report('qqq6')."<br>";
-#print "#####".$t->report('qqq7')."<br>";
-#print "#####".$t->report('qqq8')."<br>";
-#print "#####".$t->report('qqq9')."<br>";
-print "####################################################<br>\n";
-print "####################################################<br>\n";
-print "####################################################<br>\n";
-}
 
 	($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $new_page_org, $removed_links, $count_ref, $count_fillwords );
 
@@ -2451,21 +2322,13 @@ sub remove_stuff_for_typo_check {
 
 	$lola =0;
 
-$t->start('removetypo1');
-
 	# remove complete_line with <!--sic--> marked earlier in remove_stuff()
 	# uses /e execute sub remove_one_item() !
 	$page =~ s/^(.*-R-R-SIC\d+-R-.*)$/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/gemi;
 
-$t->stop('removetypo1');
-
-$t->start('removetypo2');
 	# any template like  {{Zitat }}
 	$page =~ s/({{\w.{4,}?}})/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/gesi;
-$t->stop('removetypo2');
 
-
-$t->start('removetypo3');
 	# quotes
 	my ( @lines ) = split(/\n/, $page );
 	my $page_new;
@@ -2490,19 +2353,13 @@ $t->start('removetypo3');
 		$page_new .= "$line_copy\n";
 	}
 	$page = $page_new;
-$t->stop('removetypo3');
 
-$t->start('removetypo4');
 	# any [[]] wikilink
 	$page =~ s/(\[\[[^\]]{1,150}?\]\])/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
 
-$t->stop('removetypo4');
-
-$t->start('removetypo5');
 	# any [] weblink
 	$page =~ s/(\[http.+?\])/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
 #print "XXX:$page:XXX" if ( $developer );
-$t->stop('removetypo5');
 
 	( $page, $lola );
 }

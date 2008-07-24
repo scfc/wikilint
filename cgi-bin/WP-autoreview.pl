@@ -40,8 +40,6 @@ $tool_base = "http://tools.wikimedia.de";
 $tool_path = "/~arnomane/cgi-bin";
 $tool_url = "$tool_base$tool_path";
 
-use Benchmark::Timer;
-
 if ( $ENV{"REMOTE_ADDR"} ) {
 	$online = 1;
 }
@@ -52,13 +50,6 @@ if ( $ENV{"REMOTE_ADDR"} ) {
 #############################################################
 
 local $start_ts = time;
-
-$bench = Benchmark::Timer->new();
-$bench->start('total');
-
-
-
-
 
 use CGI qw/:standard/;
 use LWP::UserAgent;
@@ -151,11 +142,7 @@ if (param() || $debugdry ) {
 		hr;
 	}
 
-$bench->start('readfiles');
 	&read_files($language);
-$bench->stop('readfiles');
-
-
 
 	# write some log
 	my @months = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -223,13 +210,6 @@ else {
 # spider commented out (performance reasons and not much requested, Arnomane)
 #	print "<center><table border=1><tr><td><b><font color=red>Neues:</font></b> 100 Seiten auf einmal autoreviewern: <a href=\"http://rupp.de/cgi-bin/WP-autoreview-spider.pl\">Beta-Test Autoreview-Spider</a></table>";
 }
-$bench->stop('total');
-
-if ( $developer && $debug ) {
-print "#####".$bench->report('total')."<br>";
-print "#####".$bench->report('readfiles')."<br>";
-}
-
 
 print "</body></html>\n" if ( $online );
 exit;
