@@ -25,16 +25,11 @@
 # contains UTF8-characters so take care with editor and terminal-settings, win98 doesn't work!
 #
 
-$title = "wikilint (Beta Version)";
-$tool_base = "http://toolserver.org";
 $tool_path = "/~timl/cgi-bin";
-$tool_url = "$tool_base$tool_path";
 
 #############################################################
 # no config below here
 #############################################################
-
-local $start_ts = time;
 
 use CGI qw/:standard/;
 use LWP::UserAgent;
@@ -144,7 +139,7 @@ exit;
 
 sub begin_html {
 	print header (-type => 'text/html; charset=utf-8'),
-	       start_html(-title=>"$title $title_lemma",
+	       start_html(-title=>"wikilint $title_lemma",
 			-encoding=>'utf-8',
 			-head=>meta({-http_equiv=>'Content-Type',
 				       -content=>'text/html; charset=utf-8'})
@@ -152,7 +147,7 @@ sub begin_html {
 			 -bgcolor=>'#FFFFFF'),
 			"<link rel=stylesheet type=\"text/css\" href=\"/~timl/wikilint/wp.css\">",
 			"<center>",
-		       h1("<font face=helvetica,arial>$title</font>"),"</center>";
+		       h1("<font face=helvetica,arial>wikilint</font>"),"</center>";
 }
 #######################################################################
 
@@ -396,8 +391,6 @@ sub output {
 			print "Is ".$sometimes."sometimes</span> reasonable, please check.<br>\n";
 			print p,ul($extra_message),p,hr,p;
 		}
-		else {
-		}
 	}
 
 	print hr;
@@ -461,6 +454,4 @@ sub output {
 
 	# allow browsers to jump to anchors
 	print "<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;\n";
-
-	$dauer = ( time -$start_ts );
 }
