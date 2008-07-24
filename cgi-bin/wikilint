@@ -30,10 +30,6 @@ $tool_base = "http://toolserver.org";
 $tool_path = "/~timl/cgi-bin";
 $tool_url = "$tool_base$tool_path";
 
-if ( $ENV{"REMOTE_ADDR"} ) {
-	$online = 1;
-}
-
 #############################################################
 # no config below here
 #############################################################
@@ -51,7 +47,7 @@ use URI::Escape;
 # to prevent perl from matching ß to ss (don't know if there is a better way)
 # to be able to look for "daß" without finding "dass".
 # in both files in uncommented the line starting with 00DF
-# and called "perl mktables" in the same directory. 
+# and called "perl mktables" in the same directory.
 # this change is of course for the whole system!
 # IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -66,10 +62,9 @@ binmode STDOUT, ":utf8";
 use open ':utf8';
 #############################################################
 
-# prod
 require "config.pm";
 require "autoreview.pm";
-$myname ="wikilint";
+$myname = 'wikilint';
 
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
@@ -145,22 +140,20 @@ else {
                "<hr />Veröffentlicht unter GPL. <br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt\">Tim&nbsp;Landscheidt</a>";
 }
 
-print "</body></html>\n" if ( $online );
+print "</body></html>\n";
 exit;
 
 sub begin_html {
-	if ( $online ) {
-		print header (-type => 'text/html; charset=utf-8'),
-		       start_html(-title=>"$title $title_lemma",
-				-encoding=>'utf-8',
-				-head=>meta({-http_equiv=>'Content-Type',
-					       -content=>'text/html; charset=utf-8'})
-				-lang=>'de-DE',
-				 -bgcolor=>'#FFFFFF'),
-				"<link rel=stylesheet type=\"text/css\" href=\"/~timl/wikilint/wp.css\">",
-				"<center>",
-			       h1("<font face=helvetica,arial>$title</font>"),"</center>";
-	}
+	print header (-type => 'text/html; charset=utf-8'),
+	       start_html(-title=>"$title $title_lemma",
+			-encoding=>'utf-8',
+			-head=>meta({-http_equiv=>'Content-Type',
+				       -content=>'text/html; charset=utf-8'})
+			-lang=>'de-DE',
+			 -bgcolor=>'#FFFFFF'),
+			"<link rel=stylesheet type=\"text/css\" href=\"/~timl/wikilint/wp.css\">",
+			"<center>",
+		       h1("<font face=helvetica,arial>$title</font>"),"</center>";
 }
 #######################################################################
 
@@ -182,13 +175,13 @@ sub print_form {
 
 	param ('url', $url );
 
-	print 
+	print
                start_form ( -method=>"GET",
 				-action=>"$tool_path/$myname",
 				-'accept-charset'=>"utf8",
 				-enctype=>"application/x−www−form−urlencoded"),
                " URL / Lemma: ",textfield(-name =>'url',
-						-default => "$url", 
+						-default => "$url",
 						-size => 70)," (Bei Problemen mit deutschen Umlauten die URL von Wikipedia kopieren)", p,
 		checkbox(-name=>'remove_century',
                            -checked=>0,
@@ -239,22 +232,6 @@ sub parse_form {
 	utf8::decode($url);
 	utf8::decode($lemma);
 
-	if ( $action eq "show_avoid_words_de" ) {
-		&begin_html();
-		&show_textfile("avoid_words_de.txt");
-		exit;
-	}
-	elsif ( $action eq "show_fill_words_de" ) {
-		&begin_html();
-		&show_textfile("fill_words_de.txt");
-		exit;
-	}
-	elsif ( $action eq "show_abbr_de" ) {
-		&begin_html();
-		&show_textfile("abbreviations_de.txt");
-		exit;
-	}
-
 	# empty url/lemma
 	if ( !$url && !$lemma ) {
 		&begin_html();
@@ -278,19 +255,19 @@ sub parse_form {
 	if ( !$language ) {
 		$language =param('language');
 	}
-	
+
 	# check URL
 	if ( $url && (
-		$url =~ /\.\./ || 
-		$url =~ /;/ || 
+		$url =~ /\.\./ ||
+		$url =~ /;/ ||
 		length($url)> 150 ||
-		( 
+		(
 			# if URL is passed only to wikipedia.org
-			( 
+			(
 				$url =~ /https?:/ ||
-				$url =~ /:\/\// 
-			) && 
-			$url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i 
+				$url =~ /:\/\//
+			) &&
+			$url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i
 		)
 	)) {
 		&begin_html();
@@ -298,7 +275,7 @@ sub parse_form {
 		exit;
 	}
 
-	#$url =~ /([^\w\d\%\_\-\:\.\/\?\&=\(\)\s-])/ 
+	#$url =~ /([^\w\d\%\_\-\:\.\/\?\&=\(\)\s-])/
 
 	# only german or english so far
 	if ( ($language ne "de" && $language ne "en") ) {
@@ -334,7 +311,7 @@ sub parse_form {
 			&begin_html();
 			print "unsupported language<p>\n";
 			exit;
-			
+
 		}
 	}
 
@@ -351,7 +328,7 @@ sub output {
 	# include <a name> for each ==section==, tricky because of my own HTML in section-titles, e.g.:
 	# ==Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte==<br>
 	$page =~ s/(={2,9})\s*(.*?)(<.*?>)(.*?)(<.*>)(.*?)\s*(={2,9})/<a name=\"$2$4$6\">$1$2$3$4$5$6$7<\/a>/g;
-	# now sections without HTML aka [^<] 
+	# now sections without HTML aka [^<]
 	$page =~ s/(={2,9})\s*([^<]+?)\s*(={2,9})/<a name=\"$2\">$1$2$3<\/a>/g;
 
 	if ( $language eq "de" ) {
@@ -361,7 +338,7 @@ sub output {
 		$link .= "&oldid=$oldid" if ( $oldid );
 		print "Link zu dieser Seite: $link<br>\n";
 
-		
+
 		if ( $oldid ) {
 			print "<h1>Achtung, dieses Review betrifft eine alte Version dieses Artikels!</h1>\n";
 		}
@@ -416,7 +393,7 @@ sub output {
 			print $proposal."Vorschlag</span>, bitte prüfen ob sinnvoll.<br>\n";
 			print "</table>\n";
 			print p,"\n",ul($extra_message),p,hr,p;
-		
+
 		}
 		elsif ( $language eq "en" ) {
 			print hr, h3("General comments:");
@@ -459,7 +436,7 @@ sub output {
 		print "<a name=\"LC\">LC = Lowercase = Zeile oder Überschrift, die mit einem Kleinbuchstaben beginnt. Selten sinnvoll außer z.B. in Formeln.<p>\n";
 		print "<a name=\"BKL\">BKL = Link zu einer Begriffserklärungsseite. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>.<p>\n";
 		print "<a name=\"MAYBEBKL\">MAYBEBKL = Eventuell Link zu einer Begriffserklärungsseite, bitte prüfen. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>. (Der Grund, warum manche Links nicht sicher als BKLs identifiziert werden können, ist unterschiedliche Groß-/Kleinschreibung. Beispielsweise ist <a href=\"http://de.wikipedia.org/wiki/ZEUS\">ZEUS</a> eine BKL, würde es <a href=\"http://de.wikipedia.org/wiki/Zeus\">Zeus</a> nicht geben, würde eine Link zu \"Zeus\" zu \"ZEUS\" führen. Da dieser Dienst keine Liste aller Lemma hat, um das wissen zu können, werden diese Links als \"vielleicht BKL\" angezeigt.)<p>\n";
-		
+
 		print "<a name=\"ABBREVIATION\">ABBREVIATION = Abkürzungen vermeiden: Statt „z. B.“ kann man so auch „beispielsweise“ schreiben, statt „i. d. R.“ auch „meistens“ oder einfach nur „meist“. Das Wort „beziehungsweise“, abgekürzt „bzw.“, das aus der Kanzleisprache stammt, lässt sich meist besser durch „oder“ ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch „und im anderen Fall“ oder schlicht durch „und“ ausdrücken siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen\">Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen</a>. (<a href=\"$tool_path/$myname?action=show_abbr_de\">Liste der Abkürzungen</a> die hervorgehoben werden.)<p>\n";
 		print "<a name=\"NBSP\">NBSP = Zwischen einer Zahl und einer Einheit sollte ein geschütztes Leerzeichen stehen. Dadurch wird ein automatischen Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindert. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung\">Wikipedia:Textgestaltung</a>.<p>\n";
 		print "<a name=\"ISBN\">ISBN = Falsch formatierte ISBN, durch den Doppelpunkt wird kein Link erzeugt.<p>\n";
@@ -493,11 +470,4 @@ sub output {
 
 	$dauer = ( time -$start_ts );
 	print "it took: $dauer seconds (incl download)<p>\n" if ( $developer );
-}
-
-sub show_textfile {
-	my ( $file ) = @_;
-	print "<pre>\n";
-	system "/bin/cat ./$file";
-	print "</pre>\n";
 }

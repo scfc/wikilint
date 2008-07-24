@@ -16,14 +16,13 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-@months = ("Januar", ,"Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" );
+@months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
 1;
 
 use utf8;
 
 sub download_page {
-	
 	# create URL to download_from and call &http_download()
 	# this sub get's called recusivly on wikipedia-#REDIRECTS[[]]
 	my ( $url, $lemma, $language, $oldid, $ignore_error, $recursion_depth ) = @_;
@@ -79,10 +78,10 @@ sub download_page {
 	my ($page ) = &http_download($down_url, $ignore_error );
 
 	# why [^'] ?
-	#if ( $page =~ /#REDIRECT *\[\[([^']+?)\]\]/i && 
-	if ( $page =~ /#REDIRECT *\[\[(.+?)\]\]/i && 
+	#if ( $page =~ /#REDIRECT *\[\[([^']+?)\]\]/i &&
+	if ( $page =~ /#REDIRECT *\[\[(.+?)\]\]/i &&
 		# don't get infinite loop on 2 redirects which point to each other
-		$recursion_depth < 3 ) 
+		$recursion_depth < 3 )
 	{
 			$redir_to = $1;
 			$redir_to =~ s/#.*//;
@@ -90,7 +89,7 @@ sub download_page {
 			$page = &download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
         }
 	else {
-#print "NO REDIR: recursion_depth: $recursion_depth - $page\n" if ( $developer ); 
+#print "NO REDIR: recursion_depth: $recursion_depth - $page\n" if ( $developer );
 	}
 
 	($page );
@@ -152,7 +151,7 @@ sub http_download {
 }
 
 sub find_random_page {
-	
+
 	my ( $language ) = @_;
 
 	my ( $down_url);
@@ -223,7 +222,7 @@ sub do_review {
 	}
 
 	if ( $page =~ /{{Artikel Jahr.*?}}/ ||
-		$page =~ /{{Kalender Jahrestage.*?}}/ 
+		$page =~ /{{Kalender Jahrestage.*?}}/
 	) {
 		$year_article = 1;
 		$extra_message .= "<b>Jahres- oder Tages-Artikel</b>: Links zu Jahren ignoriert.<br>\n";
@@ -257,9 +256,9 @@ sub do_review {
 	# check for at least one image
 	$nopic=0;
 
-	if ( 
-		$page !~ /\[\[(Image|Bild):/i && 
-		$page !~ /<gallery>/i && 
+	if (
+		$page !~ /\[\[(Image|Bild):/i &&
+		$page !~ /<gallery>/i &&
 		# pic in template
 		$page !~ /\|(.+?)=.+?\.(jpg|png|gif|bmp|tiff|svg)\b/i
 	) {
@@ -286,12 +285,12 @@ sub do_review {
 				$en_lemma = $1;
 				$eng_message ="(<a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$en_lemma&go=Seite\">$en_lemma</a>) ";
 			}
-			$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt oder selbst auf den Commons nach <a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$search_lemma&go=Seite\">$search_lemma</a> suchen (eventuell unter dem englischen Begriff $eng_message oder dem lateinischen bei Tieren & Pflanzen).\n"; 
+			$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt oder selbst auf den Commons nach <a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$search_lemma&go=Seite\">$search_lemma</a> suchen (eventuell unter dem englischen Begriff $eng_message oder dem lateinischen bei Tieren & Pflanzen).\n";
 		}
 		else {
 			$extra_message .= "Proposal: include link to wikimedia commons\n";
 		}
-		
+
 	}
 
 	# check for unformated weblinks in <ref></ref>
@@ -303,7 +302,7 @@ sub do_review {
 #print "seite2: <pre>$page</pre>" if ( $developer);
 
 	# avoid marking comments <!-- as evil exclamation mark
-	$page =~ s/<!/&lt;&iexcl;/g; 
+	$page =~ s/<!/&lt;&iexcl;/g;
 
 	# ! in wikilinks are ok
 	do {
@@ -365,7 +364,7 @@ sub do_review {
 		# normale " statt „“
 		if ( $line !~ /^({\||\|)/ &&
 			$line !~ /^{{/ &&
-			$line !~ /style=/ 
+			$line !~ /style=/
 		) {
 			# remove all quotation marks in <TAGs>
 			while ( $line =~ s/(<[^>]*?)"([^>]*?>)/$1QM-ERS$2/g ) {}
@@ -373,7 +372,7 @@ sub do_review {
 			while ( $line =~ s/="/=QM-ERS/g ) {}
 			while ( $line =~ s/(\d)"/$1QM-ERS/g ) {}
 			while ( $line =~ s/%"/%QM-ERS/g ) {}
-			
+
 			$times = $line =~ s/("([^";]{3,}?)")/$sometimes$1<\/span><sup class=reference><a href=#QUOTATION>[QUOTATION ?]<\/a><\/sup>/g;
 			$review_level += $times * $sometimes_level;
 			$review_letters .="u" x $times;
@@ -390,7 +389,7 @@ sub do_review {
 
 		$last_section_level = $section_level;
 		$last_section_title = $section_title;
-		
+
 		# section title
 		if ( $line =~/^(={2,9})(.+?)={2,9}/ ) {
 			$section_level = length($1);
@@ -404,18 +403,18 @@ sub do_review {
 
 			$dont_count_words_in_section_title = 1;
 
-			if ( $words_in_section && 
+			if ( $words_in_section &&
 				# avoid complaining on short "definition":
 				$last_section_title &&
 				!$gallery_in_section &&
-				$words_in_section < $min_words_per_section && 
-				$last_section_title !~ /weblink/i && 
+				$words_in_section < $min_words_per_section &&
+				$last_section_title !~ /weblink/i &&
 				$last_section_title !~ /literatur/i &&
 				$last_section_title !~ /quelle/i &&
 				$last_section_title !~ /einzelnachweis/i &&
 				$last_section_title !~ /siehe auch/i &&
 				$last_section_title !~ /fußnote/i &&
-				$last_section_title !~ /referenz/ 
+				$last_section_title !~ /referenz/
 			) {
 				if ( $language eq "de" ) {
 					$extra_message .= $sometimes."Kurzer Abschnitt: <a href=\"#$last_section_title\">==$last_section_title==</a> ($words_in_section Wörter)</span> Siehe <a href=\"http://de.wikipedia.org/wiki/WP:WSIGA#.C3.9Cberschriften_und_Abs.C3.A4tze\">WP:WSIGA#Überschriften_und_Absätze</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Grundregeln\">Wikipedia:Typografie#Grundregeln</a>.<br>\n";
@@ -433,7 +432,7 @@ sub do_review {
 
 			# check if we're in section "weblinks" or in a subsection of it
 			if (  $section_title =~ /weblink/i ||
-				$section_title =~ /external link/i ) 
+				$section_title =~ /external link/i )
 			{
 				$inside_weblinks = 1;
 				$inside_literatur = 0;
@@ -445,7 +444,7 @@ sub do_review {
 			else {
 				$inside_weblinks = 0;
 			}
-			
+
 			# check if we're in section "literatur" or in a subsection of it
 			# beware of ==Heilquellen==
 			if (	$section_title =~ /Quellen/ ||
@@ -473,12 +472,12 @@ sub do_review {
 			$section_title =~ s/\s+$//;
 
 			# just to know later if there's a literature-section at all
-			if ( $section_title =~ /(.*?Literatur.*?)/i || 
-				$section_title =~ /(Quelle.*?)/  ||  
-				$section_title =~ /(Referenzen.*?)/  ||  
-				$section_title =~ /(Nachweise.*?)/  ||  
+			if ( $section_title =~ /(.*?Literatur.*?)/i ||
+				$section_title =~ /(Quelle.*?)/  ||
+				$section_title =~ /(Referenzen.*?)/  ||
+				$section_title =~ /(Nachweise.*?)/  ||
 				$section_title =~ /(References.*?)/ ||
-				$section_title =~ /(Source.*?)/ 
+				$section_title =~ /(Source.*?)/
 			) {
 				$section_sources=$1;
 			}
@@ -488,15 +487,15 @@ sub do_review {
 		}
 
 #print "lit: $inside_literatur web: $inside_weblinks  com: $inside_comment tmp: $inside_template: $line <br>\n" if ( $developer );
-		if ( 
+		if (
 			!$year_article &&
 			!$inside_literatur &&
-			!$inside_weblinks && 
+			!$inside_weblinks &&
 			!$inside_comment &&
 			!$inside_template &&
 			$line !~ /\|/ &&
 			$line !~ /ISBN/
-		) { 
+		) {
 			# "von 1420 bis 1462" statt "von 12-13" (this has to be applied before LTN
 			$times = $line =~ s/(von (\[\[)?\d{1,4}(\]\])?[–-—](\[\[)?\d{1,4}(\|\d\d)?(\]\])?)/$never$1<\/span><sup class=reference><a href=#FROMTO>[FROMTO ?]<\/a><\/sup>/g;
 			$review_level += $times * $never_level;
@@ -519,7 +518,7 @@ sub do_review {
 						$times_total += $times;
 #print "BISS: $times - $line <br>\n";
 					}
-					elsif ( 
+					elsif (
 						# 747-200 good
 						( length( $from ) <= length($to)  && $from > $to ) ||
 						# 1971-30 good
@@ -543,7 +542,7 @@ sub do_review {
 				$review_level += $times_total * $sometimes_level;
 				$review_letters .="p" x $times_total;
 			}
-			
+
 		}
 
 		# check for bold text after some lines, should be only in the definition
@@ -553,14 +552,14 @@ sub do_review {
 			# and only german WP doesn't like links to years & dates
 			if ( $language eq "de" ) {
 				# ignore bold in comments, tables (which is quite useless anyway ;)
-				if ( $line !~ /&lt;&iexcl;--.*?'''.*?--&gt;/ &&	
+				if ( $line !~ /&lt;&iexcl;--.*?'''.*?--&gt;/ &&
 					$line !~ /&lt;div.+?'''.+?'''.*?&lt;\/div&gt;/i &&
 					!$inside_template &&
 					!$inside_comment &&
 					# not in table
 					$line !~ /^\|/ &&
 					$line !~ /^{\|/ &&
-					$line !~ /^\|}/ 
+					$line !~ /^\|}/
 				) {
 					# ignore '''BOLD''' in less than 4 character words, also in [[wikilinks]]
 					# the strange character in front of STARTBOLD is some strange UTF8-character
@@ -571,7 +570,7 @@ sub do_review {
 #print "222: $line<br>\n" if ( $times && $developer );
 					$times = $line =~ s/'''(.+?)'''/￼STARTBOLD$1￼ENDBOLD/g;
 #print "333: $line<br>\n" if ( $times && $developer );
-					
+
 					# 1st see if somebody used bold-text to replace a section-title
 					# '* for '''''bold+italic'''''
 					if ( $line =~ /^'*￼STARTBOLD[^￼]+?￼ENDBOLD'*\s*(&lt;br( ?\/)?&gt;)?:?$/ ) {
@@ -584,7 +583,7 @@ sub do_review {
 						# OK: '''[[Wasserstoff|H]]'''
 						# regexp uses alternation for 3 cases: /('''[[Wasserstoff]]'''|'''[[Wasserstoff|H2O]]'''| '''Wasserstoff''')/
 						# this part is for '''baum [[Wasserstoff|H]]''': [^￼\[\n]*?
-						
+
 						$times = $line =~ s/(￼STARTBOLD)(([^￼\[\n]*?\[\[[^￼\]\|]{4,}?\]\])[^￼\[\n]*?|([^￼\[\n]*?\[\[[^￼]+?\|[^￼\]]{4,}?\]\][^￼\[\n]*?)|([^￼\[]{4,}?))(￼ENDBOLD)/$seldom'''$2'''<\/span><sup class=reference><a href=#BOLD>[BOLD]<\/a><\/sup>/g;
 						$review_level += $times * $seldom_level;
 						$review_letters .="F" x $times;
@@ -596,14 +595,14 @@ sub do_review {
 					$review_level += $times * $seldom_level;
 					$review_letters .="k" x $times;
 
-					
+
 				}
 
-				if ( 	
+				if (
 					!$year_article &&
-					$line !~ /GEBURTSDATUM/ && 
-					$line !~ /DATUM/ && 
-					$line !~ /STERBEDATUM/ 
+					$line !~ /GEBURTSDATUM/ &&
+					$line !~ /DATUM/ &&
+					$line !~ /STERBEDATUM/
 				) {
 					$line = &tag_dates_rest_line( $line );
 					( $line_org_wiki, $times ) = &remove_year_and_date_links( $line_org_wiki , $remove_century);
@@ -614,9 +613,9 @@ sub do_review {
 		else {
 			# here we might be in 1st line of article (except templates, comments, ... )
 
-			# don't replace date-links in info-boxes 
+			# don't replace date-links in info-boxes
 			if ( $line !~ /^(\||\{\{|\{\|)/ &&
-				!$year_article 
+				!$year_article
 			) {
 				# tag date-links
 				$line = &tag_dates_first_line( $line );
@@ -632,9 +631,9 @@ sub do_review {
 				}
 			}
 		}
-	
+
 		if ( $line =~ /{{/ ||
-			$line =~ /{\|/ 
+			$line =~ /{\|/
 		) {
 			# might be nested tables so not 0/1 but ++/--
 			$inside_template++;
@@ -649,15 +648,15 @@ sub do_review {
 
 	#print "XXX:		inside_template: $inside_template  - inside_comment:  $inside_comment  <br>\n";
 		# dont count short lines, textbox-lines, templates, ...
-		if ( length( $line ) > 5 && 
-			$line !~ /^{/ && 
-			$line !~ /^--&gt;/ && 
-			$line !~ /^[!\|]/ && 
-			$line !~ /\|$/ && 
-			$line !~ /^__/ && 
-			!$inside_template && 
-			!$inside_comment && 
-			$line !~ /^\[\[Bild:/ && 
+		if ( length( $line ) > 5 &&
+			$line !~ /^{/ &&
+			$line !~ /^--&gt;/ &&
+			$line !~ /^[!\|]/ &&
+			$line !~ /\|$/ &&
+			$line !~ /^__/ &&
+			!$inside_template &&
+			!$inside_comment &&
+			$line !~ /^\[\[Bild:/ &&
 			$line !~ /^\[\[Image:/ &&
 			$line !~ /^-R-I\d+-R--R-$/ &&
 			$line !~ /^-R-R\d+-R-$/
@@ -695,7 +694,7 @@ sub do_review {
 			# do "baum .baum"
 			my $line_copyy = $line;
 			$times = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.])([[:alpha:]]{1,}? )/$1$never$2<\/span><sup class=reference><a href=#plenk>[plenk ?]<\/a><\/sup>$3/g;
-			if ( $times == 1 ) { 
+			if ( $times == 1 ) {
 				$line = $line_copyy;
 				$review_level += $times * $never_level;
 				$review_letters .="M" x $times;
@@ -705,7 +704,7 @@ sub do_review {
 			my $line_copyy = $line;
 			$times = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.]) ([[:alpha:]]{2,}? )/$1$never$2<\/span><sup class=reference><a href=#plenk>[plenk ?]<\/a><\/sup>$3/g;
 			# if it happens more than once in one line, assume it's intetion
-			if ( $times == 1 ) { 
+			if ( $times == 1 ) {
 				$line = $line_copyy;
 				$review_level += $times * $never_level;
 				$review_letters .="M" x $times;
@@ -736,10 +735,10 @@ sub do_review {
 		}
 
 		# check for avoid_words and fill_words except in weblinks and literatur
-		if (    
+		if (
 			$section_title !~ /weblink/i &&
 			$section_title !~ /literatur/i &&
-			!$inside_ref 
+			!$inside_ref
 		) {
 			# check for too long sentences. lot's of cases have to be considered which dots are sentence
 			# endings or not. order is important in these checks!
@@ -793,7 +792,7 @@ sub do_review {
 
 			# do last dot of z.B. or i.d.R.
 			$line_copy =~ s/(\.|&#46;)(\w)\./$1$2&#46;/;
-			
+
 			# avoid splitting on [[Henry W. Bessemer|H. Bessemer]]
 			$line_copy =~ s/(\[\[[^\]]*?)\.([^\]]*?\]\])/$1&#46;$2/;
 			$line_copy =~ s/(\[\[[^\]]*?)\.([^\]]*?\]\])/$1&#46;$2/;
@@ -812,7 +811,7 @@ sub do_review {
 
 			# next block is to avoid splitting in quotes
 
-			# substitute quote-signs for better searching 
+			# substitute quote-signs for better searching
 			# (''..'') has no defined start-end so hard to find the quote in ''quote''no-quote''quote''
 			# the ￼ is some utf8 char randomly picked from the web
 			$line_copy =~ s/\'\'([^']*?)\'\'/￼QSSINGLE%$1￼QESINGLE%/g;
@@ -868,17 +867,17 @@ sub do_review {
 ################################################################ no mangling $line_copy below here
 			# to avoid splitting on the ; of &gt;
 			$line_copy =~ s/(&.{2,6});/$1SEMIERS/g;
-			
+
 			# to avoid splitting on "dieser Satz (türk.: sütz) ist zuende"
 			do {
 				$times = $line_copy =~ s/(\([^\)]{0,80}?):([^\)]{0,160}?\))/$1DPLPERS$2/;
 			} until ( !$times );
 
-			# don't split on [[:tr:Yıldırım Orduları]] 
+			# don't split on [[:tr:Yıldırım Orduları]]
 			do {
 				$times = $line_copy =~ s/(\[\[[^\]]{0,80}?):([^\]]{0,160}?\]\])/$1DPLPERS$2/;
 			} until ( !$times );
-			
+
 			my ( @sentences ) = split(/[\:.!\?;]/, $line_copy );
 
 			foreach my $sentence ( @sentences ) {
@@ -901,7 +900,7 @@ sub do_review {
 					foreach my $word ( @words ) {
 						if ( length($word) > 2 &&
 							# don't count special HTML-character e.g. &nbsp;
-							$word !~ /^&.+;$/ 
+							$word !~ /^&.+;$/
 						) {
 							$count_words++
 						}
@@ -922,7 +921,7 @@ sub do_review {
 					$sentence_tmp =~ s/"([^"]{0,$short_quote_length})"/SHORTGANSERSATZ$1SHORTGANSERSATZ/g;
 
 					# don't complain on loooong sentences with mainly quotes
-					if ( $count_words > $max_words_per_sentence && 
+					if ( $count_words > $max_words_per_sentence &&
 						$sentence_tmp !~ /\'\'.{$short_quote_length,}?\'\'/  &&
 						# this is because some people do ''quote.'' where the '' gets splitted off
 						$sentence_tmp !~ /\'\'.{$short_quote_length,}?$/  &&
@@ -962,7 +961,7 @@ sub do_review {
 				}
 			}
 
-			# substitute quote-signs for better searching 
+			# substitute quote-signs for better searching
 			# (''..'') has no defined start-end so hard to find the quote in ''quote''no-quote''quote''
 			# the ￼ is some utf8 char randomly picked from the web
 			$line =~ s/'''''([^']*?)'''''/'''￼QSSA%$1￼QESA%'''/g;
@@ -992,20 +991,20 @@ sub do_review {
 				$line =~ /(?<!')''[^']*?![^']*?$/i ||
 				$line =~ /^:/ ||
 				# avoid grammar-articles
-				$line =~ /imperativ/i 
+				$line =~ /imperativ/i
 			) {
 	#print "EMMM: $line <br> inside_comment: $inside_comment - inside_template: $inside_template <br>\n" if ( $developer);
 				# do nothing
 			}
-			elsif ( $line !~ /&lt;ref&gt;.+?!.+?&lt;\/ref&gt;/i && 
+			elsif ( $line !~ /&lt;ref&gt;.+?!.+?&lt;\/ref&gt;/i &&
 				$line !~ /&lt;&iexcl;--.+?!.+?&gt;/ &&
 				$line !~ /!\]\]/ &&
 				# avoid tagging lists of boo/movie titles
 				$line !~ /^\*/ &&
-				$line !~ /!!/ 
+				$line !~ /!!/
 			) {
-				
-				do { 
+
+				do {
 					# avoid ! in wikilinks and HTML-tags, $! and 26! (fakultät) and chess e2e4!
 					$times = $line =~ s/([^\[<\$]+?[^\d\[<\$])!([^\]&>]*?$)/$1$seldom!<\/span><sup class=reference><a href=#EM>[EM1]<\/a><\/sup>$2/g;
 	#print "EM: $line <br>\n" if ( $developer );
@@ -1031,7 +1030,7 @@ sub do_review {
 				# performance-thing: don't make all the following checks if there's no avoid_word anyway
 				if ( $line =~ /$avoid_word/i) {
 #print "AVOID: $avoid_word - BEG: $line :END<br>\n" if ( $developer );
-					if ( 
+					if (
 						# dont complain in tables
 						$line !~ /^(!|\|)/ &&
 						# dont complain in quotes
@@ -1043,7 +1042,7 @@ sub do_review {
 						$line !~ /￼QSX.*?$avoid_word.*?￼QEX/i &&
 						$line !~ /￼QSC.*?$avoid_word.*?￼QEC/i &&
 						# wikilinks
-						$line !~ /[\[\|[^\[\]].*?$avoid_word[^\[\]]*?[\]\|]/i && 
+						$line !~ /[\[\|[^\[\]].*?$avoid_word[^\[\]]*?[\]\|]/i &&
 						# templates
 						$line !~ /{{[\w\-]+\|[^}]*?$avoid_word[^}]*?}}/i
 					) {
@@ -1062,7 +1061,7 @@ sub do_review {
 				# performance-thing: don't make all the following checks if there's no fill_word anyway
 				if ( $line =~ /$fill_word/) {
 					# check if that word is used in quote ("..")
-					if ( 
+					if (
 						$line !~ /￼QSS.*?$fill_word.*?￼QES/ &&
 						$line !~ /￼QSL.*?$fill_word.*?￼QEL/ &&
 						$line !~ /￼QSD.*?$fill_word.*?￼QED/ &&
@@ -1073,25 +1072,25 @@ sub do_review {
 						# templates
 						$line !~ /{{[\w\-]+\|[^}]*?$fill_word[^}]*?}}/ &&
 						# wikilinks
-						$line !~ /[\[\|[^\[\]].*?$fill_word[^\[\]]*?[\]\|]/ 
+						$line !~ /[\[\|[^\[\]].*?$fill_word[^\[\]]*?[\]\|]/
 					) {
 						# ignore "ein Hut (auch Mütze genannt)"
-						if ( 
+						if (
 							(
-								"auch" =~ /$fill_word/ && 
-								( 
+								"auch" =~ /$fill_word/ &&
+								(
 									$line =~ /\(\s?auch/i ||
 									$line =~ /siehe auch/i ||
 									$line =~ /als auch/i ||
 									$line =~ /aber auch/i
 								)
 							) || (
-								"aber" =~ /$fill_word/ && 
+								"aber" =~ /$fill_word/ &&
 								(
 									$line =~ /aber auch/i
 								)
 							)
-							
+
 						) {
 							# do nothing
 						}
@@ -1116,7 +1115,7 @@ sub do_review {
 				# performance-thing: don't make all the following checks if there's no abbreviation anyway
 				if ( $line =~ /$abbreviation/i ) {
 					# check if that word is used in <ref> (buggy because doesn't show same word outside <ref> in same line)
-					if ( 
+					if (
 						$line !~ /￼QSS[^￼]*?$abbreviation[^￼]*?￼QES/i &&
 						$line !~ /￼QSD[^￼]*?$abbreviation[^￼]*?￼QED/i &&
 						$line !~ /￼QST[^￼]*?$abbreviation[^￼]*?￼QET/i &&
@@ -1124,7 +1123,7 @@ sub do_review {
 						$line !~ /￼QSF[^￼]*?$abbreviation[^￼]*?￼QEF/i &&
 						$line !~ /￼QSX[^￼]*?$abbreviation[^￼]*?￼QEX/i &&
 						$line !~ /￼QSC[^￼]*?$abbreviation[^￼]*?￼QEC/i &&
-						$line !~ /{{[\w\-]+\|[^}]*?$abbreviation[^}]*?}}/i 
+						$line !~ /{{[\w\-]+\|[^}]*?$abbreviation[^}]*?}}/i
 					) {
 						$times = $line =~ s/$abbreviation/$sometimes$1<\/span><sup class=reference><a href=#ABBREVIATION>[ABBREVIATION]<\/a><\/sup>/gi;
 						$review_level += $times * $sometimes_level;
@@ -1135,10 +1134,10 @@ sub do_review {
 
 			$line = &restore_quotes($line);
 
-			# evil: [[Automobil|Auto]][[bahn]] 
+			# evil: [[Automobil|Auto]][[bahn]]
 			# ok: [[Bild:MIA index.jpg|thumb|Grafik der Startseite]][[Bild:CreativeCommond_logo_trademark.svg|right|120px|Logo der Creative Commons]]
 			if ( $line !~ /\[\[Bild:/i &&
-				$line !~ /\[\[Image:/i 
+				$line !~ /\[\[Image:/i
 			) {
 				# [[^\[\]] instead of . is neccesarry ! to avoid marking  all of "[[a]] blub [[s]][[u]]"
 				$times = $line =~ s/(\[\[[^\[\]]+?\]\]\[\[[^\[\]]+?\]\])/$never$1<\/span><sup class=reference><a href=#DL>[DL]<\/a><\/sup>/g;
@@ -1157,17 +1156,17 @@ sub do_review {
 
 		# open ended if ends in , or eingerueckt
 		if ( $line =~ /,(&lt;br \/&gt;)?$/ ||
-			$line =~ /^:/ 
+			$line =~ /^:/
 		) {
 			$open_ended_sentence = 1;
 		}
-		elsif ( 
-			# not poen ende if sentecene ends with .!? 
+		elsif (
+			# not poen ende if sentecene ends with .!?
 			$line =~ /[\.!\?](\s*)?(&lt;.+?&gt;)?$/ ||
 			# ... or is REPLACED-stuff
 			$line =~ /[\.!\?](\s*)?(-R-.+?-R-)?$/ ||
-			# .. or is section-title 
-			$line =~/^(={2,9})(.+?)={2,9}/ 
+			# .. or is section-title
+			$line =~/^(={2,9})(.+?)={2,9}/
 		) {
 			# ... then next sentence must begin uppercase
 			$open_ended_sentence = 0;
@@ -1185,10 +1184,10 @@ sub do_review {
 		$review_level += $times * $seldom_level;
 		$review_letters .="b" x $times;
 
-		if ( 
-			$inside_weblinks && 
-			!$inside_literatur && 
-			$line =~ /https?:\/\//i 
+		if (
+			$inside_weblinks &&
+			!$inside_literatur &&
+			$line =~ /https?:\/\//i
 		) {
 			# just count, replace with same (for more than one weblink per line)
 			my $times = $line =~ s/(https?:\/\/)/$1/gi;
@@ -1201,14 +1200,14 @@ sub do_review {
 			$line !~ /\[\[\w\w:[^\]]+?\]\]/  &&
 			$line !~ /\[\[Kategorie:[^\]]+?\]\]/i  &&
 			$line !~ /\[\[category:[^\]]+?\]\]/i  &&
-			$line =~ /\[\[(.+?)\]\]/ 
+			$line =~ /\[\[(.+?)\]\]/
 		) {
 				my $wikilink = "";
 			while ( $line =~ /\[\[(.+?)\]\]/g ) {
 				$wikilink = $1;
-				$count_see_also++;	
+				$count_see_also++;
 
-				# check if see-also-link previously used 
+				# check if see-also-link previously used
 				my $see_also_link = $1;
 				if ( $count_linkto{ lc($see_also_link) } ) {
 					$review_level += $sometimes_level;
@@ -1248,11 +1247,11 @@ sub do_review {
 		my $inside_qoute_word=0;
 
 		foreach my $word ( @words ) {
-			if ( 
+			if (
 				!$inside_weblinks &&
 				!$inside_literatur &&
 				!$inside_comment_word &&
-				!$inside_comment 
+				!$inside_comment
 			) {
 				$num_words++;
 			}
@@ -1277,29 +1276,29 @@ sub do_review {
 				# don't remember why i wouldn't want to count links in 1st line, uncomment:
 				#$lola > 1 &&
 				!$inside_template &&
-				!$inside_comment_word 
+				!$inside_comment_word
 			) {
 				# this is a wikilink
 				$linkto_org = $1;
 				$linkto = lc($linkto_org);
 				$count_linkto{ $linkto }++;
 			}
-			elsif ( 
-				$word =~ /\[{0,1}https{0,1}:\/\// && 
-				$word !~ /&lt;&iexcl;--/ && 
+			elsif (
+				$word =~ /\[{0,1}https{0,1}:\/\// &&
+				$word !~ /&lt;&iexcl;--/ &&
 				# avoid templates like {{SEP|http://plato.stanford.edu/entries/aristotle-ethics/index.html#7
-				$word !~ /{{\w+?\|[^}]*https?:\/\// && 
+				$word !~ /{{\w+?\|[^}]*https?:\/\// &&
 				# next 3 for templates infoboxes, e.g. "| Website = http://www.stadt.de"
 				$line_org !~ /(\[\[)?Webse?ite(\]\])?[\s\|=:]+?[\[h]/i &&
 				$line_org !~ /(\[\[)?Webseite(\]\])? ?=/i &&
 				$line_org !~ /(\[\[)?Weblink(\]\])? ?=/i &&
 				!$inside_weblinks &&
 				!$inside_literatur &&
-				!$inside_ref_word  && 
-				!$inside_comment_word  && 
-				!$inside_comment  && 
+				!$inside_ref_word  &&
+				!$inside_comment_word  &&
+				!$inside_comment  &&
 				# avoid: http://www.db.de</ref>
-				$word !~ /\[{0,1}https{0,1}:\/\/.+?&lt;\/ref&gt;/ 
+				$word !~ /\[{0,1}https{0,1}:\/\/.+?&lt;\/ref&gt;/
 			) {
 					$extra_message .= $seldom."Weblink außerhalb von ==Weblinks== und &lt;ref&gt;:...&lt;\/ref&gt;:<\/span> $word (Siehe <a href=\"http://de.wikipedia.org/wiki/WP:WEB#Allgemeines\">Wikipedia:Weblinks</a>)<p>\n";
 					$review_level += $never_level;
@@ -1320,16 +1319,16 @@ sub do_review {
 					$times = $line =~ s/(\[\[)($linkto_tmp)([|\]])/$1$seldom<a href=\"http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel\">$2<\/a><\/span><sup class=reference><a href=#BKL>[BKL]<\/a><\/sup>$3/gi;
 					$review_level += $times * $seldom_level;
 					$review_letters .="d" x $times;
-					
-					
+
+
 				}
-				# 2nd case-insensitive bec we just know there's [[Usa]] in the list, 
+				# 2nd case-insensitive bec we just know there's [[Usa]] in the list,
 				# and [[usa]] in the article might also be evil
 				# anyway, exlcude USA because that happens to often and is just false postive
-				elsif ( $is_bkl_lc{ "$linkto" } && 
+				elsif ( $is_bkl_lc{ "$linkto" } &&
 						lc($linkto) ne "usa" &&
 						lc($linkto) ne "gen" &&
-						lc($linkto) ne "gas" 
+						lc($linkto) ne "gas"
 				) {
 					# remove _ already otherwise links to WP with blank AND wrong casing don't work
 					$linkto_tmp = $linkto;
@@ -1339,19 +1338,19 @@ sub do_review {
 					$times = $line =~ s/(\[\[)($linkto_tmp)(\||\]\])/$1$sometimes<a href=\"http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel\">$2<\/a><\/span><sup class=reference><a href=#MAYBEBKL>[MAYBEBKL ?]<\/a><\/sup>$3/gi;
 					$review_level += $times * $sometimes_level;
 					$review_letters .="d" x $times;
-					
-					
+
+
 				}
 			}
 
 			if ( $word =~ /(?<!')''(?!')\w/ ||
-				$word =~ /„/ 
+				$word =~ /„/
 			){
 				$inside_qoute_word++;
 			}
 
 			# find double words, only > 3 chars to avoid "die die"
-			if ( $word eq $last_word && 
+			if ( $word eq $last_word &&
 				!$inside_qoute_word &&
 				length( $word ) > 3 &&
 				$word =~ /^\w+$/ &&
@@ -1359,7 +1358,7 @@ sub do_review {
 				$words_in_this_line > 4 &&
 				# more latin avoiding (small 1st letter and ...um
 				!($word =~ /^[a-z]/ && ( $word =~ /(um|us|i|a|ens)$/ ) && length( $word ) > 4 ) &&
-				$word !~ /\-\d/ 
+				$word !~ /\-\d/
 			) {
 				# this regexp wont hit "tree.tree" but that's not wanted anyway
 				$times = $line =~ s/($word $word)/$never$1<\/span><sup class=reference><a href=#DOUBLEWORD>[DOUBLEWORD ?]<\/a><\/sup>/i;
@@ -1368,7 +1367,7 @@ sub do_review {
 			}
 
 			if ( $word =~ /(?<!')''(?!').?$/ ||
-				$word =~ /“/ 
+				$word =~ /“/
 			){
 				$inside_qoute_word = 0;
 			}
@@ -1379,7 +1378,7 @@ sub do_review {
 
 			if ( $word =~ /&lt;\/ref&gt;/ &&
 				# avoid /ref><ref
-				     $word !~ /&lt;\/ref&gt;&lt;ref/ 
+				     $word !~ /&lt;\/ref&gt;&lt;ref/
 			){
 				$inside_ref_word = 0;
 			}
@@ -1389,7 +1388,7 @@ sub do_review {
 
 		if ( $line !~ /^\|/ &&
 			!$inside_template &&
-			length( $line ) > $min_length_for_nbsp 
+			length( $line ) > $min_length_for_nbsp
 		) {
 			# use &nbsp; between 50 kg -> 50&nbsp;kg
 			foreach my $unit ( @units ) {
@@ -1405,15 +1404,15 @@ sub do_review {
 			$review_level += $times * $sometimes_level;
 			$review_letters .="T" x $times;
 		}
-		
+
 		# Apostroph
 		# don't complain on ' in wikilinks
-		if ( 
+		if (
 			!$dont_look_for_apostroph &&
 			# wikilink
 			$line !~ /\[\[[^\]]*?$bad_search_apostroph[^\]]*?\]\]/o &&
 			# dont complain on "Achsfolge Co'Co"
-			$line !~ /Achs(formel|folge)/ 
+			$line !~ /Achs(formel|folge)/
 		) {
 			# avoid complaining on ''italic'' with (?<!')
 			$times = $line =~ s/(\w+)?$bad_search_apostroph/$sometimes$1$2<\/span><sup class=reference><a href=#APOSTROPH>[APOSTROPH ?]<\/a><\/sup>/go;
@@ -1425,7 +1424,7 @@ sub do_review {
 		# Gedankenstrich -----
 		my $bad_search = qr/([[:alpha:]]+)( - )([[:alpha:]]+)/;
 		if ( $line !~ /\[\[[^\]]*?$bad_search[^\]]*?\]\]/o &&
-			$line !~ /^\|/ 
+			$line !~ /^\|/
 		) {
 			$times = $line =~ s/$bad_search/$1$sometimes$2<\/span><sup class=reference><a href=#GS>[GS ?]<\/a><\/sup>$3/g;
 			$review_level += $times * $sometimes_level;
@@ -1437,7 +1436,7 @@ sub do_review {
 		$times = $line =~ s/([[:alpha:]]{3,}?\()([[:alpha:]]{3,})/$seldom$1<\/span><sup class=reference><a href=#BRACKET2>[BRACKET2 ?]<\/a><\/sup>$2/g;
 		$review_level += $times * $seldom_level;
 		$review_letters .="v" x $times;
-		# ... missing space after brackets 
+		# ... missing space after brackets
 		$times = $line =~ s/([[:alpha:]]{3,})(\)[[:alpha:]]{3,}?)/$1$seldom$2<\/span><sup class=reference><a href=#BRACKET2>[BRACKET2 ?]<\/a><\/sup>/g;
 		$review_level += $times * $seldom_level;
 		$review_letters .="v" x $times;
@@ -1446,7 +1445,7 @@ sub do_review {
 		$new_page_org .= "$line_org_wiki\n";
 
 		if ( $line =~ /}}/ ||
-			$line =~ /\|}/ 
+			$line =~ /\|}/
 		) {
 			# "if" to avoid going below zero with wrong wikisource
 			$inside_template-- if ( $inside_template);
@@ -1526,12 +1525,12 @@ sub do_review {
 	$review_level += $times * $seldom_level;
 	$review_letters .="q" x $times;
 
-	# <i> und <b> statt '' ''' 
+	# <i> und <b> statt '' '''
 	$times = $page =~ s/(&lt;[ib]&gt;)/$never$1<\/span><sup class=reference><a href=#TAG>[TAG]<\/a><\/sup>/g;
 	$review_level += $times * $never_level;
 	$review_letters .="j" x $times;
 
-	# „...“ (← drei Zeichen) durch „…“ 
+	# „...“ (← drei Zeichen) durch „…“
 	$times = $page =~ s/(\.\.\.)/$sometimes$1<\/span><sup class=reference><a href=#DOTDOTDOT>[DOTDOTDOT]<\/a><\/sup>/g;
 	$review_level += $times * $sometimes_level;
 	$review_letters .="l" x $times;
@@ -1594,11 +1593,11 @@ sub do_review {
 	$count_ref = $count_ref || "0";
 	# count_ref: 0 / num_words: 3403 < ( 1/ words_per_reference: 500 ) && ( section_sources: 1 - min_words_to_recommend_references: 200
 
-	# don't complain on ... 
+	# don't complain on ...
 		# 1. less than $min_words_to_recommend_references_section
-	if ( $num_words < $min_words_to_recommend_references_section || 
+	if ( $num_words < $min_words_to_recommend_references_section ||
 		# 2. enough <ref>'s
-		($count_ref / $num_words > 1/ $words_per_reference ) || 
+		($count_ref / $num_words > 1/ $words_per_reference ) ||
 		# 3. section "sources" and less than $min_words_to_recommend_references
 		( $section_sources && $num_words < $min_words_to_recommend_references )
 	) {
@@ -1621,7 +1620,7 @@ sub do_review {
 		else {
 			$extra_message .= $sometimes."Very few references (References: $count_ref / Words: $num_words )</span><br>\n";
 		}
-	} 
+	}
 
 	if ( $count_weblinks > $max_weblinks ) {
 			$review_level += ( $count_weblinks - $max_weblinks );
@@ -1632,7 +1631,7 @@ sub do_review {
 			else {
 				$extra_message .= $sometimes."More than $max_weblinks weblinks</span> ($count_weblinks)<br>\n";
 			}
-		
+
 	}
 
 	if ( $count_see_also > $max_see_also ) {
@@ -1645,7 +1644,7 @@ sub do_review {
 			else {
 				$extra_message .= $sometimes."More than $max_see_also weblinks</span> ($count_weblinks)<br>\n";
 			}
-		
+
 	}
 
 	# check for {{Wiktionary|
@@ -1656,7 +1655,7 @@ sub do_review {
 		}
 		else {
 		}
-		
+
 	}
 	# check for {{commons
 	if ( $page !~ /(\{\{commons(cat)?(\|)?)|({{commons}})/i ) {
@@ -1670,12 +1669,12 @@ sub do_review {
 					$en_lemma = $1;
 					$eng_message ="(<a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$en_lemma&go=Seite\">$en_lemma</a>) ";
 				}
-				$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (z.B. Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise <a href=\"http://de.wikipedia.org/wiki/Wespe#Weblinks\">Wespe#Weblinks</a>. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt oder selbst auf den Commons nach <a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$search_lemma&go=Seite\">$search_lemma</a> suchen (eventuell unter dem englischen Begriff $eng_message oder dem lateinischen bei Tieren & Pflanzen). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen\">Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen</a>\n"; 
+				$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (z.B. Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise <a href=\"http://de.wikipedia.org/wiki/Wespe#Weblinks\">Wespe#Weblinks</a>. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt oder selbst auf den Commons nach <a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$search_lemma&go=Seite\">$search_lemma</a> suchen (eventuell unter dem englischen Begriff $eng_message oder dem lateinischen bei Tieren & Pflanzen). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen\">Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen</a>\n";
 			}
 			else {
 				$extra_message .= "Proposal: include link to wikimedia commons\n";
 			}
-		
+
 	}
 
 	# always propose "whatredirectshere"
@@ -1700,7 +1699,7 @@ sub do_review {
 		# kein exif = alt
 		# kompressionsgrad
 
-	# rupp.de: 
+	# rupp.de:
 		#### bot status
 		#### http://de.wikipedia.org/wiki/Benutzer_Diskussion:Spongo#Javascript-H.C3.BCpfing (srolling noch)
 		# prettytable width
@@ -1708,10 +1707,10 @@ sub do_review {
 		# bsp: http://rupp.de/cgi-bin/WP-autoreview.pl?l=de&lemma=Deutsche_Milit%C3%A4rmission_im_Osmanischen_Reich
 		# test.html auf WP
 		# "setting", heute, ist offensichtlich avoidword
-	
+
 	# JS-gott suchen:
-		# per klick zu richtigen stelle springen, und zurück 
-			# TML, 
+		# per klick zu richtigen stelle springen, und zurück
+			# TML,
 			# >5 weblinks
 			# EM
 			# LiST
@@ -1729,7 +1728,7 @@ sub do_review {
 			# LTN rein raus
 			# BOLD-section title
 			# NBSP
-		# per dropdown 
+		# per dropdown
 			# BKL auswählen
 			# BOLD -> italic, raus (oder hinspringen)
 		# siehe auch - vorher wegmachen
@@ -1772,13 +1771,13 @@ sub do_review {
 
 	# round review_level
 	my $review_level= int (( $review_level +0.5)*100)/100;
-	# calculate quotient and round 
+	# calculate quotient and round
 	my $quotient= int (( $review_level / $num_words *1000 +0.5)*100)/100;
 
 	$quotient -= 0.5;
 
 	# restore exclamation marks
-	$page =~ s/&iexcl;/!/g; 
+	$page =~ s/&iexcl;/!/g;
 
 	$page = &restore_stuff_to_ignore( $page, "substitute_tags" );
 	$new_page_org = &restore_stuff_to_ignore( $new_page_org );
@@ -2013,7 +2012,7 @@ sub create_ar_link {
 	if ( $do_typo_check ) {
 		$typo_tmp ="&do_typo_check=ON";
 	}
-		
+
 
 	if ( $lang eq "de" ) {
 		$ar_link ="http://toolserver.org/~timl/cgi-bin/$arname?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
@@ -2086,7 +2085,7 @@ sub remove_stuff_to_ignore {
 		$lola++;
 	}
 
-	
+
 	($page, $lola );
 }
 
@@ -2119,7 +2118,7 @@ sub restore_stuff_to_ignore {
 		$times2 = $page =~ s/-R-I(-G)?(\d+)-R-.*?-R-/restore_one_item( $2, \%remove_refs_and_images_array, $substitute_tags)/ges;
 		$total += $times2;
 	} until ( !$times2 || $total == $todo );
-	
+
 	($page );
 }
 
@@ -2139,12 +2138,12 @@ sub restore_stuff_quote {
 	} until ( !$times2 || $total == $todo );
 
 	$page =~ s/Q-REP/'/g;
-	
+
 	($page );
 }
 
 sub check_unformated_refs {
-	
+
 	my ( $page ) = @_;
 
 	my ( @lines ) = split(/\n/, $page);
@@ -2153,15 +2152,15 @@ sub check_unformated_refs {
 		my ( @words ) = split(/\s/, $line );
 
 		foreach my $word ( @words ) {
-			if ( 
+			if (
 				$last_word !~ /^URL:/i &&
-				$word !~ /{{\w+?\|[^}]*https?:\/\// && 
+				$word !~ /{{\w+?\|[^}]*https?:\/\// &&
 				$word !~ /url=/i &&
 				# unformated weblink: http://rupp.de
 				( $word =~ /(https{0,1}:\/\/.+)/ &&
 				$word !~ /(\[https{0,1}:\/\/.+)/ ) ||
 				# unformated weblink: [http://rupp.de]
-				$word =~ /(\[https{0,1}:\/\/[^\s]+?\])/  
+				$word =~ /(\[https{0,1}:\/\/[^\s]+?\])/
 			) {
 				my $weblink = $1;
 
@@ -2180,7 +2179,7 @@ sub check_unformated_refs {
 }
 sub remove_stuff_for_typo_check {
 	# remove lines with <!--sic--> and {{templates...}} and quotes, web & wikilinks
-	
+
 
 	my ( $page ) = @_;
 
@@ -2386,10 +2385,7 @@ sub selftest {
 	my ( %found_evil_messages );
 	my ( %found_evil_text );
 
-	my ( $br );
-	if ( $online ) {
-		$br = "<br>";
-	}
+	my ( $br ) = '<br>';
 
 	foreach my $line ( @lines ) {
 		if ( $line =~ /-R-.+?\d+-R-/ ) {
@@ -2397,7 +2393,7 @@ sub selftest {
 		}
 
 		if ( $line =~ /bad/i || $line =~ /mixed/i ) {
-			
+
 			if ( $line !~ /</ ) {
 				print "MISSING TAG: $line$br\n";
 			}
@@ -2419,8 +2415,8 @@ sub selftest {
 			# count for checking if all where found
 			$found_evil_text{ $1 }++;
 		}
-		
-		
+
+
 	}
 
 	my ( @lines ) = split(/\n/, $extra_messages);
@@ -2437,13 +2433,13 @@ sub selftest {
 			if ( $line !~ /Mehr als 5 Weblinks/ &&
 				$line !~ /Mehr als 5 Links bei "Siehe auch/ &&
 				$line !~ /keinen Link zum Wiktionary/ &&
-				$line !~ / #REDIRECTS zu/ 
+				$line !~ / #REDIRECTS zu/
 			) {
 				print "MESG FALSE POSITIVE: $line$br\n";
 			}
 		}
 	}
-	
+
 	foreach my $evil ( keys %found_evil_text ) {
 		if ( !$found_evil_messages{ $evil } ) {
 			print "MISSING MESG: $evil\n";
@@ -2471,7 +2467,7 @@ sub remove_one_item {
 	if ( $do_count_ref && $item =~ /<\/ref>/i ) {
 		$count_ref++;
 	}
-	
+
 	# this is to keep $line and $line_org_wiki in &do_review() in sync, not allowed to remove lines from page!
 	my $num_of_lines = $item =~ s/\n/\n/g;
 	my $append_newlines = "\n" x $num_of_lines;
