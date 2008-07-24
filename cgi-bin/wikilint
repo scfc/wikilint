@@ -50,15 +50,15 @@ use utf8;
 use POSIX qw(locale_h);
 use URI::Escape 'uri_escape_utf8';
 
-setlocale(LC_CTYPE, "german");
-setlocale(LC_ALL, "german");
+setlocale(LC_CTYPE, 'german');
+setlocale(LC_ALL, 'german');
 
 binmode STDOUT, ":utf8";
 use open ':utf8';
 #############################################################
 
-require "config.pm";
-require "autoreview.pm";
+require 'config.pm';
+require 'autoreview.pm';
 $myname = 'wikilint';
 
 if (param()) {
@@ -83,7 +83,7 @@ if (param()) {
 	$title_lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
 	utf8::decode($title_lemma);
 	$title_lemma =~ s/_/ /g;
-	$title_lemma = "Testseite" if ( $testpage );
+	$title_lemma = 'Testseite' if ( $testpage );
 
 	&begin_html();
 
@@ -98,7 +98,7 @@ if (param()) {
 		#$page = `cat test.html`;
 	}
 	else {
-		$page = &download_page($url, "", $language, $oldid);
+		$page = &download_page($url, '', $language, $oldid);
 	}
 
 	# [^'] to avoid jumping on #REDIRECT [[',']]
@@ -114,7 +114,7 @@ if (param()) {
 		$propose_page =~ s/</&lt;/g;
 		$propose_page =~ s/>/&gt;/g;
 
-		$propose_page = "" if ( $removed_links == 0 );
+		$propose_page = '' if ( $removed_links == 0 );
 
 		if ( !$selftest ) {
 			&output( $page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words );
@@ -130,7 +130,6 @@ else {
 	&print_form();
 	print p,
 		br,
-		"<b>Liste der <a href=\"$tool_path/$myname?action=show_avoid_words_de\">zu vermeidenden Wörter</a>, <a href=\"$tool_path/$myname?action=show_fill_words_de\">Füllwörter</a> und der <a href=\"$tool_path/$myname?action=show_abbr_de\">Abkürzungen</a></b><br>\n",
                "<hr />Veröffentlicht unter GPL. <br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt\">Tim&nbsp;Landscheidt</a>";
 }
 
@@ -170,9 +169,9 @@ sub print_form {
 	param ('url', $url );
 
 	print
-               start_form ( -method=>"GET",
+               start_form ( -method=>'GET',
 				-action=>"$tool_path/$myname",
-				-'accept-charset'=>"utf8",
+				-'accept-charset'=>'utf8',
 				-enctype=>"application/x−www−form−urlencoded"),
                " URL / Lemma: ",textfield(-name =>'url',
 						-default => "$url",
@@ -180,22 +179,22 @@ sub print_form {
 		checkbox(-name=>'remove_century',
                            -checked=>0,
                            -value=>'ON',
-			-label=>""),
+			-label=>''),
                            "<b>[[18. Jahrhundert]], [[April]], [[1960er]] auch entfernen</b> / also remove century links ",br,
 		checkbox(-name=>'do_typo_check',
                            -checked=>1,
                            -value=>'ON',
-			-label=>""),
+			-label=>''),
                            "<b>Tippfehler-Prüfung (dauert etwas länger)</b> / Typo check","&nbsp;&nbsp;&nbsp;",
 		checkbox(-name=>'rnd',
                            -checked=>0,
                            -value=>'ON',
-			-label=>""),
+			-label=>''),
                            "<b>Zuf&auml;llige Seite</b> / Random Page ","&nbsp;&nbsp;&nbsp;",
 		checkbox(-name=>'testpage',
                            -checked=>0,
                            -value=>'ON',
-			-label=>""),
+			-label=>''),
                            "<b>Test Seite</b> / Testpage ",br,
                " <b>Sprache</b> / Language: ",
                popup_menu(-name=>'l',
@@ -238,7 +237,7 @@ sub parse_form {
 	# if people enter only the lemma in url-field
 	if ( $url =~ /^[\w öäüÖÄÜß\-()]+$/ && !$lemma ) {
 		$lemma = $url;
-		$url = "";
+		$url = '';
 	}
 
 #print "lemma: $lemma<p>\n";
@@ -272,7 +271,7 @@ sub parse_form {
 	#$url =~ /([^\w\d\%\_\-\:\.\/\?\&=\(\)\s-])/
 
 	# only german or english so far
-	if ( ($language ne "de" && $language ne "en") ) {
+	if ( ($language ne 'de' && $language ne 'en') ) {
 		&begin_html();
 		print "wrong language<p>\n";
 		exit;
@@ -292,10 +291,10 @@ sub parse_form {
 		# default to typo-check if lemma is passed
 		$do_typo_check = 1;
 
-		if ( $language eq "de" ) {
+		if ( $language eq 'de' ) {
 			$url = "http://de.wikipedia.org/wiki/$lemma_conv";
 		}
-		elsif ( $language eq "en" ) {
+		elsif ( $language eq 'en' ) {
 			$url = "http://en.wikipedia.org/wiki/$lemma_conv";
 		}
 		else {
@@ -322,10 +321,10 @@ sub output {
 	# now sections without HTML aka [^<]
 	$page =~ s/(={2,9})\s*([^<]+?)\s*(={2,9})/<a name=\"$2\">$1$2$3<\/a>/g;
 
-	if ( $language eq "de" ) {
-		$edit_link = &create_edit_link($lemma_org, "de");
+	if ( $language eq 'de' ) {
+		$edit_link = &create_edit_link($lemma_org, 'de');
 		print "\n<font face=arial,helvetica>",h3("Geprüfter Artikel: <a href=\"$url\">$search_lemma</a> <font size=-1> [<a href=\"$edit_link\" target=\"_blank\">Bearbeiten in Wikipedia</a>]");
-		my $link = &create_ar_link($link_lemma, "de");
+		my $link = &create_ar_link($link_lemma, 'de');
 		$link .= "&oldid=$oldid" if ( $oldid );
 		print "Link zu dieser Seite: $link<br>\n";
 
@@ -357,7 +356,7 @@ sub output {
 		}
 		print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)<p>\n";
 	}
-	elsif ( $language eq "en" ) {
+	elsif ( $language eq 'en' ) {
 		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path/$myname\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
 		&print_explanation();
 	}
@@ -366,29 +365,29 @@ sub output {
 
 	my $times = $review_letters =~ s/K/K/g;
 	$times += $review_letters =~ s/L/L/g;
-	if ( $language eq "de" &&  $propose_page  && $removed_links > 1 ) {
+	if ( $language eq 'de' &&  $propose_page  && $removed_links > 1 ) {
 		print h3("Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen ($removed_links St&uuml;ck).")," (Am einfachsten kopieren durch \"reinklicken\", STRG-A & STRG-C, in Wikipedia einfügen mit STRG-A, STRG-V und dann mit \"Änderungen zeigen\" kontrollieren.)<br>\n";
 		print "\n\n<textarea readonly name=\"page_without_links_to_years_and_dates\" rows=10 cols=80>$propose_page\n</textarea>\n";
 	}
 
 	if ( $extra_message ) {
 		$extra_message =~ s/^/<li>/gm;
-		if ( $language eq "de" ) {
+		if ( $language eq 'de' ) {
 			print hr, h3("Allgemeine Anmerkungen (weitere unten im Wiki-Quelltext):\n");
 			print "<table border=1><tr><td><font face=arial,helvetica><b>Legende:</b><br>\n";
-			print "Ist ".$never."sehr selten</span> sinnvoll<br>\n";
-			print "Ist ".$seldom."selten</span> sinnvoll, bitte prüfen.<br>\n";
-			print "Ist ".$sometimes."manchmal</span> sinnvoll, bitte prüfen.<br>\n";
+			print 'Ist '.$never."sehr selten</span> sinnvoll<br>\n";
+			print 'Ist '.$seldom."selten</span> sinnvoll, bitte prüfen.<br>\n";
+			print 'Ist '.$sometimes."manchmal</span> sinnvoll, bitte prüfen.<br>\n";
 			print $proposal."Vorschlag</span>, bitte prüfen ob sinnvoll.<br>\n";
 			print "</table>\n";
 			print p,"\n",ul($extra_message),p,hr,p;
 
 		}
-		elsif ( $language eq "en" ) {
+		elsif ( $language eq 'en' ) {
 			print hr, h3("General comments:");
-			print "Is ".$never."never</span> reasonable  <br>\n";
-			print "Is ".$seldom."seldom</span> reasonable, please check.<br>\n";
-			print "Is ".$sometimes."sometimes</span> reasonable, please check.<br>\n";
+			print 'Is '.$never."never</span> reasonable  <br>\n";
+			print 'Is '.$seldom."seldom</span> reasonable, please check.<br>\n";
+			print 'Is '.$sometimes."sometimes</span> reasonable, please check.<br>\n";
 			print p,ul($extra_message),p,hr,p;
 		}
 	}
@@ -407,7 +406,7 @@ sub output {
 	print "<font face=courier>\n\n$page\n\n</font>\n";
 	print hr;
 
-	if ( $language eq "de" ) {
+	if ( $language eq 'de' ) {
 		print "<h3><a name=\"explanations\">Erläuterungen:</a></h3>\n";
 		print "<a name=\"links_to_numbers\">LTN = Links to numbers: Jahre und Jahrestage sollten im Allgemeinen nicht verlinkt werden, da es sehr selten jemandem hilft, auf das Jahr XY zu klicken (Ausnahme u.a. Geburts- und Sterbedaten in Personenartikeln), siehe <a href=\"http://de.wikipedia.org/wiki/WP:VL#Daten_verlinken\">WP:VL#Daten_verlinken<\/a> Das Verlinken von Monaten, Jahrzehnten und Jahrhunderten ist auch nur in Ausnahmef&auml;llen sinnvoll. Dazu gibt es auch ein <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Browser-Unterst%C3%BCtzung#Bookmarklet_zum_Entlinken_von_Jahreszahlen\">Bookmarklet</a><p>\n";
 		print "<a name=\"plenk\">Plenk = Leerzeichen vor Satzzeichen, siehe <a href=\"http://de.wikipedia.org/wiki/Plenk\">Plenk<\/a><p>\n";
@@ -416,15 +415,15 @@ sub output {
 		print "<a name=\"colon_minus_section\">CMS = : - ! ?  in Überschrift, siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze\">Wikipedia:Wie schreibe ich gute Artikel#Überschriften und Absätze</a><p>\n";
 		print "<a name=\"DL\">DL = Doppelter Link hintereinander, für den Leser ist die Grenze nicht ersichtlich, siehe <a href=\"http://de.wikipedia.org/wiki/WP:VL#Verlinkung_von_Teilw.C3.B6rtern\">Wikipedia:Verlinken#Verlinkung von Teilwörtern</a><p>\n";
 		print "<a name=\"EM\">EM = Ausrufezeichen vermeiden<p>\n";
-		print "<a name=\"WORDS\">WORDS = Wörter, die man vermeiden sollte. Dies sind beispielsweise Wörter, die den <a href=\"http://de.wikipedia.org/wiki/WP:NPOV\">neutralen Standpunkt</a> verletzen, <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Schreibweise_von_Zahlen#Zahlen_null_bis_zw.C3.B6lf_als_Flie.C3.9Ftext\">Zahlen über zwölf</a> (mit Ausnahmen!), relative Zeitangaben, die bald nicht mehr stimmen (z.B. \"derzeit\") und Anglizismen. Siehe <a href=\"http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten\">Wörter, die nicht in Wikipedia stehen sollten</a>. (<a href=\"$tool_path/$myname?action=show_avoid_words_de\">Liste der zu vermeidenden Wörter</a> die hervorgehoben werden.)<p>\n";
-		print "<a name=\"FILLWORD\">Maybe fillword = Potentielle Füllwörter, die man <b>manchmal</b> ersatzlos streichen kann. Bitte den Satz oder Absatz vorher komplett lesen, ob dass Wort nicht doch sinnvoll ist oder das Verständnis erleichtert. Ein gewisse Menge an Füllwörtern ist normal. Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Wortwahl\">Wikipedia:Wie schreibe ich gute Artikel#Wortwahl</a>. (<a href=\"$tool_path/$myname?action=show_fill_words_de\">Liste der Füllwörter</a> die hervorgehoben werden.)<p>\n";
+		print "<a name=\"WORDS\">WORDS = Wörter, die man vermeiden sollte. Dies sind beispielsweise Wörter, die den <a href=\"http://de.wikipedia.org/wiki/WP:NPOV\">neutralen Standpunkt</a> verletzen, <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Schreibweise_von_Zahlen#Zahlen_null_bis_zw.C3.B6lf_als_Flie.C3.9Ftext\">Zahlen über zwölf</a> (mit Ausnahmen!), relative Zeitangaben, die bald nicht mehr stimmen (z.B. \"derzeit\") und Anglizismen. Siehe <a href=\"http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten\">Wörter, die nicht in Wikipedia stehen sollten</a>.<p>\n";
+		print "<a name=\"FILLWORD\">Maybe fillword = Potentielle Füllwörter, die man <b>manchmal</b> ersatzlos streichen kann. Bitte den Satz oder Absatz vorher komplett lesen, ob dass Wort nicht doch sinnvoll ist oder das Verständnis erleichtert. Ein gewisse Menge an Füllwörtern ist normal. Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Wortwahl\">Wikipedia:Wie schreibe ich gute Artikel#Wortwahl</a>.<p>\n";
 		print "<a name=\"BOLD\">BOLD = Fettschrift ist zu vermeiden. Nur am Artikelanfang wird das Lemma eines Artikels noch einmal fett geschrieben, sowie Synonyme (für den dann auch Redirects angelegt sein sollten). Fremdwörter bitte nicht fett sondern kursiv schreiben (<a href=\"http://de.wikipedia.org/wiki/Wikipedia:Fremdwortformatierung\">WP:Fremdwortformatierung</a>). Manchmal ist Fettschrift noch sinnvoll in Formeln und bei Tabellenüberschriften. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_gute_Artikel_aussehen#Sonstiges\">WP:WGAA#Sonstiges</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Auszeichnung\">Wikipedia:Typografie#Auszeichnung</a><p>\n";
 		print "<a name=\"BOLD-INSTEAD-OF-SECTION\">BOLD-INSTEAD-OF-SECTION = Hier wurde eventuell Fettschrift statt eines Wikipedia-Abschnitts mit ==XYZ== verwendet. Bitte prüfen, ob sich ein Abschnitt lohnt. Eventuell mehrere Pseudo-Abschnitte zusammenfassen.<p>\n";
 		print "<a name=\"LC\">LC = Lowercase = Zeile oder Überschrift, die mit einem Kleinbuchstaben beginnt. Selten sinnvoll außer z.B. in Formeln.<p>\n";
 		print "<a name=\"BKL\">BKL = Link zu einer Begriffserklärungsseite. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>.<p>\n";
 		print "<a name=\"MAYBEBKL\">MAYBEBKL = Eventuell Link zu einer Begriffserklärungsseite, bitte prüfen. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>. (Der Grund, warum manche Links nicht sicher als BKLs identifiziert werden können, ist unterschiedliche Groß-/Kleinschreibung. Beispielsweise ist <a href=\"http://de.wikipedia.org/wiki/ZEUS\">ZEUS</a> eine BKL, würde es <a href=\"http://de.wikipedia.org/wiki/Zeus\">Zeus</a> nicht geben, würde eine Link zu \"Zeus\" zu \"ZEUS\" führen. Da dieser Dienst keine Liste aller Lemma hat, um das wissen zu können, werden diese Links als \"vielleicht BKL\" angezeigt.)<p>\n";
 
-		print "<a name=\"ABBREVIATION\">ABBREVIATION = Abkürzungen vermeiden: Statt „z. B.“ kann man so auch „beispielsweise“ schreiben, statt „i. d. R.“ auch „meistens“ oder einfach nur „meist“. Das Wort „beziehungsweise“, abgekürzt „bzw.“, das aus der Kanzleisprache stammt, lässt sich meist besser durch „oder“ ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch „und im anderen Fall“ oder schlicht durch „und“ ausdrücken siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen\">Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen</a>. (<a href=\"$tool_path/$myname?action=show_abbr_de\">Liste der Abkürzungen</a> die hervorgehoben werden.)<p>\n";
+		print "<a name=\"ABBREVIATION\">ABBREVIATION = Abkürzungen vermeiden: Statt „z. B.“ kann man so auch „beispielsweise“ schreiben, statt „i. d. R.“ auch „meistens“ oder einfach nur „meist“. Das Wort „beziehungsweise“, abgekürzt „bzw.“, das aus der Kanzleisprache stammt, lässt sich meist besser durch „oder“ ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch „und im anderen Fall“ oder schlicht durch „und“ ausdrücken siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen\">Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen</a>.<p>\n";
 		print "<a name=\"NBSP\">NBSP = Zwischen einer Zahl und einer Einheit sollte ein geschütztes Leerzeichen stehen. Dadurch wird ein automatischen Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindert. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung\">Wikipedia:Textgestaltung</a>.<p>\n";
 		print "<a name=\"ISBN\">ISBN = Falsch formatierte ISBN, durch den Doppelpunkt wird kein Link erzeugt.<p>\n";
 		print "<a name=\"TAG\">TAG = &lt;i&gt; oder &lt;b&gt; statt '' oder '''.<p>\n";

@@ -88,9 +88,6 @@ sub download_page {
 			$redir_to = uri_escape_utf8($redir_to);
 			$page = &download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
         }
-	else {
-
-	}
 
 	($page );
 }
@@ -1632,9 +1629,6 @@ sub do_review {
 		if ( $language eq "de" ) {
 			$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zum Wiktionary, siehe beispielsweise <a href=\"http://de.wikipedia.org/wiki/Kunst#Weblinks\">Kunst#Weblinks</a>. <a href=\"http://de.wiktionary.org/wiki/Spezial:Suche?search=$search_lemma&go=Seite\">Prüfen ob einen Wiktionaryeintrag zu $search_lemma gibt</a>.\n";
 		}
-		else {
-		}
-
 	}
 	# check for {{commons
 	if ( $page !~ /(\{\{commons(cat)?(\|)?)|({{commons}})/i ) {
