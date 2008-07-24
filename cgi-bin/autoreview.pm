@@ -121,7 +121,7 @@ sub http_download {
 
 	die "URL zu lang\n" if ( length( $down_url ) > 300 );
 
-	$ua->agent('tools.wikimedia.de/~timl/cgi-bin/wikilint');
+	$ua->agent('toolserver.org/~timl/cgi-bin/wikilint');
 
 	# Create a request
 	my $req = HTTP::Request->new(GET => $down_url);
@@ -183,7 +183,7 @@ sub find_random_page {
 	# Create a user agent object
 	my $ua = LWP::UserAgent->new(max_redirect => 0);
 	# $ua->proxy(['http'], $proxy);
-	$ua->agent('tools.wikimedia.de/~timl/cgi-bin/wikilint');
+	$ua->agent('toolserver.org/~timl/cgi-bin/wikilint');
 	# set timeout to 10 sec
 	$ua->timeout(10);
 
@@ -347,7 +347,7 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 		}
 		else {
 			# this is early because it takes long and now the page has less tagging from myself
-			# list used from http://tools.wikimedia.de/~apper/sc/check.php?list=1
+			# list used from http://toolserver.org/~apper/sc/check.php?list=1
 			# other list: http://de.wikipedia.org/wiki/Wikipedia:Liste_von_Tippfehlern
 			# other list: http://de.wikipedia.org/wiki/Benutzer:BWBot
 
@@ -1779,7 +1779,7 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 
 
 	# always propose "whatredirectshere"
-	$extra_message .= "${proposal}Vorschlag<\/span>: Weiterleitungen / #REDIRECTS zu [[$search_lemma]] <a href=\"http://tools.wikimedia.de/~tangotango/whatredirectshere.php?lang=$language&title=$search_lemma&subdom=$language&domain=.wikipedia.org\">prüfen</a> mit <a href=\"http://tools.wikimedia.de/~tangotango/whatredirectshere.php\">Whatredirectshere</a>\n";
+	$extra_message .= "${proposal}Vorschlag<\/span>: Weiterleitungen / #REDIRECTS zu [[$search_lemma]] <a href=\"http://toolserver.org/~tangotango/whatredirectshere.php?lang=$language&title=$search_lemma&subdom=$language&domain=.wikipedia.org\">prüfen</a> mit <a href=\"http://toolserver.org/~tangotango/whatredirectshere.php\">Whatredirectshere</a>\n";
 
 	# TODO:
 	# liste der einheiten

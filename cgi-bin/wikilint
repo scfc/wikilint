@@ -36,7 +36,7 @@ $debugdry=0;
 $debug=0;
 
 $title = "wikilint (Beta Version)";
-$tool_base = "http://tools.wikimedia.de";
+$tool_base = "http://toolserver.org";
 $tool_path = "/~timl/cgi-bin";
 $tool_url = "$tool_base$tool_path";
 
