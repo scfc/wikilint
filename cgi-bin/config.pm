@@ -1,5 +1,5 @@
 #
-#    Program: Autoreview for Wikipedia articles
+#    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -71,19 +71,19 @@ $proposal = "<span class=proposal>";
 	'20-99999-ungenügend'
 );
 
-$redir_file = "/home/arnomane/public_html/cgi-bin/redirs.txt";
+$redir_file = "/home/timl/public_html/cgi-bin/redirs.txt";
 
 # this one needs only read permission by "autoreview"-user:
-$spider_queue_file = "/home/arnomane/public_html/cgi-bin/WP-autoreview-spider.pl.queue";
+$spider_queue_file = "/home/timl/public_html/cgi-bin/WP-autoreview-spider.pl.queue";
 
 # the rest write permission:
-$spider_queue_file_last = "/home/arnomane/public_html/cgi-bin/WP-autoreview-spider.queue.last";
-$spider_queue_file_semaphore = "/home/arnomane/public_html/cgi-bin/WP-autoreview-spider.pl.queue.semaphore";
-$spider_queue_table_dir = "/home/arnomane/public_html/cgi-bin/tables";
-$spider_queue_log = "/home/arnomane/public_html/cgi-bin/spider_queue.log";
-$spider_queue_error_log = "/home/arnomane/public_html/cgi-bin/spider_queue_error.log";
+$spider_queue_file_last = "/home/timl/public_html/cgi-bin/WP-autoreview-spider.queue.last";
+$spider_queue_file_semaphore = "/home/timl/public_html/cgi-bin/WP-autoreview-spider.pl.queue.semaphore";
+$spider_queue_table_dir = "/home/timl/public_html/cgi-bin/tables";
+$spider_queue_log = "/home/timl/public_html/cgi-bin/spider_queue.log";
+$spider_queue_error_log = "/home/timl/public_html/cgi-bin/spider_queue_error.log";
 
-$botname = "Bot.Autoreviewer";
+$botname = "Bot.Wikilint";
 $botpw = ""; # refill
 
 # explanations of all problems found and stored in $review_letters
@@ -146,7 +146,7 @@ $text{"de|v"} = "2|S|Kein Leerzeichen vor einer öffnenden oder nach einer schli
 # order of columns in spider-review-result-table, for meaning of letters see above
 $table_order ="nMcENGJOPZabijdlmopstuqvkXArBCDFeQHRSTKLUVWYhfg";
 
-$arname ="WP-autoreview.pl";
+$arname ="wikilint";
 
 $farbe_html{"3"} = "#ffcbcb";
 $farbe_html{"2"} = "#ffebad";

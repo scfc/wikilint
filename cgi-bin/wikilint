@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 ###!/usr/bin/perl -CS
 #
-#    Program: Autoreview for Wikipedia articles
+#    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 #
 
 #### DESCRIPTION:
-# wikipedia autoreviewer
+# wikilint (formerly Wikipedia Autoreviewer)
 # checks a wikipedia-page for "things that should be changed"
 # code-level: quick hacked proof of concept!
 # contains UTF8-characters so take care with editor and terminal-settings, win98 doesn't work!
@@ -35,9 +35,9 @@ $debugdry=0;
 # removed debug condition temporarily (Arnomane)
 $debug=0;
 
-$title = "Wikipedia Autoreviewer (Beta Version)";
+$title = "wikilint (Beta Version)";
 $tool_base = "http://tools.wikimedia.de";
-$tool_path = "/~arnomane/cgi-bin";
+$tool_path = "/~timl/cgi-bin";
 $tool_url = "$tool_base$tool_path";
 
 if ( $ENV{"REMOTE_ADDR"} ) {
@@ -82,7 +82,7 @@ use open ':utf8';
 # prod
 require "config.pm";
 require "autoreview.pm";
-$myname ="WP-autoreview.pl";
+$myname ="wikilint";
 # test
 #require "config_t.pm";
 #require "autoreview_t.pm";
@@ -205,10 +205,10 @@ else {
 	print p,
 		br,
 		"<b>Liste der <a href=\"$tool_path/$myname?action=show_avoid_words_de\">zu vermeidenden Wörter</a>, <a href=\"$tool_path/$myname?action=show_fill_words_de\">Füllwörter</a> und der <a href=\"$tool_path/$myname?action=show_abbr_de\">Abkürzungen</a></b><br>\n",
-               "<hr />Veröffentlicht unter GPL: <a href=\"http://tools.wikimedia.de/~arnomane/download/\">Download</a><br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Arnomane\">Arnomane</a>";
+               "<hr />Veröffentlicht unter GPL. <br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt\">Tim&nbsp;Landscheidt</a>";
 
 # spider commented out (performance reasons and not much requested, Arnomane)
-#	print "<center><table border=1><tr><td><b><font color=red>Neues:</font></b> 100 Seiten auf einmal autoreviewern: <a href=\"http://rupp.de/cgi-bin/WP-autoreview-spider.pl\">Beta-Test Autoreview-Spider</a></table>";
+#	print "<center><table border=1><tr><td><b><font color=red>Neues:</font></b> 100 Seiten auf einmal linten: <a href=\"http://rupp.de/cgi-bin/WP-autoreview-spider.pl\">Beta-Test Autoreview-Spider</a></table>";
 }
 
 print "</body></html>\n" if ( $online );
@@ -227,7 +227,7 @@ sub begin_html {
 					       -content=>'text/html; charset=utf-8'})
 				-lang=>'de-DE',
 				 -bgcolor=>'#FFFFFF'),
-				"<link rel=stylesheet type=\"text/css\" href=\"/~arnomane/wp-autoreviewer/wp.css\">",
+				"<link rel=stylesheet type=\"text/css\" href=\"/~timl/wikilint/wp.css\">",
 				"<center>",
 			       h1("<font face=helvetica,arial>$title</font>"),"</center>";
 
@@ -238,11 +238,11 @@ sub begin_html {
 
 sub print_explanation {
 	print "<table border=0>";
-	print "<tr><td><img src=/~arnomane/wp-autoreviewer/deflag.jpg><td><b>Dieser Dienst pr&uuml;ft automatisch Wikipedia-Seiten auf h&auml;ufige Fehler. Bisher wird nur Deutsch und Englisch unterst&uuml;tzt.</b><br> \n";
-	print "<b>Bitte Kommentare, Fehler und Ideen <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Arnomane\">hier</a> eintragen.\n";
+	print "<tr><td><img src=/~timl/wikilint/deflag.jpg><td><b>Dieser Dienst pr&uuml;ft automatisch Wikipedia-Seiten auf h&auml;ufige Fehler. Bisher wird nur Deutsch und Englisch unterst&uuml;tzt.</b><br> \n";
+	print "<b>Bitte Kommentare, Fehler und Ideen <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">hier</a> eintragen.\n";
 	print "( <a href=\"#explanations\">Liste der Funktionen</a> )</b> \n";
 
-	print "<tr><td><img src=/~arnomane/wp-autoreviewer/gbflag.gif><td>This service automatically reviews Wikipedia-articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs & ideas <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Arnomane\">here</a>.<p>\n";
+	print "<tr><td><img src=/~timl/wikilint/gbflag.gif><td>This service automatically reviews Wikipedia-articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs & ideas <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">here</a>.<p>\n";
 
 	print "</table>\n";
 }
@@ -489,7 +489,7 @@ sub output {
 
 	}
 	elsif ( $language eq "en" ) {
-		print h3("Auto-Review: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path/$myname\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
+		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path/$myname\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
 		&print_explanation();
 	}
 
@@ -570,7 +570,7 @@ sub output {
 		print "<a name=\"SELFLINK\">SELFLINK =  Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect)<p>\n";
 		print "<a name=\"DOUBLEWORD\">DOUBLEWORD =  Wortdopplung ?<p>\n";
 		print "<a name=\"BISSTRICH\">BISSTRICH = Bei Zeitangaben Bis-Strich verwenden, am einfachsten den folgenden per Kopieren und Einfügen: –. Obacht: in diversen Zeichensätzen sind die Unterschiede zwischen den einzelnen Strichen nicht erkennbar. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Bis-Strich\">Wikipedia:Typografie#Bis-Strich</a> und <a href=\"http://de.wikipedia.org/wiki/Bis-Strich#Bis-Strich\">Bis-Strich</a>. <p>\n";
-		print "<a name=\"TYPO\">TYPO = Häufige Tippfehler. Tippfehler, die im Wikicode mit &lt;!--sic--&gt; markiert sind, wurden absichtlich so zitiert, siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Zitate#Zitate_im_Flie.C3.9Ftext\">Wikipedia:Zitate#Zitate_im_Fließtext</a>. Artikel mit Schweizer Rechtschreibung am Anfang mit &lt;!--schweizbezogen--&gt; markieren, dann findet keine Prüfung statt.  Bei Falschmeldungen bitte auf meiner <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Arnomane\">Diskussionsseite</a> Bescheid sagen.<p>\n";
+		print "<a name=\"TYPO\">TYPO = Häufige Tippfehler. Tippfehler, die im Wikicode mit &lt;!--sic--&gt; markiert sind, wurden absichtlich so zitiert, siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Zitate#Zitate_im_Flie.C3.9Ftext\">Wikipedia:Zitate#Zitate_im_Fließtext</a>. Artikel mit Schweizer Rechtschreibung am Anfang mit &lt;!--schweizbezogen--&gt; markieren, dann findet keine Prüfung statt.  Bei Falschmeldungen bitte auf meiner <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">Diskussionsseite</a> Bescheid sagen.<p>\n";
 		print "<a name=\"APOSTROPH\">APOSTROPH = Eventuell falsches Apostroph, im Deutschen ' statt ’. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Apostroph#Typografisch_korrekt\">Apostroph#Typografisch_korrekt</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Weitere_Zeichen\">Wikipedia:Typografie#Weitere_Zeichen</a><p>\n";
 		print "<a name=\"GS\">GS = Bindestrich (-) statt Gedankenstrich (–). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Gedankenstrich\">Wikipedia:Typografie#Gedankenstrich</a> und <a href=\"http://de.wikipedia.org/wiki/Halbgeviertstrich#Gedankenstrich\">Halbgeviertstrich#Gedankenstrich</a><p>\n";
 		print "<a name=\"BRACKET\">BRACKET = Ungleiche Anzahl von Klammern<p>\n";

@@ -1,5 +1,5 @@
 #
-#    Program: Autoreview for Wikipedia articles
+#    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -121,7 +121,7 @@ sub http_download {
 
 	die "URL zu lang\n" if ( length( $down_url ) > 300 );
 
-	$ua->agent('tools.wikimedia.de/~arnomane/cgi-bin/WP-autoreview.pl');
+	$ua->agent('tools.wikimedia.de/~timl/cgi-bin/wikilint');
 
 	# Create a request
 	my $req = HTTP::Request->new(GET => $down_url);
@@ -183,7 +183,7 @@ sub find_random_page {
 	# Create a user agent object
 	my $ua = LWP::UserAgent->new(max_redirect => 0);
 	# $ua->proxy(['http'], $proxy);
-	$ua->agent('tools.wikimedia.de/~arnomane/cgi-bin/WP-autoreview.pl');
+	$ua->agent('tools.wikimedia.de/~timl/cgi-bin/wikilint');
 	# set timeout to 10 sec
 	$ua->timeout(10);
 
@@ -2140,7 +2140,7 @@ sub create_ar_link {
 		
 
 	if ( $lang eq "de" ) {
-		$ar_link ="http://tools.wikimedia.de/~arnomane/cgi-bin/$arname?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
+		$ar_link ="http://toolserver.org/~timl/cgi-bin/$arname?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
 	}
 	($ar_link);
 }
