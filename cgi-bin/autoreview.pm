@@ -89,7 +89,7 @@ sub download_page {
 			$page = &download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
         }
 	else {
-#print "NO REDIR: recursion_depth: $recursion_depth - $page\n" if ( $developer );
+
 	}
 
 	($page );
@@ -248,10 +248,8 @@ sub do_review {
 	my ( @lines_org_wiki ) = split(/\n/, $page);
 
 	# remove <math>, <code>, <!-- -->, <poem> (any stuff to completetly ignore )
-#print "seite0: <pre>$page</pre>" if ( $developer);
-	( $page, $last_replaced_num ) = &remove_stuff_to_ignore( $page );
 
-#print "seite1: <pre>$page</pre>" if ( $developer);
+	( $page, $last_replaced_num ) = &remove_stuff_to_ignore( $page );
 
 	# check for at least one image
 	$nopic=0;
@@ -262,7 +260,7 @@ sub do_review {
 		# pic in template
 		$page !~ /\|(.+?)=.+?\.(jpg|png|gif|bmp|tiff|svg)\b/i
 	) {
-#print "PAGE: $page<p>\n" if ( $developer );
+
 #|Wappen            = Wappen Hattersheim.jpg
 #|Bild=Friedrich-Ebert-Anlage 2, Frankfurt.jpg
 		$nopic =1;
@@ -298,8 +296,6 @@ sub do_review {
 
 	# remove <ref></ref>
 	( $page, $last_replaced_num, $count_ref ) = &remove_refs_and_images( $page, $last_replaced_num );
-
-#print "seite2: <pre>$page</pre>" if ( $developer);
 
 	# avoid marking comments <!-- as evil exclamation mark
 	$page =~ s/<!/&lt;&iexcl;/g;
@@ -349,15 +345,10 @@ sub do_review {
 
 	my ( @lines ) = split(/\n/, $page);
 
-#print "SSS: $page<p>\n" if ( $developer );
-
 	# 1. too much wiki-links to same page
 	# 2. http-links except <ref> or in ==weblinks==
 	foreach my $line ( @lines ) {
-#print "XX: $review_letters<br>\n" if ($developer);
 		$line_org_wiki = shift ( @lines_org_wiki );
-#print "DDD1: $line_org_wiki<br>\n" if ( $developer );
-#print "DDD2: $line<br>\n" if ( $developer );
 
 		my $line_org = $line;
 
@@ -384,7 +375,7 @@ sub do_review {
 			$review_letters .="u" x $times;
 
 			$line =~ s/QM-ERS/"/g;
-	#print "XX: $line\n" if ( $developer );
+
 		}
 
 		$last_section_level = $section_level;
@@ -486,7 +477,6 @@ sub do_review {
 			$dont_count_words_in_section_title = 0;
 		}
 
-#print "lit: $inside_literatur web: $inside_weblinks  com: $inside_comment tmp: $inside_template: $line <br>\n" if ( $developer );
 		if (
 			!$year_article &&
 			!$inside_literatur &&
@@ -524,7 +514,7 @@ sub do_review {
 						# 1971-30 good
 						( length( $from ) == 4 && length( $to ) == 2 && substr ($from,2,2) > $to )
 					) {
-#print "undo: $line ".substr ($from,2,2)." to: $to\n" if ($developer  );
+
 						$undo = 1;
 					}
 					else {
@@ -565,11 +555,10 @@ sub do_review {
 					# the strange character in front of STARTBOLD is some strange UTF8-character
 					# i copied from a webpage to have something to exclude in [^￼]
 					$times = $line =~ s/'''''(.+?)'''''/''￼STARTBOLD$1￼ENDBOLD''/g;
-#print "111: $line<br>\n" if ( $times && $developer );
+
 					$times = $line =~ s/'''''(.+?)'''/''￼STARTBOLD$1￼ENDBOLD/g;
-#print "222: $line<br>\n" if ( $times && $developer );
+
 					$times = $line =~ s/'''(.+?)'''/￼STARTBOLD$1￼ENDBOLD/g;
-#print "333: $line<br>\n" if ( $times && $developer );
 
 					# 1st see if somebody used bold-text to replace a section-title
 					# '* for '''''bold+italic'''''
@@ -594,8 +583,6 @@ sub do_review {
 					$times = $line =~ s/(&lt;(br ?(\/)?|center|big|small|s|u|div align="?center"?|div align="?right"?)&gt;)/$seldom$1<\/span><sup class=reference><a href=#TAG2>[TAG2]<\/a><\/sup>/g;
 					$review_level += $times * $seldom_level;
 					$review_letters .="k" x $times;
-
-
 				}
 
 				if (
@@ -637,7 +624,7 @@ sub do_review {
 		) {
 			# might be nested tables so not 0/1 but ++/--
 			$inside_template++;
-#print "INSIDE_TEMPL: $line<br>\n" if ( $developer );
+
 		}
 
 		if ( $line =~ /^\s*&lt;&iexcl;--/ ||
@@ -967,7 +954,7 @@ sub do_review {
 			$line =~ s/'''''([^']*?)'''''/'''￼QSSA%$1￼QESA%'''/g;
 			# do '''''bold&italic''' end bold'' end italic (yes, i've seen it ;)
 			$line =~ s/'''''([^']+?'''[^']+?)(?<!')''(?!')/'''￼QSSB%$1￼QESB%/g;
-#print "XXX: $line <br>\n" if ($developer );
+
 			$line =~ s/(?<!')''([^']*?)''(?!')/￼QSSC%$1￼QESC%/g;
 			$line =~ s/\"([^"]*?)\"/￼QSD%$1￼QED%/g;
 			$line =~ s/&lt;i&gt;(.*?)&lt;\/i&gt;/￼QST%$1￼QET%/gi;
@@ -975,7 +962,6 @@ sub do_review {
 			$line =~ s/«([^»]*?)»/￼QSF%$1￼QEF%/g;
 			$line =~ s/‚([^‘]*?)‘/￼QSX%$1￼QEX%/g;
 			$line =~ s/&lt;sic&gt;(.*?)&lt;\/sic&gt;/￼QSC%$1￼QEC%/gi;
-#print "XXX: $line <br>\n" if ($developer );
 
 			# avoid ! always except in tables (=beginning of a line, . matches anything except newline) and in <ref> and in quotes
 			if ( $inside_comment ||
@@ -993,7 +979,7 @@ sub do_review {
 				# avoid grammar-articles
 				$line =~ /imperativ/i
 			) {
-	#print "EMMM: $line <br> inside_comment: $inside_comment - inside_template: $inside_template <br>\n" if ( $developer);
+
 				# do nothing
 			}
 			elsif ( $line !~ /&lt;ref&gt;.+?!.+?&lt;\/ref&gt;/i &&
@@ -1007,7 +993,7 @@ sub do_review {
 				do {
 					# avoid ! in wikilinks and HTML-tags, $! and 26! (fakultät) and chess e2e4!
 					$times = $line =~ s/([^\[<\$]+?[^\d\[<\$])!([^\]&>]*?$)/$1$seldom!<\/span><sup class=reference><a href=#EM>[EM1]<\/a><\/sup>$2/g;
-	#print "EM: $line <br>\n" if ( $developer );
+
 					$review_level += $times * $seldom_level;
 					$review_letters .="G" x $times ;
 				} until ( !$times );
@@ -1029,7 +1015,7 @@ sub do_review {
 
 				# performance-thing: don't make all the following checks if there's no avoid_word anyway
 				if ( $line =~ /$avoid_word/i) {
-#print "AVOID: $avoid_word - BEG: $line :END<br>\n" if ( $developer );
+
 					if (
 						# dont complain in tables
 						$line !~ /^(!|\|)/ &&
@@ -1049,12 +1035,10 @@ sub do_review {
 						$times = $line =~ s/$avoid_word/$sometimes$1<\/span><sup class=reference><a href=#WORDS>[WORDS ?]<\/a><\/sup>/gi;
 						$review_level += $times * $sometimes_level;
 						$review_letters .="B" x $times;
-#print "AVOID: $avoid_word - BEG: $line :END<br>\n" if ( $developer );
+
 					}
 				}
 			}
-
-#print "FFF: $page\n" if ( $developer );
 
 			# fill words
 			foreach my $fill_word ( @fill_words ) {
@@ -1095,7 +1079,7 @@ sub do_review {
 							# do nothing
 						}
 						else {
-#print "FW: $line\n" if ( $developer );
+
 							# fillwords are not /i because:
 							# 1. in the beginning of a line they're mostly useful
 							# 2. to avoid e.g. tagging "zum Wohl des Reiches" (wohl)
@@ -1222,7 +1206,6 @@ sub do_review {
 				}
 			}
 		}
-#print "111: $line<br>\n" if ( $developer );
 
 		# check line word by word
 		$line_org_tmp = $line_org;
@@ -1265,7 +1248,7 @@ sub do_review {
 			if ( $word =~ /&lt;ref(&gt;| name=)/i ){
 				$inside_ref_word = 1;
 				$count_ref++;
-#print "REF: $word<br>\n" if ( $developer );
+
 			}
 
 			if ( $word =~ /&lt;&iexcl;--/ ){
@@ -1319,8 +1302,6 @@ sub do_review {
 					$times = $line =~ s/(\[\[)($linkto_tmp)([|\]])/$1$seldom<a href=\"http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel\">$2<\/a><\/span><sup class=reference><a href=#BKL>[BKL]<\/a><\/sup>$3/gi;
 					$review_level += $times * $seldom_level;
 					$review_letters .="d" x $times;
-
-
 				}
 				# 2nd case-insensitive bec we just know there's [[Usa]] in the list,
 				# and [[usa]] in the article might also be evil
@@ -1338,8 +1319,6 @@ sub do_review {
 					$times = $line =~ s/(\[\[)($linkto_tmp)(\||\]\])/$1$sometimes<a href=\"http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel\">$2<\/a><\/span><sup class=reference><a href=#MAYBEBKL>[MAYBEBKL ?]<\/a><\/sup>$3/gi;
 					$review_level += $times * $sometimes_level;
 					$review_letters .="d" x $times;
-
-
 				}
 			}
 
@@ -1396,7 +1375,7 @@ sub do_review {
 				$times = $line =~ s/$unit/$sometimes$1<\/span><sup class=reference><a href=#NBSP>[NBSP]<\/a><\/sup>$3/g;
 				$review_level += $times * $sometimes_level;
 				$review_letters .="T" x $times;
-#print "NBSP: $unit<p>\n" if ( $developer );
+
 			}
 
 			# good: [[Dr. phil.]]
@@ -1418,7 +1397,7 @@ sub do_review {
 			$times = $line =~ s/(\w+)?$bad_search_apostroph/$sometimes$1$2<\/span><sup class=reference><a href=#APOSTROPH>[APOSTROPH ?]<\/a><\/sup>/go;
 			$review_level += $times * $sometimes_level /3;
 			$review_letters .="s" x $times;
-#print "APO: $line<br>\n\n" if ( $times && $developer );
+
 		}
 
 		# Gedankenstrich -----
@@ -1429,7 +1408,7 @@ sub do_review {
 			$times = $line =~ s/$bad_search/$1$sometimes$2<\/span><sup class=reference><a href=#GS>[GS ?]<\/a><\/sup>$3/g;
 			$review_level += $times * $sometimes_level;
 			$review_letters .="t" x $times;
-#print "GS: $line<br>\n\n" if ( $times && $developer );
+
 		}
 
 		# do(missing spaces(before brackts
@@ -1949,7 +1928,7 @@ sub tag_dates_first_line {
 }
 
 sub tag_dates_rest_line {
-#print "OOOOOOOOOOO: $review_letters<br>\n" if ($developer);
+
 	my ( $line ) = @_;
 	################### links to dates
 	# do [[2005]]
@@ -2013,7 +1992,6 @@ sub create_ar_link {
 		$typo_tmp ="&do_typo_check=ON";
 	}
 
-
 	if ( $lang eq "de" ) {
 		$ar_link ="http://toolserver.org/~timl/cgi-bin/$arname?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
 	}
@@ -2040,7 +2018,7 @@ sub remove_stuff_to_ignore {
 	# <MATH>
 	while ( $times = $page =~ s/(<math>.*?<\/math>)/-R-R$lola-R-/si ) {
 		$replaced_stuff{ $lola } = $1;
-#print "REPLACED: <$1><p>\n" if ( $times && $developer );
+
 		$lola++;
 	}
 
@@ -2085,7 +2063,6 @@ sub remove_stuff_to_ignore {
 		$lola++;
 	}
 
-
 	($page, $lola );
 }
 
@@ -2106,7 +2083,7 @@ sub restore_stuff_to_ignore {
 
 			if ( !$times ) {
 				delete( $replaced_stuff_tmp{ $lola });
-	#print "NOT RESTORED: $restore<p>\n" if ( $developer );
+
 			}
 		}
 	} until ( !%replaced_stuff_tmp );
@@ -2134,7 +2111,7 @@ sub restore_stuff_quote {
 		#$times2 = $page =~ s/-R-N(\d+)-R-/$remove_stuff_for_typo_check_array{ $1 }/g;
 		$times2 = $page =~ s/-R-N(\d+)-R-.*?-R-/restore_one_item( $1, \%remove_stuff_for_typo_check_array )/ges;
 		$total += $times2;
-#print "XXXXX<br>\n" if ( $developer );
+
 	} until ( !$times2 || $total == $todo );
 
 	$page =~ s/Q-REP/'/g;
@@ -2180,7 +2157,6 @@ sub check_unformated_refs {
 sub remove_stuff_for_typo_check {
 	# remove lines with <!--sic--> and {{templates...}} and quotes, web & wikilinks
 
-
 	my ( $page ) = @_;
 
 	undef %replaced_stuff_quote;
@@ -2225,7 +2201,6 @@ sub remove_stuff_for_typo_check {
 
 	# any [] weblink
 	$page =~ s/(\[http.+?\])/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-#print "XXX:$page:XXX" if ( $developer );
 
 	( $page, $lola );
 }
@@ -2371,9 +2346,6 @@ sub get_pic_parameters {
 		}
 	}
 
-	print "w: $width h: $heigth s: $size m: $mimetype d: $date_info du: $date_upload\n" if ( $developer );
-	print "maker: $exif_maker model: $exif_model date: $exif_datetimeoriginal\n" if ( $developer );
-
 	($width,  $heigth, $size,  $mimetype, $date_info, $date_upload, $exif_maker, $exif_model, $exif_datetimeoriginal );
 }
 
@@ -2415,8 +2387,6 @@ sub selftest {
 			# count for checking if all where found
 			$found_evil_text{ $1 }++;
 		}
-
-
 	}
 
 	my ( @lines ) = split(/\n/, $extra_messages);

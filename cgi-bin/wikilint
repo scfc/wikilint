@@ -105,7 +105,6 @@ if (param()) {
 	else {
 		$page = &download_page($url, "", $language, $oldid);
 	}
-#print "seiteA: <pre>$page</pre>" if ( $developer);
 
 	# [^'] to avoid jumping on #REDIRECT [[',']]
 	if ( $page =~ /#REDIRECT ?\[\[([^']+?)\]\]/ ) {
@@ -293,10 +292,7 @@ sub parse_form {
 	}
 
 	if ( !$url && $lemma ) {
-		#&begin_html() if ( $developer );
-		print "lemma: $lemma - $lemma_conv<p>\n" if ( $developer );
 		my $lemma_conv = uri_escape_utf8($lemma);
-		print "lemma: $lemma - $lemma_conv<p>\n" if ( $developer );
 
 		# default to typo-check if lemma is passed
 		$do_typo_check = 1;
@@ -354,7 +350,6 @@ sub output {
 		print br,"Problem-Quote f&uuml;r <a href=\"$url\">$search_lemma</a>: <b>$quotient</b> (nur bedingt aussagekräfig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)", p;
 
 		&create_review_summary_html( $review_letters, $language );
-		#&create_review_summary_html( $review_letters, $language ) if ( !$developer);
 
 		print "<br>Anzahl der Einzelnachweise: <b>$count_ref</b><p>\n";
 		my $fillwords_quot;
@@ -374,7 +369,6 @@ sub output {
 
 	print p,hr,p;
 
-	#print "TTT: $review_level<p>" if ( $developer );
 	my $times = $review_letters =~ s/K/K/g;
 	$times += $review_letters =~ s/L/L/g;
 	if ( $language eq "de" &&  $propose_page  && $removed_links > 1 ) {
@@ -469,5 +463,4 @@ sub output {
 	print "<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;\n";
 
 	$dauer = ( time -$start_ts );
-	print "it took: $dauer seconds (incl download)<p>\n" if ( $developer );
 }
