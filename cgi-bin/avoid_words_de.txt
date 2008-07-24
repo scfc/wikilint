@@ -1,0 +1,146 @@
+# wörter, die man in der deutschen wikipedia vermeiden sollte
+# grundlage: http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten
+alles über
+alles zum Thema
+bedauerlicherweise
+bedeutendste
+bekannte
+bekannteste
+berühmteste
+bleibt zu erwähnen
+dem ist hinzuzufügen
+der Beste
+die  Beste
+das Beste
+derzeit
+deutlich über
+deutlich unter
+deutlich mehr
+deutlich weniger
+deutlich teurer
+deutlich billiger
+Dokusoap
+ein paar
+ein sehr gutes Beispiel
+ein Stück weit
+einzigste
+glücklicherweise
+going public
+hervorragend
+hinzuzufügen ist
+ich
+in der Regel
+Infos
+in keinster Weise
+im Augenblick
+ist zu erwähnen
+in den letzten Jahren
+Jahrhundert-
+Jedes Kind
+kann behauptet werden
+kann nicht behauptet werden
+kann man nicht sagen
+klarerweise
+leider
+Mädchenname
+man sollte
+man soll
+sollte man
+soll man
+man muss
+muss man
+darf man
+man darf
+man
+meiner Meinung
+Mischvolk
+nebenbei bemerkt
+nämlich
+neulichst
+neuerdings
+schätzungsweise
+Sinn machen
+sogar
+teilweise bis zu
+tragischer Unfall
+tragischerweise
+traurigerweise
+Trivia
+übrigens
+und zwar
+ungefähr so
+unser
+unsere
+verschiedenste
+weitere Informationen finden Sie 
+wichtigste
+wie bereits erwähnt
+wie der Name sagt
+wie der Name schon sagt
+wie folgt
+wir
+wirklich
+ziemlich
+zum Glück
+zurzeit
+im vorigen Jahr
+jeder gut beraten
+letzte Woche
+letztes Jahr
+letzten Monat
+vor kurzem
+seit kurzem
+neulich
+aktuell
+kürzlich
+Bleibt zu erwähnen
+ist zu betonen
+ist definitiv falsch
+Event
+Location
+All-Time
+Asset
+Baseline
+Beauty
+Benefit
+Boom
+Branding
+Consultant
+Flyer
+Handling
+indoor
+Insider
+Intellectual Property
+Nightlife
+outdoor
+Outfit
+Publicity
+unangenehme Folgen
+früher durfte
+vor einigen Jahren
+ebenda
+ebd.
+a.a.O.
+Deadline
+Old School
+dreizehn
+vierzehn
+fünfzehn
+sechzehn
+siebzehn
+achtzehn
+neunzehn
+zwanzig
+dreissig
+vierzig
+fünfzig
+sechzig
+siebzig
+achtzig
+neunzig
+hundert
+tausend
+zweitausend
+im Grunde genommen
+verständlicher Weise
+verständlicherweise

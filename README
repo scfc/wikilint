@@ -1,0 +1,29 @@
+Abstract:
+---------
+
+The Wikipedia Autoreviewer is a web based service to find errors (like typos
+and wrong formating) in Wikipedia articles and make proposals how to improve
+them. Most features work currently only for the german WP but some are also
+available for english arcticles. It was originally written by Arnim Rupp and
+was then published under GPL3 license and transferred to the WP-Tool-Server.
+Futher development is done by Daniel Arnold and the community.
+
+Directories:
+------------
+
+* Inside the cgi-bin directory are all files needed by Wikipedia Autoreviewer
+server side.
+* Below the wp-autoreviewer directory you can find all files needed by the
+Wikipedia Autoreviewer client side (browser).
+* At the spider directory there is the currently unused spider extension
+which allows for batch processing Wikipedia articles with Wikipedia
+Autoreviewer.
+
+URLs:
+-----
+
+The Wikipedia Autoreviewer runs at:
+http://tools.wikimedia.de/~arnomane/cgi-bin/WP-autoreview.pl
+
+The full documentation can be found at:
+http://wiki.ts.wikimedia.org/view/~arnomane/WP-autoreviewer

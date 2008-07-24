@@ -1,0 +1,10 @@
+# liste der füllworter
+aber
+auch
+nun
+dann
+doch
+wohl
+allerdings
+eigentlich
+jeweils

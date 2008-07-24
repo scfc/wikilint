@@ -1,0 +1,27 @@
+
+.body {
+	font-size: large
+}
+
+.reference, .references sup {
+	font-size: xx-small;
+	vertical-align: text-top;
+	position: relative;
+	top: -0.3em;
+}
+
+.never {
+	background: orangered
+}
+
+.seldom  {
+	background: orange
+}
+
+.sometimes  {
+	background: lime
+}
+
+.proposal  {
+	background: yellow
+}

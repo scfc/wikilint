@@ -1,0 +1,34 @@
+# abkürzungen, immer mit und ohne leerzeichen, &amp;nbsp; (das man in der webdarstellung nicht sieht ohne "quelltext betrachten")
+i.d.r.
+i. d. r.
+i.&nbsp;d.&nbsp;r.
+z.b.
+z. b.
+z.&nbsp;b.
+zb.
+bzw.
+d.h.
+d. h.
+d.&nbsp;h.
+jährl.
+u.a.
+u. a.
+u.&nbsp;a.
+mtl.
+wöchentl.
+tägl.
+hl.
+hll.
+ital.
+türk.
+engl.
+span.
+lat.
+mio.
+ca.
+Hrsg.
+sog.
+o.g.
+o. g.
+o.&nbsp;g.
+dzt.
