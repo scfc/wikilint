@@ -99,21 +99,6 @@ if (param()) {
 
 	&read_files($language);
 
-	# write some log
-	my @months = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
-	my @weekDays = qw(Sun Mon Tue Wed Thu Fri Sat Sun);
-	my ($second, $minute, $hour, $dayOfMonth, $month, $yearOffset, $dayOfWeek, $dayOfYear, $daylightSavings) = localtime();
-	$year = 1900 + $yearOffset;
-	$minute = "0$minute" if ( length( $minute ) == 1 );
-	$second = "0$second" if ( length( $second ) == 1 );
-	$now = "$hour:$minute:$second, $weekDays[$dayOfWeek] $months[$month] $dayOfMonth, $year";
-
-	if ( $url && !$testpage ) {
-		open(LOG, ">> ./$0.log") || die "cant write $0.log\n";
-		print LOG "$now:".localtime().":$language:$url:$random_page:".$ENV{"REMOTE_ADDR"}."\n";
-		close(LOG);
-	}
-
 	if ( $testpage ) {
 		open(TEST, "< ./test.html") || die "cant open test.html\n";
 		while(<TEST>) {
