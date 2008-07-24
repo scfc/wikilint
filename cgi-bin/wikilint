@@ -25,15 +25,6 @@
 # contains UTF8-characters so take care with editor and terminal-settings, win98 doesn't work!
 #
 
-#$debug =10;
-#$debugcat=1;
-
-# use test.html, no downloading from WP
-$debugdry=0;
-
-# removed debug condition temporarily (Arnomane)
-$debug=0;
-
 $title = "wikilint (Beta Version)";
 $tool_base = "http://toolserver.org";
 $tool_path = "/~timl/cgi-bin";
@@ -79,29 +70,9 @@ use open ':utf8';
 require "config.pm";
 require "autoreview.pm";
 $myname ="wikilint";
-# test
-#require "config_t.pm";
-#require "autoreview_t.pm";
-#$myname ="WP-autoreview_t.pl";
 
-if (param() || $debugdry ) {
-	# override stuff for testing
-	if ( $ARGV[0] eq "test" ) {
-		$debugdry=1;
-		$selftest=1;
-		$do_typo_check = 1;
-		$url = "http://de.wikipedia.org/wiki/Amphetamin";
-		$language = "de";
-		$remove_century=1;
-		$developer =1;
-		#$debug =9;
-	}
-	elsif ( !$debugdry ) {
-		($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
-	}
-	else {
-		$language = "de";
-	}
+if (param()) {
+	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
 
 	if ( $random_page ) {
 		$url = &find_random_page($language);
@@ -118,23 +89,13 @@ if (param() || $debugdry ) {
 		$url =~ /.+\/(.+)/;
 		$link_lemma = $1;
 	}
-	$title_lemma = $link_lemma if ( !$debugcat );
+	$title_lemma = $link_lemma;
 	$title_lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
 	utf8::decode($title_lemma);
 	$title_lemma =~ s/_/ /g;
 	$title_lemma = "Testseite" if ( $testpage );
 
 	&begin_html();
-
-	if ( $debug ) {
-		print "debug:<p>\n";
-		print 
-		"URL from form: <a href=\"$url\">$url</a>",p,
-		"Language: ",$language,p,
-		"Random: ",$random_page,p,
-		"link_lemma: ",$link_lemma,p,
-		hr;
-	}
 
 	&read_files($language);
 
@@ -153,7 +114,7 @@ if (param() || $debugdry ) {
 		close(LOG);
 	}
 
-	if ( $testpage || $debugdry ) {
+	if ( $testpage ) {
 		open(TEST, "< ./test.html") || die "cant open test.html\n";
 		while(<TEST>) {
 			$page .= $_;
@@ -204,8 +165,6 @@ exit;
 
 sub begin_html {
 	if ( $online ) {
-		# removed debug condition (Arnomane)
-
 		print header (-type => 'text/html; charset=utf-8'),
 		       start_html(-title=>"$title $title_lemma",
 				-encoding=>'utf-8',
@@ -292,12 +251,8 @@ sub parse_form {
 	die if ( $oldid && $oldid =~ /\D/ );
 	die if ( $language && $language !~ /^\w\w$/ );
 
-begin_html() if ( $developer && $debug > 8 );
-print "url: $url<br>\n" if ( $developer && $debug > 8 );
 	utf8::decode($url);
 	utf8::decode($lemma);
-print "url: $url<br>\n" if ( $developer && $debug > 8 );
-print "lemma: $lemma - $lemma_conv<p>\n" if ( $developer && $debug > 8 );
 
 	if ( $action eq "show_avoid_words_de" ) {
 		&begin_html();
@@ -399,8 +354,6 @@ print "lemma: $lemma - $lemma_conv<p>\n" if ( $developer && $debug > 8 );
 	}
 
 			#&begin_html();
-	#print '$url, $language, $random_pagem, $testpage, $remove_century, $action, $oldid);<br>' if ( $debug &&  $developer);
-	#print "($url, $language, $random_pagem, $testpage, $remove_century, $action, $oldid);<br>" if ( $debug &&  $developer);
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
 }
 
@@ -438,16 +391,6 @@ sub output {
 
 		print br,"Problem-Quote f&uuml;r <a href=\"$url\">$search_lemma</a>: <b>$quotient</b> (nur bedingt aussagekräfig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)", p;
 
-		if ( $developer && $debug ) {
-			foreach my $grades ( @problem_quotient_grades ) {
-				my ( $from, $to, $grade ) = split(/-/, $grades );
-				if ( $quotient >= $from && $quotient <= $to ) {
-					$this_grade = $grade;	
-				}
-			}
-			
-			print br,"Grobe Schulnote zum Vergleich: <b>$this_grade</b>", p;
-		}
 		&create_review_summary_html( $review_letters, $language );
 		#&create_review_summary_html( $review_letters, $language ) if ( !$developer);
 

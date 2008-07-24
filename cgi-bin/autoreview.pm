@@ -74,12 +74,6 @@ sub download_page {
 	die if (length($language) != 2 );
 	die "evil url" if ($down_url =~ /[ ;]/ || $down_url =~ /\.\./ );
 
-	print "oldid: $oldid<p>\n" if ( $debug && $developer);
-	print "URL: $url<p>\n" if ( $debug && $developer);
-	print "Lemma: $lemma<p>\n" if ( $debug && $developer);
-	print "search Lemma: $search_lemma<p>\n" if ( $debug && $developer);
-	print "down-URL: $down_url<p>\n" if ( $debug && $developer);
-
 	#$down_url =~ s/’/%E2%80%99/g;
 
 	my ($page ) = &http_download($down_url, $ignore_error );
@@ -93,7 +87,6 @@ sub download_page {
 			$redir_to = $1;
 			$redir_to =~ s/#.*//;
 			$redir_to = uri_escape_utf8($redir_to);
-print "IS REDIR: recursion_depth: $recursion_depth - $page - $redir_to <br>\n" if ( $developer && $debug ); 
 			$page = &download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
         }
 	else {
@@ -213,7 +206,6 @@ sub do_review {
 	$self_lemma_tmp =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
 
 	# if the lemma contains a klemp, ignore it in the article, e.g. [[Skulptur.Projekte]]
-print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $debug );
 	if ( $self_lemma_tmp =~ /[[:alpha:]][[:lower:]]{2,}[,.][[:alpha:]]{3,}/ ) {
 		$dont_look_for_klemp = 1;
 		$extra_message .= "<b>Klemp im Lemma</b>: Klemp-Suche deaktiviert.<br>\n";
@@ -292,7 +284,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 #print "XXXXXXXXXX $ page XXXXX<p>\n";
 			if ( $times ) {
 				$en_lemma = $1;
-				print "ENG: $en_lemma<p>\n" if ( $developer && $debug );
 				$eng_message ="(<a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$en_lemma&go=Seite\">$en_lemma</a>) ";
 			}
 			$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt oder selbst auf den Commons nach <a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$search_lemma&go=Seite\">$search_lemma</a> suchen (eventuell unter dem englischen Begriff $eng_message oder dem lateinischen bei Tieren & Pflanzen).\n"; 
@@ -348,15 +339,12 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 					$times = $page =~ s/$typo/$seldom$1<\/span><sup class=reference><a href=#TYPO>[TYPO ?]<\/a><\/sup>/g;
 					$review_level += $times * $seldom_level;
 					$review_letters .="o" x $times;
-					print "lemma: $self_lemma - TYPO: $typo \n" if ( $times && $developer && $debug );
 				}
 			}
 			( $page ) = &restore_stuff_quote( $page );
 		}
 	}
 	##########################################################
-
-	print "search_lemma: $search_lemma<p>\n" if ( $developer && $debug > 10 );
 
 	my $lola=0;
 
@@ -675,7 +663,6 @@ print "SELF_LEMMA: $self_lemma  - $self_lemma_tmp <br>\n" if ( $developer  && $d
 			$line !~ /^-R-R\d+-R-$/
 		) {
 			$lola++;
-print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 		}
 
 		# PLENK & KLEMP
@@ -892,12 +879,6 @@ print "LOLA: #$line#<br>\n" if ($developer && $debug > 8 );
 				$times = $line_copy =~ s/(\[\[[^\]]{0,80}?):([^\]]{0,160}?\]\])/$1DPLPERS$2/;
 			} until ( !$times );
 			
-if ( $debug > 8 && $developer ) {
-my $line_copy_tmp = $line_copy;
-$line_copy_tmp =~ s/&/&amp;/g;
-print "TOSPLIT: $line_copy_tmp<p>\n" 
-}
-
 			my ( @sentences ) = split(/[\:.!\?;]/, $line_copy );
 
 			foreach my $sentence ( @sentences ) {
@@ -913,7 +894,6 @@ print "TOSPLIT: $line_copy_tmp<p>\n"
 				$sentence_tmp =~ s/\[\[[^\]\|]+?\|//g;
 				# remove my own tags to avoid counting them as words
 				$sentence_tmp =~ s/<.+?>//g;
-print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\n" if ( $developer && $debug > 9 );
 
 				if ( !$dont_count_words_in_section_title ) {
 					my ( @words ) = split(/ +/, $sentence_tmp);
@@ -965,8 +945,6 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 						if ( $count_words > $longest_sentence ) {
 							$longest_sentence = $count_words;
 						}
-
-						print "LONG SENTENCE: $count_words<br>\n" if ( $developer && $debug >8 );
 
 						# restore removed HTML-comments and the like:
 						$sentence_tmp_restored = &restore_stuff_to_ignore( $sentence, "substitue_tags" );
@@ -1168,19 +1146,11 @@ print "SENTENCE TO COUNT: $dont_count_words_in_section_title: $sentence_tmp<br>\
 				$review_letters .="E" x $times;
 			}
 		}
-else {
-if ( $debug > 10  && $developer ) {
-my $line_copy_tmp = $line_copy;
-$line_copy_tmp =~ s/&/&amp;/g;
-print "NOT AT ALL TOSPLIT: $line_copy_tmp<p>\n" 
-}
-}
 
 		# lower-case beginning of sentence
 		# the blank in the searchstring is to avoid e.g. "bild:image.jpg" inside a <gallery>
 		if ( !$open_ended_sentence ) {
 			$times = $line =~ s/^([[:lower:]][[:lower:]]+? )/$seldom$1<\/span><sup class=reference><a href=#LC>[LC ?]<\/a><\/sup>/g;
-print "LC: $line \n" if ( $developer && $debug > 8 );
 			$review_level += $times * $seldom_level;
 			$review_letters .="a" x $times;
 		}
@@ -1204,7 +1174,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 		}
 		elsif ( $line =~ /;(\s*)?(&lt;.+?&gt;)?$/ ) {
 			$open_ended_sentence = 1;
-#print "XXX: $line <br>\n" if ( $developer && $debug );
 		}
 		# default to open end
 		else {
@@ -1314,7 +1283,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 				$linkto_org = $1;
 				$linkto = lc($linkto_org);
 				$count_linkto{ $linkto }++;
-				print "X:$linkto ---- $word<br>\n" if ( $debug > 8 && $developer );
 			}
 			elsif ( 
 				$word =~ /\[{0,1}https{0,1}:\/\// && 
@@ -1336,8 +1304,6 @@ print "LC: $line \n" if ( $developer && $debug > 8 );
 					$extra_message .= $seldom."Weblink außerhalb von ==Weblinks== und &lt;ref&gt;:...&lt;\/ref&gt;:<\/span> $word (Siehe <a href=\"http://de.wikipedia.org/wiki/WP:WEB#Allgemeines\">Wikipedia:Weblinks</a>)<p>\n";
 					$review_level += $never_level;
 					$review_letters .="J";
-
-print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 			}
 
 			# check for WP:BKL
@@ -1346,8 +1312,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 
 				# 1st 100% case-sensitive match, bec of [[USA]] vs. [[Usa]]
 				if ( $is_bkl{ "$linkto_org" } ) {
-					print "BKL:$linkto_org ---- $word<br>\n" if ( $debug > 8 && $developer );
-
 					# remove _ already otherwise links to WP with blank AND wrong casing don't work
 					$linkto_tmp = $linkto_org;
 					$linkto_tmp =~ s/_/ /g;
@@ -1367,8 +1331,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 						lc($linkto) ne "gen" &&
 						lc($linkto) ne "gas" 
 				) {
-					print "BKL:$linkto ---- $word<br>\n" if ( $debug > 8 && $developer );
-
 					# remove _ already otherwise links to WP with blank AND wrong casing don't work
 					$linkto_tmp = $linkto;
 					$linkto_tmp =~ s/_/ /g;
@@ -1577,13 +1539,11 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	# do self-wikilinks
 	$self_lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
         utf8::decode($self_lemma);
-	print "Selflink: $self_lemma<p>\n" if ( $developer && $debug );
 	my $self_linkle = "http://de.wikipedia.org/wiki/$self_lemma";
 	$times = $page =~ s/(\[\[)$self_lemma(\]\]|\|.+?\]\])/$never$1<a href=\"$self_linkle\">$self_lemma<\/a><\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>$2/g;
 	$review_level += $times * $never_level;
 	$review_letters .="m" x $times;
 
-	#print "doing: /bin/grep -e \"\[\[$self_lemma\]\]\" $redir_file<p>\n" if ( $developer && $debug );
 	my $redirs_list = "";
 	open(GREP,"-|") || exec "/usr/bin/grep","\\\[\\\[$self_lemma\\\]\\\]", $redir_file;
 	while (<GREP>) {
@@ -1599,8 +1559,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 		$redir =~ /\[\[(.+?)\]\]...\[\[(.+?)\]\]/;
 		my $from = $1;
 		my $to = $2;
-		print "searchgin for redirects from: -$from- <p>\n" if ( $developer && $debug );
-		#print "Redir: $redir - from: -$from- to: -$to- <p>\n" if ( $developer && $debug );
 
 		my $self_linkle = "http://de.wikipedia.org/wiki/$from";
 		# avoid regexp-grouping by () in $from (e.g. "A3 (Autobahn)" with \Q...\E
@@ -1608,8 +1566,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 		$review_level += $times * $never_level;
 		$review_letters .="m" x $times;
 	}
-
-	print "number of words: $num_words<p>\n" if ( $developer && $debug > 3 );
 
 	# one wikilink to one lemma per $max_words_per_wikilink words is ok (number made up by me ;)
 	my $too_much_links = $num_words/$max_words_per_wikilink +1;
@@ -1636,7 +1592,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 
 	# made up number by me: one references per $words_per_reference words or a litrature-chapter in an article < $words_per_reference words
 	$count_ref = $count_ref || "0";
-	print "count_ref:  $count_ref / num_words: $num_words < ( 1/  words_per_reference: $words_per_reference ) && ( section_sources: -$section_sources- - min_words_to_recommend_references:  $min_words_to_recommend_references<p>\n" if ( $developer && $debug > 3 );
 	# count_ref: 0 / num_words: 3403 < ( 1/ words_per_reference: 500 ) && ( section_sources: 1 - min_words_to_recommend_references: 200
 
 	# don't complain on ... 
@@ -1713,7 +1668,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 #print "XXXXXXXXXX $ page XXXXX<p>\n";
 				if ( $times ) {
 					$en_lemma = $1;
-					print "ENG: $en_lemma<p>\n" if ( $developer && $debug );
 					$eng_message ="(<a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$en_lemma&go=Seite\">$en_lemma</a>) ";
 				}
 				$extra_message .= "${proposal}Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (z.B. Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise <a href=\"http://de.wikipedia.org/wiki/Wespe#Weblinks\">Wespe#Weblinks</a>. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt oder selbst auf den Commons nach <a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$search_lemma&go=Seite\">$search_lemma</a> suchen (eventuell unter dem englischen Begriff $eng_message oder dem lateinischen bei Tieren & Pflanzen). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen\">Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen</a>\n"; 
@@ -1813,21 +1767,8 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 
 	if ( $count_fillwords > $fillwords_ok ) {
 		$review_level += ( $count_fillwords - $fillwords_ok ) /2 ;
-		print "RRR: ".( $count_fillwords - $fillwords_ok ) /2 ."<br>\n" if ( $developer && $debug );
 	}
-	print "fillwords_ok: $fillwords_ok - fillwords_this_article: $count_fillwords - longest_sentence: $longest_sentence\n" if ( $developer && $debug );
 	$review_letters .= "r" x $longest_sentence;
-
-	if ( $developer && $debug > 7 ) {
-		my ( @letters ) = split(//, $review_letters );
-		my %count_letters;
-		foreach my $letter ( @letters ) {
-			$count_letters{ $letter }++;
-		}
-		foreach my $letter ( sort keys %count_letters ) {
-			print "$letter - ".$count_letters{ $letter }."<br>\n";
-		}
-	}
 
 	# round review_level
 	my $review_level= int (( $review_level +0.5)*100)/100;
@@ -1835,8 +1776,6 @@ print "JJJ: $word<br>\n$line_org<br>\n" if ( $developer && $debug > 8 );
 	my $quotient= int (( $review_level / $num_words *1000 +0.5)*100)/100;
 
 	$quotient -= 0.5;
-
-	print "quote: $quotient - review_level: $review_level / num_words:  $num_words<p>\n" if ( $debug >5  && $developer );
 
 	# restore exclamation marks
 	$page =~ s/&iexcl;/!/g; 
@@ -2179,7 +2118,6 @@ sub restore_stuff_to_ignore {
 	do {
 		$times2 = $page =~ s/-R-I(-G)?(\d+)-R-.*?-R-/restore_one_item( $2, \%remove_refs_and_images_array, $substitute_tags)/ges;
 		$total += $times2;
-print "RESTORE REFS $1 $2 <br>\n" if ( $developer && $debug > 8 );
 	} until ( !$times2 || $total == $todo );
 	
 	($page );
@@ -2271,7 +2209,6 @@ sub remove_stuff_for_typo_check {
 		$line_copy =~ s/Q-REP/'/g;
 
 		# also does ''quote 'blub' quote on'' ??
-#print "REPLACED QUOTE: $lola : <$1><p>\n" if ( $times && $developer && $debug > 8 );
 
 		$line_copy =~ s/(\"([^"]{3,}?)\")/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
 		$line_copy =~ s/(&lt;i&gt;(.{3,}?)&lt;\/i&gt;)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
@@ -2309,8 +2246,6 @@ sub remove_refs_and_images {
 	# this one isn't perfect: [^<] because it prevent <ref> haha <- like this </ref> but still
 	# better than expanding an open <ref name=cc> over the whole page
 	$page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, "count_ref" )/gesi;
-
-print "DDD: $page\n" if ( $developer && $debug > 9 );
 
 	# the (...){0,8} is for links inside the picture description, like [[Image:bild.jpg|This is a [[tree]] genau]]
 	# the ([^\]\[]*?) is for images with links in it
@@ -2536,12 +2471,10 @@ sub remove_one_item {
 	if ( $do_count_ref && $item =~ /<\/ref>/i ) {
 		$count_ref++;
 	}
-print "removed: $item <br>\n" if ( $developer && $debug > 8 );
 	
 	# this is to keep $line and $line_org_wiki in &do_review() in sync, not allowed to remove lines from page!
 	my $num_of_lines = $item =~ s/\n/\n/g;
 	my $append_newlines = "\n" x $num_of_lines;
-print "ADD LINES: $num_of_lines - $item <p>\n" if ( $developer && $num_of_lines && $debug > 8 );
 
 	( "$prefix$global_removed_count-R-$append_newlines-R-" );
 }
@@ -2554,6 +2487,6 @@ sub restore_one_item {
 		$return =~ s/</&lt;/g;
 		$return =~ s/>/&gt;/g;
 	}
-print "restore: $return <br>\n" if ( $developer  && $debug > 8 );
+
 	( $return );
 }
