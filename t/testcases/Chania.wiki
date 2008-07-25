@@ -1,0 +1,579 @@
+{{Infobox Gemeinde Griechenland
+|Name=Gemeinde Chania
+|Name-el=Δήμος Χανίων
+|Wappen=[[Bild:Führt kein Wappen.svg|100px]]
+|Verwaltungsregion=[[Kreta]]
+|Präfektur=[[Chania (Präfektur)|Chania]]
+|lat_deg=35 |lat_min=31 |lat_sec=0
+|lon_deg=24 |lon_min=01 |lon_sec=0
+|Höhe=0 bis 200
+|Höhenbezugspunkt=(-)
+|Fläche=12,6 km²
+|Einwohner=53.373
+|Einwohnerquelle=2001<ref>[http://www.ypes.gr/topiki.htm Angaben des griechischen Innenministeriums]</ref>
+|Bevölkerungsdichte=4.236 Ew./km²
+|Siegelbild=Bild:Chania Logo.png
+|Sitz=Chania
+|Gemeindegliederung= 1 Gemeindebezirk
+|LAU=940100
+|Website= www.chania.gr
+|Präfektur-Lagebild=Bild:Dimos Chanion.png
+}}
+
+'''Chania''' ({{ELSneu|Χανιά}} {{N.Pl.}}) ist eine Hafenstadt auf der [[Griechenland|griechischen]] Insel [[Kreta]]. Sie ist mit etwa 54.000&nbsp;Einwohnern die zweitgrößte Stadt der Insel und Verwaltungssitz der [[Chania (Präfektur)|Präfektur Chania]], die den gesamten Westen Kretas umfasst. Chania war von 1841 bis 1971 die Hauptstadt der Insel Kreta.
+
+Östlich von Chania in der ''Souda-Bucht'' befindet sich der Fährhafen der Stadt, von dem eine tägliche Verbindung nach [[Piräus]] besteht. Der internationale [[Flughafen Chania|Flughafen von Chania]] befindet sich ebenfalls außerhalb der eigentlichen Stadt ungefähr 12&nbsp;Kilometer nordöstlich auf einer Ebene der ''[[Akrotiri (Kreta)|Akrotiri]]-Halbinsel''.
+
+== Geografie ==
+=== Geografische Lage ===
+Die Stadt Chania liegt an der Nordküste der Insel Kreta, rund 100&nbsp;Kilometer westlich der heutigen Inselhauptstadt [[Iraklio]]. Die Gemeinde Chania ist flächenmäßig die kleinste der nach ihr benannten Präfektur, da sie fast ausschließlich auf das Stadtgebiet beschränkt ist. Chania war bis 1971 Verwaltungssitz der gesamten Insel. Heute ist die Stadt mit über einem Drittel der Einwohner der Präfektur die beherrschende Metropole Westkretas.
+
+Das ''Kretische Meer'' nördlich der Insel bildet zwischen den Halbinseln ''Rodopou'' und ''Akrotiri'' den ''Golf von Chania'', an dessen Südostseite an der Landenge zu ''Akrotiri'' die Hafenstadt erbaut wurde. Östlich der Landenge liegt die ''Bucht von Souda'', ein durch die Halbinsel ''Akrotiri'' geschützter [[Naturhafen]]. Südlich von Chania steigt das kretische Inland stetig an und bildet mit dem bei klaren Wetter gut zu sehenden Gebirgszug der ''[[Lefka Ori|Weißen Berge]]'' ''(Lefka Ori)'' eine nur von wenigen Passstraßen durchbrochene Barriere zur Südküste Kretas.
+<!--beispielsweise Landschaften, Berge, Flüsse etc.-->
+
+=== Geologie ===
+Die Insel Kreta liegt auf dem ''[[Südägäischer Inselbogen|Südägäischen Inselbogen]]'', einer Verlängerung des ''[[Dinarisches Gebirge|Dinarischen Gebirgsbogens]]'' über die ''Hellenische Bergkette'' auf dem griechischen Festland bis zum ''[[Taurusgebirge]]'' in [[Kleinasien]]. Entstanden sind diese [[Alpidische Orogenese|Alpidischen Gebirgsbildungen]] ab der erdgeschichtlichen Periode des frühen [[Tertiär (Geologie)|Tertiär]], die heute als [[Paläogen]] bezeichnet wird, als die [[Afrikanische Platte]] begann, sich durch die [[Kontinentaldrift]] unter die [[Eurasische Platte]] zu schieben. Auch heute noch driftet die Afrikanische Platte jährlich etwa vier Zentimeter nordwärts, was vereinzelt zu [[Erdbeben]] in der Region führen kann.<ref>[http://www.evai.de/pages/info_klima.htm Geologische Entstehung und Entwicklung]</ref>
+
+Das in der [[Subduktion]]szone der beiden Kontinentalplatten gelegene Kreta kippt bei den [[Geotektonik|geotektonischen]] Aktivitäten um seine Nord-Süd-Achse, der Westen der Insel steigt an, während der Osten leicht absinkt. Da sich das Stadtgebiet von Chania auf einer Ebene des Nordwesten Kretas befindet, sind die dortigen Gesteinsschichten auch jüngeren erdgeschichtlichen Datums, als beispielsweise die der südlich angrenzenden ''Weißen Berge''. Chania steht auf [[Fels]]- und [[Sedimente und Sedimentgesteine|Sedimentformationen]] aus dem Jungtertiär oder [[Neogen]] (zirka 30&nbsp;Millionen Jahre alt), die aus einer Zeit stammen, als die nordwestliche Küstenebene noch Teil des Meeres war.<ref>[http://books.google.de/books?id=zfuaM-fNBvsC&pg=PA285&lpg=PA285&dq=Lambert+Schneider+/+Kreta+/+Seite+18&source=web&ots=CFUxE-shmr&sig=wdqH8d3dEWQz9Po7W_FFP-YxflU&hl=de#PPA18,M1 Lambert Schneider: ''Kreta'', Dumont-Kunstreiseführer, Seite 18]</ref>
+<!--=== Ausdehnung des Stadtgebiets ===-->
+
+=== Nachbargemeinden ===
+Im Osten und Südosten grenzen die Gemeinden [[Akrotiri (Kreta)|Akrotiri]] und [[Souda]] an das Stadtgebiet von Chania. Westlich der Stadt liegt die Gemeinde [[Nea Kydonia]]. Die südlich an die geschlossene Stadtbebauung angrenzenden Vororte in Richtung Schnellstraße ''(New Road)'' gehören schon zur Gemeinde [[Eleftherios Venizelos (Gemeinde)|Eleftherios Venizelos]].<ref>[http://www.chania.gr/dimoishow.jsp?lang=de&id=25 Chania mit Umgebung]</ref>
+{| width="50%" align="center"
+|-
+| width="33%" align="center" |
+| width="33%" align="center" |
+| width="33%" align="center" | Akrotiri
+|-
+| width="33%" align="center" | Nea Kydonia
+| width="33%" align="center" | [[Bild:Compass card (de).svg|100px]]
+| width="33%" align="center" | Akrotiri
+|-
+| width="33%" align="center" | Eleftherios Venizelos
+| width="33%" align="center" | Eleftherios Venizelos
+| width="33%" align="center" | Souda
+|}
+Seine ehemalige Bedeutung als Hafenstadt hat Chania vollständig an die Nachbargemeinde Souda abgeben müssen: Alle Fährlinien mit dem ausgeschriebenen Ziel „Chania“ laufen den tiefen Naturhafen der ''Souda-Bucht'' (Όρμος Σούδας) an, der Stadthafen von Chania hat für größere Schiffe eine zu geringe Wassertiefe.
+
+=== Stadtgliederung ===
+[[Bild:Chania 01.JPG|thumb|<div align="center">Venezianischer Hafen</div>]]
+Das Stadtgebiet von Chania ist in die Stadtviertel Chalepa, Evraiki, Kastelli, Kumkapi, Nea Chora, Splantzia und Topanas unterteilt.
+
+=== Klima ===
+Auf Kreta herrscht ein [[Mittelmeerklima|mediterranes]] Klima mit milden regenreichen Wintern und heißen trockenen Sommermonaten. Dabei gibt es erhebliche klimatische Unterschiede zwischen den verschiedenen Regionen der Insel. So sind die durchschnittlichen Temperaturen an der Südküste etwas wärmer als im Norden und die der Bergregionen im allgemeinen etwas frischer. Auch fallen im Osten und Süden der Insel weniger Niederschläge als in der Mitte, im Westen und im Norden. Durch die hohen Berge Kretas wechseln Wetterlagen häufig schnell und Winde kommen auf, die sich auch zu orkanartigem Sturm verstärken.<ref>[http://www.carrental-crete.com/wetter-kreta-de.html Klima Kreta]</ref>
+
+Chania liegt an der westlichen Nordküste der Insel Kreta. Das Klima gilt hier als gemäßigt und trockenwarm. Von Mai bis September gibt es kaum Regenfälle, insgesamt scheint an 70&nbsp;Prozent der Tage eines Jahres die Sonne. In den etwas kühlen Wintermonaten von November bis März sind in den [[Lefka Ori|Weißen Bergen]] südlich von Chania Schneefälle möglich, die nur sehr selten auch die Ebene an der Nordküste erreichen. Die Schneedecke in den Bergen bleibt bis etwa Ende Mai erhalten. Die heißen und trockenen Sommermonate führen dazu, dass die durch den feuchten Winter und das warme Frühjahr üppig wuchernde Vegetation ohne künstliche Bewässerung in den Ebenen der Insel verdorrt.<ref>[http://www.chaniacrete.gr/de/index.php?option=com_content&task=view&id=22&Itemid=37 Klima Chania]</ref>
+
+{{Klimatabelle
+| TABELLE = 
+| DIAGRAMM TEMPERATUR = deaktiviert
+| DIAGRAMM NIEDERSCHLAG = deaktiviert
+| DIAGRAMM NIEDERSCHLAG HÖHE = deaktiviert
+| QUELLE = [http://www.holidaycheck.at/klima-wetter_Chania-ebene_oid-id_3881.html Wetterdaten Chania]
+| Überschrift = 
+| Ort = Chania
+| hmjan = 16
+| hmfeb = 16
+| hmmär = 17
+| hmapr = 20
+| hmmai = 23
+| hmjun = 27
+| hmjul = 29
+| hmaug = 29
+| hmsep = 27
+| hmokt = 24
+| hmnov = 21
+| hmdez = 18
+| lmjan = 9
+| lmfeb = 9
+| lmmär = 10
+| lmapr = 12
+| lmmai = 15
+| lmjun = 19
+| lmjul = 22
+| lmaug = 22
+| lmsep = 19
+| lmokt = 17
+| lmnov = 14
+| lmdez = 11
+| avjan = 
+| avfeb = 
+| avmär = 
+| avapr = 
+| avmai = 
+| avjun = 
+| avjul = 
+| avaug = 
+| avsep = 
+| avokt = 
+| avnov = 
+| avdez = 
+| nbjan = 
+| nbfeb = 
+| nbmär = 
+| nbapr = 
+| nbmai = 
+| nbjun = 
+| nbjul = 
+| nbaug = 
+| nbsep = 
+| nbokt = 
+| nbnov = 
+| nbdez = 
+| shjan = 3
+| shfeb = 5
+| shmär = 6
+| shapr = 8
+| shmai = 10
+| shjun = 12
+| shjul = 13
+| shaug = 12
+| shsep = 10
+| shokt = 6
+| shnov = 6
+| shdez = 4
+| rdjan = 14
+| rdfeb = 9
+| rdmär = 10
+| rdapr = 6
+| rdmai = 4
+| rdjun = 1
+| rdjul = 1
+| rdaug = 1
+| rdsep = 2
+| rdokt = 6
+| rdnov = 11
+| rddez = 14
+| wtjan = 16
+| wtfeb = 15
+| wtmär = 16
+| wtapr = 16
+| wtmai = 19
+| wtjun = 22
+| wtjul = 24
+| wtaug = 25
+| wtsep = 24
+| wtokt = 23
+| wtnov = 20
+| wtdez = 17
+}}
+
+== Geschichte ==
+=== Altertum ===
+Erste Siedlungsspuren aus dem Altstadtviertel Kastelli reichen bis in die [[Jungsteinzeit]] 3400 bis 3000&nbsp;[[v. Chr.]] zurück. Damit ist Chania eine der ältesten ununterbrochen bewohnten Siedlungsstätten Europas. Als Stadt wurde sie in [[Minoische Kultur|minoischer]] „Vorpalast“-Zeit (3000-1900&nbsp;v.&nbsp;Chr.) unter dem Namen ''Kudonija'' erbaut, aus dem sich der spätere [[Antikes Griechenland|antike]] Name ''Kydonia'' (gemäß der [[Tabula Peutingeriana|Peutingerschen Tafel]]: ''Cydonia'') ableitete. Belegt ist der Name ''Kudonija'' erstmals in [[Linearschrift B]] auf einer Tontafel. Nach antiker Überlieferung wurde die Stadt durch den mythischen König [[Minos]] gegründet und nach dem [[Heros]] ''Kýdon'', dem Sohn des [[Apollon]] und der [[Akakallis]], Tochter des Minos, benannt.<ref>Dr. Antonis Sp. Vassilakis (Archäologe): ''Kreta'', Verlag I. Mathioulakis & Co.</ref>
+
+In den minoischen Epochen der „Neu-“ und „Nachpalastzeit“ (1600–1100&nbsp;v.&nbsp;Chr.) war ''Kudonija'' eine blühende Stadt mit großen, in sich geschlossenen Wohnhäusern zwischen Straßen und Plätzen, und höchstwahrscheinlich einem Palast als Zentrum. Dass in Chania kein minoischer Palast gefunden wurde, ist möglicherweise dem Umstand zuzuschreiben, dass die Siedlung nie aufgegeben wurde und spätere Generationen ihre Gebäude vornehmlich mit Baumaterial errichteten, welches sie aus älteren Bauwerken der Stadt gewannen. ''Kudonija'' hatte eine bedeutende Keramikproduktion und Handelsverbindungen bis [[Ägypten]], [[Zypern]] und [[Palästina (Region)|Palästina]]. Selbst die Zeit der Zerstörung der meisten kretischen Paläste um die Jahre 1450&nbsp;bis 1425&nbsp;v.&nbsp;Chr. durch die [[Mykenische Kultur|Mykener]] überstand die Stadt neben ''[[Knossos]]'' eher schadlos.
+
+Ausgrabungsstätten der minoischen Kultur befinden sich hauptsächlich auf dem ''Kastelli-Hügel'', am ''Platia Agias Akaterinis''. Die [[Nekropole]] wurde vor dem Süd- und Ostteil der damaligen Stadt im Gebiet ''Mazali'' und im Bereich des heutigen Stadions lokalisiert. Nach 1400&nbsp;v.&nbsp;Chr. dominierte jedoch die mykenische Kultur der griechischen [[Achaier]]. Einen Austausch beider Kulturen, der minoischen und der mykenischen, hatte es schon vor der mykenischen Eroberung der Insel ab 1450 v. Chr. gegeben. Manche Historiker nehmen an, dass z. B. ''Knossos'' deshalb nicht wie andere Paläste Kretas zerstört wurde, weil es dort schon eine große Anzahl achaiischer Kolonisten gab, die dafür sorgten, dass die Stadt rasch übergeben wurde. Ähnliches könnte auch auf die nordwestliche Handelsmetropole ''Kudonija'' zutreffen. Eine Hypothese geht sogar für ''Knossos'' um 1450&nbsp;v.&nbsp;Chr. von der Machtübernahme einer mykenischen Dynastie aus, die im Anschluss versuchte, ganz Kreta zu unterwerfen, wobei die übrigen minoischen Paläste zerstört wurden.<ref>P. Haider: ''Griechenland – Nordafrika'', Impulse der Forschung, Band 53, Darmstadt 1988</ref> Diese Dynastie wiederum wurde um 1375&nbsp;v.&nbsp;Chr. durch mykenische Eroberer vom Festland verdrängt.<ref>[http://books.google.de/books?id=4lhcqo0PqE0C&pg=PA99&lpg=PA99&dq=Knossos+/+Mykener&source=web&ots=1sQ8MXwN8T&sig=SO4BOPorv9vQvwZWwOo2lPm_wdA&hl=de Wolfgang Schuller: ''Griechische Geschichte'', Oldenbourg Wissenschaftsverlag 2002, Seiten 99/100, ISBN: 3486490850]</ref>
+
+Während die anderen minoischen Paläste nach deren Zerstörung nie wieder bezogen wurden, herrschten in ''Knossos'' und eventuell auch in der nun ''Kydonia'' genannten Hafenstadt auf dem Gebiet des heutigen Chania achaisch-mykenische Herrscher.<ref>[http://www.kreta-reise.info/Hauptseiten/museum.htm Minoische Kultur, Nachpalastzeit (kreta-reise.info)]</ref> Eine [[Multikulturelle Gesellschaft|multikulturelle]] Stadt blieb sie auch nach dem allmählichen Niedergang der mykenischen Kultur und dem Beginn der [[Dorier|dorischen]] Einwanderung nach Kreta. In der von [[Homer]] überlieferten [[Odyssee]], die in diesem Zeitraum angesiedelt ist, wird ''Kydonia'' zwei mal erwähnt, im Dritten Gesang, Zeile&nbsp;292, und im Neunzehnten Gesang, Zeile&nbsp;176 (in der Übersetzung von [[Johann Heinrich Voß]]):<ref>[http://gutenberg.spiegel.de/?id=5&xid=1270&kapitel=1#gb_found Spiegel Online, Projekt Gutenberg-DE]</ref>
+{|
+| valign="top" |
+Aus dem Dritten Gesang:
+
+''Also ward Menelaos, wie sehr er auch eilte, verzögert,''<br />
+''Um den Freund zu begraben, und Totengeschenke zu opfern.''<br />
+''Aber da nun auch jener, die dunkeln Wogen durchsegelnd,''<br />
+''Seine gerüsteten Schiffe zum hohen Gebirge Maleia''<br />
+''Hatte geführt; da verhängte der Gott weithallender Donner''<br />
+''Ihm die traurigste Fahrt, sandt' ihm lautbrausende Stürme,''<br />
+''Und hoch wogten, wie Berge, die ungeheuren Gewässer.''<br />
+''Plötzlich zerstreut' er die Schiffe; die meisten verschlug er gen Kreta,''<br />
+''Wo der Kydonen Volk des Jardanos Ufer umwohnet.''<br />
+''An der gordynischen Grenz', im dunkelwogenden Meere,''<br />
+''Türmt sich ein glatter Fels den dringenden Fluten entgegen,''<br />
+''Die der gewaltige Süd an das linke Gebirge vor Phästos''<br />
+''Stürmt; und der kleine Fels hemmt große brandende Fluten.''
+| valign="top" |
+| valign="top" |
+Aus dem Neunzehnten Gesang:
+
+''Nun so will ich’s dir sagen, wiewohl du mein bitteres Leiden''<br />
+''Mir noch bitterer machst; denn Schmerz empfindet doch jeder,''<br />
+''Welcher so lang' als ich von seiner Heimat entfernt ist,''<br />
+''Und mit Jammer umringt so viele Städte durchwandert.''<br />
+''Aber ich will dir doch, was du mich fragest, verkünden.''<br />
+''Kreta ist ein Land im dunkelwogenden Meere,''<br />
+''Fruchtbar und anmutsvoll und ringsumflossen. Es wohnen''<br />
+''Dort unzählige Menschen, und ihrer Städte sind neunzig:''<br />
+''Völker von mancherlei Stamm und mancherlei Sprachen. Es wohnen''<br />
+''Dort Achaier, Kydonen und eingeborene Kreter,''<br />
+''Dorier, welche sich dreifach verteilet, und edle Pelasger.''<br />
+''Ihrer Könige Stadt ist Knossos, wo Minos geherrscht hat,''<br />
+''Der neunjährig mit Zeus, dem großen Gotte, geredet.''
+|}
+In der [[Geometrischer Stil|geometrischen]] (etwa 1050–700&nbsp;v.&nbsp;Chr.) und der sich anschließenden [[Archaik|archaischen]] Epoche (etwa 700-500&nbsp;v.&nbsp;Chr.) entwickelte sich ''Kydonia'' zu einer der wichtigsten [[Polis|Poleis]] Westkretas. Die bedeutendsten Städte Kretas wie auch ganz Griechenlands bildeten kleine selbstständige Stadtstaaten (Poleis), die sich oft gegenseitig befehdeten. Noch in archaischer Zeit, im Jahre 525 v. Chr., wurde ''Kydonia'' von [[Samos]] her neu kolonisiert. Später folgten Siedler von [[Ägina (Griechenland)|Aigina]]. Eine zweite Einwanderungswelle von diesen beiden Inseln kam ab 431&nbsp;v.&nbsp;Chr. in die Polis. Enge Verbindungen gab es auch mit ''[[Kyrene]]''. Die Neusiedler übernahmen den aus der mykenischen Zeit überlieferten Namen ''Kydonia'', der übersetzt „[[Quitte]]“ bedeutet. Die klassischen Münzen ''Kydonias'' zeigten die aus [[Vorderasien]] nach [[Europa]] eingeführte Frucht als Wappen der Stadt.
+[[Bild:Chania clay figurine.gif|thumb|upright|<div align="center">Tonfigur aus Kydonia<br /><small>(4. bis 3.Jahrhundert v. Chr.)</small></div>]]
+Im Jahre 429&nbsp;v.&nbsp;Chr. verheerte ein Angriff der [[Athen]]er Flotte während des [[Peloponnesischer Krieg|Peloponnesischen Krieges]] das Küstengebiet bei ''Kydonia'', während die Stadt durch die Athener nicht eingenommen werden konnte. Konkurrierende Städte waren jedoch meist die Poleis in der Nachbarschaft wie ''[[Aptera]]'', ''[[Elyros]]'', ''[[Polyrrhenia]]'' mit seinem Hafen ''[[Phalasarna]]'' und ''Knossos''. Dass man gelegentlich auch Bündnisse miteinander einging, zeigt sich am Krieg im Jahre 220&nbsp;v.&nbsp;Chr. zwischen ''Knossos'' und ''[[Lyktos]]'', bei dem ''Kydonia'' an der Seite ''Knossos’'' kämpfte.
+
+Nach einem kurzzeitigen Bündnis ''Kydonias'' mit [[Makedonien]], das 220&nbsp;v.&nbsp;Chr. auf Kreta interveniert hatte, um die Verhältnisse zu stabilisieren, verlor Makedonien 196 v. Chr. nach dem [[Zweiter Makedonisch-Römischer Krieg|zweiten Krieg]] gegen [[Römisches Reich|Rom]] die Hegemonie über Griechenland. Wieder unabhängig, kam es erneut zu Kriegen der rivalisierenden kretischen Städte untereinander. 189&nbsp;v.&nbsp;Chr. kämpfte ''Kydonia'' gegen ''Knossos'' und ''[[Gortys|Gortyn]]'', 184&nbsp;v.&nbsp;Chr. eroberte die Stadt wegen Auseinandersetzungen um die Kontrolle über das ''Diktynnäische Heiligtum'' auf der Halbinsel ''Rodopou'' die Polis ''Polyrrhenia'' mit der Hafenstadt ''Phalasarna''. Diese Konflikte endeten erst 67&nbsp;v.&nbsp;Chr. mit der Besetzung der Insel durch die römischen Truppen.
+
+Seit dem Jahr 69&nbsp;v.&nbsp;Chr. begann das [[Römisches Reich|Römische Reich]], Kreta zu besetzen. 67 v. Chr. wurde die Insel [[römische Provinz]]. ''Kydonia'' kam als eine der ersten Städte Kretas in den Machtbereich des Imperiums und erhielt wegen seiner römerfreundlichen Haltung den Status einer freien Stadt. Bis zum 3.&nbsp;Jahrhundert&nbsp;n.&nbsp;Chr. ist das Recht auf eine eigene Münzprägung bezeugt, Münzen aus Kydonia stellten beispielsweise eine ''Nymphe mit Kranz'' und den ''Heros Kýdon'', gesäugt durch eine Hündin, dar. Die Eroberung Kretas durch die Römer bedeutete das Ende der Bürgerkriege und den Beginn einer langen Friedenszeit mit wirtschaftlicher Blüte. Hauptstadt der Provinz Kreta und Kyrenaika ''([[Creta et Cyrene]])'' wurde das bei der Eroberung der Insel mit Rom verbündete ''Gortyn''. In die Zeit der römischen Herrschaft fällt auch die allmähliche [[Christianisierung]] der Insel im 3.&nbsp;und 4.&nbsp;Jahrhundert. ''Kydonia'' wird in kirchlichen Quellen als Sitz eines Bischofs erwähnt, der Teilnehmer an der [[Konzil|Synode]] von [[Sofia#Antike|Serdica]] ([[Sofia]]) in den Jahren 343/344&nbsp;n.&nbsp;Chr. war.
+
+=== Mittelalter ===
+==== Byzantinische und arabische Zeit ====
+Nach dem Tod des Kaisers [[Theodosius I.]] im Jahre 394 kam es 395 zur Teilung des Römischen Reiches. ''Kydonia'' lag mit Kreta in dessen Ostteil, der sich ab 610 vom lateinisch geprägten Oströmischen Reich zum griechisch dominierten [[Byzantinisches Reich|Byzantinischen Reich]] umbildete. Gleichzeitig zehrten die ständigen Abwehrkämpfe gegen [[Slawen]] und [[Bulgaren]] im Norden, [[Sassanidenreich|Sassaniden]] ([[Perser (Volk)|Perser]]) im Osten und [[Sarazenen]] ([[Araber]]) im Süden und Südosten an der Substanz des Ostreiches. Die meisten Städte der antiken Zivilisation wurden aufgegeben oder schrumpften auf die Größe von befestigten Dörfern, den sogenannten [[Kastron|Kastra]].
+
+Von ''Kydonia'' ist aus der ersten byzantinischen Epoche wenig überliefert. Archäologische Grabungen belegen lediglich die Existenz einer großen altchristlichen [[Basilika]] auf dem ''Kastelli-Hügel''. In den Jahren 824 bis 828 eroberten schließlich die Sarazenen die Insel, wobei ''Kydonia'' möglicherweise wie die meisten Städte Kretas zerstört wurde. Es wird angenommen, dass es sich bei den Eroberern um nach einem Aufstand im [[Emirat von Córdoba]] im heutigen Spanien nach [[Alexandria]] geflohene Araber handelte, die unter ihrem Anführer, dem [[Emir]] [[Abu Hafs Omar]]<ref>[[:en:Abu Hafs (pirate)|Abu Hafs (pirate), Artikel der englischen Wikipedia]]</ref>, schon 823 einen Beutezug ins südliche Kreta unternahmen. Mehrere Rückeroberungsversuche des geschwächten Byzantinischen Reiches in den Jahren 825, 826, 828 und 902 blieben erfolglos.<ref>[https://claroline.uni-klu.ac.at/eeo/index.php/Byzanz Alpen-Adria-Universität Klagenfurt]</ref><ref>[http://www.kreta-reisen.de/info/byzantinisch.php?PHPSESSID= Kreta-reisen.de]</ref>
+
+[[Bild:The_Arab_fleet_attacks_Crete_John_Skylitzes.jpg|thumb|316px|<div align="center">Arabische Eroberung Kretas<br />(Darstellung in der Chronik des [[Johannes Skylitzes|Ioannis Scylitzes]])</div>]]
+Aus der Zeit der Sarazenenherrschaft über Kreta wird der heutige Name der Stadt Chania abgeleitet. Dabei soll es sich im Ursprung nicht um eine arabische Bezeichnung gehandelt haben. Vielmehr wurde für die nach der Zerstörung ''Kydonias'' neu errichtete Siedlung der Name des ehemaligen Vorortes ''Alchanía'' (nach dem Gott ''Velchanos'', oder altgriechisch ''[[Hephaistos]]''), der auf einer Inschrift verzeichnet ist, übernommen. Im Arabischen wurde daraus ''Al Hanim'', was übersetzt „Herberge“ bedeutet. Nach der byzantinischen Rückeroberung der Insel 960/961 unter dem General [[Nikephoros II.|Nikephoros Phokas]] ersetzte man die arabisch klingende Vorsilbe „Al“ durch den griechischen Artikel „Ta“ (Plural: die) zu ''Ta Chania'', woraus später im Lateinischen ''La Canea'' wurde. In jedem Fall war der Ort bis ins erste Jahrhundert der späteren Herrschaft der [[Republik Venedig|Venezianer]] nur eine kleine, wenn auch befestigte, bäuerliche Siedlung.
+
+Nach 961, dem Jahr der Wiedereingliederung Kretas in das Byzantinische Reich, wurde die vermutlich zerstörte hellenistische Stadtmauer ''Kydonias'' um den ''Kastelli-Hügel'' durch eine neue Befestigung ersetzt, um weitere arabische Angriffe abwehren zu können. Viele Soldaten des Nikophoros Phokas ließen sich auf Kreta nieder und auch aus anderen Teilen des Reiches kamen neue griechische Siedler, die den Bevölkerungsverlust durch Kriegsfolgen und Abwanderung während der Herrschaft der Araber ausglichen. Ab 1082 siedelte [[Kaiser]] [[Alexios I. (Byzanz)|Alexios&nbsp;I. Komnenos]] vermehrt adelige Familien auf der Insel an, denen großer Grundbesitz und bestimmte Privilegien übertragen wurden. Über den Ort Chania ist aus diesem Zeitabschnitt nichts weiter überliefert, sieht man einmal von der regelmäßigen Nennung in den Protokollen kirchlicher Synoden ab. Die zweite byzantinische Epoche Kretas endete nach der Einnahme [[Konstantinopel]]s am 13.&nbsp;April 1204 durch die [[Kreuzzug|Kreuzfahrer]] des venetianisch finanzierten [[Vierter Kreuzzug|Vierten Kreuzzuges]] unter der Führung des [[Piemont|piemontesischen]] [[Montferrat|Markgrafen]] [[Bonifatius I. (Montferrat)|Bonifatius von Montferrat]], der die Insel zur Begleichung der Kriegsschulden im Jahr 1210 für 10.000 Silbermark an die Venezianer verkaufte.
+
+==== Venezianische Zeit ====
+Die [[Republik Venedig]] musste zunächst gegen das [[Ligurien|ligurische]] [[Genua]] und die kretische Bevölkerung um die Vorherrschaft über die Insel kämpfen. Den mit Venedig rivalisierenden Genuesen war es ab 1207 unter [[Enrico il Pescatore]] gelungen, Teile Kretas zu besetzen. Nach der Vertreibung der Genuesen 1212 und der Einnahme der gesamten Insel bis 1218, bei ständigen Aufständen der einheimischen Bevölkerung und Rückeroberungsversuchen durch Byzanz, siedelten die neuen Herren der Insel zur Festigung ihrer Herrschaft Venezianer aus der Mutterstadt an. Nach verschiedenen Angaben handelte es sich um 3.000 bis 10.000 Menschen, darunter auch Angehörige vieler Adelsfamilien. Chania wurde als ''La Canea'' anfänglich Verwaltungssitz des [[Exarchat (Kirchenwesen)|Exarchats]] ''Dorsoduro'', später des [[Bezirk|Distrikts]] ''Canea''. Auch nach ''La Canea'' kamen viele Venezianer, die zunächst auf dem nun ''Castel Vecchio'' genannten ''Kastelli-Hügel'' innerhalb der byzantinischen Stadtmauern siedelten, später auch außerhalb der alten Befestigung im neu entstehenden Wohnviertel ''Vourgo''. Es wurden mehrere neue Brunnen und ein Aquädukt angelegt und im Zentrum entstanden herrschaftliche Gebäude des venezianischen Adels. Aus dieser Zeit stammen die Hauptstraße ''La Corsa'' und die Kirchen ''Santa Maria'' und ''Duomo''.
+
+[[Bild:Chania Ven.jpg|thumb|left|<div align="center">Hafen von Canea</div>]]
+Mit der Zunahme der Bevölkerung gilt das Jahr 1252 als Neugründung des Ortes als Stadt. Nachdem die Genuesen ''La Canea'' den Venezianern 1263 wieder entrissen hatten, befestigten die letzteren nach der Rückeroberung 22 Jahre später 1285 das um ''Castel Vecchio'' herum erweiterte Stadtgebiet mit einer neuen Mauer. Ab 1320 begann man dann durch Aufschüttung einer [[Mole]] mit dem Bau des Hafens. Durch ihn wurde ''La Canea'' zur wichtigsten ökonomischen und politischen Verbindung zwischen Kreta und Venedig, daher der damalige Beiname Chanias als „Venedig Kretas“. Gesellschaftlich führte jedoch die Einsetzung des venezianischen [[Lehnswesen|Feudalsystem]]s und der Versuch, die [[Orthodoxe Kirchen|Orthodoxie]] entschieden einzuschränken, zu zahlreichen Aufstandsbewegungen. In einem Zeitraum von zwei Jahrhunderten werden 27&nbsp;größere oder kleinere, lokal begrenzte Erhebungen sozialen und nationalen Charakters erwähnt.
+
+Im Verlauf der über 450&nbsp;Jahre währenden Herrschaft Venedigs über die Insel Kreta schwankte die Bevölkerungszahl sehr stark. Während der Eroberungs- und Aufstandsphase von etwa 1211 bis 1300 hatte Kreta kaum mehr als 50.000 Einwohner. Zum Ausgleich des Arbeitskräftemangels in ''La Canea'' veranlasste Venedig im Jahr 1302, dass jeder, der seinen Feudalherren nicht kannte, automatisch Höriger der Kommune sein sollte.<ref>Thiriet, Délibérations n. 66, 23. August 1302.</ref> Die Einwohnerzahl stieg danach jedoch wieder an, dürfte während des [[Aufstand der venezianischen Siedler auf Kreta (1363–1366)|Aufstands der venezianischen Siedler]] (1363 bis 1366) wieder stark gefallen sein, bis sie um 1400 einen Stand von etwa 100.000 Menschen erreichte, von denen jeder fünfte in den Städten wohnte. Ein Jahrhundert später, um 1500, lebten auf der Insel wohl an die 200.000 Einwohner.<ref>Hippolyte Noiret, Documents inédits pour servir à l’histoire de la domination vénitienne en Crète de 1380 à 1485, Paris 1892, S. XIII.</ref>
+
+Der griechisch-orthodoxen Bevölkerungsmehrheit stand eine katholische Gesellschaft der venezianischen Oberschicht gegenüber, bestehend aus Feudalherren sowie ziviler und militärischer Verwaltung. Deren Bischof wurde in Venedig bestimmt,<ref>So etwa 1387 bei einer Wahl zwischen Giovanni Lombardo, einem Karmeliter, der sich gegen den Franziskaner Giovanni Querini durchsetzte (Thiriet, Délibérations des assemblées vénitiennes, n. 882, Juli 1387).</ref> ebenso wie der militärische Befehlshaber, der Kastellan<ref>So etwa 1391 ein Andrea Dandolo, obwohl dessen Bruder Marco bereits Kastellan von Rethimno war (Thiriet, Délibérations n. 914, 15. Januar 1391.</ref>. Die vier obersten Räte von Kreta waren zunächst verpflichtet, in einem festen Turnus ihr zweites Amtsjahr als Rektoren von ''La Canea'' oder ''Retimo'', dem heutigen Rethymno, zu verbringen, während jeweils zwei in ''Candia'', heute Iraklio, amtierten. Erst ab 1306 amtierte ein jährlich neu gewählter Rektor in ''Canea''.<ref>Thiriet, Délibérations n. 125, 27. November 1306.</ref> Auch die wichtigen Posten des Leiters des Arsenals, Admiral genannt, wurden an Venezianer vergeben, meist Adlige, doch gelegentlich auch Nichtadlige, was am zu niedrigen Gehalt lag, das man 1409 erhöhte.<ref>Thiriet, Délibérations n. 1109, 17. September 1409.</ref> Einige Kastellane besaßen Weingüter nahe der Stadt und stritten um deren Besitz.<ref>Thiriet, Délibérations n. 1171, 13. November 1410.</ref> Komplizierte oder bedeutende Rechtsfälle wurden in Venedig entschieden, weniger bedeutende vor Ort, wobei eine Kanzlei für den Schriftverkehr zur Verfügung stand, deren Vorstand aus Venedig geschickt wurde. Das gleiche galt für Gerichts- und Palastschreiber.<ref>Thiriet, Délibérations n. 501, 6. Oktober 1343.</ref> Die Kastellane der benachbaren Inseln, wie Cerigo, mussten am Ende ihrer Amtszeit in ''La Canea'' Bericht erstatten und sich einen Monat in der Stadt zur Verfügung halten.<ref>Thiriet, Délibérations n. 905, 29. Mai 1390.</ref>
+
+Ähnlich wie in Venedig sorgte eine Polizeitruppe unter Führung der ''Domini de nocte'' beziehungsweise ''Domini de die'' („Herren der Nacht“ / „Herren des Tages“) für Sicherheit auf den Straßen. Dort stand auch ein Gefängnis zur Verfügung. Zur Versorgung der Bevölkerung und der Flotte wurden bereits 1331 drei Speicher für Getreide gebaut.<ref>Thiriet, Délibérations n. 464, 25. Februar 1331.</ref> Dennoch klagten die kleinen Feudalherren von ''Retimo'' und ''La Canea'' 1345 gemeinsam in Venedig darüber, dass die Preise für ihren Weizen zu niedrig seien, und dies ihre Existenz gefährde.<ref>Thiriet, Délibérations n. 516, 26.- 29. September 1345.</ref> Doch Venedigs Wirtschaftspolitik war so sehr auf die Mutterstadt fixiert, dass erst der Siedleraufstand - von dem sich ''Canea'' mindestens bis September 1363 fernhielt<ref>Thiriet, Délibérations n. 704f., 18. September 1363.</ref> - sie zu verspäteten Erleichterungen veranlasste.
+
+[[Bild:Chania Port.jpg|thumb|645px|center|<div align="center">Venezianischer Hafen von Chania</div>]]
+Schon bevor die Osmanen 1453 Konstantinopel eroberten, galt Kreta als stark gefährdet. So scheute man sich nicht, verurteilte Straftäter hierher ins Exil zu schicken, sofern es sich um Adlige handelte. In einem Fall wurde ein Mörder, der sich trotz Folter nicht überführen ließ, nach ''La Canea'' deportiert.<ref>Thiriet, Délibérations n. 1459, 26. März 1451.</ref> 1456 ging der [[Rat der Zehn]] mit scharfen Mitteln gegen Giacomo Foscari vor, der mit dem Sultan verschlüsselte Briefe ausgetauscht haben soll, worin er Mehmet aufforderte, eine Flotte nach ''La Canea'' zu schicken.<ref>Thiriet, Délibérations n. 1525, 7.-12. Juni 1456.</ref> 1462 kam es abermals zu einer Verschwörung unter Führung eines Siphi Vlastos.<ref>Thiriet, Délibérations n. 1617, 28. Juli 1462.</ref> Den zahlreichen Flüchtlingen, die sich zunehmend untereinander verbanden, misstraute Venedig allemal.<ref>So ergriff man Vorsichtsmaßnahmen gegen Bünde der Flüchtlinge auf Korfu und in anderen Kolonien (Thiriet, Délibérations n. 1616, 21. Juli 1462.</ref>
+
+Die Kultur der italienischen Stadtrepublik konnte sich ohne die ständige Präsenz Venedigs auf Kreta und seiner gegenüber der  griechischen Bevölkerungsmehrheit zahlenmäßig geringen venezianischen Siedler nicht dauerhaft halten, was auch dem Umstand geschuldet scheint, dass sich nach der [[Osmanisches Reich|osmanischen]] Eroberung Konstantinopels 1453 viele griechische Flüchtlinge aus der byzantinischen Kaiserstadt, darunter Aristokraten, Geistliche und Künstler, auf der Insel ansiedelten und der griechischen-byzantinischen Kunst und Kultur zu einer neuen Blüte verhalfen. So entstand beispielsweise aus der überlieferten byzantinischen Malerei unter Vermischung mit Elementen der italienischen [[Renaissance]] eine neue künstlerische Richtung, die sogenannte [[Kretische Schule]]. Zu ihren bedeutendsten Vertretern zählte der 1530 in ''La Canea'' geborene [[Michael Damaskenos|Michail Damaskinos]].<ref name="Desipris">G. Desipris, K. Santorineou: ''Kreta – Rethymno'', Abschnitt „Geschichte“, Seite 39</ref><ref>[[:en:Cretan School|Cretan School, Artikel der englischen Wikipedia]]</ref>
+
+=== Neuzeit ===
+Anfang des 16.&nbsp;Jahrhunderts bedrohten erstmals die Expansionsbestrebungen des [[Osmanisches Reich|Osmanischen Reiches]] die Insel Kreta. Aus diesem Grunde wurde 1536 für ''La Canea'' der Bau einer neuen Befestigung mit fünf Bastionen, einem breiten Graben und der Festung (griechisch ''Firkas'') am Hafen geplant und begonnen, die die Stadt rechteckig umschloss. Konstrukteur war der [[Verona|Veroneser]] [[Architekt]] [[Michele Sanmicheli]]. Die Arbeiten an dem etwa zwei Kilometer langen äußeren Festungsgürtel um die stark gewachsene Stadt, bei denen das bis dahin noch erhaltene antike Theater zerstört wurde, zogen sich bis 1590 hin. In diesen Jahren, die man als Blütezeit des venezianischen ''La Canea'' bezeichnen kann, entstanden außerdem die meisten heute noch erhaltenen [[Palast|Palazzi]] und auch der Hafen, einschließlich der großen ''Arsenale'' ''(Neoria)'', Werften zur Aufbewahrung und Instandsetzung der Schiffe, erhielt sein heutiges Gesicht.
+
+==== Osmanische Zeit ====
+In der Zwischenzeit hatten die Osmanen bereits ab 1538 unter Führung des Admirals [[Khair ad-Din Barbarossa|Chaireddin Barbarossa]] Teile Mittel- und Westkretas zeitweilig erobert. Dieser erste Angriff kam vor den Mauern ''[[Iraklio|Candias]]'' zum Stillstand. 1645 landete dann ein 60.000&nbsp;Mann starkes osmanisches Heer auf 400&nbsp;Schiffen westlich von ''La Canea'' nahe des Klosters ''Moni Odigitrias Gonias'' bei [[Kolymbari]] und nahm am 23.&nbsp;Juni des Jahres die der Stadt vorgelagerte Festungsinsel ''Agii Theodori'' im ''Golf von Chania'' ein.<ref name="Desipris">G. Desipris, K. Santorineou: ''Kreta – Rethymno'', Abschnitt „Geschichte“, Seite 39</ref> Nach zweimonatiger Belagerung fällt ''La Canea'' am 22.&nbsp;August 1645 als eine der ersten Städte Kretas in die Hände der [[Türken|türkischen]] Eroberer. Schon im selben Jahr der Einnahme der Stadt 1645 beginnen die [[Muslim|muslimischen]] Türken mit dem Bau einer [[Moschee]] am Hafen, der ''Hassan-Pascha-Moschee'', heute als ''Janitscharen-Moschee'' eine Sehenswürdigkeit Chanias.
+
+[[Bild:Plan von Canea (1651).jpg|thumb|left|<div align="center">Festung Canea zur Zeit des Candia-Krieges (1651)</div>]]
+[[Bild:Chania Ottoman.jpg|thumb|left|<div align="center">Hafen in osmanischer Zeit</div>]]
+Die nun türkisch ''Hanya'' genannte Stadt wurde 1651, da die eigentliche Hauptstadt Kretas ''Candia'' der [[Belagerung von Candia|Belagerung durch die osmanischen Truppen]] 21&nbsp;Jahre lang standhielt, Verwaltungssitz der gesamten Insel. Sitz des [[Pascha (Titel)|Paschas]], und damit neue Inselhauptstadt (wenn auch nominell erst ab 1841), blieb ''Hanya'' auch nach der Einnahme ''Candias'' im Jahre&nbsp;1669. Die Festungsinseln ''Gramvousa'' und ''Souda'' fielen erst 1692 bzw. 1715 unter osmanische Kontrolle, die erstere bei dem Versuch der Venezianer, ''Hanya'' zurück zu erobern. Unter der Osmanenherrschaft änderte sich auch das Stadtbild. Kirchen wurden in Moscheen umgewandelt und erhielten Minarette, öffentliche Bäder ([[Hamam]]s) und Brunnen wurden gebaut und die vor allem in den Vierteln ''Kastelli'' und ''Splantzia'' siedelnden türkischen Zuwanderer errichteten zahlreiche große Privathäuser mit Holzerkern. Viele Christen hingegen verließen Kreta, um den Unterdrückungsmaßnahmen der neuen Herrscher zu entgehen, und fanden Zuflucht auf den [[Ionische Inseln|Ionischen Inseln]].<ref name="Desipris">G. Desipris, K. Santorineou: ''Kreta – Rethymno'', Abschnitt „Geschichte“, Seite 39</ref>
+
+Unter der osmanischen Besatzung kam es mehrfach zu Aufständen der griechisch-orthodoxen Bevölkerung der Insel, die durch das Osmanische Reich niedergeschlagen wurden, der größte 1770 unter [[Daskalogiannis]]. Im Jahr&nbsp;1821, dem Jahr des Beginns der [[Griechische Revolution|Griechischen Revolution]], wurden in ''Hanya'' viele Christen getötet und der Bischof von [[Kissamos]], Melhisethek Thespotakis, in ''Splantzia'' gehängt. Der Aufstand Griechenlands schien schon gescheitert, als der Vizekönig von Ägypten, [[Muhammad Ali Pascha]], den osmanischen Sultan [[Mahmud II.]] 1824 bis 1827 bei der Niederschlagung der Revolution unterstützte. Durch das Eingreifen der Großmächte [[Vereinigtes Königreich von Großbritannien und Irland|Großbritannien]], [[Frankreich]] und [[Russland]], die die Ägyptische Flotte in der [[Schlacht von Navarino]] vernichteten, wurde der osmanische Herrscher jedoch gezwungen, das [[Londoner Protokolle zu Griechenland|Londoner Protokoll]] vom 3.&nbsp;Februar 1830 zu unterzeichnen, durch das der griechische Staat, wenn auch nur auf kleiner Fläche, neu entstand. Seitdem war es das Bestreben der griechischen Bevölkerung Kretas, eine Vereinigung mit dem Mutterland herbeizuführen. Bis 1840 unterstand die Insel allerdings dem ägyptischen Vizekönig, der sie dann einschließlich [[Syrien]]s und [[Palästina (Region)|Palästinas]] nach Intervention von Großbritannien, Russland, [[Preußen]] und [[Kaisertum Österreich|Österreich]] an die Osmanen zurückgeben musste.
+
+Nach dem ''Großen Kretischen Aufstand'' von 1866 bis 1868, bei dem das [[Kloster Arkadi]] zerstört wurde, beschäftigte die kretische Frage erneut die Großmächte. Aber erst nach der Niederlage der Osmanen im [[Russisch-Osmanischer Krieg (1877–1878)|Russisch-Türkischen Krieg]] von 1877/78 wurden den Christen bestimmte Rechte garantiert. Der Freiheitswille war jedoch ungebrochen, und so kam es 1889 und ab Mai&nbsp;1896 erneut zu Aufständen. Den letzteren unterstützte das unabhängige Griechenland mit regulären Truppen und Freiwilligenverbänden, die am 21.&nbsp;Februar&nbsp;1897 Kreta besetzten, was zum [[Türkisch-Griechischer Krieg|Türkisch-Griechischen Krieg]] führte. Auf dem ''Profitis Ilias'', einem 122&nbsp;Meter hohen Berg im Osten des Stadtgebiets von Chania, wurde 1897 als erstes die griechische Fahne aufgezogen. Er ist deshalb für die Kreter von herausragender nationaler Bedeutung. Der Krieg endete mit einem militärischen Sieg der Osmanen. Die griechischen Truppen unter Kronprinz [[Konstantin I. (Griechenland)|Konstantin]] wurden sowohl auf Kreta als auch in [[Thessalien]] entscheidend geschlagen.
+
+[[Bild:Ελευθέριος Βενιζέλος.jpg|thumb|upright|<div align="center">Eleftherios Venizelos</div>]]
+Trotzdem erhielt Kreta durch den Druck der europäischen Großmächte im Friedensvertrag vom 4. Dezember 1897 eine weitgehende [[Autonomie]]. Die Insel wurde darin zu einem internationalen [[Protektorat]] unter der Einsetzung [[Georg von Griechenland|Prinz Georgs]] von Griechenland als Hochkommissar erklärt. Bis zu dessen Regierungsantritt am 9.&nbsp;Dezember&nbsp;1898 in der Hauptstadt Chania übernahm ein Exekutivkommitee kretischer Revolutionäre unter [[Eleftherios Venizelos]] die Verwaltung. Der 1864 im drei Kilometer südlich Chanias gelegenen [[Mournies]] geborene Venizelos hatte als Führer der kretischen [[Enosis]]-Bewegung 1897 bei den Großmächten die Autonomie der Insel erreicht. Unter Prinz Georg war er bis 1901 Justizminister der ersten Regierung. Die kurze Teilselbstständigkeit Kretas ab 1898 bescherte Chania den nominellen Hauptstadttitel eines unabhängigen Staates. Als Folge des Regierungssitzes ließen sich bis 1913 zahlreiche [[Diplomat]]en vor allem im Stadtteil ''Chalepa'' nieder.
+
+==== Griechische Zeit ====
+Im Streit um die „nationale Frage“ entlassen, setzte sich Eleftherios Venizelos ab 1901 an die Spitze der [[Opposition (Politik)|Opposition]], die immer offener eine Vereinigung [[Kreta]]s mit dem griechischen Festland forderte. Durch einen Putsch wurde Prinz Georg 1905 gezwungen zurückzutreten und 1908 wurde die Vereinigung der Insel mit Griechenland beschlossen, die aber erst durch den [[Londoner Vertrag (1913)|Londoner Vertrag]] von 1913 international anerkannt wurde. Eleftherios Venizelos wurde schon 1910 griechischer Premierminister und hisste gemeinsam mit König Konstantin 1913 die griechische Fahne über dem ''Fort Firkas'' am venezianischen Hafen von Chania. Heute ist die südlich an Chania angrenzende Gemeinde mit dem Hauptort Mournies nach ihm benannt und östlich der geschlossenen Bebauung des Stadtgebiets, auf dem ''Profitis Ilias'', befindet sich ein Denkmal für ihn und seinen Sohn [[Sophoklis Venizelos|Sofoklis Venizelos]], dem griechischen Ministerpräsidenten von 1943 bis 1952. Beide sind dort auch bestattet.
+
+[[Bild:Chania agora.gif|thumb|left|<div align="center">Klassizistische Markthalle</div>]]
+[[Bild:Chania Markthalle-1.jpg|thumb|left|<div align="center">Markthalle (Innenansicht)</div>]]
+Chania blieb auch nach der Vereinigung mit Griechenland bis 1971 Sitz der Verwaltung Kretas. Schon in der Zeit der kretischen Unabhängigkeit ab 1898 florierte die Stadt. Nach dem Anschluss an Griechenland wurde in den Jahren 1911 bis 1913 die kreuzförmige klassizistische [[Halle (Architektur)|Markthalle]] ''(Agora)'' errichtet. Sie entstand nach französischem Vorbild der Markthalle in [[Marseille]] und wurde zu einem weiteren Wahrzeichen Chanias. Als Standort wurden Teile des Stadtgrabens und die alte ''Piatta-Forma-Bastion'' gewählt. Dem Bau der Halle fiel leider durch Abriss das venezianische Stadttor ''Porta-Retimiota'' zum Opfer. Die Stadtgestalt änderte sich auch dahingehend, dass die zu Moscheen umfunktionierten Kirchen wieder ihren ursprünglichen Zweck als christliche Gotteshäuser erhielten.
+
+1920 wurde sogar, vor dem Hintergrund des [[Griechisch-Türkischer Krieg|Griechisch-Türkischen-Krieges]] 1919 bis 1922, das Minarett der ''Hassan-Pascha-Moschee'' im Hafen abgerissen. Durch den nach 1923 erfolgten Bevölkerungsaustausch zwischen der [[Türkei]] und Griechenland auf Grund des [[Vertrag von Lausanne|Vertrages von Lausanne]], bei dem die verbliebenen Türken Kreta verließen, wurde das Gebäude dann als Moschee nicht mehr benötigt. Heute dient es Ausstellungszwecken. Nach dem verlorenen Krieg gegen die Türkei wurde Griechenland durch eine Volksabstimmung im April 1924 Republik. Eleftherios Venizelos war in der Folgezeit mehrfach Ministerpräsident, unter ihm wurde im Oktober&nbsp;1930 der türkisch-griechische Freundschaftsvertrag abgeschlossen. In die Opposition gedrängt, musste er 1935 nach einem erfolglosen Aufstand auf Kreta gegen die [[Royalist]]en Griechenland verlassen. Das Land kehrte nach einer erneuten Volksabstimmung am 12.&nbsp;Oktober 1935 zur [[Monarchie]] zurück.
+
+Das Anfang des [[Zweiter Weltkrieg|Zweiten Weltkriegs]] formal neutrale Griechenland erwies sich durch die Annahme der britischen Garantie 1939, der Nichterneuerung des Paktes mit Italien von 1929 und der kriegswirtschaftlichen Unterstützung Großbritanniens faktisch als Verbündeter der [[Alliierte|Westmächte]]. Der Griechenland diktatorisch regierende General [[Ioannis Metaxas|Metaxas]] lehnte am [[Ochi-Tag|28.&nbsp;Oktober 1940]] ein nicht annehmbares italienisches [[Ultimatum]] zur [[Kapitulation]] ab und konnte die angreifenden italienischen Truppen bis hinter die albanische Grenze zurückdrängen. Die griechische Regierung erbat nun Großbritannien um Unterstützung, dessen erste Vorauskommandos schon am 1.&nbsp;November&nbsp;1940 vom ägyptischen [[Alexandria]] aus auf Kreta landeten.
+
+Am 6.&nbsp;April 1941 griff das [[Großdeutsches Reich|Deutsche Reich]] als Verbündeter Italiens in die Kampfhandlungen ein. Im Verlauf des ''[[Balkanfeldzug (1941)|Unternehmens Marita]]'' wurden die griechischen Verbände und das britische Expeditionskorps geschlagen und ganz Griechenland mit Ausnahme Kretas besetzt. Nach der Kapitulation am 21.&nbsp;April 1941 verließen die griechische Regierung unter dem neuen Ministerpräsidenten [[Emmanouil Tsouderos]] und der König [[Georg II. (Griechenland)|Georg II.]] am 23.&nbsp;April das Festland und versuchten, mit britischer Unterstützung von Kreta aus den Widerstand gegen die [[Achsenmächte]] fortzusetzen. Chania wurde dabei bis Mai 1941 Regierungssitz des unabhängigen Griechenland.
+
+==== Deutsche Besatzungszeit ====
+[[Bild:German paratroopers jumping From Ju 52s over Crete.jpg|thumb|<div align="center">Deutscher Angriff auf Kreta</div>]]
+[[Bild:Habour in Suda Bay where two ships are burning.jpg|thumb|<div align="center">Kämpfe in der Souda-Bucht</div>]]
+[[Bild:German assault on Crete.jpg|thumb|<div align="center">Deutsche Luftlandeoperation</div>]]
+Am Dienstag dem 20.&nbsp;Mai gegen 07:15&nbsp;Uhr begann dann die [[Luftlandeschlacht um Kreta]], das unter der deutschen Bezeichnung ''Unternehmen Merkur'' bis dahin größte Luftlandeunternehmen der Geschichte. Die Kämpfe konzentrierten sich hauptsächlich auf das Gebiet um die damalige Hauptstadt Kretas. Bei ersten Angriffen deutscher Bomber wurde die Altstadt von Chania stark beschädigt. Schon am 22.&nbsp;Mai eroberten die deutschen Truppen das [[Flugplatz|Flugfeld]] von [[Maleme]] 15 Kilometer westlich von Chania und konnten es am Folgetag zu einer brauchbaren Operationsbasis ausbauen.
+
+Trotz starker Verluste der Invasoren hatten die personell überlegenen alliierten Verbände der Griechen, Briten, Australier und Neuseeländer der Luftüberlegenheit der deutschen [[Wehrmacht]] nichts gleichwertiges entgegenzusetzen. Mit Ausweitung des Landekopfes bei Maleme fiel am 26.&nbsp;Mai die endgültige militärische Entscheidung zugunsten der deutschen Angreifer, und in der Nacht zum 27.&nbsp;Mai traf das britische Oberkommando den Entschluss, Kreta zu räumen. Noch am 27.&nbsp;Mai fiel die Hauptstadt Chania und am 28. Mai der Hafen in der Souda-Bucht in deutsche Hand. Am 29.&nbsp;Mai 1941 kapitulierte Rethymno.
+
+Die alliierten Truppen zogen sich durch die Berge zur Südküste zurück, vor allem in den Raum [[Sfakia]], von wo es gelang, fast 17.000&nbsp;Mann britischer und Empiretruppen nach Ägypten auszuschiffen. Am 1.&nbsp;Juni 1941 hatten die letzten alliierten Verbände und mit ihnen die griechische Regierung, die von Chania aus durch die ''[[Samaria-Schlucht]]'' geflohen war, Kreta verlassen. Viele Griechen und Briten, die kein Evakuierungsschiff mehr erreicht hatten, verblieben hingegen auf der Insel und hielten sich oft mit Unterstützung der einheimischen Bevölkerung versteckt. Etwa 15.000 alliierte Soldaten gerieten bei der Luftlandeschlacht um Kreta in deutsche Kriegsgefangenschaft.<ref>[http://www.evai.de/pages/info_kreta.htm Kreta (Geschichte)]</ref> Die Kriegsgefangenenlager befanden sich westlich von Chania in der Gegend um [[Galatas (Kreta)|Galatas]] und bei Agii Apostoli.
+
+Nach der vollständigen Einnahme der Insel wurde Kreta in zwei Besatzungszonen aufgeteilt. Während im äußersten Osten, etwa der [[Lasithi|Präfektur Lasithi]] entsprechend, italienische Truppen bis 1943 die Herrschaft ausübten, kam der größte Teil Kretas mit den zentralen Bereichen und dem Westen unter deutsche Militärverwaltung. Sie nahm ihren Sitz in der ''Villa Andromeda'' in Chania, einer 1870 erbauten [[Neoklassizismus (Kunst)|neoklassizistischen]] Villa im Stadtteil Chalepa, etwa einen Kilometer vom Stadtzentrum entfernt, die zwischen 1897 und 1912 schon als deutsches Konsulat gedient hatte.<ref>[http://www.villandromeda.gr/ Villa Andromeda – history & location]</ref>
+[[Bild:Gr-triple-occupation.png|thumb|left|<div align="center">Besatzungszonen Griechenlands<br />Rot: [[Deutsches Reich 1933 bis 1945|Deutsches Reich]], Blau: [[Italien]], Grün: [[Bulgarien]]</div>]]
+Viele Einheimische ergaben sich jedoch nicht der Besatzungsmacht, sondern führten den Krieg aus dem Untergrund heraus, unterstützt durch den britischen Geheimdienst, als sogenannte [[Andartis|Andarten]] (Partisanen) weiter. Im Herbst 1942 gründete sich aus ihnen die nationalliberal orientierte Widerstandsorganisation ''Ethnikis Organosis Kritis'' (EOK, „Nationale Organisation Kretas“). Im Laufe der Besatzungszeit nahmen die Auseinandersetzungen an Härte zu, weshalb von deutscher Seite zeitweise bis zu 50.000 Mann an Wehrmachtsangehörigen auf der Insel stationiert wurden. Auf beiden Seiten blutig geführten Partisanenkämpfen folgten grausame Vergeltungsaktionen der deutschen Truppen an der Zivilbevölkerung, Kriegsverbrechen, bei denen unter anderem 40&nbsp;Dörfer der Insel zerstört und deren Einwohner zu großen Teilen umgebracht wurden.
+
+Auch nicht den Andarten zugerechnete Einwohner Kretas wurden Opfer deutscher Verbrechen während der Besatzungszeit. Am 29.&nbsp;Mai 1944 umstellten Einheiten unter dem Befehl des deutschen Kommandanten der „Festung Kreta“, [[General]] [[Bruno Bräuer]], das jüdische Viertel ''Evraiki'' der Stadt Chania. Flüchtende Einwohner wurden erschossen. Fast 300&nbsp;Juden wurden zunächst in das Gefängnis „Agia“ gebracht und sollten Anfang Juni mit dem Transportschiff ''Tanais'' in deutsche Konzentrationslager deportiert werden. Die ''Tanais'' wurde auf der Überfahrt von einem englischen U-Boot torpediert und sank. Fast alle jüdischen Gefangenen, wie auch etwa 600&nbsp;griechische und italienische Gefangene, kamen dabei um. Nur vier der jüdischen Einwohner Chanias sollen überlebt haben.<ref>[http://www.etz-hayyim-hania.org/_resources/articles_pdf/article0009.pdf „A Cretan Exodus, May-June 1944“, Katina Singelakis, 5. August 2002]</ref>
+
+[[Bild:Kernfestung-Kreta.jpg|thumb|<div align="center">Rückzugsraum der deutschen Truppen auf Kreta (Ende 1944)</div>]]
+Chania blieb bis zum 23.&nbsp;Mai 1945 von deutschen Truppen besetzt. Im Herbst 1944 zogen sie sich mit etwa 12.000 Soldaten auf die „Kernfestung Westkreta“, das Gebiet um Chania, zurück und unternahmen von dort aus bis zum Juni 1945 noch einzelne Einsätze gegen kretische Partisanen. Nach der Kapitulation der deutschen Armee sollte die „Kernfestung“ von britischen Truppen übernommen werden. Diese befanden sich bald nach ihrer Ankunft auf der Insel im Kampf gegen die [[Kommunismus|kommunistisch]] geführte ''[[ELAS|Griechische Volksbefreiungsarmee]]'' (gr. ''Ellinikos / Ethnikos Laikos Apelevtherotikos Stratos'', ''ELAS''), dem militärischen Flügel der ''Nationalen Befreiungsfront'' (gr. ''Ethniko Apelevtherotiko Metopo'', ''ΕΑΜ''). Sie beließen den Deutschen die Waffen, damit diese nicht den Kretern in die Hände fallen sollten, und ließen sich sogar von deutschen Panzerwagen Geleitschutz geben.
+
+Die Kreter betrachteten diese Wendung ihrer vorherigen Verbündeten als Verrat. So ging der Kampf gegen die deutschen Truppen auf Kreta nahtlos in den [[Griechischer Bürgerkrieg|Bürgerkrieg]] über, der zwischen der griechischen Regierung, den Briten und national gesinnten Kräften auf der einen, sowie Linksliberalen, Sozialisten und Kommunisten der ELAS auf der anderen Seite geführt wurde. Der Bürgerkrieg suchte allerdings Kreta in weit geringerem Maße heim als das griechische Festland. Traditionell war ein Großteil der Kreter antimonarchistisch eingestellt, so dass die von den Briten mit militärischem Nachdruck unterstützte Rückkehr von [[Georg II. (Griechenland)|König Georg&nbsp;II.]] auch außerhalb der EAM keine breite Unterstützung fand. Die Auseinandersetzungen betrafen unter anderem Verrats- und Kollaborationsvorwürfe. <ref>Marlen von Xylander: ''Die Kapitulation''. in: Karina Raeck: ''Andartis – Monument für den Frieden''. Athen 2005. S.188ff</ref> Die von der nationalen Führung der EAM angeordnete Revolte konnte auf Kreta nicht durchgeführt werden. Im April 1947 versuchten die Kommunisten erneut einen Aufstand. Die von Giannis Podias organisierte ''Demokratische Armee Kretas'' wurde aber innerhalb weniger Monate entwaffnet, ihr Anführer Podias wurde am 2.&nbsp;Juli 1947 erschossen.
+
+==== Nachkriegszeit ====
+Der Wiederaufbau nach Zweitem Weltkrieg und Bürgerkrieg führte zu einer regen Bautätigkeit in Chania. Dies betraf vor allem die Altstadt, die durch die deutschen Bombenangriffe 1941 zu etwa einem Drittel zerstört war. Im Jahr 1965 wurde die gesamte Altstadt innerhalb der alten Festungsmauern unter Denkmalschutz gestellt. Die ausufernde Zersiedelung des Umlands der Stadt konnte dadurch jedoch nicht verhindert werden.
+
+Auf der benachbarten Halbinsel Akrotiri wurden eine Raketenabschussbasis der NATO eingerichtet und weite militärische Sperrgebiete ausgewiesen, die bis heute den Unwillen der Bevölkerung hervorrufen.
+
+Im Jahre 1971 verlor Chania den Status der „Hauptstadt Kretas“, den es seit 1898 innehatte, an das weit größere Iraklio. Als Zeugnis der Hauptstadt-Epoche sind etliche neoklassizistische Botschafts- und Diplomatenvillen im Stadtteil Chalepa erhalten.
+[[Bild:Port of Ancona Anek Lines.jpg|thumb|<div align="center">Fähre der ANEK Lines</div>]]
+Der Untergang der Fähre [[Heraklion (Schiff)|Iraklion]] auf der Fahrt von Piräus nach Chania am 8.&nbsp;Dezember 1966 mit 241&nbsp;Todesopfern veranlasste den populären Erzbischof von Kastelli-Kissamos, [[Irineos Galanakis|Irineos]], die Initiative zur Gründung einer „kretischen“ Schifffahrtslinie zu ergreifen. Durch Ausgabe von Volksaktien wurden die [[ANEK Lines]] mit Sitz in Chania gegründet. Der große Erfolg diese Unternehmens, das zunächst den Fährbetrieb von Chania und Iraklio aufnahm und seit 1989 auch internationale Linien zwischen Italien und Griechenland bedient sowie zahlreiche Beteiligungen und Tochtergesellschaften erworben hat, stärkte nicht nur das Selbstbewusstsein der Kreter (nicht zufällig wurden 1972 in Iraklio nach ähnlichem Konzept die [[Minoan Lines]] gegründet), sondern sichert auch schnelle Transportwege für den Vertrieb der in Westkreta erzeugten Nahrungsmittel.
+
+Anlässlich des 50.&nbsp;Jahrestages der Schlacht um Kreta traf 1991 der deutsche Bundeskanzler Helmut Kohl den griechischen Ministerpräsidenten Konstantinos Mitsotakis in dessen Heimatstadt Chania. Aus diesem Anlass wurden Forderungen nach ausstehenden deutschen Reparationsleistungen laut, die jedoch von der griechischen Regierung nicht unterstützt wurden.
+<!--=== Religionen ===-->
+<!--=== Eingemeindungen ===-->
+
+=== Einwohnerentwicklung ===
+Chania hat seit dem Ende der Fremdherrschaft ein in Schüben verlaufendes starkes Bevölkerungswachstum zu verzeichnen. In der Zeit nach dem Zweiten Weltkrieg war eine wesentliche Ursache die Landflucht, die auf ganz Kreta zu einer Abwanderung aus überwiegend landwirtschaftlichen Gebieten in die Zentren an der Küste führte. Diese durch die touristische Entwicklung verstärkte und mit reger, teilweise „wilder“ Bautätigkeit verbundene Zunahme der Population führte nicht nur zu einer erheblichen Verdichtung der Bevölkerung im eigentlichen Stadtgebiet, sondern auch zu einer Verstädterung und Zersiedelung des Umlandes.
+
+{| class="prettytable"
+|- bgcolor="#e3e2e3" style="text-align:center"
+| colspan="11"|'''Bevölkerungsentwicklung – Stadt Chania und städtisches Umland'''<br /><small>Einwohnerzahlen</small>
+|-
+! Jahr || 1881 || 1900 || 1928 || 1940 || 1951 || 1961 || 1971 || 1981 || 1991 || 2001
+|- align="center" valign="top"
+| '''Stadt<br />Chania'''|| 13.000<br /><small> (Christen: 3.500<br />Moslems:9.500)</small>||20.000||26.000||29.000|| || 38.467||||47.451||50.077 || 53.377
+|- valign="top" style="font-size:small;"
+| Quellen:||colspan="4"|[http://www.crete.gr/el/chania-crete.asp Webseite: crete.gr]||colspan="2"|Grieben: Griech. Inseln, 1966||colspan="2"|[http://www.gtp.gr/LocPage.asp?id=691&SearchType= Greek Travel Pages] || colspan="2"|[http://www.statistics.gr/Documents/yearbook-06.pdf Statist. Jahrbuch 2006]
+|- align="center" valign="top"
+| '''Chania mit<br />städtischem Umland'''||||||||||37.788||49.058||53.026||61.979| || |
+|- valign="top" style="font-size:small;"
+| Quelle:||colspan="4"| || colspan="4"|R. Clogg: Geschichte Griechenlands im 19. und 20. Jahrhundert, Köln 1997, S. 294 || colspan="2"|
+|}
+
+== Politik ==
+=== Parteien ===
+Politisch sehen sich die Chanioten als Erben des noch immer hochverehrten [[Eleftherios Venizelos]] mehrheitlich der linken Mitte verbunden. Besonders deutlich kam das antimonarchistische Erbe Venizelos’ bei dem Referendum 1974 zum Ausdruck, als hier nur eine verschwindend kleine Minderheit von 7,30 % für die Beibehaltung der Monarchie votierte; von den 56 Stimmbezirken Griechenlands fand sich nur im benachbarten Rethymno mit 5,9 % ein noch geringerer Anteil an Monarchisten.
+
+Der aus Chania stammende Neffe von Venizelos, [[Konstantinos Mitsotakis]] dessen Vater und Großvater bereits Abgeordnete waren, wurde erstmals 1946 als Abgeordneter des Wahlkreises Chania ins Parlament gewählt. Er konnte sich bis 1981 noch bei zehn weiteren Wahlen seine Wiederwahl sichern, mit Hilfe des gerade auf Kreta noch verbreiteten Patronage- und Klientelsystems auch nachdem er sich 1965 dem konservativen Lager zugewandt hatte, als „Abtrünniger“ ({{ELSneu|αποστάτης}}) bezeichnet wurde und für wenig geliebte Parteien antrat. Nachdem er jedoch die Parteιführung der konservativen Nea Dimokratia übernommen hatte, konnte er sich in Chania keiner Mehrheit mehr gewiss sein; er kandidierte deshalb ab 1985 in Thessaloniki und Athen.<ref>[http://www.apodimos.com/arthra/IAN_2004/O_KOSTAS_MHTSOTAKHS_PARETITHIKE_APO_BOYLEYTHS_ALLA_SYNEXIZEI_TON_AGONA_TOY/index.htm Biographie: Konstantinos Mitsotakis] (griechisch)</ref>
+
+Seit 1974 erzielte die sozialistische PASOK – wie in ganz Kreta – in allen Parlamentswahlen den größten Stimmenanteil, auf der Ebene des Präfekturbezirks deutlicher als in der Stadt Chania. Dennoch gewann bei den Wahlen 2007 erstmals die konservative Nea Dimokratia (ND) mehr Mandate als die PASOK. Der Wahlkreis wird durch die Abgeordneten Manolis Skoulakis (PASOK), Manousos Voulidakis (ND), Christos Markogiannakis (ND) und Stylianos Nikiforakis (ND) vertreten.
+
+{| class="prettytable"
+|- bgcolor="#e3e3e3" style="text-align:center"
+| colspan="12"|'''Parlamentswahlen 1996–2007'''
+|- bgcolor="#e3e3e3" style="text-align:center"
+| colspan="6"|'''Präfektur Chania'''<br /><small>Sitze im Parlament und Anteil an abgegebenen Stimmen</small> || colspan="5"|'''Gemeinde Chania'''<br /><small>Anteil an abgegebenen Stimmen</small>
+|-
+! || Jahr || 1996 || 2000 || 2004 || 2007 || Jahr || 1996 || 2000 || 2004 || 2007
+|-
+| '''[[Panellinio Sosialistiko Kinima|PASOK]]''' || Sitze<br />Stimmenanteil
+| '''3'''<br />51,9 % || '''3'''<br />52,3 % || '''2'''<br />48,7 % ||''' 1'''<br />44,5 %||||<br />46,3 % ||<br />49,3 % ||<br />45,5 % ||<br />41,2 %
+|-
+| '''[[Nea Dimokratia]]''' || Sitze<br />Stimmenanteil
+| '''2'''<br />31,7 % || '''2'''<br />34,9 % || '''2'''<br />39,3 % || '''3'''<br />38,5 %||||<br />33,5 % ||<br />36,1 % ||<br />40,0 % ||<br />37,9 %
+|-
+| '''[[Kommunistische Partei Griechenlands|KKE]]''' || Sitze<br />Stimmenanteil
+| –<br />5,0 % || –<br />5,0 % || –<br />4,8 % || –<br />6,3 % ||||<br />5,0 % ||<br />4,8 % ||<br />4,8 % ||<br />6,4 %
+|-
+| '''[[Synaspismos]] / [[Synaspismos#SYRIZA|SYRIZA]]''' || Sitze<br />Stimmenanteil
+| –<br />4,5 % || –<br />3,1 % || –<br />3,3 % || –<br />8,0 % ||||<br />6,8 % ||<br />4,5 % ||<br />5,1 % ||<br />7,5 %
+|-
+| '''[[Laikos Orthodoxos Synagermos|LAOS]]''' || Sitze<br />Stimmenanteil
+|<br />||<br />|| –<br />1,0 %|| –<br />2,6 % || |||| ||<br />1,2 % ||<br />3,1 %
+|-
+| '''[[Dimokratiko Koinoniko Kinima|DIKKI]]''' || Sitze<br />Stimmenanteil
+| –<br />3,0 % || –<br />2,9 % || –<br />1,4 % ||<br />||||<br />3,9 % ||<br />2,9 % ||<br />1,6 % ||
+|}
+<small>Quelle: [http://ekloges.singularlogic.gr/pages_en/index.html Angaben des griechischen Innenministeriums]</small>
+
+=== Bürgermeister ===
+[[Kiriakos Virvidakis]] (* 1948 in Chania), Medizinprofessor, Sportler und Sportfunktionär <ref>[http://www.citymayors.com/mayors/chania.html Biografie: Dr. Kiriakos Virvidakis] (englisch)</ref> wurde im Oktober 2002 zum Bürgermeister der Stadt Chania gewählt. Er ist Mitglied der [[Liberalismus|liberal]]-[[Konservatismus|konservativen]] Partei ''[[Nea Dimokratia]]'' (gr. Νέα Δημοκρατία, „Neue [[Demokratie]]“).<ref>[http://www.chania.gr/dedocs/dhmarxos.jsp Bürgermeister von Chania]</ref>
+<!--=== Gemeinderat ===-->
+<!--=== Bürgermeister ===-->
+<!--=== Wappen ===-->
+<!--=== Städtepartnerschaften ===-->
+
+== Kultur und Sehenswürdigkeiten ==
+<!--=== Theater ===-->
+
+=== Kirchen ===
+;Ekklisia tis Trimartyris
+[[Bild:Crete-Chania-Cathedral-May2005.jpg|thumb|left|<div align="center">Kathedrale der drei Märtyrer</div>]]
+Die griechisch-orthodoxe Hauptkirche von Chania, die „Kathedrale der drei Märtyrer“ (Εκκλησία της Τριμάρτυρης), steht an der ''Platia Athinagora'' im Viertel ''Splantzia'' mit dem Haupteingang zur Straße ''Odos Chalidon'', der Grenze zum ''Evraiki''-Viertel. Das Gotteshaus, eine dreischiffige [[Basilika]] mit erhöhtem mittleren [[Kirchenschiff]], wurde auf den Fundamenten einer älteren zweischiffigen Kirche errichtet, die während der osmanischen Zeit in eine Seifenfabrik umgewandelt war. Der Besitzer der Fabrik, der wohlhabende türkische Kaufmann [[Mustafa Reşit Pascha|Mustafa Pascha Giritli]], schenkte das Gebäude den Christen von Chania bei seinem Amtsantritt als [[Wesir|Großwesir]] ([[Ministerpräsident]]) des Osmanischen Reiches.<ref>[http://www.boarding-time.de/inhalt/hellas/kreta/start.html Kathedrale Trimartyri]</ref>
+
+Die 1860 geweihte Kirche wurde während des [[Türkisch-Griechischer Krieg|Türkisch-Griechischen Krieges]] im Jahre 1897 schwer beschädigt und mit finanzieller Hilfe des [[Russisches Reich|russischen]] [[Zar#Russland|Zaren]] [[Nikolaus II. (Russland)|Nikolaus II.]] wieder aufgebaut. Die Architektur des Kirchenbaus weist venezianische Einflüsse auf, was an Portalen, Giebeln und Gesimsen zum Ausdruck kommt. An der Nordwestseite besitzt die Kathedrale einen dreistöckigen Glockenturm. Die beiden Seitenschiffe sind von [[Gewölbe#Kreuzgewölbe|Kreuzkuppeln]] überdacht. Im Innenbereich, an der östlichen Innenwand, befinden sich mehrere große Wandmalereien der Künstler G. Kaliterakis, G. Stavrakis, E. Tripolitakis und D. Kokotsis.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=43 Die Kathedrale Trimartyri (der 3 Märtyrer)]</ref>
+
+;Agios Nikolaos
+[[Bild:Gatm 2006-05-14 16 Greece Crete Hania Agios-Nikolaos.jpg|thumb|upright|<div align="center">Agios Nikolaos</div>]]
+Die um 1320 als ''San Nicolo'' erbaute, heute griechisch-orthodoxe Kirche an der ''Platia 1821'' gehörte ursprünglich zum ''Agios-Nikolaos-Kloster'', einem [[Dominikaner]]kloster aus dem 13.&nbsp;Jahrhundert. Der osmanische Herrscher Sultan Ibrahim wandelte den venezianischen Bau in eine [[Moschee]] um und gab ihm seinen Namen.
+
+Auch nach der Rückbenennung der ''Ibrahim-Moschee'' in ''Agios-Nikolaos-Kirche'' behielt die Kirche das [[Minarett]] der Moschee an Stelle des rechten Glockenturmes bei, was ihr in Verbindung mit der linksseitigen [[Campanile]] ein kurioses Aussehen verleiht. Die Fassade zeigt einen klassizistisch-neobyzantinischen Stil. Im Inneren ist ein [[Gotik|gotischer]] [[Chor (Architektur)|Chor]] erhalten. Ansonsten bietet der Innenraum eine Mischung verschiedener Baustile, von [[Toskanische Ordnung|toskanischen]] und [[Ionische Ordnung|ionischen]] Säulenordnungen bis zur [[Klassizismus|klassizistischen]] [[Kassettendecke]].
+
+;Agii Anargyri
+Die an der Straße ''Nikiforou Epskopou'' gelegene Kirche aus dem 16.&nbsp;Jahrhundert war in [[Osmanisches Reich|osmanischer]] Zeit das einzig geöffnete orthodoxe Gotteshaus innerhalb der Stadtmauern.
+
+;San Rocco
+[[Bild:Chania sanrocco.jpg|thumb|upright|<div align="center">San Rocco</div>]]
+Die dem [[Rochus von Montpellier|Heiligen Rochus]] geweihte kleine venezianische Kirche im Renaissance-Stil befindet sich an der ''Platia&nbsp;1821'', Ecke ''Daskalogianni''. Die Einraumkapelle wurde laut einer Inschrift im Jahr 1630 fertiggestellt, weist heute jedoch einen schlechten Bauzustand auf.
+
+=== Museen ===
+;Archäologisches Museum
+Das ''Archäologische Museum'' von Chania präsentiert seit 1962 in der ehemaligen [[Römisch-katholische Kirche|katholischen]] Klosterkirche des [[Franziskaner]]ordens ''San Francesco'' in der Straße ''Chalidon&nbsp;21'' Fundstücke Westkretas verschiedener Epochen aus [[Urgeschichte|Ur-]] und [[Frühgeschichte]] der Insel.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=47 Das archäologische Museum von Chania]</ref> Der dreischiffige gotische Bau der Hallenkirche stammt aus den Jahren 1606 bis 1617 und wurde während der osmanischen Zeit als ''Jusuf Pascha Moschee'' in gotischem Stil um etwa ein Drittel erweitert.
+
+Die Exponate des Museums sind chronologisch gegliedert. In der ersten Abteilung (3.&nbsp;und 2.&nbsp;Jahrtausend v.&nbsp;Chr.) sind neolithische Keramik, minoische Steinvasen, Gemmen, Keramik, Schriftrelikte auf gehärtetem Ton in Linearschrift&nbsp;A und&nbsp;B, Tonsarkophage und minoischer Goldschmuck ausgestellt. Die zweite Abteilung bieten einen Überblick über die Besiedlung des Westens der Insel von der geometrischen über die klassische griechische bis zur römischen Epoche. Dieser Zeitraum wird durch griechische und römische Skulpturen, hellenistischem Goldschmuck, Glas aus hellenistischer und römischer Zeit, Terrakotten, Tongefäßen und römischen Marmorportraits und Statuen dokumentiert. Besonders interessant sind einige römische Bodenmosaiken aus Chania (3.&nbsp;Jahrhundert n.&nbsp;Chr.), die mythologische Szenen darstellen.<ref>Lambert Schneider: ''Kreta'', Dumont-Kunstreiseführer, Seiten 289 / 290</ref>
+
+;Byzantinische und nachbyzantinische Sammlung (Byzantinisches Museum)
+Die ''byzantinische und nachbyzantinische Sammlung'' besteht aus archäologischen Fundstücken der Präfektur Chania aus dem Zeitraum der frühchristlichen Jahren bis zur osmanischen Herrschaft. Sie befindet sich in einem ehemaligen Kloster an der Straße ''Theotokopoulou 82'' westlich der Hafeneinfahrt, innerhalb der alten venezianischen Stadtbefestigung des ''Fort Firkas''. Repräsentative Schaustücke der Sammlung sind in einem kleinen Museum ausgestellt, das sich in der restaurierten venezianisch-gotischen Kirche ''San Salvatore'' aus dem 16.&nbsp;Jahrhundert befindet. In chronologischer Reihenfolge werden Mosaike, Inschriften, Wandmalereien, Bilder, architektonische Meißelarbeiten, Keramiken und Kleinkunst sowie Münzen gezeigt.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=72 Die byzantinische und nachbyzantinische Sammlung von Chania]</ref>
+
+;Schifffahrtsmuseum (Nautisches Museum)
+Das an einem Eingang des ehemals venezianischen ''Fort Firkas'' westlich des Hafens an der ''Akti Koundourioti'' gelegene Schifffahrtsmuseum dokumentiert anhand von Schiffsmodellen, verschiedenen Instrumenten und Schiffsarmaturen, Dokumenten zur Seekriegsführung von der Antike bis zur Gegenwart, Bildern, Fotografien und auf dem Meeresgrund entdeckten Objekten die verschiedenen Epochen des griechischen Schiffbaus.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=87 Das Schiffahrtsmuseum]</ref> Weiterhin sind in dem 1973 gegründeten Museum Modelle des venezianischen Stadtensembles und einzelner Bauten, wie den noch heute zu sehenden Werften, ausgestellt. Andere Abteilungen zeigen die Rolle Chanias während der Autonomie Kretas und der Angliederung an Griechenland 1913 sowie Ausstellungsstücke aus der Zeit der deutschen Eroberung und Besatzung der Insel 1941 bis 1945.<ref>[http://books.google.de/books?id=zfuaM-fNBvsC&pg=PA285&lpg=PA285&dq=Lambert+Schneider+/+Kreta+/+Seite+18&source=web&ots=CFUxE-shmr&sig=wdqH8d3dEWQz9Po7W_FFP-YxflU&hl=de#PPA285,M1 Lambert Schneider: ''Kreta'', Dumont-Kunstreiseführer, Seite 285]</ref>
+
+Die ''Firkas Bastion'' wurde von den venezianischen und osmanischen Herrschern und auch von den deutschen Besatzern im Zweiten Weltkrieg als Gefängnis genutzt. Auf der Bastion hissten 1913 zur Vereinigung Kretas mit Griechenland Eleftherios Venizelos und König Konstantin die griechische Flagge.
+
+;Volkskundemuseum
+Das ''Volkskundemuseum'' wurde in der ehemaligen katholischen Kirche der Stadt Chania in der Straße ''Chalidon 46b'' eingerichtet.
+
+;Historisches Museum
+Das ''Historische Museum'' der Stadt Chania ist gemeinsam mit dem ''Historischen Archiv von Kreta'' in einer [[Neoklassizismus (Kunst)|neoklassizistischen]] [[Villa]] aus der Zeit um 1900 in der Straße ''I.&nbsp;Sfakianaki&nbsp;20'' neben dem Stadtpark untergebracht. Neben Ausstellungsstücken über [[Eleftherios Venizelos]] im Erdgeschoss werden Gemälde, Waffen und Fahnen über und aus dem griechischen Freiheitskampf gegen die Türkenherrschaft und die Deutsche Wehrmacht gezeigt. Eingestreut sind einige Alltagsgegenstände.<ref>Eberhard Fohrer: ''Kreta'', Michael Müller Verlag, 16. Auflage 2006, Seite 589</ref> Die Museumsräume werden für Archivarbeiten genutzt, zugänglich ist nur ein Ausstellungsraum über Venizelos im Erdgeschoss.
+
+;Kriegsmuseum
+Das ''Kriegsmuseum'' befindet sich in der Nähe des ''Historischen Museums'' am Zusammentreffen der Straßen ''I.&nbsp;Sfakianaki'' und ''Tzanakaki'' nahe des Stadtgartens. Es ist eine Außenstelle des Kriegsmuseums in [[Athen]]. In dem 1870 als Kaserne errichteten Gebäude des Museums, entworfen von dem italienischen Architekten Makouzo, sind seltenes fotografisches Material sowie zahlreiche Waffen und andere Gegenstände aus den Kämpfen gegen die Türken und die deutsche Besatzungsmacht während des Zweiten Weltkriegs ausgestellt. Das Museum ist zur Zeit längerfristig geschlossen.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=88 Das Kriegsmuseum von Chania]</ref>
+<!--=== Musik ===-->
+<!--zum Beispiel Orchester, Chöre, Vereine etc.-->
+
+=== Bauwerke ===
+===== Agora =====
+[[Bild:Chania Markthalle-2.jpg|thumb|upright|<div align="center">Markthalle</div>]]
+Die Markthalle von Chania (''Agora'', gr. Αγορά „Marktplatz“), ein kreuzförmiges neoklassizistisches Gebäude am ''Platia Sofoukli Venizelou'', stammt aus den Jahren 1911 bis 1913. Der Gusseisenbau mit offenem Dachstuhl wurde nach dem Vorbild der Markthalle in [[Marseille]] konzipiert.
+
+===== Etz Hayyim Synagoge =====
+Seit dem Mittelalter hatte Chania zwei Synagogen: ''Beth Shalom'' und ''Etz Hayyim''. Die erstere wurde bei den Bombenangriffen im Mai 1941 zerstört, die ''Etz Hayyim Synagoge'' war nach der Deportation der Juden von Chania am 20. Mai 1944 zunächst von deutschen Soldaten geplündert, später an Griechen übergeben worden, die Teile des Gebäudes zerstörten und Umbauten vornahmen.
+
+In der Nachkriegszeit verfiel das Gebäude. Ein Erdbeben im Jahr 1995, bei dem Teile der Decke zerstört wurden, richtete weitere Schäden an. Mit Unterstützung  des ''Jewish Heritage Program'' in New York und des Zentralrats der Jüdischen Gemeinden Griechenlands wurde die Synagoge ab 1996 restauriert und 1999 wiedereröffnet. 
+
+Die ''Etz Hayyim Synagoge'' steht in der ''Parodos Kondylaki'', einer von der ''Kondylaki-Straße'' abgehenden Sackgasse im ehemals jüdischen Viertel Chanias ''Evraiki''. Sie umfasst neben dem eigentlichen Synagogenraum ein Steinbassin ''(Mihkve)'', das Frauen zur Reinwaschung nutzten, einen Garten mit vier erhalten gebliebenen Gräbern von Rabbinern des 18.&nbsp;und 19.&nbsp;Jahrhunderts und eine kleine Bibliothek.<ref>[http://www.etz-hayyim-hania.org/index.html Webseite der Etz Hayyim Synagoge]</ref>
+
+===== Faros =====
+[[Bild:Chania lighthouse 3.JPG|thumb|upright|<div align="center">Leuchtturm</div>]]
+Der Leuchtturm östlich an der Hafeneinfahrt (''Faros'', gr. Φάρος „Leuchtturm“), in den letzten Jahren aufwendig restauriert und stabilisiert, wurde 1830 während der kurzzeitigen ägyptischen Besetzung Kretas auf den Fundamenten des alten venezianischen Leuchtturms an der Hafenmole errichtet. Im 19.&nbsp;Jahrhundert trug er ein spitzes Kegeldach, was ihm noch mehr als heute das Aussehen eines [[Minarett]]s verlieh. Das Dach wurde später durch eine Glaskabine für das elektrische [[Befeuerung|Leuchtfeuer]] ersetzt. Am 31.&nbsp;August 2006 wurde die Fertigstellung der Renovierung des Leuchtturms mit einem Hafenfest gefeiert.
+
+===== Limani =====
+[[Bild:Gatm 2006-05-14 12. Greece Crete Fodele El Greco.jpg|thumb|left|<div align="center">Arsenale im Fischerhafen</div>]]
+Der [[Republik Venedig|venezianische]] Hafen (''Limani'', gr. Λιμάνι „Hafen“) wurde im 14.&nbsp;Jahrhundert durch Aufschüttung einer Mole angelegt, hatte aber durch die geringe Wassertiefe und die ungenügende Abschirmung gegen die Nordwinde keine große Bedeutung. Der heutige Haupthafen von Chania wurde schon frühzeitig in der einen natürlichen Schutz bietenden ''Souda-Bucht'' vier Kilometer südöstlich der Stadt gebaut.
+
+Die ''Arsenale'' ''(Neoria)'', Steinhallen mit bleigedeckten Tonnengewölben am Fischerhafen, östlich der Einfahrt des venezianischen Hafens, entstanden 1497. Weitere wurden am östlichen Kai im 17.&nbsp;Jahrhundert errichtet. Von den Gebäuden sind am Südkai noch sieben erhalten geblieben, jedoch heute in einem schlechten Bauzustand. Am Ostkai stehen noch zwei der ursprünglich fünf ''Arsenale'', die in ihrer Gesamtzahl von ehemals 23 Gebäuden dem Schiffbau und Winterlager der Galeeren, wie auch als Depot für Kriegsmaterial dienten.
+
+In der östlich des Hafens gelegenen ''Sabbionara Bastion'' ist der seetüchtige Nachbau eines minoischen Schiffes, die ''[[Minoa (Schiff)|Minoa]]'', und eine Ausstellung über deren Bau, bei dem nur Materialien und Techniken der Bronzezeit eingesetzt wurden, zu besichtigen.
+
+===== Hassan-Pascha-Moschee =====
+[[Bild:Chania hamam.jpg|thumb|<div align="center">Janitscharen-Moschee</div>]]
+Der zu Ehren von Küçük Hasan Pascha, dem ersten türkischen Garnisonsführer Chanias, benannte und nach den ehemaligen osmanischen Elitetruppen auch als ''Janitscharen-Moschee'' bezeichnete Kuppelbau am venezianischen Hafen wurde kurz nach der türkischen Eroberung Chanias 1645 errichtet. Die seitlichen [[Portikus|Portiken]] mit den sieben kleinen Kuppeln an Nord- und Westseite sind spätere Anbauten ab 1880 an Stelle ursprünglich dachloser [[Arkade]]n. Das ehemals vorhandene Minarett wurde um 1920 abgerissen.
+
+Die Moschee des Küçük Hasan („kleinen Hassan“) wurde durch einen [[Armenier|armenischen]] Architekten im klassischen Stil einer Ein-Kuppel-Moschee entworfen. In ihrem Hof war eine Begräbnisstätte für [[Pascha (Titel)|Paschas]] und [[Janitscharen]] eingerichtet. Mit dem Jahr 1923, der Vertreibung der islamisch-türkischen Bevölkerungsgruppe von Kreta im Zuge des [[Vertrag von Lausanne#Konvention über den Bevölkerungsaustausch zwischen Griechenland und der Türkei|Vertrages von Lausanne]], endete die Verwendung des Gebäudes als Moschee. Nach zwischenzeitlicher Nutzung als Lagerhaus, Museum und Informationsbüro der Griechischen Fremdenverkehrsorganisation sowie einer Restaurierung 1998 dient das ehemalige Gotteshaus heute als Raum für wechselnde Kunst-Ausstellungen.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=34 Chania – Die Moschee des Kioutschuk Hassan]</ref>
+
+=== Denkmäler ===
+===== Profitis Ilias =====
+[[Bild:Denkmal Spyros Kayales Chania.jpg|thumb|upright|<div align="center">Denkmal für Spyros Kayales-Kayaledakis</div>]]
+Auf der 122&nbsp;Meter hohen Anhöhe im Nordosten des Stadtgebietes, außerhalb der geschlossenen Bebauung an der Grenze zur [[Akrotiri (Kreta)|Gemeinde Akrotiri]], befindet sich die Gedenkstätte mit den Gräbern der Politiker [[Eleftherios Venizelos]] (*&nbsp;1864; †&nbsp;1936) und dessen Sohn [[Sophoklis Venizelos|Sofoklis Venizelos]] (*&nbsp;1894; †&nbsp;1964). Ersterer war im Jahre 1913 als griechischer Premierminister maßgeblich am Anschluss seiner Heimatinsel Kreta an das Mutterland beteiligt, sein Sohn war in den Jahren 1943 bis 1952 Ministerpräsident Griechenlands.
+
+Auf dem [[Profitis Ilias]] wurde 1897 während des [[Türkisch-Griechischer Krieg|Türkisch-Griechischen Krieges]] (1896/97), dessen Anlass ein Aufstand der griechisch-orthodoxen Bevölkerungsmehrheit Kretas gegen die türkische Herrschaft war, das erste Mal die griechische Fahne aufgezogen.<ref>Carmen Galenschovski: ''Kreta'', Verlag Karl Baedeker, 6. Auflage 2002, Seite 96, ISBN 3-89525-826-1</ref> Die Kreter unterstrichen damit ihre Forderung des Anschlusses der Insel an den griechischen Staat. Dem standen die europäischen Großmächte unter Berücksichtigung der Interessen des Osmanischen Reiches ablehnend gegenüber und belagerten mit einer [[Flotte (Marine)|Flotte]] die Aufständischen, die sich auf die Halbinsel ''Akrotiri'' zurückgezogen hatten.
+
+Am 9.&nbsp;Februar 1897 begann der Beschuss des Profitis Ilias durch die von dem italienischen Unteradmiral Canevaro befehligten Schiffe der Großmächte. Dabei wurde der Fahnenmast, an dem die griechische Flagge wehte, mehrmals getroffen, durch einen Soldaten namens [[Spyros Kayales-Kayaledakis]] auf Seiten der Kreter jedoch jeweils wieder aufgerichtet. Nach der Zerstörung des Mastes beim dritten Treffer nahm dieser das Fahnentuch und hielt es demonstrativ in die Luft, woraufhin seitens der Flotte der Befehl erging, das Feuer einzustellen. Heute erinnert ein Denkmal neben den Gräbern der Familie Venizelos auf dem Prifitis Ilias an die Tat des zum Nationalhelden avancierten Spyros Kayales-Kayaledakis.<ref>[http://www.kayales.gr/spyroskayales/deutsch.html Spyros Kayales-Kayaledakis]</ref>
+
+===== Deutsches Kriegerdenkmal =====
+[[Bild:Chania Germaniko Pouli.jpg|thumb|upright|<div align="center">Der „Deutsche Vogel“</div>]]
+[[Bild:Chania Handdenkmal.jpg|thumb|<div align="center">„Hand-Denkmal“</div>]]
+An der alten Straße nach Kissamos, der „Old Road“, steht etwa einen Kilometer außerhalb der Stadtgrenze von Chania der Sockel des umstrittenen Fallschirmjägerdenkmals. Es wurde während der deutschen Besatzungszeit errichtet und war dem II.&nbsp;Bataillon des deutschen Sturmregiments gewidmet, das im Raum Chania unter hohen Verlusten maßgeblich an der Eroberung Kretas beteiligt war. Das Denkmal wird auf Kreta ''To Germaniko Pouli'' („der deutsche Vogel“) – so heißt auch die nächstliegende Busstation – oder auch ''To kako pouli'' („der böse Vogel“) genannt.
+
+Seit dem Winter 2001 befindet sich aufgrund eines Sturmschadens der Adler mit dem Hakenkreuz in den Fängen nicht mehr auf dem Sockel des Denkmals. Beschädigungen an der Inschrift: „II.&nbsp;Bataillon Sturmregiment / Im Kampf auf Kreta vom 20. – 28. 5. 1941 / Malemes, Galatas, Kastelli, Chania / Euch Toten gehört der Dank, die ihr fern der Heimat getreu eurem Fahneneid das Leben gabet unserem Großdeutschland“, und [[Graffiti]] mit der Forderung nach Wiedergutmachung zeugen von den Auseinandersetzungen um das Gedenken an die deutschen Fallschirmjäger.<ref>Eberhard Fohrer: ''Kreta'', Michael Müller Verlag, 16. Auflage 2006, Seite 591</ref>
+
+===== Das „Hand-Denkmal“ =====
+Nordwestlich hinter der Firkas-Bastion findet man das „Hand-Denkmal“, das an den Untergang der Fähre [[Heraklion (Schiff)|Heraklion]] zwischen [[Piräus]] und Kreta am 8.&nbsp;Dezember 1966 erinnert, bei dem mehr als 200&nbsp;Passagiere ertranken. Das Unglück gab den Anstoß zur Gründung der kretischen Schifffahrtsgesellschaft [[ANEK Lines]].
+
+=== Parks ===
+Der Stadtpark mit [[Kretische Wildziege|Wildziegen]]-Gehege, Freilichtkino und Cafés liegt in der Neustadt, zwischen den Straßen ''Andrea Papandreou'' und ''Tzanakaki''.
+<!--=== Naturdenkmäler ===-->
+<!--=== Sport ===-->
+<!--=== Regelmäßige Veranstaltungen ===-->
+<!--=== Kulinarische Spezialitäten ===-->
+
+== Wirtschaft und Infrastruktur ==
+=== Tourismus und Verkehr ===
+[[Bild:Chania Hafen-1.jpg|thumb|left|<div align="center">Venezianischer Hafen in Chania</div>]]
+Neben der Landwirtschaft hat sich der Tourismus zum zweiten wichtigen wirtschaftlichen Faktor entwickelt. Unter der [[Griechische Militärdiktatur|Militärregierung]] wurde in den 1970er Jahren der Bau großer Hotelanlagen durch großzügige staatliche Kredite gefertigt. In den 1980er Jahren sorgte die explosionsartige Zunahme des Flugtourismus für hohe Zuwachsraten.
+In Westkreta hat sich der Massentourismus allerdings gemäßigter entwickelt als etwa zwischen Iraklio und Aghios Nikolaos. Die Flugreisen werden nur zu 20 % über den Flughafen Chania abgewickelt, zu 80 % über den Flughafen Iraklio.
+
+Die Küste im Westen von Chania (mit attraktiven Sandstränden) ist zwar durch ein Band von Hotels, gastronomischen und anderen touristischen Einrichtungen verbaut worden, jedoch handelt es sich eher um Kleinbauten als um große Komplexe. Seit Mitte der 1990er Jahren ist eine Stagnation des Massentourismus festzustellen, die mit nachlassender Zufriedenheit der Gäste mit dem Preis-/ Leistungsverhältnis, mit Service und Standard der Unterkünfte erklärt wird.<ref>[http://www.projekt-pr.de/plakias/files/KretaFremdenverkehr.pdf Jürgen Lehmann: ''Die Entwicklung des Fremdenverkehrs auf Kreta'']</ref>Bemühungen, auf bessere Qualität statt auf Quantität zu setzen und das touristische Angebot etwa durch [[Agrotourismus]], [[Wellness]]-Urlaub, Wanderreisen und Verbesserung von Privatunterkünften zu erweitern, werden zwar entfaltet, sind aber im Verhältnis zum klassischen massentouristischen Hotelangebot noch nicht sehr verbreitet.
+
+Der Bau der [[Autobahn 90 (Griechenland)| „New Road“]] (Autobahn 90) erschließt nach jahrzehntelanger Bauzeit die Nordküste Kretas auf voller Länge. Mit dem nahen Souda verfügt Chania über einen der größten Häfen der Ägäis.
+<!--=== Medien ===-->
+
+=== Öffentliche Einrichtungen ===
+==== Historisches Archiv von Kreta ====
+Das ''Historische Archiv'' befindet sich gemeinsam mit dem ''Historischen Museum'' in einer neoklassizistischen Villa aus der Zeit um 1900 in der Straße ''I.&nbsp;Sfakianaki&nbsp;20''. Das dem Ministerium für Bildung unterstellte regionale Archiv der Präfekturen Kretas, Teil des Allgemeinarchives des Staates, wurde im Jahr 1920 mit seinem Sitz in Chania eingerichtet. Es beherbergt heute etwa 700.000 historische Unterlagen, auch aus privaten Sammlungen. Bestandteil des ''Historischen Archivs'' sind offizielle Korrespondenz der kretischen Revolutionen, die Archive der kretischen Kämpfer, der Türkischen Verwaltung, des zentralen Übersetzungsbüros von Kreta, der Regierung von Kreta und der Deutschen Besatzung, wie auch Verwaltungs-, gerichtliche und kirchliche Archive, ein großes fotografisches Archiv mit zirka 3.000&nbsp;Fotografien, ein volles Archiv der kretischen Presse seit 1831 bis heute und eine Fachbibliothek mit ungefähr 10.000&nbsp;Titeln.<ref>[http://www.chania.gr/sightshow.jsp?lang=de&id=48 Das historische Archiv von Kreta]</ref>
+
+==== Allgemeines Krankenhaus „Agios Giorgos“ ====
+Das Allgemeine Krankenhaus von Chania (Γενικό Νοσοκομείο Χανιών) wurde im Jahr 2000 bezogen. Nach der Universitätsklinik in Iraklio ist es mit 450 Betten das zweiτgrößte Krankenhaus Kretas. Es befindet sich am südlichen Stadtrand Chanias in der Nähe des Dorfes Mournies. Das Krankenhaus ist modern ausgestattet und unterhält unter anderem Stationen für [[Kardiologie]], [[Neurochirurgie]], [[Nephrologie]], [[Onkologie]], [[Gynäkologie]] und [[Pädiatrie]].<ref>[http://www.chaniahospital.gr/el_hosp.jsp Webseite des Allgemeinen Krankenhauses von Chania]</ref>
+
+=== Bildung und Wissenschaft ===
+==== Technische Hochschule ====
+[[Bild:PolytechnionChania.jpg|left|60px]]
+Die schon länger bestehenden Pläne zur Gründung einer Universität auf Kreta traten in den 1960er Jahren in eine entscheidende Phase. Erbittert stritten die kretischen Großstädte um den Sitz der Universität. Der aus Rethymno stammende General [[Stylianos Pattakos]], als Innenminister lange Zeit „zweiter Mann“ des [[Griechische Militärdiktatur|griechischen Militärregimes]] ab 1967, erreichte, dass der Sitz zunächst seiner Heimatstadt zugesprochen wurde.
+
+[[Bild:TUC library.jpg|thumb|upright|<div align="center">Bibliothek der TUC</div>]]
+Diese Entscheidung wurde nach dem Zusammenbruch der Juntaherrschaft 1974 wieder in Frage gestellt. Ministerpräsident [[Konstantinos Karamanlis]] löste den Streit durch einen Kompromiss: Iraklio erhielt die medizinisch-naturwissenschaftlichen und Rethymno die geisteswissenschaftlichen Fakultäten der [[Universität Kreta]], Chania wurde Sitz der staatlichen [[Technische Universität Kreta|Technischen Universität Kreta]] ({{ELSneu|Πολυτεχνίο Κρήτης}}, „Polytechnikum“).
+
+Die formell 1977 gegründete Technische Universität nahm 1984 als zweite TU in Griechenland den Lehrbetrieb auf.<ref>[http://www.tuc.gr/history.html Webseite der TU Kreta] (griechisch)</ref> Ihre sechs Fakultäten sind Architektur, Bergbau, Elektrotechnik & Informatik, Naturwissenschaften, Produktionstechnik & Management sowie Umwelttechnik. Auf einem [[Campus]]gelände zwischen der Stadt Chania und der östlich von Chania gelegenen Halbinsel ''Akrotiri'', in der gleichnamigen Gemeinde wurden zahlreiche moderne Universitätsgebäude errichtet, die – in Griechenland eher seltene – eindrucksvolle Beispiele moderner Architektur darstellen.<ref>[http://www.tuc.gr/english Webseite der Technischen Hochschule] (englisch)</ref>
+
+==== Wissenschaftliche Institute ====
+Etliche wissenschaftliche Institute kamen hinzu. Aus einer landwirtschaftlichen Forschungsstation entstand das Nationale Institut für den Olivenbaum und subtropische Pflanzen, dessen Forschungsaktivitäten für die landwirtschaftliche Entwicklung Kretas, insbesondere für die Produktion von Olivenöl und Zitrusfüchten, aber auch Avocado und Kiwi, sowie für die Ökologie erhebliche Bedeutung gewonnen hat.<ref>[http://www.nagref-cha.gr/endocs/general.html Webseite des Instituts] (englisch, griechisch)</ref> In dessen Nachbarschaft arbeitet ein weiteres landwirtschaftliches Forschungsinstitut, das Mediterranean Agronomic Institute of Chania.<ref>[http://www.maiCh.gr/ Website des Mediterranean Agronomic Institute of Chania] (englisch)</ref> Das Institut für Kretisches Recht dagegen widmet sich dem Studium des Kretischen Rechts aus allen Epochen der Rechtsgeschichte.<ref>[http://users.forthnet.gr/cha/ikd/ Webseite des Instituts] (englisch, griechisch)</ref>
+
+==== Weitere Institutionen ====
+Chania ist Sitz der Diözese Kydonia und Apokoronas.
+
+In Chania befindet sich ein deutsches Honorarkonsulat und ein Goethe-Zentrum <ref>[http://www.goethe.de/ins/gr/cha/deindex.htm Goethe-Zentrum Chania]</ref>
+
+Es erscheinen zwei Tageszeitungen, ''Chaniotika Nea'' und ''Kiryx'', ferner gibt es zwei TV-Stationen, ''Crete TV1'' und ''Kydon Channel'' sowie drei Radiosender, ''Crete 101,5 FM'', M''agic FM Stereo 98,2'' und ''Max FM
+''.
+
+== Persönlichkeiten ==
+=== Söhne und Töchter der Stadt ===
+* [[Aristokles]] (5. Jahrhundert v. Chr.), Bildhauer
+* [[Kresilas]] (um 450 v. Chr.), Bronzebildner
+* [[Michael Damaskenos|Michail Damaskinos]] (* 1530; † 1593), Ikonen-Maler
+* [[Salacıoğlu]] (* vor 1756; † um 1825), [[Sufismus|Sufistischer]] Poet
+* [[Kallinikos Kritovoulidis]] (* 1792; † 1868), Mitglied der [[Filiki Eteria]]
+* [[Nikolaos Kounelakis]] (* 1829; † 1869), Maler
+* [[Umberto Zanotti Bianco]] (* 1889; † 1963), Klassischer Archäologe und [[Philanthrop]]
+* [[Mustafa Ertuğrul]] (* 1893; † 1964), Türkischer Offizier
+* [[Sophoklis Venizelos]] (* 1894; † 1964), Politiker
+* [[Alexis Milotas]] (* 1900; † 1990), Schauspieler und Regisseur
+* [[Konstantinos Mitsotakis]] (* 1918), Politiker
+* [[Antonis Katinaris]] (* 1933; † 1999), Musiker
+* [[Nana Mouskouri]] (* 1934), Sängerin und Politikerin
+* [[Maro Douka]] (* 1947), Schriftstellerin
+* [[Ioanna Karystiani]] (* 1952), Schriftstellerin 
+* [[Christos Protopapas]] (* 1956), stellvertretender Arbeitsminister
+* [[Eleni Daniilidou]] (* 1982), Tennisspielerin
+<!--d. h. Personen, die hier vor Ort geboren wurden-->
+<!--=== Persönlichkeiten, die vor Ort gewirkt haben ===-->
+<!--d. h. Personen, die in diesem Ort gelebt haben und zugleich dort ihre Wirkungsstätte hatten, ohne dort geboren zu sein-->
+<!--== Sonstiges ==-->
+<!--== Literatur ==-->
+
+== Einzelnachweise ==
+<div class="references-small" style="-moz-column-count:2; column-count:2;">
+<references/>
+</div>
+
+== Weblinks ==
+{{Commonscat}}
+* [http://www.chania.gr/ Webpräsenz der Stadt Chania]
+* [http://www.evai.de/pages/info_chania.htm Infos über Stadt und Präfektur]
+
+{{Navigationsleiste Gemeinden Präfektur Chania}}
+
+[[Kategorie:Gemeinde in Kreta]]
+[[Kategorie:Ort in Griechenland]]
+[[Kategorie:Kreta]]
+[[Kategorie:Archäologischer Fundplatz auf Kreta]]
+[[Kategorie:Minoische Stadt]]
+{{Lesenswert}}
+
+[[ar:خانيا]]
+[[ca:Khanià]]
+[[cs:Chania]]
+[[da:Chania]]
+[[el:Χανιά]]
+[[en:Chania]]
+[[eo:Ĥanio]]
+[[es:La Canea]]
+[[fi:Hania]]
+[[fr:La Canée]]
+[[id:Chania]]
+[[it:La Canea]]
+[[la:Cydonia]]
+[[lt:Chanija]]
+[[nl:Chania (stad)]]
+[[nn:Khaniá]]
+[[no:Khaniá]]
+[[pl:Chania]]
+[[pt:Chania]]
+[[ro:Chania]]
+[[ru:Ханья (город)]]
+[[scn:Canea]]
+[[simple:Chania]]
+[[sl:Hania]]
+[[sr:Канија]]
+[[sv:Chania]]
+[[tr:Hanya]]

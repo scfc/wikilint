@@ -1,0 +1,131 @@
+{| border="0" cellpadding="2" cellspacing="1" style="float:right; empty-cells:show; margin-left:1em; margin-bottom:0.5em; background:#FFDEAD;"
+! Lage des Stadtteils
+Horn
+! Lage des Bezirks
+Hamburg-Mitte
+|- style="background: #ffffff;" align="center"
+| style="width: 145px;" | [[Bild:Pincerno - Horn 2008.gif|180px|center]]
+| style="width: 145px;" | [[Bild:Pincerno - Bezirk Hamburg-Mitte 2008.gif|180px|center]]
+|- --
+! colspan="2" | Basisdaten
+|---- bgcolor="#FFFFFF"
+| [[Bundesland (Deutschland)|Bundesland]]: || [[Hamburg]]
+|---- bgcolor="#FFFFFF"
+| [[Bezirk]]: || [[Hamburg-Mitte]]
+|---- bgcolor="#FFFFFF"
+| [[Fläche]]: ||  5,8  [[Quadratkilometer|km²]]
+|---- bgcolor="#FFFFFF"
+| [[Einwohner]]: || 37.492 ''<small>(2006)</small>''
+|---- bgcolor="#FFFFFF"
+| [[Bevölkerungsdichte]]: || 6.464 Einwohner je km²
+<!-- |---- bgcolor="#FFFFFF"
+| [[Höhe]]: || XXX m ü. [[Normalnull|NN]] -->
+|---- bgcolor="#FFFFFF"
+| [[Postleitzahl]]: || 22111
+|---- bgcolor="#FFFFFF"
+| [[Telefonvorwahl|Vorwahl]]: || 040
+|---- bgcolor="#FFFFFF" valign="top"
+| [[Geografische Lage]]: || 53° 33' 14″ n. Br. <br/> 10° 5' 24" ö. L.
+|---- bgcolor="#FFFFFF"
+| [[Kfz-Kennzeichen]]: || <code>HH</code>
+|---- bgcolor="#FFFFFF"
+<!-- | [[Amtlicher Gemeindeschlüssel]]: || XX X XX XXX
+|---- bgcolor="#FFFFFF"
+| Gliederung des Stadtgebiets: || XX Stadtteile/[[Stadtbezirk]]e
+|---- bgcolor="#FFFFFF" valign="top"
+| Adresse der Stadtverwaltung: || Musterstraße XX<br/>XXXXX Musterstadt
+|---- bgcolor="#FFFFFF"
+| Offizielle Website: || [http://www.example.org/ www.example.org]
+|---- bgcolor="#FFFFFF"
+| E-Mail-Adresse: || [mailto:info@example.org info@example.org]
+|-
+! colspan="2" | Politik
+|---- bgcolor="#FFFFFF"
+| [[Bürgermeister]]: || Hans Mustermann ([[Partei]]) -->
+|}
+'''Horn''' ist ein Stadtteil  von [[Hamburg]] im Bezirk [[Hamburg-Mitte]].
+
+== Geografie ==
+=== Geografische Lage ===
+Horn liegt im Urstromtal der Elbe. Die Grenze zwischen der Geest im Norden und der fruchtbaren Marsch im Süden verläuft durch den Stadtteil. 
+<!-- === Geologie === -->
+=== Ausdehnung des Stadtgebiets ===
+Südlich begrenzt wird Horn durch die [[Bille]]. Im Norden bildet die Autobahn nach Berlin die Stadtteilgrenze.
+
+=== Nachbarstadtteile ===
+Im Norden grenzen [[Hamburg-Wandsbek|Wandsbek]] und [[Hamburg-Marienthal|Marienthal]] an Horn, im Osten [[Hamburg-Billstedt|Billstedt]], im Süden [[Hamburg-Billbrook|Billbrook]] und im Westen die drei [[Hamm (Hamburg)|Hammer Stadtteile]].
+
+== Geschichte ==
+Im Jahre [[1306]] wird Horn erstmals urkundlich erwähnt, als der Ritter Heinrich von Wedel einen Hof in Horn an das "[[Hospital zum Heiligen Geist]]" überträgt. Das Dorf lag damals etwa bei der heutigen Straße ''Bauerberg''. 1383 verkaufte Adolf von Schauenburg den Ort an [[Hamburg]], das ihn 1410 in die neugebildete ''Landherrenschaft von Horn und Hamm'' eingliederte. Seit Beginn des 17. Jahrhunderts erbauten sich Hamburger Kaufleute in Horn Landhäuser mit ausgedehnten Gartenanlagen. Der Ort verlor so allmählich seinen dörflichen Charakter und wurde zu einem Wohnort für wohlhabende Hamburger. 
+[[Bild:Pincerno - Horn um 1907.jpg|thumb|Horn um 1907]]
+Die französischen Besatzer Hamburgs planten 1814 Horn (wie zuvor schon Hamm) als Schussfeld gegen die anrückenden russischen Truppen niederzubrennen, dazu kam es wegen des schnellen russischen Erfolges jedoch nicht mehr, so dass der Ort gerettet wurde. Durch die Neuordnung des Hamburgischen Landgebietes kam Horn 1830 zur Landherrenschaft der Geestlande. Kurz darauf, 1833, gründete der lutherische Pastor [[Johann Hinrich Wichern]], der ein Anhänger der pietistischen Erweckungsbewegung war, in einer von [[Karl Sieveking]] zur Verfügung gestellten Strohdachkate an der Grenze zu [[Hamburg-Hamm Nord|Hamm-Nord]] das [[Rauhes Haus|Rauhe Haus]] als ''Rettungshaus für Großstadtkinder''. Heute übernimmt die gleichnamige Stiftung viele Aufgaben der Diakonie in Hamburg. 1855 wurde die ''Horner Rennbahn'' erbaut, auf der seit 1869 das Galoppderby (zunächst ''Norddeutsches Derby'', heute ''Deutsches Galoppderby'') stattfindet. 1874 wurde Horn zum Vorort von Hamburg erhoben, die Eingemeindung folgte 1894.
+
+In den 1920er und 1930er Jahren wurde Horn großflächig aufgesiedelt und mit Geschosswohnungen im typischen Hamburger Backsteinstil bebaut. Die Planung der Nationalsozialistischen Verkehrspolitik sah vor, in Horn einen ''Autobahnhof'' als östlichen Stadteingang und Endpunkt der aus Berlin kommenden [[Autobahn (Deutschland)|Reichsautobahn]] zu erbauen. Realisiert wurde davon lediglich der ''Horner Kreisel'', die geplante imposante Bebauung kam nicht zustande. Im [[Zweiter Weltkrieg|Zweiten Weltkrieg]] wurde Horn weitgehend zerstört. Der Wiederaufbau dauerte bis in die 1960er Jahre.
+
+2006 feierte Horn sein 700-jähriges Bestehen mit einem großen Fest, bei dem auch der Musiker [[Guildo Horn]] auftrat.
+
+=== Religionen ===
+[[Bild:Photo 2004 7 25 12 46 1 edited.jpg|thumb|right|Ehemalige Ausbildungstätte baptistischer Pastoren]]
+Wie das gesamte Hamburger Gebiet wurde auch Horn mit Einführung der [[Reformation]] im 16. Jahrhundert [[Evangelisch-Lutherische Kirchen|evangelisch-lutherisch]]. Eine eigene Kirche bekam der Ort jedoch erst 1886 mit der Martinskirche, zuvor war er nach Hamm eingepfarrt. Nach dem Zweiten Weltkrieg wurden mit der Timotheuskirche, der Nathanelkirche, der Kapernaumkirche und der Philippuskirche weitere lutherische Kirchen erbaut. Daneben gibt es mit St. Olaf jedoch auch eine [[Römisch-Katholische Kirche|römisch-katholische]] Kirche und außerdem eine [[Freie Evangelische Gemeinde]].
+
+Von [[1888]] bis [[1997]] war Hamburg-Horn Standort des [[Theologisches Seminar des Bundes Evangelisch-Freikirchlicher Gemeinden|Predigerseminars der deutschen Baptisten]]. Die Lehrgebäude und das Studentenwohnheim befanden sich an der Rennbahnstraße 115. Die theologische Ausbildungsstätte der [[Baptisten]] verlegte im Zuge der deutschen Wiedervereinigung ihren Sitz nach [[Wustermark|Wustermark-Elstal]] bei Berlin.
+
+=== Einwohnerentwicklung ===
+*[[2004]]: 36.291
+*[[2006]]: 37.492
+
+== Politik ==
+Für die Wahl zur [[Hamburgische Bürgerschaft|Bürgerschaft]] und der [[Bezirksversammlung]] gehört Hamburg-Horn zum [[Wahlkreis Hamburg-Mitte]].
+
+== Kultur und Sehenswürdigkeiten ==
+=== Theater ===
+Mit dem ''Theater in der Washingtonallee'', das ca. 40 Sitzplätze hat, ist Hamburgs kleinstes Theater in Horn ansässig.
+[[Image:Sankt Martin in Hamburg-Horn.jpg|thumb|left|Evangelisch-lutherische St. Martinskirche]]
+
+=== Bauwerke ===
+Die Martinskirche von [[1886]] steht seit [[1998]] unter Denkmalschutz. Ein Beispiel für typischen Kirchenbau nach dem Zweiten Weltkrieg stellt die Kapernaumkirche dar, die 1960/61 von [[Otto Kindt]] erbaut wurde. Ebenfalls typisch für ihre Zeit ist die 1929 bis 1931 von [[Fritz Schumacher]] erbaute Schule ''Beim Pachthof''.
+
+=== Parks === 
+* Blohms Park
+* Horner Moor - ein kleiner Park mit einem Teich, der ehemals ein Naturbad war. Im südlichen Teil liegen ein großer Spielplatz und ein Fahrradtrainingsplatz. Außerdem grenzt die Schule Speckenreye an diesen Park.
+* Horner Rennbahn - die Rennbahn ist außerhalb der Rennsaison als ''Freizeitpark Horner Rennbahn'' frei begehbar. Im innenraum finden sich Skateplatz, Basketball court, Minigolfplatz, Grillplatz, Grünflächen und Hundewiesen sowie ein See.
+
+=== Sport ===
+Auf der Horner Rennbahn findet seit 1869 jährlich am ersten Sonntag im Juli das [[Derby (Pferdesport)|Deutsche Galopp-Derby]] statt. Die heutigen Gebäude stammen von 1911, sind jedoch mehrfach umgebaut und verändert worden.
+
+Es lagen Pläne vor, beide Rennbahnen in Hamburg zu schließen und ein neues ''Hippodrom'' in [[Hamburg-Wilhelmsburg|HH-Wilhelmsburg]] zu bauen. Nach heutigem Stand soll die Rennbahn aber nun bis Frühjahr 2009 zur kombinierten Trab- und Galopprenbahn umgebaut werden. Der Architekt Boris Kraff legte Pläne vor, die im Innenraum der Bahn ein verglastes Tribünengebäude mit integriertem Führring vorsehen. Bei einer Zusammenlegung von Trab- und Galopprennen würde es somit voraussichtlich über 80 Renntage im Jahr in Horn geben.
+
+Größter Verein im Stadtteil ist der Hamburg-Horner Turnverein von 1905, der im Fußball unter der Bezeichnung ''FC St. Georg im Horner TV'' vorübergehend eine Kooperation mit dem SV St. Georg eingegangen war. Diese Kooperation wurde 2007 gelöst und der Horner TV tritt auch im Fußball wieder eigenständig an. Auch der SV St. Georg ist im Stadtteil ansässig (und nicht in [[Hamburg-Sankt Georg|St. Georg]], wie oft angenommen wird) und nach dem ''Gymnasium St. Georg zu Horn'' benannt. Diese Schule wurde jedoch 2006, nach 101 jährigem Bestehen, wegen mangelnder Schülerzahl geschlossen. 
+
+== Wirtschaft und Infrastruktur ==
+=== Ansässige Unternehmen ===
+Die ''ThyssenKrupp Fahrtreppen GmbH'' ist mit 750 Mitarbeitern größter Arbeitgeber im Stadtteil.
+
+=== Verkehr ===
+Die [[Bundesautobahn]] [[Bundesautobahn 24|A 24]] (von [[Berlin]] kommend) endet am ''Horner Kreisel'', der gleichzeitig die Nordwestecke des Stadtteils markiert. Im Süden des Stadtteils verläuft die [[Bundesstraße]] [[Bundesstraße 5|B 5]]. Beide werden durch den ''Ring 2'', den mittleren Hamburger Straßenring, miteinander verbunden.
+
+Die [[U-Bahn Hamburg|U-Bahn]] verfügt mit den Haltestellen ''Horner Rennbahn'' und ''Legienstraße'' über zwei Haltepunkte der Linie U3 ([[Hamburg-Barmbek-Nord|Barmbek]] - [[Hamburg-Billstedt|Mümmelmannsberg]]) im Stadtteil. Der Bahnhof Horner Rennbahn ist gleichzeitig ein Knotenpunkt für den Busverkehr.
+
+=== Bildung === 
+[[Bild:GHR Beim Pachthof in Hamburg-Horn 2.jpg|thumb|right|Grund-, Haupt- und Realschule Beim Pachthof 17]]
+* Evangelische Hochschule für Sozialpädagogik und Diakonie des Rauhen Hauses
+* Evangelische Fachschule für Altenpflege
+* [[Gesamtschule]] Horn, bestehend aus den vier Standorten Rhiemsweg 6, Rhiemsweg 61, Snitgerreihe 2 und Horner Weg
+* Grundschule Speckenreye
+* [[Grundschule|Grund-]], [[Hauptschule|Haupt-]] und [[Realschule]] Beim Pachthof
+* Evangelische [[Wichern-Schule]]
+* Haupt- und Realschule Hermannstal
+
+== Siehe auch ==
+* [[Liste_der_Bezirke_in_Hamburg|Die 105 Stadtteile Hamburgs, geordnet nach Bezirken und Ortsamtsgebieten]]
+*[[Portal:Hamburg]]
+
+== Weblinks ==
+* {{Commons|Hamburg-Horn}}
+* [http://fhh1.hamburg.de/fhh/behoerden/behoerde_fuer_inneres/statistisches_landesamt/profile/horn.htm Stadtteil Statistik]
+
+{{Navigationsleiste Stadtteile von Hamburg-Mitte}}
+{{Koordinate Artikel|53.554060_N_10.089890_E_type:city(37492)|53° 33' 14″ N, 10° 5' 24" O}}
+
+[[Kategorie:Stadtteil (Hamburg)|Horn]]
+[[Kategorie:Bezirk Hamburg-Mitte|Horn]]

@@ -1,0 +1,1216 @@
+{| cellpadding="2" cellspacing="1" class="hintergrundfarbe5 float-right" style="width: 307px; margin: 0 0 0.4em 1em;" summary="Infobox Ort in Deutschland"
+! Wappen
+! Deutschlandkarte
+|- class="hintergrundfarbe2" style="text-align: center;"
+| style="width: 50%;" | [[Bild:Wappen_Krefeld_1.png|140px|Stadtwappen der kreisfreien Stadt Krefeld]]
+| style="width: 50%;" | [[Bild:Lage der Stadt Krefeld in Deutschland.png|140px|Lage der kreisfreien Stadt Krefeld in Deutschland]]
+|-
+! colspan="2" | Basisdaten
+|- class="hintergrundfarbe2"
+| [[Land (Deutschland)|Bundesland]]: || [[Nordrhein-Westfalen]]
+|- class="hintergrundfarbe2"
+| [[Regierungsbezirk]]: || [[Regierungsbezirk Düsseldorf|Düsseldorf]]
+|- class="hintergrundfarbe2"
+| [[Landschaftsverband]]: || [[Landschaftsverband Rheinland|Rheinland]]
+|- class="hintergrundfarbe2"
+| [[Landkreis|Kreis]]: || [[Kreisfreie Stadt]]
+|- class="hintergrundfarbe2"
+| [[Geographische Koordinaten]]: || {{Koordinate Text Artikel|51_19_49_N_06_33_49_E_type:city(240000)_region:DE-NW|51°&nbsp;19′&nbsp;49″&nbsp;N, 06°&nbsp;33′&nbsp;49″&nbsp;O}}
+|- class="hintergrundfarbe2"
+| [[Höhe über dem Meeresspiegel|Höhe]]: || 22,8 bis 87 m ü. [[Normalnull|NN]]
+|- class="hintergrundfarbe2"
+| Durchschn. Höhenlage: || 39 m ü. [[Normalnull|NN]]
+|- class="hintergrundfarbe2"
+| [[Flächeninhalt|Fläche]]: || 137,86 [[Quadratmeter|km²]]
+|- class="hintergrundfarbe2"
+| [[Einwohner]]: || 236.516 ''<small>(31. Dez. 2007)</small><!-- Bitte nicht per Hand aktualisieren: [[Wikipedia:WikiProjekt Kommunen und Landkreise in Deutschland/Einwohnerzahlen]] -->
+|- class="hintergrundfarbe2"
+| [[Bevölkerungsdichte]]: || 1716 Einwohner je km²
+|- class="hintergrundfarbe2"
+| [[Postleitzahl]]: || 47701–47839 (''alt:'' 4150)
+|- class="hintergrundfarbe2"
+| [[Telefonvorwahl|Vorwahl]]: || 02151
+|- class="hintergrundfarbe2"
+| [[Kraftfahrzeugkennzeichen]]: || KR
+|- class="hintergrundfarbe2"
+| [[Amtlicher Gemeindeschlüssel|Gemeindeschlüssel]]: || 05 1 14 000
+|- class="hintergrundfarbe2"
+| [[UN/LOCODE]]: || <tt>DE KRE</tt>
+|- class="hintergrundfarbe2"
+| [[NUTS]]-Region: || DEA14 (Krefeld)
+|- class="hintergrundfarbe2"
+| Stadtgliederung: || 9 [[Stadtbezirk]]e<br/>mit 19 [[Stadtteil]]en
+|- class="hintergrundfarbe2"
+| Anschrift der<br/>Stadtverwaltung: || Von-der-Leyen-Platz 1<br/>47798 Krefeld
+|- class="hintergrundfarbe2"
+| [[Website]]: || [http://www.krefeld.de/ www.krefeld.de]
+|-
+! colspan="2" | Politik
+|- class="hintergrundfarbe2"
+| [[Oberbürgermeister]]: || [[Gregor Kathstede]] ([[Christlich Demokratische Union Deutschlands|CDU]])
+<!-- Kann gerne eingetragen werden, wenn bekannt. (Sylver81; 19.11.2007)
+|- class="hintergrundfarbe2"
+| Schuldenstand: || - Mio. € <br/> <small> -&nbsp;€ je Einw. <br/> ''(Stand: -)'' </small>
+|- class="hintergrundfarbe2"
+| Gesamtvermögen: || - Mrd. € <br/> <small> -&nbsp;€ je Einw. <br/> ''(Stand: -)'' </small>
+|- class="hintergrundfarbe2"
+| Eigenkapitalquote: || - % <br/> <small> -&nbsp;€ je Einw. <br/> ''(Stand: -)'' </small>
+-->
+|-
+! colspan="2" | Bevölkerung
+|- class="hintergrundfarbe2"
+| [[Arbeitslosenstatistik#Arbeitslosenquote|Arbeitslosenquote]]: || 10,9 % <small>''(Stand: Dez 2007)''</small>
+|- class="hintergrundfarbe2"
+| [[Ausländer]]anteil: || 14,0 % <small>''(Stand: Dez 2007)''</small>
+|- class="hintergrundfarbe2"
+| Altersstruktur: ||
+{| border="0" cellpadding="0" cellspacing="0" width="100%"
+| 0–17 Jahre: || 16,8 %
+|-
+| 18–64 Jahre: || 62,4 %
+|-
+| ab 65 Jahre: || 20,7 % 
+|- 
+| <small>''(Stand: 2007)''</small>
+|}
+|-
+! colspan="2" | Lage <small>
+|- class="hintergrundfarbe2"
+| colspan="2" | [[Bild:North rhine w KR.png|250px|center|Lage in Nordrhein-Westfalen]]
+|-
+! colspan="2" | Krefeld in NRW
+|- class="hintergrundfarbe2" style="text-align: center;"
+! colspan="2" | [[Bild:Krefeld-nrw.png|280px|Lage der kreisfreien Stadt Krefeld in NRW]]
+|}
+
+Die Stadt '''Krefeld''' (bis 1929 auch ''Crefeld''), ist eine [[kreisfreie Stadt]] am linken [[Region Niederrhein|Niederrhein]], nordwestlich von [[Düsseldorf]], südwestlich von [[Duisburg]] in [[Nordrhein-Westfalen]]. Aufgrund der Seidenstoffproduktion des 18. und 19. Jahrhunderts wird sie auch als „Samt- und Seidenstadt“ bezeichnet. Krefeld ist mit 236.516 Einwohnern (Stand: Dezember 2007) eine Großstadt mittlerer Größe. Innerhalb des [[Regierungsbezirk Düsseldorf|Regierungsbezirks Düsseldorf]] nimmt sie gegenwärtig der Einwohnerzahl nach den sechsten Platz ein.
+
+Die Stadt besteht in ihren heutigen Grenzen im Wesentlichen seit 1929, als der damalige [[Stadtkreis]] Krefeld (Crefeld) mit der Stadt [[Uerdingen]] und anderen Gemeinden zur ''Stadt Krefeld-Uerdingen'' vereinigt wurde. 1940 wurde diese in Krefeld umbenannt und 1975 nochmals geringfügig vergrößert. In der [[Landesplanung]] ist Krefeld als [[Oberzentrum]] eingestuft.
+
+== Geographie ==
+
+=== Räumliche Lage ===
+
+Krefeld liegt am westlichen Ufer des [[Rhein]]s, an der „Krefeld-Kempener Platte“ zur mittleren Niederrheinebene. Das Stadtzentrum liegt etwa sieben Kilometer vom Rheinufer entfernt, doch reicht das Stadtgebiet seit der Eingemeindung [[Linn (Krefeld)|Linn]]s bis an den Fluss heran. Die Uferlänge auf Krefelder Gebiet beträgt 6,2&nbsp;Kilometer. Die Breite des Flusses variiert zwischen 320 und 400&nbsp;Meter. Die größte Ausdehnung des Stadtgebiets beträgt in Nord-Süd-Richtung 12&nbsp;Kilometer und in West-Ost-Richtung 13,1&nbsp;Kilometer. Die Höhenlage der Stadtmitte beträgt {{Höhe|39|DE-NN}}. Die höchste natürliche Erhebung im gesamten Stadtgebiet ist mit {{Höhe|63|DE-NN}} der [[Hülser Berg]], die höchste Erhebung überhaupt ist der [[Inrather Berg]], eine alte Schuttdeponie aus den Trümmern des Zweiten Weltkriegs mit {{Höhe|87|DE-NN}}. Eine weitere Erhebung, die seit 2004 auch von der Allgemeinheit begangen werden kann, ist der [[Kapuzinerberg (Krefeld)|Kapuzinerberg]] ({{Höhe|77}}), eine ehemalige Hausmülldeponie.
+
+=== Klima ===
+
+[[Bild:Klimadiagramm Krefeld.PNG|thumb|Klimadiagramm Krefeld]]
+
+In Krefeld fallen über das Jahr gesehen durchschnittlich 762&nbsp;mm Niederschlag. Damit liegt Krefeld über dem Deutschlandmittel von 700&nbsp;mm. Die Temperatur liegt im Durchschnitt bei 10,3&nbsp;°C. Im Januar beträgt das Mittel 2,5&nbsp;°C.
+
+=== Geologie ===
+
+Die Stadt Krefeld liegt im [[Niederrheinisches Tiefland|Niederrheinischen Tiefland]]. Die oberflächennahen Schichten bestehen überwiegend aus Kies- und Sandablagerungen des [[Eiszeitalter]]s. Die bis zu 30&nbsp;m mächtigen Schichten setzte der Rhein hier ab. Vor 240.000 Jahren wurden diese Schichten teilweise von den Rändern der [[Eisschild]]massen zu Stauch[[moräne]]n aufgepresst. Der Hülser Berg ist ein Beispiel hierfür. Unter den Kies und Sandschichten befinden sich Meeressande die sich dort im [[Tertiär (Geologie)|Tertiär]] (2,4 bis 65 Mio. Jahre vor heute) ablagerten. Sie reichen bis in eine Tiefe von 250&nbsp;m hinab. Darunter sind Meeresablagerungen (überwiegend aus [[Sandstein]], [[Tonstein]] und [[Kalkstein]] bestehend) älterer [[Geologische Zeitskala|Erdgeschichtlicher Phasen]] zu finden. Am nördlichen Stadtrand sind in größerer Tiefe auch kohleführende Schichten aus dem [[Karbon]] zu finden, die Verbindung zu den Kohlegebieten in Belgien und an der Ruhr haben.
+
+Auf den höhergelegenen Flächen des Krefelder Stadtgebiets findet man überwiegend [[Parabraunerde]]n und [[Braunerde]]n. Diese stellen gute Ackerstandorte.
+Die im westlichen Stadtgebiet gelegene durch [[Bruchtektonik]] etwas herausgehobene Kempener Platte hat eine ca. 1&nbsp;m dicke Deckschicht aus [[Löss]]. Diese ist während der letzten [[Eiszeitalter|Eiszeit]] hier abgelagert worden. Die daraus entstandenen fruchtbaren [[Lehm]]böden werden als Getreide- und Rübenfelder geschätzt.
+In den Altarmrinnen des Rheins entstand Niedermoor[[torf]], der auch an den ''Niepkuhlen'' abgebaut wurde, heute aber keine wirtschaftliche Bedeutung mehr hat.
+
+Zum Ende der letzten Eiszeit hat der Rhein, östlich der [[Flussterrasse|Terrassenkante]] Dießem – Inrath – Hüls sandige bis lehmige [[Sedimentation|Sedimente]] abgelagert. Durch [[Grundwasser]]einfluss entstanden in den tiefergelegenen Bereichen [[Gleye]]böden. Diese Flächen werden wie z.&nbsp;B. der Hülser und Latumer Bruch als Grünland und Wald genutzt.
+In der überflutungsgefährdeten Rheinaue entstanden aus angeschwemmtem Bodenmaterial fruchtbare Böden.
+
+=== Stadtgebiet ===
+
+[[Bild:Krefeld Stadtteile.png|right|350px|Stadtbezirke in Krefeld]]
+
+Das Stadtgebiet Krefelds gliedert sich in die 9 [[Stadtbezirk]]e: Mitte, West, Nord, Hüls, Süd, Fischeln, Oppum-Linn, Ost und Uerdingen. Jeder Stadtbezirk hat eine eigene Bezirksvertretung und einen [[Bezirksvorsteher]]. Die Bezirksvertretung wird von der Bevölkerung des Stadtbezirks bei jeder Kommunalwahl gewählt. Des Weiteren existieren 19 [[Stadtteil]]e, diese sind in mehrere statistische Bezirke unterteilt. Siehe hierzu [[Liste der Stadtteile von Krefeld]].
+
+Die 19 Stadtteile mit ihren amtlichen Nummern:
+
+{| cellpadding="8"
+|
+* 010 Stadtmitte
+* 020 Kempener Feld/Baackeshof
+* 030 [[Inrath]]/[[Kliedbruch]]
+* 040 [[Krefeld-Cracau|Cracau]]
+* 050 Dießem/Lehmheide
+* 060 [[Benrad]]-Süd
+* 070 [[Forstwald (Krefeld)|Forstwald]]
+* 080 Benrad-Nord
+* 090 [[Hülser Berg]]
+* 100 [[Traar]]
+|
+* 110 [[Verberg]]
+* 120 [[Gartenstadt (Krefeld)|Gartenstadt]]
+* 130 [[Bockum]]
+* 140 [[Linn (Krefeld)|Linn]]
+* 150 [[Gellep-Stratum]]
+* 160 [[Oppum]]
+* 170 [[Fischeln]]
+* 180 [[Uerdingen]]
+* 190 [[Hüls (Krefeld)|Hüls]]
+|}
+
+=== Nachbarstädte ===
+
+Die Stadt Krefeld grenzt im Norden an die Städte [[Neukirchen-Vluyn]] und [[Moers]] im [[Kreis Wesel]], im Osten und Nordosten an die kreisfreie Stadt [[Duisburg]], im Süden an die Stadt [[Meerbusch]] im [[Rhein-Kreis Neuss]] sowie die Städte [[Willich]], [[Tönisvorst]] und [[Kempen]] im [[Kreis Viersen]].
+
+=== Demografie ===
+
+In Krefeld lebten im Juni 2006 237.301 Menschen. Davon waren 114.975 männlich und 122.326 weiblich.
+
+Die [[Bevölkerungsdichte]] beträgt 17,4 Einwohnern je ha. Die [[Arbeitslosenstatistik#Arbeitslosenquote|Arbeitslosenquote]] liegt bei 10,9 % (Dezember 2007). Der [[Ausländer]]anteil beläuft sich auf 13,6 %. Von den ca. 84&nbsp;000 [[Sozialversicherung]]spflichtig beschäftigten Arbeitnehmern sind etwa 30 % im verarbeitenden Gewerbe angestellt, nur 0,5 % in der Landwirtschaft.
+17,5 % der Krefelder sind unter 18 Jahren, 62,5 % sind zwischen 18 und 65 Jahre alt und 20 % sind über 65 Jahre alt.
+
+==== Einwohnerentwicklung ====
+
+:''Siehe auch:'' [[Einwohnerentwicklung von Krefeld]]
+
+1861 hatte Krefeld mehr als 50.000 Einwohner. 1890 überschritt die Einwohnerzahl der Stadt die Grenze von 100.000, wodurch sie zur [[Großstadt]] wurde. Bis 1957 verdoppelte sich diese Zahl auf 200.000. Im Jahre 1994 erreichte die Bevölkerungszahl mit rund 250.000 ihren historischen Höchststand. Am 31. Dezember 2006 lebten in Krefeld nach Fortschreibung des [[Landesamt für Datenverarbeitung und Statistik Nordrhein-Westfalen|Landesamtes für Datenverarbeitung und Statistik Nordrhein-Westfalen]] 237.104 Menschen (nur [[Hauptwohnsitz]]e und nach Abgleich mit den anderen [[Statistisches Landesamt|Landesämtern]]).
+
+== Geschichte ==
+
+=== Von den Anfängen bis zum 17. Jahrhundert ===
+
+[[Bild:Gellep modell.jpg|thumb|Ein Modell des Kastells Gelduba]]
+
+Im 1. Jahrhundert n. Chr. erbauten die [[Römisches Reich|Römer]] am Rhein auf dem Gebiet des heutigen Krefelder Stadtteils [[Gellep-Stratum|Gellep]] das [[Römische Militärlager|Kastell]] Gelduba. An verschiedenen anderen Plätzen im Krefelder Stadtgebiet fanden sich die Überreste römischer Landhäuser sowie einer Tempelanlage.
+
+Im Mittelalter wuchs eine Bauernsiedlung an einem Ort namens „Krinvelde“.
+
+Ob ein „Krähenfeld“ der Namensgeber ist, ist bislang nicht eindeutig geklärt. Die Trutzburg Krakau lag östlich der Stadtmauern inmitten des heutigen Stadtgebietes. „Krah-Kau“ in der Krefelder Mundart bedeutet Krähenkäfig, so dass Krefeld ebenso ein Krähenfeld sein kann.
+Die „Hohe Straße“ zwischen [[Köln]] und [[Geldern]] war eine bedeutende Straße, die ihren Namen „Hochstraße“ bis heute behalten hat. Sie wurde so genannt, weil sie nicht unmittelbar am Rheinufer entlang führte, sondern oberhalb einer Geländekante verlief, wodurch sie vor Überschwemmungen sicher war.
+
+Erstmals wird Krefeld 1105 im [[Urbar (Verzeichnis)|Urbar]] des [[Kloster Werden#Urbar des Klosters|Kloster Werden]] erwähnt. Ebenfalls im 12. Jahrhundert begann [[Otto von Linn]] nach seiner Rückkehr vom [[Dritter Kreuzzug|Dritten Kreuzzug]] die [[Burg Linn]] zu einer Festung auszubauen. Um 1200 errichteten die Herren von Rode [[Haus Rath (Krefeld)|Haus Rath]] wahrscheinlich als befestigte Zollstation an der Hohen Straße im heutigen Stadtteil [[Elfrath]]. Haus Rath wird erstmals 1246 in einer Urkunde des Grafen von Geldern als Lehen erwähnt.
+
+1361 erhielt das Dorf Krefeld das Recht, einen Jahr- und Wochenmarkt abzuhalten.
+
+Am 1. Oktober 1373 verlieh Kaiser [[Karl IV. (HRR)|Karl IV.]] „Crefeld“ die [[Stadtrecht]]e. Dadurch war der Ort, der zur [[Grafschaft Moers]] gehörte, besser vor Übergriffen durch Räuberbanden geschützt. Insbesondere die Herren auf der nahegelegenen Burg Linn betrieben Raubrittertum. Die Burg gehörte damals zur [[Herzogtum Kleve|Grafschaft Kleve]]. [[Heinrich von Strünkede]] war Amtmann der [[Mechthild von Kleve]] auf der Linner Burg und wurde zu Raubzügen gegen Krefeld ausgschickt.
+
+Um 1400 wurde zur besseren Verteidigung Krefelds die ''Burg Krakau'' etwa 800 Meter östlich der Stadt errichtet. Sie existierte bis ins 17. Jahrhundert, heute sind nur noch ein paar Mauerreste der Wehranlagen an der Bogenstraße übrig. Die älteste Krefelder Kirche, die Dionysiuskirche (heute ''Alte Kirche''), wurde auf einem aus dem 12. Jahrhundert stammenden Bau errichtet und erhielt 1472 einen neuen Turm.
+
+Schon wenige Generationen später breiteten sich die Ideen der [[Reformation]] in Europa aus, und 1560 wurde die Grafschaft Moers nach dem Grundsatz [[cuius regio, eius religio]] [[Protestantismus|protestantisch]]. Allerdings gab es in den Wirren der folgenden Jahre weiterhin Katholiken in Krefeld, die katholische Pfarrei wurde erst durch die Neutralitätsvereinbarung von 1607 aufgehoben, und auch danach wurden Katholiken geduldet.
+
+1584 wurde Krefeld im [[Truchsessischer Krieg|Truchsessischen Krieg]] völlig zerstört und blieb für zwei Jahrzehnte nahezu unbewohnt. 1594 verschenkte Gräfin Walburga, die Witwe des Grafen Adolf von Neuenahr-Moers, die Herrlichkeit Krefeld an Prinz [[Moritz von Oranien]]. Die Grafschaft Moers, und damit auch Krefeld, wurden daraufhin am 4. Juli 1598 von den [[Generalstaaten]] und Erzherzog [[Albrecht VII. von Österreich]] für neutral erklärt. Die Bedeutung dieser Neutralität für die politische und wirtschaftliche Entwicklung Krefelds kann nicht hoch genug eingeschätzt werden. Sie wurde in mehreren Folgeverträgen erneuert und bezog sich auf den [[Achtzigjähriger Krieg|Unabhängigkeitskampf der Niederlande]], auf den [[Dreißigjähriger Krieg|Dreißigjährigen Krieg]] und auf die Folgezeit.
+
+Das neutrale Krefeld wurde nun zum Zufluchtsort für [[Mennoniten]], die in den benachbarten katholischen Regionen wegen ihres Glaubens verfolgt wurden. Es kamen mehr Andersgläubige, als die alteingesessenen Krefelder ertragen wollten. Nicht zuletzt waren diese frommen Menschen oft tüchtige Handwerker und Geschäftsleute und daher waren viele von ihnen schon bald recht wohlhabend. Dies schürte natürlich den Neid und verbreitete damit Unmut unter der sonst eher ärmlichen Krefelder Bevölkerung. 1646 beklagten sich die reformierten Pfarrer Krefelds öffentlich beim Grafen von Moers darüber, dass die Mennoniten in Krefeld Versammlungen abhielten. Aufgrund dieser für Nicht-Mennoniten undurchsichtigen Treffen wurden die Mennoniten der Aufrührerschaft und Verschwörung bezichtigt.
+
+Von größter Bedeutung für Krefeld war die Niederlassung des 1656 aus [[Radevormwald]] ausgewiesenen Mennoniten [[Adolf von der Leyen]]. Seine Söhne begründeten die Seidenweberei in Krefeld. [[Von der Leyen (Familie)|Von der Leyen]] war der Stammvater einer ganzen Dynastie von Seidenfabrikanten, unter ihnen die sogenannten [[Seidenbaron]]e, die Krefeld zu großem Wohlstand verhalfen.
+
+[[Bild:Denkmal-auswanderer-krefeld.jpg|thumb|Gedenkstein für die Auswanderer unweit der Dionysiuskirche]]
+
+Der Strom von Glaubensflüchtlingen aller Konfessionen hielt stetig an – es waren mehr, als die Stadt fassen konnte. Die Stadt wurde erst bei der 1. Stadterweiterung von 1693 gezielt vergrößert. Schon bald kam es zu Ausschreitungen und Übergriffen auf die Andersgläubigen. 1683 wanderten daher die ersten 13 Familien auf einem Schiff mit dem Namen ''„[[Concord (Schiff)|Concord]]“'' nach Amerika aus und gründeten in [[Pennsylvania]] die Ortschaft [[Germantown]]. Sie waren hauptsächlich [[Quäker]] und Mennoniten, welche die in Pennsylvanien vom Gouverneur [[William Penn]] zugesicherte absolute [[Meinungsfreiheit|Meinungs]]- und [[Religionsfreiheit]] lockte. Heute ist Germantown ein Stadtteil von [[Philadelphia]]. Diese 13 Familien waren die ersten [[Deutsche]]n, die als geschlossene Gruppe nach Amerika auswanderten. Die [[Deutsche Bundespost]] nahm 1983 die 300 Jahrfeier „Deutsche in Amerika“, die in Philadelphia und in Krefeld als „[[Philadelphiade]]“ gefeiert wurde zum Anlass, eine [[Briefmarke|Sonderbriefmarke]] herauszugeben.
+
+=== 18. Jahrhundert ===
+
+[[Bild:Meister-ponzelar.JPG|thumb|Seidenweber-Denkmal Meister-Ponzelar; Südwall, Ecke Ostwall
+<br/><small>
+{{Koordinate Text|51_19_42_N_6_34_4_E_type:landmark_scale:1:1000_region:DE|51° 19′ 42″ N, 6° 34′ 4″ O}}
+</small>]]
+
+1702 starb [[Wilhelm III. (England)|Wilhelm III. von Oranien]], und Krefeld fiel daraufhin an [[Preußen]]. Die beiden Brüder Friedrich und Heinrich [[Von der Leyen (Familie)|von der Leyen]] verließen 1731 den elterlichen Betrieb und gründeten eine eigene Firma. Dieses Textilunternehmen entwickelte sich in den nächsten Jahren zu einem Unternehmen mit Weltruf und übte zunehmend Einfluss auf die Verhältnisse der Stadt aus. Friedrich war der Repräsentant der Firma, Heinrich ihr Organisator. Die beiden reichen Brüder unterstützten ihre Mennonitengemeinde, indem sie die Prediger bezahlten, ein Armenhaus stifteten und eine neue Kirchenorgel kauften. Dennoch hat der Reichtum der von der Leyens mit ihrem fürstlichen Lebensstil die einstigen Glaubensgedanken wie Frömmigkeit und Bescheidenheit verdrängt. [[Friedrich Wilhelm I. (Preußen)|Friedrich Wilhelm I.]] erkannte bei seinem Besuch in Krefeld 1738:
+
+''„Die Mennonisten sind hier keine rechten Mennonisten, sondern Bastarde, sonst aber gute Christen und biedere Leute.“''.
+
+Den Von der Leyens machte er dennoch, oder gerade deshalb Zugeständnisse:
+
+''„Sie können sich auf mich verlassen, ich werde sie zu jeder Zeit protegieren, daß dero Fabrik und Handlung kein Mensch Tort tun kann.“''.
+
+Die Stadt wurde im 18. Jahrhundert wieder durch mehrere Kriege in Mitleidenschaft gezogen (s. [[Spanischer Erbfolgekrieg]], [[Polnischer Thronfolgekrieg]]). Der nächste preußische König [[Friedrich II. (Preußen)|Friedrich II.]] erlaubte den Katholiken in Krefeld eine eigene Kirche, die Dionysiuskirche, zu bauen: Sie wurde 1754 fertiggestellt.
+
+[[Bild:Weberhaus Krefeld.jpg|thumb|Die Seidenweberhäuser waren Wohnort und Arbeitsplatz zugleich<br/><small>
+{{Koordinate Text|51_19_43_N_6_33_46_E_type:landmark_scale:1:1000_region:DE|51° 19′ 43″ N, 6° 33′ 46″ O}}
+</small>]]
+
+Durch [[Monopol]]e förderte Friedrich II. in Krefeld die Seidenweberei. Somit entwickelte sich in Krefeld eine stark ausgeprägte [[Textilindustrie]]. Diese Situation machte die Stadt Krefeld sehr wohlhabend und sie bekam ihren noch heute gültigen Beinamen „Samt- und Seidenstadt“. Hundert Jahre später war die Hälfte der Krefelder Bevölkerung in der Seidenindustrie beschäftigt. An die vielen [[Weber]] der Stadt erinnert heute am Südwall Ecke Ostwall das Seidenweberdenkmal, die Statue eines Seidenwebers mit geschulterter Tuchrolle, von den Krefeldern ''Meister Ponzelar'' genannt. Auf dem Bild unter der Statue, im Sockel eingelassen, ist ein für damals typisches [[Weberhaus]] dargestellt. Gewebt wurde seinerzeit in Heimarbeit in einer eigens dafür mit einer [[Webmaschine]] eingerichteten Webstube eines [[Weberhaus]]es. Einige dieser typischen Häuser haben die Bombardierungen im [[Zweiter Weltkrieg|Zweiten Weltkrieg]] und mehrere Stadtmodernisierungen unversehrt überstanden und stehen heute unter [[Denkmalschutz]].
+
+[[Bild:Denkmal-hückelsmay.jpg|thumb|Denkmal der Schlacht an der Hückelsmay<br/><small>
+{{Koordinate Text|51_17_56_N_6_31_49_E_type:landmark_scale:1:1000_region:DE|51° 17′ 56″ N, 6° 31′ 49″ O}}
+</small>]]
+
+Durch die „[[Schlacht bei Krefeld]]“ ging der Name der friedliebenden Stadt in die Kriegsgeschichte ein: Im [[Siebenjähriger Krieg|Siebenjährigen Krieg]] trafen am 23. Juni 1758 preußische Truppen unter dem Kommando des Prinzen [[Ferdinand von Braunschweig]] und ein französisches Heer am südlichen Stadtrand zusammen. Trotz ihrer Übermacht wurden die Franzosen besiegt – ein Gedenkstein am einstigen Schlachtfeld, der ''Hückelsmay'', erinnert heute noch an die über 2.800 Gefallenen, die dort begraben liegen. Friedrich II. besuchte zweimal die Stadt Krefeld: 1751 und 1763. Bei seinem zweiten Besuch verlieh er der Familie von der Leyen Monopolrechte für die Seidenproduktion, so dass aufkommende Konkurrenten gezwungen waren, in das benachbarte [[Herzogtum Berg|Herzogtum Jülich-Berg]] beziehungsweise das Kurfürstentum [[Köln]] abzuwandern. An die 4.000 Bürger arbeiteten bereits für die Von der Leyens, das war etwa die Hälfte aller Einwohner der Stadt. 80 % der produzierten Waren gingen in den Export auch nach Amerika und Russland. Das Portfolio umfasste Seiden- und Samtbänder, Paramenten, Borten, Hals- und Taschentücher und Seidenstrümpfe sowie Tuchware, all dies in exklusiven und erlesenen Qualitäten. Um 1768 liefen allein für die beiden Brüder von der Leyen über 700 Webstühle. Der zweitgrößte Krefelder Seidenfabrikant, die Firma Floh, besaß etwa 100 Seidenwebstühle. Die Webstühle waren stets Eigentum des jeweiligen Fabrikanten und wurden an die angestellten Weber lediglich ausgeliehen. Gewebt wurde meist in Heimarbeit. 1781 vermerkte [[Friedrich II. (Preußen)|Friedrich II.]], König von [[Preußen]]:
+
+''„Crefeld und die dasigen Manufacturen sehe ich als ein Kleinod an, von welchem die Werber wegbleiben müssen; zeigt Mir daher nur die Regimenter näher an, welche sich dergleichen Exzesse zu Schulden kommen lassen. Ich werde ihnen schon den Weg zur Stadt und ihren Manufacturen zu versperren wissen. Auswärts mögen sie werben, soviel sie wollen, von dergleichen nützlichen Fabriquen sollen sie aber durchaus wegbleiben.“''.
+
+Dies bedeutete, dass in Krefeld von nun an keine Rekruten von der Armee angeworben werden durften. Die übliche Methode der Werber bestand darin, abends vor den Kneipen angetrunkenen jungen Männern aufzulauern und ihnen sofort einen Betrag als Vorschuss auf den [[Sold]] auszuzahlen. Wer dieses ''„[[Handgeld]]“'' annahm, verpflichtete sich quasi umgehend zum Wehrdienst. Während anderenorts ganze Stammbelegschaften in den Krieg zogen, konnte in Krefeld auch in Kriegszeiten mit nahezu gleicher Quantität die gewohnt hohen Qualitäten gefertigt werden. Zudem verfügte man in Krefeld durch diese Protektion über die höchste Dichte an Webermeistern, welche ebensolche meisterlichen Arbeiten ablieferten.
+
+1794 betrug das Betriebsvermögen der Von der Leyens enorme 1.280.000 [[Taler]]. Ein Webergeselle verdiente zu der Zeit im Monat etwa 10 Taler, ein Seidenweber das doppelte, Bandweber sogar bis zu 30 Taler. Eine einfache Wohnung kostete 1 Taler Miete pro Monat. Für einen Webstuhl musste man schon 80 Taler bezahlen, ein Roggenbrot von 500 g kostete 4 [[Deut]] und der Liter Bier 1 [[Stüber]] und 3 Deut. Ein Taler kam 60 Stüber gleich und ein Stüber hatte 8 Deut. Ein Taler von 1770 entspricht heute etwa 25,- Euro.
+
+Der Wohlstand lockte auch Ganoven und Banditen an. Oft wurden die frommen und gutgläubigen Mennoniten zu ihren Opfern. Räuberbanden zogen um Krefeld umher und verbreiteten Angst und Schrecken. Die „[[Krefelder Bande]]“ war nur eine von vielen. Der [[Grefrath]]er Matthias Weber, ob seiner Art des Kampfes vielen besser bekannt als „''[[Der Fetzer]]''“, war seinerzeit wohl das prominenteste und gefürchtetste Mitglied dieser Gruppe.
+
+In dem auf die [[Französische Revolution]] folgenden französisch-preußischen Krieg wurde Krefeld wie das übrige linksrheinische Territorium 1794 von den Franzosen besetzt. Die Stadt wurde wie das gesamte linksrheinische Gebiet von [[Frankreich]] annektiert und 1798 zum Verwaltungssitz eines Arrondissements des [[Département de la Roer]] bestimmt. In dieser Zeit wurde auch gezielt Jagd auf die umherstreunenden Banditen und Räuber gemacht. Mit den meisten wurde kurzer Prozess gemacht. So endete 1803 auch das Leben von Matthias Weber auf einer [[Guillotine]] in [[Köln]].
+
+=== 19. Jahrhundert ===
+
+[[Bild:Krefeld1856.png|thumb|center|700px|Krefeld 1856; Blickrichtung von Süd-Osten. ''viereckiger Bau mit vier Türmchen ganz links:Hauptbahnhof; Kirchturm mitte-links: Alte Kirche; mittlerer Kirchturm: Dyonisiuskirche; Kirchturm mitte-rechts: Synagoge; großes Kirchenschiff mitte-rechts: Stephankirche]]
+
+Die Gedanken der Revolution fanden durchaus Zustimmung bei vielen Bürgern, die auch [[Napoléon Bonaparte]] 1804 bei seinem Besuch in der Stadt zujubelten. Aus den Aufzeichnungen der Familie von Beckerath geht zum Besuch Napoleons in Krefeld folgendes hervor: ''„Bonaparte wurde auf dem Felde bei Königshof empfangen. Der Kaiser hatte einen gelblichen Teint, graue Augen, dunkles Haar und seine Züge waren nicht unangenehm. Nachdem der [[Maire]] von der Leyen seine Rede abgelesen hatte, nickte er freundlich mit dem Kopf, sah auf seine Uhr und befahl fortzufahren. Er war kaum in der Stadt, so sahen wir ihn mit dem Maire Arm in Arm gehen. Nachdem Bonaparte die Fabriken besehen, ließ er den Gemeinderat zusammenkommen und fragte unter anderem, wie viele Millionäre denn in Crefeld seien.“.
+
+Die Franzosenzeit endete am 14. Januar 1814 – von nun an war Krefeld wieder preußisch.
+
+[[Bild:Uraufnahme karte krefeld.jpg|thumb|Historische Stadtkarte von 1842]]
+
+1816 wurde Krefeld Sitz des [[Kreis Krefeld|Kreises Krefeld]], der 1929 im [[Kreis Kempen-Krefeld]] aufging. 1828 rebellierten Seidenweber der Firma von der Leyen gegen Lohnkürzungen. Preußische Husaren schlugen die Aufständischen nieder.
+
+Um 1840 wurden die das heutige Stadtbild prägenden Boulevards (Nord-, West-, Süd-, Ostwall) angelegt. Dies wird fälschlicherweise dem Baumeister und Architekten [[Adolph von Vagedes]] zugeschrieben. Der wahre Baumeister bleibt jedoch unbekannt. Vagedes indes machte bereits 1819 Pläne für die Erweiterung der Stadt.
+
+1843 wurde Krefeld nach Plänen von Umpfenbach bis zu den heutigen Ringstraßen erweitert. Die [[Deutsche Revolution 1848/49|Märzrevolution]] von 1848 war auch in Krefeld spürbar – im Januar 1849 gab es bei Straßenkämpfen sogar ein Todesopfer. Das technische Zeitalter begann in Krefeld 1849 mit Eröffnung der Eisenbahn von [[Aachen]] nach [[Oberhausen]] ([[Bergisch-Märkische Eisenbahn-Gesellschaft]]).
+
+1863 kam es zu einem [[Eklat]] beim Besuch von König [[Wilhelm I. (Deutsches Reich)|Wilhelm I.]]. Außer den Mitgliedern des Preußenvereins verweigerten die meisten Krefelder dem König die üblichen Ehrenbezeugungen und blieben einfach zu Hause. Als ihm 1870 ein Denkmal gesetzt werden sollte, verlangte Wilhelm, der die Beleidigung nicht vergessen hatte, es müsse der Stadt den Rücken zukehren. Der Sockel dieses Denkmals ist noch heute im Krefelder Stadtgarten zu sehen. Die Statue selber wurde im [[Zweiter Weltkrieg|Zweiten Weltkrieg]] für die Rüstung eingeschmolzen.
+
+1872 schied Krefeld aus dem [[Kreis Krefeld]] aus und wurde [[kreisfreie Stadt]]. Am 17. Juni 1894 starb der [[Liste bekannter Fliegerinnen und Flieger|Luftfahrtpionier]] [[Hermann Lattemann]] in Krefeld bei einem fatalen [[Experiment]], als er seinen Ballon zum Fallschirm umwandeln wollte.
+
+=== 20. Jahrhundert ===
+
+[[Bild:Krefeld hochstraße 1908.jpg|thumb|Postkarte von 1908 zeigt die Hochstraße wahrscheinlich Ecke Schwanenmarkt<br/><small>
+{{Koordinate Text|51_19_54_N_6_33_45_E_type:landmark_scale:1:1000_region:DE|51° 19′ 54″ N, 6° 33′ 45″ O}}
+</small>]]
+
+Am 9. Juni 1902 wurde die 3. Sinfonie [[Gustav Mahler]]s in Krefeld unter der Leitung des Komponisten uraufgeführt. Elf Tage später jubelten die Krefelder Kaiser [[Wilhelm II. (Deutsches Reich)|Wilhelm II.]] zu – die Zurückhaltung, die sie seinem Großvater entgegengebracht hatten, war vergessen.
+
+1914 zogen auch Krefelder in den [[Erster Weltkrieg|Ersten Weltkrieg]] – die pazifistischen Privilegien waren schon seit 1794 Geschichte. Nach Kriegsende wurde Krefeld 1919 von belgischen Truppen besetzt. Am 22. Oktober 1923 stürmten rheinische Separatisten das Krefelder Rathaus, es gab Tote und Verletzte, aber ansonsten blieb die Aktion ohne politische Folgen.
+
+1929 wurde Krefeld mit [[Uerdingen]], [[Fischeln]], [[Gellep-Stratum]], und anderen Gemeinden zum Stadtkreis Krefeld-Uerdingen vereinigt und der Restkreis in [[Kreis Kempen-Krefeld|Landkreis Kempen-Krefeld]] umbenannt. Bereits 1907 hatte es eine große Erweiterung des Stadtgebietes gegeben, damals wurden [[Bockum]], [[Oppum]] und Verberg eingemeindet.
+
+Am 9. November 1938 wurden auch in Krefeld die Synagogen niedergebrannt und Geschäfte jüdischer Kaufleute zerstört. Im [[Zweiter Weltkrieg|Zweiten Weltkrieg]] wurden am 21. Juni 1943 bei einem britischen Luftangriff im Rahmen der [[Area Bombing Directive|moral-bombing]]-Strategie große Teile des Ostens der Stadt getroffen, die [[Innenstadt]] wurde durch einen von Brandbomben verursachten [[Feuersturm]] erheblich zerstört. Wundersamerweise blieb der große Hauptbahnhof bis auf wenige Beschädigungen unversehrt.
+
+Am 3. März 1945 marschierten US-amerikanische Truppen in Krefeld ein und befreiten die Stadt damit von der nationalsozialistischen Herrschaft. Nach Kriegsende sollten die Krefelder [[Stahlerzeugung|Stahlwerke]] ursprünglich [[Demontage|demontiert]] werden, aber man konnte dies noch abwenden.
+
+In den 1950er Jahren erlebten sie ebenso wie die Textilindustrie einen neuen Aufschwung. 1975 wurde Krefeld durch die Eingemeindung von [[Hüls (Krefeld)|Hüls]] erneut vergrößert.
+
+Noch einmal war der Name Krefeld [[Synonymie|Synonym]] für eine pazifistische Bewegung: Am 16. Oktober 1980 wurde in der Stadt auf einer Konferenz der [[Friedensbewegung]] (unter anderem mit [[Petra Kelly]] und [[Gert Bastian]]) der „Krefelder Appell“ gegen den [[NATO-Doppelbeschluss]] formuliert. Bei einem Staatsbesuch des US-Vizepräsidenten [[George H. W. Bush]] anlässlich der [[Philadelphiade]] in Krefeld am 25. Juni 1983 demonstrierten über 20.000 Menschen, dabei kam es zu schweren Auseinandersetzungen zwischen militanten Demonstranten und der Polizei.<ref>[http://media.de.indymedia.org/media/2008/02//209252.pdf Krefeld Dokumentation, Hg. Barbara Lukas u.a., Hamburg 1987]</ref>
+
+=== Wachstum bis 1843 ===
+
+[[Bild:Krefeld Wachstum.png|thumb|Wachstum bis 1843]]
+
+{|
+! width="45%" |
+! width="10%" |
+! width="45%" |
+|-
+|
+{| class="prettytable"
+|-
+| Niedertor ([[Hüls (Krefeld)|Hülser]] Tor)
+| '''A, B, C'''
+|-
+| Obertor ([[Fischeln]]er Tor)
+| '''D, E'''
+|-
+| Neues Tor ([[Linn (Krefeld)|Linner]] Tor)
+| '''F'''
+|-
+| Bröcksken (Brücke über den Stadtgraben)
+| '''G'''
+|-
+| Pforte nach [[Cracau (Krefeld)|Cracau]]
+| '''H'''
+|-
+| Westtor (Pforte nach [[Tönisvorst|St. Tönis]])
+| '''I'''
+|}
+|
+|
+{| class="prettytable"
+| Ursiedlung
+| style="background-color:#CC6699;" width="18" |
+|-
+| nach der Stadterhebung 1373
+| style="background-color:#FF3399;" |
+|-
+| 1. Stadterweiterung 1693
+| style="background-color:#FF6666;" |
+|-
+| 2. Stadterweiterung 1711
+| style="background-color:#FF9933;" |
+|-
+| 3. Stadterweiterung 1738
+| style="background-color:#CCFF99;" |
+|-
+| 4. Stadterweiterung 1752
+| style="background-color:#339933;" |
+|-
+| 5. Stadterweiterung 1766
+| style="background-color:#66CC99;" |
+|-
+| 6. Stadterweiterung 1819
+| style="background-color:#66CCFF;" |
+|-
+| 7. Stadterweiterung 1843
+| style="background-color:#6666CC;" |
+|}
+|}
+
+=== Eingemeindungen ===
+
+Folgende Städte und Gemeinden beziehungsweise Gemarkungen wurden nach Krefeld eingemeindet:
+
+{|
+|- style="background:#efefef;"
+! Jahr
+! Eingemeindete Gebiete
+|-
+|style="padding-right:10px; white-space: nowrap; vertical-align: top"| 1901 || [[Linn (Krefeld)|Linn]] (Stadtrecht seit dem 14. Jahrhundert) 
+|-
+|style="padding-right:10px; white-space: nowrap; vertical-align: top"| 1907 || [[Bockum]], [[Verberg]] und [[Oppum]] (alle Bürgermeisterei Bockum) 
+|-
+|style="padding-right:10px; white-space: nowrap; vertical-align: top"| 1929 || Bildung des Stadtkreises Krefeld-Uerdingen (1940 in Stadtkreis Krefeld umbenannt) durch Vereinigung folgender Städte und Gemeinden: 
+|-
+| || Stadtkreis Krefeld
+|-
+| || Stadt [[Uerdingen]], [[Kreis Krefeld|Landkreis Krefeld]] (Stadtrecht seit 1255/1324 mit dem 1927 eingegliederten [[Hohenbudberg]], Bürgermeisterei Friemersheim) 
+|-
+| || [[Fischeln]], Landkreis Krefeld
+|-
+| || [[Traar]], Landkreis Krefeld
+|-
+| || ''Gellep'' und ''Stratum'' (Bürgermeisterei Lank), Landkreis Krefeld 
+|-
+| || Forstwald (Amt Vorst), Landkreis Krefeld
+|-
+| || Benrad und Hülserberg (Amt Hüls), Kreis Kempen
+|-
+|style="padding-right:10px; white-space: nowrap; vertical-align: top"| 1975 || [[Hüls (Krefeld)|Hüls]], seit 1970 Ortsteil der Stadt [[Kempen]], [[Kreis Kempen-Krefeld]] (Orbroich war bereits 1936 eingemeindet worden.)
+|}
+
+== Religionen ==
+
+=== Christen ===
+
+[[Bild:Menoitenkirche-krefeld.jpg|thumb|Die Mennoniten-Kirche an der Königstraße
+<br/><small>{{Koordinate Text|51_19_58_N_6_33_48_E_type:landmark_scale:1:1000_region:DE|51° 19′ 58″ N, 6° 33′ 48″ O}}</small>]]
+[[Bild:Dionysius-kirche-krefeld.jpg|thumb|Die Katholische Hauptpfarrkirche Krefelds, St.&nbsp;Dionysius
+<br/><small>{{Koordinate Text|51_19_58_N_6_33_37_E_type:landmark_scale:1:1000_region:DE|51° 19′ 58″ N, 6° 33′ 37″ O}}</small>]]
+[[Bild:Krefeld Ev.Kirche Alt-Krefeld.jpg|thumb|Evangelische Kirche Alt-Krefeld
+<br/><small>{{Koordinate Text|51_19_52_N_6_33_45_E_type:landmark_scale:1:1000_region:DE|51° 19′ 52″ N, 6° 33′ 45″ O}}</small>]]
+
+Krefeld und Uerdingen gehörten anfangs zum [[Erzbistum Köln]] und waren dem Archidiakonat des Domdekans, beziehungsweise dem Dekanat Neuss unterstellt. 1560 führten die Grafen von Moers in Krefeld die [[Reformation]] ein. Durch die Verpfändung Krefelds an die Oranier galt in Krefeld eine begrenzte Religionsfreiheit, die sich auf das private religiöse Leben beschränkte. Das Kloster Johannes Baptista wurde von den Katholiken weiter genutzt. Taufen, Hochzeiten und Beerdigungen waren jedoch dem reformierten Pfarrer vorbehalten. Diese, wenn auch eingeschränkte, Religionsfreiheit führte viele aus religiösen Gründen verfolgte Menschen aller Konfessionen in die Stadt. Eine besonders starke Gruppe bildeten die [[Mennoniten]], die schon im Jahre 1693 eine eigene Kirche bauen konnten.
+Erst unter den Preußen durften ab 1744 die Katholiken wieder selber Taufen, Hochzeiten und Begräbnisse vornehmen. 1748 bauten die [[Evangelisch-Lutherische Kirchen|Lutheraner]] ihre eigene Kirche;
+1754 wurde die katholische Dionysiuskirche fertiggestellt.
+
+Obwohl die Bevölkerung mehrheitlich immer katholisch war, dominierten die Reformierten die Stadt. Alle öffentlichen Ämter bis hinab zum Nachtwächter wurden von Reformierten bekleidet. Die soziale Struktur der Konfessionen ließ sich auf einen einfachen Nenner bringen: Die Mennoniten hatten das Geld, die Reformierten das Sagen und die Katholiken die Arbeit.
+
+Anders war es in [[Uerdingen]]. Durch die Zugehörigkeit der Stadt zum Erzbistum Köln blieb die Stadt auch nach der Reformation katholisch. Alle katholischen Pfarrgemeinden im heutigen Stadtgebiet gehörten bis 1802 zum Erzbistum Köln. Nach dessen Auflösung kamen die Gemeinden zum [[Bistum Aachen]], das jedoch 1821/1825 bereits wieder aufgehoben wurde, so dass das Gebiet ab 1821 erneut zum wieder errichteten Erzbistum Köln kam, Hüls und Benrad kamen jedoch zum [[Bistum Münster]]. Krefeld wurde Sitz eines Dekanats. 1930 wurden alle Pfarrgemeinden des gesamten Gebiets dem neu errichteten Bistum Aachen zugeordnet. Das Dekanat Krefeld wurde in die drei Dekanate Mitte, Süd und Ost aufgeteilt. Heute gehören alle Pfarrgemeinden der Stadt Krefeld zu den Dekanaten Mitte, Ost, Bockum/Oppum, West, Süd und Nordwest innerhalb der „Region Krefeld“, zu der weitere Gebiete außerhalb Krefelds gehören. Hauptkirche der Stadt Krefeld ist die Pfarrkirche St. Dionysius. Weitere Kirchen sind St. Andreas, St. Anna, St. Antonius, St. Bonifatius, Christus König, St. Clemens, St. Cyriakus, St. Elisabeth, St. Elisabeth von Thüringen, St. Franziskus, St. Gertrudis, Heilige Schutzengel, St. Heinrich, Herz-Jesu Königshof, Herz-Jesu Bockum, St. Hubertus, St. Johann Baptist, St. Josef Krefeld-Mitte, St. Josef Krefeld-Nordwest, Liebfrauenkirche, St. Karl Borromäus, St. Margareta, St. Mariä Himmelfahrt, Maria Waldrast, St. Martin, St. Michael, St. Norbertus, St. Paul, Pax-Christi, St. Peter, St. Pius X., St. Stephan und St. Thomas Morus.
+
+Mit dem Übergang an Preußen gehörten die protestantischen Gemeinden Krefelds zur Rheinischen Provinzialkirche der Evangelischen Kirche in Preußen. Krefeld wurde Sitz eines [[Superintendent]]en, aus dem später der [[Kirchenkreis]] Krefeld (heute Krefeld-Viersen) innerhalb der [[Evangelische Kirche im Rheinland|Evangelischen Kirche im Rheinland]] hervorging. Die Kirchengemeinden wurden in mehrere Kirchengemeinden aufgeteilt beziehungsweise neue Kirchengemeinden entstanden. Der heutige Kirchenkreis Krefeld-Viersen umfasst außer den Krefelder Kirchengemeinden auch viele Gemeinden außerhalb der Stadt Krefeld. In Krefeld gibt es heute folgende Kirchen (in Klammer die zugehörige Kirchengemeinde und soweit bekannt das Baujahr der Kirche):
+
+Alte Kirche, Erlöserkirche und Johanneskirche (alle Kirchengemeinde Alt Krefeld), Friedenskirche (Friedenskirchengemeinde, 1874), Pauluskirche (Pauluskirchengemeinde, 1900/1901), Lutherkirche (1904) und Markuskirche (beide Kirchengemeinde Krefeld Süd), Christuskirche (Kirchengemeinde Krefeld Ost), Kreuzkirche und Auferstehungskirche (beide Kirchengemeinde Oppum), Lukaskirche, Thomaskirche und das Gemeinsame Haus (ökumenisch) in Elfrath (alle Kirchengemeinde Nord), Kreuzkirche (Kirchengemeinde Hüls), Michaelskirche und Johanneskirche (beide Kirchengemeinde Uerdingen).
+
+Neben den römisch-katholischen und evangelischen Gemeinden sowie der bereits erwähnten Mennonitengemeinde gibt es in Krefeld weitere [[Freikirche]]n, darunter eine Gemeinde der [[Siebenten-Tags-Adventisten]], eine Gemeinde der [[Apostolische Gemeinschaft|Apostolischen Gemeinschaft]], eine Evangelisch-Freikirchliche Gemeinde ([[Baptisten]]), eine [[Bund Freier evangelischer Gemeinden in Deutschland|Freie evangelische Gemeinde]] und die [[Heilsarmee]]. Ferner eine [[griechisch-orthodoxe Kirche]]ngemeinde und eine [[altkatholische Kirche]]ngemeinde. Sie alle sind Mitglieder der Arbeitsgemeinschaft christlicher Kirchen in Krefeld.
+Daneben gibt es noch [[die Christengemeinschaft]] und die [[Neuapostolische Kirche]].
+
+=== Juden ===
+
+[[Bild:Synagogendenkmal Krefeld.jpg|thumb|Synagogendenkmal, Marktstraße<br/><small>{{Koordinate Text|51 19 51 N 6 33 56 E type:landmark scale:1:1000 region:DE|51° 19′ 51″ N, 6° 33′ 56″ O}}</small>]]
+
+Nach der Ordnung der [[Judentum|jüdischen Gemeinden]] aus der [[Napoléon Bonaparte|napoleonischen Zeit]] war in Krefeld die bedeutendste jüdische Gemeinde im [[Département de la Roer|Rur-Departement]]. Folglich war hier das Konsistorium, die Verwaltung aller Gemeinden aus dem Département, ansässig. Der Krefelder [[Rabbiner]] war als Oberrabbiner zuständig für ein weites Gebiet von Kleve im Norden bis Köln im Süden. Die jüdische Gemeinde hatte in Krefeld zusätzlich eine besondere Stellung, weil sie nicht die einzige Minderheit in der Stadt repräsentierte.
+Zu Beginn der dreißiger Jahre des letzten Jahrhunderts lebten in Krefeld, einschließlich des erst später eingemeindeten Ortsteils Hüls, etwa 1.600 Juden, etwa ein Prozent der Bevölkerung. Die Tendenz war eher abnehmend, da die jüngeren Leute in die größeren Städte, besonders nach [[Berlin]], abwanderten. In Krefeld existierten mehrere [[Synagoge]]n bzw. Bethäuser und zwar in Krefeld-Mitte, Fischeln, Hüls, Linn und Uerdingen. Es gab und gibt weiterhin einen [[Jüdischer Friedhof|jüdischen Friedhof]]. Erfolgreiche Kaufleute und Akademiker jüdischer Herkunft waren gesellschaftlich weitgehend akzeptiert, besonders wenn die Familien seit mehreren Generationen in Krefeld lebten. Trotzdem kam es auch in Krefeld seit Mitte der 1920er Jahre zu antisemitischen Übergriffen, die im [[Novemberpogrome 1938|Novemberpogrom 1938]] gipfelten. Bis 1939 war die Hälfte der Krefelder Juden aus Deutschland ausgewandert. Mindestens 737 Krefelder Juden wurden in der [[Zeit des Nationalsozialismus]] ermordet.
+
+Die Jüdische Gemeinde Krefeld erstreckt sich heute von Krefeld bis [[Kleve]]. Umfasste sie 1980 nur rund 130 Mitglieder, sind es zurzeit 1.084. Die meisten davon sind [[Osteuropa|Osteuropäer]], die nach dem Fall des [[Eiserner Vorhang (Politik)|Eisernen Vorhangs]] nach Deutschland eingewandert sind. Im Juli 2005 wurde der Grundstein für den Neubau einer Synagoge an der Wiedstraße in der östlichen Innenstadt gelegt. Seit dem 1. Mai 2007 hat die Gemeinde mit Yitzhak Mendel Wagner erstmalig seit dem Nationalsozialismus wieder einen Rabbiner.
+
+=== Muslime ===
+
+In Krefeld leben ca. 14.000 [[Muslim]]e, dies sind rund 5,6 Prozent der Krefelder Bevölkerung. Die meisten von ihnen kamen ab den 1960er Jahren hauptsächlich als [[Gastarbeiter]] aus der [[Türkei]] in die Samt- und Seidenstadt und fanden hier eine neue Heimat. Die Krefelder Muslime schlossen sich unter dem Dachverband „Union der türkischen und islamischen Vereine in Krefeld und Umgebung e.&nbsp;V.“ zusammen, um bürokratische Angelegenheiten mit der Stadt Krefeld einfacher und schneller zu handhaben. Derzeit existieren in Krefeld sechs [[Islam|muslimische]] Gotteshäuser. Die älteste [[Moschee]] wurde 1973 an der Gerberstraße vom Verein ''Islamische Gemeinschaft Krefeld e. V.'', nahe der Innenstadt, eröffnet. Sie befindet sich seit 1987 in der Viersener Straße. Am 3. Oktober jeden Jahres findet in NRW und auch in Krefeld der „Tag der offenen Moschee“ statt. Das Zauberwort „Dialog“ wird in Krefeld nicht nur als leere Phrase aufgefasst, sondern aktiv betrieben. Einmal im Monat findet das Christlich-muslimische Frauenfrühstück, im „Haus der Familie“ statt. Die Arbeitsgruppe „Kinder im Licht“ mit dem St. Josefs Hospital Uerdingen wird aktiv zum Austausch genutzt. Es finden „Tarik“ Treffen zwischen Schülern der Marienschule und Muslimen zum religiösen Dialog (Bibel-Koran) statt. Ein weiteres Indiz dafür, dass aus den Gastarbeitern muslimische Mitbürger geworden sind, ist der muslimische Friedhof am Elfrather See.
+
+Die sechs Moscheen in Krefeld heißen:
+Ayasofya Camii,
+Fatih Camii,
+Haci Bayram Veli Camii,
+Merkez Camii,
+Yunus Emre Camii,
+Yavuz Sultan Selim Camii.
+
+=== Sonstige ===
+
+Des Weiteren gibt es ein [[Buddhismus|buddhistisches]] Zentrum in der Stadtmitte.
+
+== Politik ==
+
+[[Bild:Rathaus-krefeld.jpg|thumb|Das Krefelder Rathaus
+<br/><small>{{Koordinate Text|51_20_3_N_6_33_33_E_type:landmark_scale:1:1000_region:DE|51° 20′ 3″ N, 6° 33′ 33″ O}}
+</small>]]
+
+An der Spitze des alten Dorfes Krefeld stand zunächst ein Amtmann, der im Namen der Grafen handelte. Nach der Stadterhebung leiteten die [[Schöffe]]n die Stadtverwaltung. Ihnen traten später Bürgermeister und Ratsmänner zur Seite. Im 15. Jahrhundert nahmen auch Gemeinsleute als Vertreter der Bürgerschaft an der Stadtverwaltung teil. Schöffen, Bürgermeister und Gemeinsleute bildeten später den [[Magistrat]]. Ab 1738 wurde der Magistrat ständig. Ihm gehörten 4 Bürgermeister, ein Schöffe, ein Secretarius und 3 Gemeinsleute an. Nach 1740 handelte es sich beim Magistrat um eine königliche Behörde des Staates Preußen, zu dem Krefeld seinerzeit bereits gehörte. In französischer Zeit wurde 1800 die Munizipalverfassung eingeführt. Krefeld wurde Hauptort eines [[Kanton (Frankreich)|Kantons]] mit einem [[Maire]] an der Spitze. Ferner gab es einen Munizipalrat. 1845 wurde die Rheinische Landgemeindeordnung und 1856 die Rheinische Städteordnung eingeführt. Danach leitete ein [[Oberbürgermeister]] die Stadtverwaltung, auch gab es weiterhin einen Rat.
+
+Auch in [[Uerdingen]] gab es nach der Stadterhebung einen Rat und mehrere Bürgermeister. Ab 1648 gab es nur noch einen Bürgermeister. Auch Uerdingen wurde in französischer Zeit Sitz einen Kantons mit einem Maire an der Spitze. In preußischer Zeit leitete ein Bürgermeister die Stadt. Nach der Vereinigung beider Städte gab es einen Oberbürgermeister für die neue kreisfreie Stadt Krefeld-Uerdingen.
+
+[[Bild:Stadthaus Krefeld.jpg|thumb|Die ehemalige Hauptverwaltung der VerSeidAG ist heute das Stadthaus <br/>
+<small>{{Koordinate Text|51_20_23_N_6_32_42_E_type:landmark_scale:1:1000_region:DE|51° 20′ 23″ N, 6° 32′ 42″ O}} </small>]]
+
+Während der Zeit der [[Nationalsozialismus|Nationalsozialisten]] wurde der Oberbürgermeister von der [[Nationalsozialistische Deutsche Arbeiterpartei|NSDAP]] eingesetzt. Nach dem [[Zweiter Weltkrieg|Zweiten Weltkrieg]] setzte die [[Militärregierung]] der [[Britische Besatzungszone|Britischen Besatzungszone]] einen neuen Oberbürgermeister ein, und 1946 führte sie die Kommunalverfassung nach britischem Vorbild ein. Danach gab es einen von den Bürgern gewählten „Rat der Stadt“, dessen Mitglieder man als „Stadtverordnete“ bezeichnet. Der Rat wählte anfangs aus seiner Mitte den Oberbürgermeister als Vorsitzenden und Repräsentanten der Stadt, welcher ehrenamtlich tätig war. Des Weiteren wählte der Rat ab 1946 ebenfalls einen hauptamtlichen [[Oberstadtdirektor]] als Leiter der Stadtverwaltung. 1999 wurde die Doppelspitze in der Stadtverwaltung aufgegeben. Seither gibt es nur noch den hauptamtlichen Oberbürgermeister. Dieser ist Vorsitzender des Rates, Leiter der Stadtverwaltung und Repräsentant der Stadt. Er wurde 1999 erstmals direkt vom Volk gewählt. Oberbürgermeister ist Gregor Kathstede (CDU).
+
+=== Oberbürgermeister seit 1848 ===
+
+{| cellpadding="8"
+|
+* 1848–1872: Ludwig Heinrich Ondereyck
+* 1872–1881: Friedrich Christian Roos
+* 1882–1903: Ernst Küper
+* 1903–1905: Dr. Wilhelm Hammerschmidt
+* 1905–1911: Dr. Adalbert Oehler
+* 1911–1930: Dr. [[Johannes Johansen]]
+* 1930–1933: Heinrich Hüpper
+* 1933–1945: Dr. Aloys Heuyng
+* 1945–1946: Dr. Johannes Stepkes
+* 1946–1947: Dr. [[Wilhelm Warsch]]
+|
+* 1947–1949: Hermann Passen
+* 1949–1951: Hanns Müller FDP
+* 1951–1956: Johannes Hauser CDU
+* 1956–1961: [[Josef Hellenbrock]] SPD
+* 1961–1968: Herbert van Hüllen CDU
+* 1968–1982: [[Hansheinz Hauser]] CDU
+* 1982–1989: [[Dieter Pützhofen]] CDU
+* 1989–1994: Willi Wahl SPD
+* 1994–2004: Dieter Pützhofen CDU, 2. Amtszeit
+* Seit 2004: [[Gregor Kathstede]] CDU
+|}
+
+=== Oberstadtdirektoren 1946–1999 ===
+
+* 1946–1949: Dr. Johannes Stepkes
+* 1949–1964: Dr. Bernhard Heun
+* 1964–1986: Dr. Hermann Steffens
+* 1986–1988: Dr. Alfred Dahlmann
+* 1988–1999: Heinz-Josef Vogt
+
+=== Sitzverteilung nach Fraktionen im Stadtrat (seit 2004) ===
+
+{| border="0" cellpadding="2" cellspacing="0" width="100%"
+|- bgcolor="#eeeeee" align="center"
+| || [[Christlich Demokratische Union Deutschlands|CDU]] || [[Sozialdemokratische Partei Deutschlands|SPD]] || [[Bündnis 90/Die Grünen|GRÜNE]] || [[Freie Demokratische Partei|FDP]] || KWG || KK || UKB || '''Gesamt'''
+|- align="center"
+| 2004 || 26 || 18 || 8 || 6 || 2 || 1 || 1 || 62
+|}
+
+=== Abgeordnete für Krefeld ===
+
+Für den Wahlkreis 111 Krefeld I - Neuss II sitzen im [[Deutscher Bundestag#Sechzehnter Bundestag (ab 2005)|16. Deutschen Bundestag]] der per Direktmandat gewählte [[Willy Wimmer]] (CDU). [[Otto Fricke (FDP)]] und [[Bernd Scheelen]] (SPD) sind über die jeweilige Landesliste eingezogen. Den Wahlkreis 115 Krefeld II - Wesel II vertritt [[Siegmund Ehrmann]] (SPD) sowie [[Sevim Dağdelen]] (DIE LINKE), die über die Landesliste in den Bundestag eingezogen ist.
+
+Direkt gewählte Abgeordnete im [[Landtag Nordrhein-Westfalen]] sind in der 14. Wahlperiode (Landtagswahl am 22. Mai 2006) Peter Kaiser (CDU) und Winfried Schittges (CDU).
+
+=== Stadtwappen ===
+
+[[Bild:Wappen Krefeld.svg|thumb|Krefelder Wappen in moderner Form (normales: siehe oben)]]
+
+:''für die Geschichte und weitere Informationen siehe [[Stadtwappen Krefeld]]''
+
+Das mit Ministerialerlass vom 3. Juli 1950 genehmigte Stadtwappen wurde von dem Heraldiker Wolfgang Pagenstecher entworfen. Der gespaltene Schild zeigt vorn in Silber den Heiligen [[Dionysius von Paris]] mit [[Heiligenschein]] und rotem [[Ornat]], den Bischofsstab in der Rechten, das abgeschlagene Haupt in der Linken, zu seinen Füßen ein goldenes Schildchen mit schwarzem Balken, hinten in blau über rot geteiltem Felde zwei abgewendete goldene Schlüssel, begleitet von silbernen Schilden mit schwarzen
+Balkenkreuzen.
+
+Der abgeschlagene Kopf des hl. Dionysius, der im dritten Jahrhundert erster [[Bischof]] von [[Paris]] und später fränkischer [[Nationalheiliger]] wurde, deutet seinen Märtyrertod an. Das Moerser Landeswappen zu seinen Füßen erinnert an die frühere Zugehörigkeit von Stadt und Herrlichkeit Krefeld zur Grafschaft Moers. Die kurkölnischen Schilde im Uerdinger Wappen weisen auf die Landesherrschaft des Kurfürsten von Köln über die Stadt Uerdingen hin und versinnbildlichen zugleich die Zugehörigkeit einiger Teile des alten Amtes Linn-Uerdingen zum heutigen Stadtgebiet.
+
+=== Stadtfarben ===
+
+Die Farben der Stadt Krefeld sind ''schwarz'' und ''gold''.
+
+=== Städtepartnerschaften ===
+
+{| align="right"
+! colspan="2" | Städtepartnerschaften:
+|-
+| [[Bild:Flag of the Netherlands.svg|20px|border]] || [[Venlo]] in den Niederlanden, seit 1964
+|-
+| [[Bild:Flag of the United Kingdom.svg|20px|border]] || [[Leicester]] in Großbritannien, seit 1969
+|-
+| [[Bild:Flag of France.svg|20px|border]] || [[Dünkirchen]] in Frankreich, seit 1974
+|-
+| [[Bild:Flag of the Netherlands.svg|20px|border]] || [[Leiden (Stadt)|Leiden]] in den Niederlanden, seit 1974
+|-
+| [[Bild:Flag of the United States.svg|20px|border]] || [[Charlotte (North Carolina)|Charlotte]] in den USA, seit 1986
+|-
+| [[Bild:Flag of Brandenburg.svg|20px|border]] || [[Landkreis Oder-Spree]] in Brandenburg,<br/> seit 1990
+|-
+| [[Bild:Flag of Russia.svg|20px|border]] || [[Uljanowsk]] in Russland, seit 1993
+|-
+| [[BILD:Flag of Turkey.svg|20px|border]] ||[[Kayseri]] in der Türkei, seit Mai 2008
+|}
+
+Die niederländische Grenzstadt [[Venlo]] war die erste offizielle [[Städtepartnerschaft]] Krefelds. Die Partnerschaft wurde 1964 offiziell begründet, auch wenn Kontakte zwischen den Krefeldern und den Nachbarn aus Venlo bereits vor dem Zweiten Weltkrieg gepflegt wurden. Die bekannteste Errungenschaft der Partnerschaft ist der alljährliche Besuch des „[[Weihnachtsmann|Sinter Klaas]]“, der mit seinen Swarten Pieten immer am ersten Advent am Rhein-Steiger in Uerdingen festmacht und von einem begeisterten Publikum empfangen wird.
+
+Am 14. Mai 1969 wurde die englische Stadt [[Leicester]] Partnerstadt. Zwischen den beiden Städten gibt es seit Jahren zahlreiche Kontakte. In den Bereichen Kultur, Politik und Sport werden regelmäßig Besuche organisiert. Auszubildende der Krefelder Stadtverwaltung und Lehrlinge des Handwerks nutzen die Chance eines Auslandspraktikums in der Partnerstadt.
+
+Das französische [[Dünkirchen]] ist seit dem 15. Juni 1974 Partnerstadt. Die Städtepartnerschaft wird unter anderem von Sportlern, Schulen und Sprachinteressierten gepflegt.
+
+Kurz darauf wurde [[Leiden (Stadt)|Leiden]] am 3. Oktober 1974 Krefelds Partnerstadt. Ebenso wie Krefeld ist das südholländische Leiden eine traditionelle Textilstadt.
+
+[[Charlotte (North Carolina)|Charlotte]] im amerikanischen Bundesstaat North Carolina ist seit dem 23. Mai 1986 Krefelds Partnerstadt. Einen Schwerpunkt der partnerschaftlichen Beziehungen bildet der Jugendaustausch: Über die Concord-Gesellschaft besuchen regelmäßig Krefelder Jugendliche Charlotte sowie junge Charlotteans die Seidenstadt.
+
+Seit dem 22. September 1990 ist der [[Landkreis Oder-Spree]] (damals Kreis Beeskow) Partner der Stadt Krefeld. Mit der Einrichtung eines „Krefeld-Büros“ leistete die Stadt Krefeld dem Kreis tatkräftige Unterstützung beim Aufbau der kommunalen Selbstverwaltung.
+Kontakte zum Oder-Spree-Kreis werden heute unter anderem von Schulen, Chören und Parteien gepflegt.
+
+Die bisher letzte Städtepartnerschaft wurde am 19. Mai 1993 mit dem russische [[Uljanowsk]] geschlossen. Die partnerschaftlichen Kontakte in die Geburtsstadt Lenins werden unter anderem durch die deutsch-russische Gesellschaft, die Städtischen Werke, das Klinikum Krefeld sowie kirchliche und soziale Verbände gepflegt.
+
+Des Weiteren unterhält die Stadt Krefeld eine freundschaftliche Beziehung zur japanischen Stadt [[Hamamatsu]].
+
+Im Mai 2008 ging Krefeld mit der türkischen Stadt [[Kayseri]] eine Partnerschaft ein.
+
+== Öffentliche Einrichtungen und Bildung ==
+
+[[Bild:Landgericht Krefeld.jpg|thumb|Amts- und [[Landgericht Krefeld|Landgericht]] am Nordwall <br/>
+<small>
+{{Koordinate Text|51_20_6_N_6_33_7_E_type:landmark_scale:1:1000_region:DE|51° 20′ 6″ N, 6° 33′ 7″ O}}
+</small>]]
+
+Als Oberzentrum ist Krefeld Standort einiger überregionaler Institutionen. So ist Krefeld Sitz der ''[[Deutsche Industrie- und Handelskammer|Deutschen Industrie- und Handelskammer]]'' (IHK) Mittlerer Niederrhein – [[Körperschaft des öffentlichen Rechts]], deren Kammerbezirk die kreisfreien Städte Krefeld und [[Mönchengladbach]] sowie den [[Rhein-Kreis Neuss]] und den [[Kreis Viersen]] umfasst. Weitere Hauptgeschäftsstellen befinden sich in Mönchengladbach und [[Neuss]]. Seit 2004 befindet sich das ''Deutsche Modeinstitut in Krefeld''. Des Weiteren ist der ''Geologische Dienst NRW'' sowie ein ''Staatliches Veterinäruntersuchungsamt'' hier ansässig. Ein ''[[Amtsgericht]]'', ein ''[[Landgericht Krefeld|Landgericht]]'' und ein ''[[Arbeitsgericht]]'' haben ihren Sitz in Krefeld.
+
+Krefeld verfügt über 37 Grundschulen, acht Hauptschulen, sechs Realschulen, zehn Gymnasien und fünf Gesamtschulen. Des Weiteren existieren vier Berufskollegs sowie neun Förderschulen.
+
+Krefeld ist außerdem der Hauptsitz der ''[[Hochschule Niederrhein]]''. Sie wurde 1971 durch Zusammenschluss von 13 Fach- und Ingenieurschulen gegründet. In Krefeld befinden sich die Fachbereiche Chemie, Design, Elektrotechnik und Informatik, Maschinenbau und Verfahrenstechnik, Wirtschaftsingenieurwesen und Gesundheitswesen sowie ein Ausländer-Studienkolleg. Weitere Fachbereiche dieser Fachhochschule sind in Mönchengladbach angesiedelt.
+
+== Kultur und Sehenswürdigkeiten ==
+
+=== Mundart ===
+
+In Krefeld wird Krefelder Mundart gesprochen. Der Krefelder nennt diese Sprache [[Krieewelsch]] oder Krieewelsch-[[Platt]], ein niederfränkischer Dialekt.
+
+=== Theater ===
+
+[[Bild:Krefeld theater.jpg|thumb|Stadttheater<br/>
+<small>
+{{Koordinate Text|51_20_7_N_6_33_49_E_type:landmark_scale:1:1000_region:DE|51° 20′ 7″ N, 6° 33′ 49″ O}}
+</small>]]
+
+Das ''Stadttheater Krefeld'' [[Kooperation|kooperiert]] seit 1950 mit den städtischen Bühnen [[Mönchengladbach]] und bietet moderne und klassische Aufführungen aus Oper, Operette, Ballett und Schauspiel. Über die Grenzen Krefelds hinaus haben sich die Sinfoniekonzerte der Niederrheinischen Sinfoniker einen Namen gemacht. Das heutige Theatergebäude von [[Gerhard Graubner]] mit seinem markanten Kupferdach wurde 1963 eröffnet und bietet 832 Besuchern platz. Siehe dazu [[Vereinigte Städtische Bühnen Krefeld und Mönchengladbach]].
+
+[[Bild:Krefeld_Fabrik_Heeder.jpg|thumb|''Fabrik Heeder''<br/>
+<small>
+{{Koordinate Text|51_19_22.74_N_6_34_20.05_E_type:landmark_scale:1:1000_region:DE|51° 19' 22.74" N, 6° 34' 20.05" O}}
+</small>]]
+
+Seit 1989 wird die alte Tapeten-''[[Fabrik Heeder]]'' auf der Virchowstraße, gegenüber der Rückfront des Hauptbahnhofs, unter Leitung des Kulturbüros der Stadt Krefeld als städtisches Kulturzentrum genutzt. Das Kulturbüro bietet ein vielfältiges kulturelles Programm an. Unter anderem bringt das ''KRESCH'' – Kinder- und Jugendtheaterzentrum der Stadt Krefeld hier Eigenproduktionen und Gastspiele.
+
+Das Krefelder Wohnzimmertheater ''PODIO'' ist ein festen Bestandteil der Krefelder Kulturszene und bietet ausgesuchte Produktionen aus den Bereichen Theater, Kabarett, Kleinkunst, Comedy, Literatur und Musik. Mit rund 60 Plätzen stellt das Wohnzimmertheater Krefelds kleinste Bühne dar.
+
+Das seit 1979 bestehende Marionettentheater ''[[Krieewelsche pappköpp]]'' bietet Kleinkunst in Krefelder Mundart (Krieewelsch).
+
+Das Theater am Marienplatz ([[TAM (Theater)|TAM]]) genießt im Bereich der modernen und experimentellen Musik einen ausgezeichneten Ruf. Es hat sich während seiner fast dreißigjährigen kontinuierlichen Arbeit auf wenig bekannte sowie zeitgenössische Werke spezialisiert.
+
+Der ''KulturPunkt-Friedenskirche'' Krefeld, bietet das ganze Jahr ein internationales Kulturprogramm mit bekannten Künstlern. Im Gemeindehaus und in der Kirche sowie im Turm finden Ausstellungen, Konzerte, Lesungen, Kabarett und vieles mehr statt.
+
+Der ''Werkhaus Krefeld e.V'' ist mit seinem Programm (Weiterbildung, Kultur) seit über 20 Jahren traditioneller Förderer von Kultur und Kommunikation in Krefeld und wurde kürzlich mit dem Preis für „Engagement und Courage“ für sein konstantes Engagement ausgezeichnet. Die ihm angeschlossene ''Werkbühne'' bietet ein kurzweiliges, breit gefächertes, modernes Programm in Sachen Kleinkunst, Kabarett, Theater und Musik.
+
+=== Nachtleben ===
+
+[[Bild:Kulturfabrik Krefeld.jpg|thumb|Außenansicht der KuFa im Oktober 2007]]
+Krefeld besitzt ein reges Nachtleben. Hierzu gehören eine Vielzahl an Szenekneipen sowie Diskotheken. Hierbei sind drei Clubs besonders hervorzuheben.
+
+In der Kulturfabrik, kurz ''KuFa'' genannt, finden das ganze Jahr über Live-Auftritte von Bands und Solokünstlern, Kabarettisten, Comediens aber auch Theatergruppen und Kleinkünstlern statt, die Gäste reichen von [[Die Ärzte|den Ärzten]] über [[Dieter Nuhr]] und [[Herbert Grönemeyer]] bis zu [[Helge Schneider]] und [[Harald Schmidt]]. National und International bekannt ist die Kulturfabrik durch regelmäßige Festivals, vor allem im [[Electro (Sammelbezeichnung)|Elektro]]- und [[Rhythm ’n’ Noise|Rhythm-’n’-Noise]]-Bereich (Maschinenfest, Pluswelt-Festivals). Des Weiteren finden regelmäßig Themenpartys (80er, 90er usw.) statt. Die Kulturfabrik besitzt zwei Säle, einen kleinen für 350 Besucher und einen größeren für etwa 1100. Untergebracht ist die sie in einem Teil des alten städtischen Schlachthofes.
+
+Die wohl bekannteste Diskothek Krefelds ist die ''[[Königsburg (Club)|Königsburg]]''. Sie wurde Ende 2005 nach etwa 4-jähriger Ruhepause wiedereröffnet. Vor der zwischenzeitlichen Schließung 2001 erfreute sie sich auch überregional großer Beliebtheit.
+
+Ebenfalls weit über die Grenzen Krefelds bekannt ist der bereits seit 1958 bestehende ''[[Jazzkeller Krefeld]]'' auf der Lohstraße. Hier traten schon einige Jazz Größen sowie diverse Bands, die zumeist dem Blues, Jazz oder Rock zugeordnet werden können, auf. Regelmäßig findet die Veranstaltung JazzAttack, eine organisierte Jamsession mit bekannten Musikern der deutschen Jazz-Szene sowie vereinzelt internationalen Gästen, statt.
+
+=== Kino ===
+
+Ein modernes [[Multiplex-Kino]] der Kette ''[[Cinemaxx]]'' befindet sich mit seinen zehn Vorführsälen direkt neben dem Hauptbahnhof. Nach dem Bau des Cinemaxx wurden das ''Passage-Filmtheater'' mit den Kinos ''Royal, Studio 55, Chrystal und Passage'' und die Miniatur-''Hollywood-Kinos'' geschlossen. Bereits in den 1970ern wurde das ''Atrium'' zum heutigen ''Blue Movie''. Vor einigen Jahren musste dann der ''Seidenfaden'' mit dem ''Intimes'' dem Neubau der ''Dresdener Bank'' weichen. Als einziges weiteres Kino hält das ''Cinema/Casablanca (ehemals Primus und Lux)'' mit zwei Sälen, der Konkurrenz mit einem alternativen Programm stand.
+
+=== Museen und Galerien ===
+
+==== Kunstmuseen ====
+
+[[Bild:Krefeld_kaiser_wilhelm_museum.jpg|thumb|Kaiser-Wilhelm-Museum<br/>
+<small>
+{{Koordinate Text|51_19_49_N_6_33_34_E_type:landmark_scale:1:5000_region:DE|51° 19′ 49″ N, 6° 33′ 34″ O}}
+</small>]]
+
+===== Kaiser-Wilhelm-Museum =====
+
+Der Bau des ''[[Kaiser-Wilhelm-Museum]]s'' geht auf den Schulrat Dr. Hermann Keussen zurück. Dieser griff nach dem Tod des Kaisers 1888 eine Anregung des Architekten [[Hugo Koch (Aachen)|Hugo Koch]] wieder auf, ein Kaiser Wilhelm Museum ''zur Pflege von Werken des Friedens, der Kunst, Bildung und Gesittung'' zu errichten. Ein Streit um den Standort des Museums wurde 1890 zugunsten des Karlplatzes am Westwall entschieden. 1894–97 wurde das Museum nach Plänen von Hugo Koch erbaut und am 5. September 1899 eingeweiht.
+
+1910–12 wird das Museum erweitert. Lag der Schwerpunkt zunächst auf neuzeitlichem Kunstgewerbe und Kleinkunst, wurde dieser seit 1922 mehr auf die bildende Kunst verlagert. 1942 wurde das Museum kriegsbedingt geschlossen, überstand den Krieg aber ohne Schäden. Gegenwartskunst bekam nach dem Krieg einen immer größeren Stellenwert. 1960 schloss das Museum wegen Umbauarbeiten, die im Dezember 1968 abgeschlossen wurden. Am 30. April 1969 wurde das Museum schließlich wieder eröffnet.
+
+Bis 2008 liegt der Schwerpunkt der Sammlung in der zweiten Hälfte des [[20. Jahrhundert]]s.  Durch den Abzug der Sammlung Lauffs im Jahre 2008 verliert das Museum jedoch die meisten seiner Kunstwerke und muss die Lücken aus dem eigenen Bestand eingelagerter Werke füllen. Über den Verbleib der Werke des in Krefeld geborenen [[Joseph Beuys]], der mit einem von ihm selbst eingerichteten Ensemble noch präsent ist, wird derzeit verhandelt.
+
+===== Haus Lange/Haus Esters =====
+
+[[Bild:krefeld_haus_lange_esthers_9.jpg|thumb|Haus Esters (links), Haus Lange (rechts)<br/>
+<small>
+{{Koordinate Text|51_20_49_N_6_34_57_E_type:landmark_scale:1:1000_region:DE|51° 20′ 49″ N, 6° 34′ 57″ O}}
+</small>]]
+
+''Museum Haus Lange'' an der Wilhelmshofallee wurde zwischen 1928 und 1930 von [[Ludwig Mies van der Rohe]], als Wohnhaus für die Familie von Hermann Lange (Direktor der Vereinigten Seidenwebereien, Krefeld), im [[Bauhaus]]-Stil erbaut. 1955 stellte die Familie das Haus der Stadt für Ausstellungen aktueller Kunst zur Verfügung. 1968 schenkte der Sohn des Bauherrn und Kunstsammlers das Haus der Stadt mit der Auflage, hier 99 Jahre lang Ausstellungen zeitgenössischer Kunst zu zeigen. 1976 konnte die Stadt Krefeld das benachbarte Haus Esters erwerben. Es wurde ebenfalls zwischen 1928 und 1930 von Ludwig Mies van der Rohe erbaut. 1981 wurde ''Museum Haus Esters'' als weiteres Ausstellungsinstitut für Wechselausstellungen zeitgenössischer Kunst eröffnet. Zwischen 1998 und 2000 sind beide Häuser umfassend saniert worden. Im Zuge der Euroga 2002+ konnten zwei Jahre später auch die Gärten dem ursprünglichen Zustand wieder angenähert werden.
+Die beiden Häuser sind selbst als Museum für Baugeschichte anzusehen.
+
+==== Museumszentrum Burg Linn ====
+
+[[Bild:Burg Linn.jpg|thumb|Burg Linn mit angrenzendem Jagdschlösschen<br/>
+<small>
+{{Koordinate Text|51_19_60_N_6_38_7_E_type:landmark_scale:1:2000_region:DE|51° 19′ 60″ N, 6° 38′ 7″ O}}
+</small>]]
+
+Unter dem Oberbegriff ''[[Museumszentrum Burg Linn]]'' werden die Burg Linn, Das Jagdschloss und das Niederrheinische Landschaftsmuseum zusammengefasst.
+
+Auf der, bis zum 12. Jahrhundert zurückgehenden ''[[Burg Linn]]'', eine polygonale Rundburg, einer von vielen Burgentypen Kurkölns, werden Ausstellungen zur Entstehung der Burg und das damalige Leben auf dieser gezeigt.
+
+Das ''Jagdschloss'' aus dem [[Barock]] ist in der [[Vorburg]] der Burg Linn gelegen. Erbaut wurde es im 18. Jahrhundert für Kurfürst [[Clemens August I. von Bayern|Clemens August]]. Zu sehen gibt es hier zeitgenössisches Inventar aus zwei Jahrhunderten und eine Sammlung mechanischer Musikinstrumente, welche sonntags vorgeführt werden. Besonders hervorzuheben ist ein mechanisches Glockenspiel mit Glocken aus [[Meißener Porzellan]] an der Vorderseite des Schlosses, das stündlich eine Melodie spielt.
+
+Das ''Niederrheinische Landschaftsmuseum'' zeigt Fundstücke aus dem [[Römisches Reich|römischen]] und [[Fränkisches Reich|fränkischen]] Gräberfeld in Gellep und dem dortigen ehemaligen ''Castell Gelduba''. Unter anderem ist das berühmte [[Fürstengrab]] des fränkischen Fürsten ''Arpvar'' mit seinem [[Spangenhelm]] aus Gold zu besichtigen. Außerdem gibt es weitere Ausstellungsstücke zur Geschichte der Umgebung sowie einen bereits 1972 bei Baggerarbeiten am Rheinhafen geborgenen Rheinkahn aus dem 13. Jahrhundert, welcher nach einem über 30 Jahre dauernden Bad in einer speziellen Holzschutzlösung nun in einer eigens errichteten Halle ausgestellt ist.
+
+==== Sonstige Museen ====
+
+[[Bild:Deutsches_Textilmuseum.jpg|thumb|Deutsches Textilmuseum in Linn<br/>
+<small>
+{{Koordinate Text|51_20_2_N_6_38_13_E_type:landmark_scale:1:1000_region:DE|51° 20′ 2″ N, 6° 38′ 13″ O}}
+</small>]]
+
+Das [[Deutsches Textilmuseum|Deutsche Textilmuseum]] in Linn gehört heute zu den international wichtigsten Sammlungen mit historisch kostbaren Textilien und Bekleidungsstücken aus verschiedensten Zeitepochen. Die Sammlung umfasst über 25.000 Objekte aus allen Teilen der Welt. Die Vielfalt der Exponate reicht von der Antike bis zur Gegenwart. Allerdings sind nicht alle Textilien der Öffentlichkeit zugänglich.
+
+Das ''Haus der Seidenkultur'' befindet sich in der ehemaligen [[Parament]]enweberei Hubert Gotzes. Im Jahr 2000 wurde es als Museum eingerichtet. In dem [[Industriedenkmal]] sind neben Stickereiausstellungen 100 Jahre alten [[Joseph-Marie Jacquard]]-[[Webmaschine|Handwebstühlen]] zu bewundern.
+
+=== Literatur ===
+
+Das Literaturleben der Stadt erfuhr von den 1970er Jahren an durch den Buchdrucker und ehemaligen Galeristen Klaus Ulrich Düsselberg einen starken Aufschwung. Er war Gründer der ''Literaturwerkstatt'', des Sassafras-Verlags und der Zeitschrift „Literatur in Krefeld“, später in „Literatur am Niederrhein“ umbenannt. Auch organisierte er in den Reihen ''Literatur bei Herbst Pitt'' und ''Literatur im Kaiser-Wilhelm-Museum'' zahlreiche Lesungen mit regional und überregional bekannten Schriftstellerinnen und Schriftstellern.
+Seit 1992 verleiht die Stadt Krefeld jährlich den mit 5.000€ dotierten [[Niederrheinischer Literaturpreis|Niederrheinischen Literaturpreis]] an regionale Autoren oder Autoren deren Werke bezug auf den Niederrhein nehmen.
+Die Tochter des Krefelder Schriftstellers Otto Brües, die Kunsthistorikerin und ehemalige Direktorin des Museums [[Schloss Rheydt]], Dr. Eva Brües, vereinbarte 1998 eine spätere Schenkung an die Stadt, um das ''Niederrheinische Literaturhaus der Stadt Krefeld – Brües-Haus'' zu gründen. Dort finden heute zuweilen Lesungen und Vorträge vor allem des Otto-Brües-Freundeskreises statt.
+
+Zu den auch überregional bekannten Schriftstellern und Schriftstellerinnen, die in Krefeld geboren wurden oder aufwuchsen, zählen Herbert Genzmer, Thomas Hoeps, [[Andreas Mand]], [[Ulrich Peltzer]], Matthias Schamp, [[Elke Schmitter]] und Eckard Sinzig.
+
+=== Musik ===
+
+[[Bild:Haus Sollbruegen.jpg|thumb|Haus Sollbrüggen im Sollbrüggenpark beherbergt die Musikschule<br/>
+<small>
+{{Koordinate Text|51_20_40_N_6_36_36_E_type:landmark_scale:1:1000_region:DE|51° 20′ 40″ N, 6° 36′ 36″ O}}
+</small>]]
+
+Das Musikleben der Stadt Krefeld hat eine bis in das 18. Jahrhundert zurückzuverfolgende Tradition, die im wohlhabenden, musikinteressierten Bürgertum ihre Wurzeln hat. Eine besondere Blüte erlebte das Musikleben bis in die Zeit des Nationalsozialismus (eigenes Konservatorium, aktiver Tonkünstlerverein, eigenes Musiktheater und Städtisches Orchester). Nach dem Zweiten Weltkrieg erfolgte eine Umorientierung. An die Stelle des Konservatoriums trat eine Musikschule; Musiktheater und Orchester wurden schon zu Beginn der 1950er Jahre mit demjenigen des benachbarten [[Mönchengladbach]] fusioniert. Das Orchester erhielt zunächst den umständlichen Namen „Orchester der vereinigten Bühnen Krefeld/Mönchengladbach“, bis es in den 1990er Jahren zu „Niederrheinische Sinfoniker“ umbenannt wurde. Einige später berühmt gewordene Dirigenten (z.B. [[Lothar Zagrosek]], [[Yakov Kreizberg]]) starteten in Krefeld/Mönchengladbach ihre internationale Karriere.
+
+Einen besonderen Stellenwert hat die Chormusik in Krefeld. Über 100 Männer-, gemischte und Kirchenchöre zählt [[Christoph Dohr]] in seiner Krefelder Musikgeschichte des 20. Jahrhunderts auf. Die Aktivitäten mehrerer Kirchenmusiker, z.B. Reinhold Birk, Dieter Schulte-Bunert, Hans Heinrichs, Ulrich Stuers, bereicher(te)n das Städtische Musikleben durch eigene Konzertreihen. Dazu traten privat organisierte Konzerte und Konzertreihen.
+
+In der [[Musikschule]] der Stadt Krefeld, gegründet 1934 als Volksmusikchule durch [[Helmut Mönkemeyer]], werden z. Zt. über 2.000 Musikschüler von 54 Musikschullehrern unterrichtet. Die Musikschule ist in drei Gebäuden, die sich im und am Sollbrügenpark befinden, beheimatet. Sie ist Mitglied im Verband deutscher Musikschulen e. V..
+
+=== Bauwerke ===
+
+[[Bild:Mennoniten Portal Krefeld.jpg|thumb|Portal der Mennonitenkirche von 1694<br/>
+<small>
+{{Koordinate Text|51_19_58_N_6_33_47_E_type:landmark_scale:1:1000_region:DE|51° 19′ 58″ N, 6° 33′ 47″ O}}
+</small>]]
+[[Bild:Geismuehle_Krefeld.jpg|thumb|Die Geismühle in Oppum<br/>
+<small>
+{{Koordinate Text|51_18_38.95_N_6_37_58.39_E_type:landmark_scale:1:1000_region:DE|51° 18′ 38.95″ N, 6° 37′ 58.39″ O}}
+</small>]]
+[[Bild:BurgLinnNacht-2.jpg|thumb|Die Burg Linn bei Nacht<br/>
+<small>
+{{Koordinate Text|51_19_58_N_6_38_04_E_type:landmark_scale:1:1000_region:DE|51° 19′ 58″ N, 6° 38′ 04″ O}}
+</small>]]
+[[Bild:Stadtwaldhaus.jpg|thumb|Das Stadtwaldhaus<br/>
+<small>
+{{Koordinate Text|51_21_8_N_6_35_12_E_type:landmark_scale:1:2000_region:DE|51° 21′ 8″ N, 6° 35′ 12″ O}}
+</small>]]
+[[Bild:Im Brahm Krefeld.jpg|thumb|Im Brahm an der Ritterstraße<br/>
+<small>
+{{Koordinate Text|51_19_29_N_6_34_22_E_type:landmark_scale:1:2000_region:DE|51° 19′ 29″ N, 6° 34′ 22″ O}}
+</small>;;]]
+[[Bild:Behnisch-haus.jpg|thumb|Teilstück des Behnisch-Hauses<br/>
+<small>
+{{Koordinate Text|51_19_55_N_6_33_54_E_type:landmark_scale:1:2000_region:DE|51° 19′ 55″ N, 6° 33′ 54″ O}}
+</small>]]
+[[Bild:Mediothek_krefeld.jpg|thumb|Haupteingang der Mediothek am Theaterplatz<br/>
+<small>
+{{Koordinate Text|51_20_05.83_N_6_33_47.17_E_type:landmark_scale:1:2000_region:DE|51° 20′ 05.83″ N, 6° 33′ 47.17″ O}}
+</small>]]
+
+Krefeld wurde, wie viele rheinische Städte, im Krieg erheblich zerstört. Am 21. Juni 1943 wurden bei einem britischen Luftangriff große Teile des Ostens der Stadt getroffen, die Innenstadt wurde durch einen von Brandbomben verursachten [[Feuersturm]] erheblich zerstört. Bei dem teilweise raschen Aufbau der [[Nachkriegszeit]] wurde der historisch gewachsene Bestand nicht immer berücksichtigt. Trotzdem sind einige Straßenzüge mit ihren prächtigen Fassaden vom Anfang des letzten Jahrhunderts auch in der Innenstadt erhalten geblieben.
+
+In der Abrisswut der 60er und 1970er Jahre wurde das Krefelder Stadtbild ebenfalls in Mitleidenschaft gezogen. Als größte Verluste sind der ''Wasserturm'' an der Gladbacher Straße und das ''Hotel Krefelder Hof'' am Ostwall zu nennen.
+
+Über die Grenzen Krefelds bekannt ist die Wasserburg ''[[Burg Linn]]'' im gleichnamigen Stadtteil. Die Anfänge der Burg liegen im 12. Jahrhundert. Heute ist sie als Museum zugänglich. (siehe: Museen und Galerien)
+
+Ebenfalls auf das 12. Jahrhundert geht [[Haus Rath (Krefeld)|Haus Rath]] im Stadtteil Elfrath zurück. Die Burganlage gilt als ältestes in seinem Ursprung erhaltene profane Bauwerk Krefelds. Haus Rath befindet sich in Privatbesitz.
+
+Im Stadtteil Hüls findet man die ''[[Burg Hüls]]'', die in den letzten Jahren restauriert wurde und heute für Veranstaltungen und Trauungen benutzt wird.
+
+Die ''Geismühle'', heute an der gleichnamigen [[Autobahnraststätte]] der [[Bundesautobahn 57|A57]] gelegen, wurde wahrscheinlich als Wachtturm der Linner Burg im 14. Jahrhundert errichtet. Als Mühle tritt der Turm 1575 erstmalig in Erscheinung. Seit dem Jahr 2007 ist die Mühle wieder vollkommen restauriert und bis auf den Mühlstein einsatzfähig. Bei schönem Wetter kann man die Segelbespannten Flügel im Wind bestaunen.
+
+Die ''Mennoniten-Kirche'' an der Königstraße wurde 1696 eröffnet. Historisch wertvoll ist das original erhaltene Portal auf der Rückseite. Es stellt das älteste [[Kulturdenkmal]] innerhalb der vier Wälle dar.
+
+Die Katholische Hauptpfarrkirche ''St. Dionysius'' wurde von 1754 bis 1756 errichtet. Aufgrund der Verschiebung des Bauplatzes durch zwei Adelsfamilien ist sie nicht geostet. 1768 erhielt sie einen Turm. Von 1840 bis 1844 wurde sie wegen der steigenden Einwohnerzahl um ein dreischiffiges Querhaus erweitert und erhielt 1894 einen neuen Glockenturm. Im Krieg schwer beschädigt, wurde sie 1954 instand gesetzt. 1987 wurde sie renoviert. Im Turm hängt an gekröpften Stahljochen ein fünfstimmiges Geläute aus dem Jahre 1948. Die Glocken wurden beim Bochumer Gußstahlverein gegossen und haben die Schlagtöne h°, d`, e`, fis` und a`.
+
+Das wohl bekannteste Gebäude Krefelds ist das ehemalige Stadtpalais der Familie [[Von der Leyen (Familie)|Von der Leyen]], das heutige ''Rathaus''. Es wurde 1794 im Stil des rheinischen [[Klassizismus]] errichtet. Wegen der historischen Bedeutung dieses Palais kann dieses Gebäude als ein [[Wahrzeichen]] der Stadt angesehen werden. (Bild siehe: Politik)
+
+Ein Teil der Musikschule ist im ''[[Sollbrüggenpark|Haus Sollbrüggen]]'' untergebracht. Dieses alte Ausflugsschlösschen eines Seidenfabrikanten befindet sich mitten im Sollbrüggenpark. Des Weiteren ist das Ausflugsschlösschen ''Haus Greiffenhorst'' im [[Greiffenhorstpark]] zu nennen. Es wird heute als Ausstellungsraum genutzt.
+
+Das ''[[Stadtbad (Krefeld)|Stadtbad]]'' auf der Neusser Straße galt um die Jahrhundertwende des vorletzten Jahrhunderts als die schönste und prächtigste Badeanstalt Deutschlands. Im Jahr 2000 wurde der Betrieb vorerst eingestellt und das Bad geschlossen. Die weitere Nutzung ist strittig.
+
+Sehr zentral am „Kopf“ des Ostwalls liegt der ''Hauptbahnhof Krefeld''. Er wurde 1907 als Ersatz für den zu klein gewordenen und unpraktischen Vorgänger erbaut. (Bild siehe: Infrastruktur und Verkehr)
+
+Das ''Stadtwaldhaus Krefeld'' mit dem größten [[Biergarten]] Nordrhein-Westfalens ist direkt im Stadtwald gelegen und wurde in der jetzigen Form 1911 fertig gestellt und konnte 1959 Abrisspläne, die einen Neubau vorsahen, überstehen.
+
+Die ''Krefelder Galopprennbahn'' wurde 1912 nach den Plänen des Architekten [[August Biebricher]] mitten im Stadtwald gebaut. Die Galopprennbahn mit ihren Jugendstiltribünen erfreut sich bei Renntagen großer Beliebtheit.
+
+Die ''[[Villa Merländer]]'' ist das Wohnhaus des im [[Vernichtungslager]] [[Vernichtungslager Treblinka|Treblinka]] wegen seines jüdischen Glaubens von den Nazis ermordeten Kaufmannes [[Richard Merländer]]. Es enthält Wandgemälde von [[Heinrich Campendonk]] und ist heute Gedenkstätte für NS-Opfer.
+
+Die ''[[Bauhaus]]-Häuser'': Haus Esters und Haus Lange auf der Wilhelmshofallee wurden zwischen 1928 und 1930 von [[Ludwig Mies van der Rohe]] für zwei Textilindustrielle der VerSeidAG errichtet. Heute sind die beiden Häuser Ausstellungsräume (siehe: Museen und Galerien). Des Weiteren wurden auch die Fabrikgebäude der VerSeidAG zwischen 1931 und 1939 größtenteils von Ludwig Mies van der Rohe erbaut.
+
+Die Häuser des Krefelder Architekten [[Karl Buschhüter]] – die so genannten ''Buschhüter-Häuser'' fallen durch ihre Bauart sofort auf. Besonders sind die Häuser im Kliedbruch, an der Lindenstraße, dem Westwall und der Ritterstraße zu nennen.
+
+Das ''Seidenweberhaus'' auf dem Theaterplatz bietet den verschiedensten Veranstaltungen Platz und ist wegen der hohen Funktionalität des Gebäudes fast immer ausgebucht. Trotzdem möchten viele Krefelder den „1970er Jahre Betonklotz“ am liebsten abreißen.
+
+Das ''[[Günter Behnisch|Behnisch]]-Haus'' zwischen Lohstraße und Petersstraße beherbergt Praxen, Einzelhandelsflächen und Gastronomie. Um das Behnisch-Haus herum entstand der Krefelder Stadtmarkt. Rund 40 feste Stände bieten täglich ihre Waren an.
+
+Der ''[[Königpalast|KönigPALAST]]'' ist eine Multifunktionshalle und Eishockey-Arena der Krefeld Pinguine mit 8.000 Plätzen. Er wurde 2004 fertiggestellt und ersetzte die benachbarte traditionsreiche [[Rheinlandhalle (Krefeld)|Rheinlandhalle]].
+
+==== Weitere bemerkenswerte Bauwerke ====
+
+* [[St. Matthias (Hohenbudberg)|St. Matthias]] in Hohenbudberg; erhaltener romanischer Kirchturm aus dem 12. Jahrhundert
+* Windmühle auf dem Egelsberg; Krefeld-Traar
+* Bockumer Rathaus
+* Grotenburg Stadion, Heimat des KFC Uerdingen
+* [[Gymnasium am Moltkeplatz]]
+* Amts- und Landgericht Krefeld; erbaut 1892, erweitert 1922
+* Sinn-Haus; 1906 erbautes Kaufhaus
+* Stadttheater am Theaterplatz; erbaut 1964
+* Hansa Haus; ca. 1907 ehemalige Seidenbörse, nach 1980 Hotel, seit 2006 Altenwohnheim und Sitz des Caritasverbandes für die Region Krefeld
+* Hochhaus am Dampfmühlenweg; von den Krefeldern auch „Mississippidampfer“ genannt
+* Mediothek am Theaterplatz; im Jahr 2008 eröffnet gilt Sie als eine der modernsten Bibliotheken Deutschlands
+
+==== Denkmale ====
+
+[[Bild:Pupenbrunnen-krefeld.jpg|thumb|Puppenbrunnen, Südwall<br/>
+<small>
+{{Koordinate Text|51_19_40_N_6_33_55_E_type:landmark_scale:1:1000_region:DE|51° 19′ 40″ N, 6° 33′ 55″ O}}
+</small>]]
+
+Der ''Meister Ponzelar'' ist ein Seidenweber-Denkmal auf dem Südwall, Ecke Ostwall. Dieses Denkmal kann als Wahrzeichen Krefelds angesehen werden.(Bild siehe: Geschichte)
+
+Das ''[[Kaiser-Wilhelm-Denkmäler|Kaiser-Wilhelm-Standbild]]'' stand ursprünglich im Treppenhaus des [[Kaiser-Wilhelm-Museum]]s, dass seinerzeit als Gedenkhalle für [[Wilhelm I. (Deutsches Reich)|Kaiser Wilhelm&nbsp;I.]] konzipiert und eingerichtet worden war. Auf einem Absatz der großen Freitreppe stand in einer Nische das überlebensgroße Standbild aus [[Carrara|carrarischem Marmor]], das der Berliner Bildhauer [[Gustav Eberlein]] geschaffen hatte. Zum Umbau des Museums 1966–69 wurde das Kaiserdenkmal vom Sockel gehoben und in die ehemalige [[Husaren]]kaserne gebracht. 1979 wurde das Standbild zurück geholt und an der Nordseite des Museums im Freien provisorisch und ohne Sockel aufgestellt. Dort verweilt es bis zum heutigen Tag.
+
+Das ''Synagogendenkmal'' befindet sich auf der Marktstraße Ecke Petersstraße – dort wo die [[Synagoge]] bis zu ihrer Zerstörung durch die [[Nationalsozialismus|Nationalsozialisten]] stand.
+
+Der Stadtrat Krefeld unter Führung der CDU lehnte 2005 gemeinsam mit der jüdischen Gemeinde die Verlegung vom [[Stolpersteine]]n zur Ehrung von NS-Opfern, so auch für den Krefelder Landtagsabgeordneten [[Fritz Lewerentz]], mit der Begründung ab, dass auf diese Weise die Namen der Opfer ständig mit Füßen getreten würden. Nach einem erfolgreichen Bürgerbegehren mit rund 15.500 Unterschriften wurde ein Kompromiss gefunden: Wenn die jeweiligen Hauseigentümer und die Angehörigen der Opfer zustimmen, können die Stolpersteine verlegt werden.
+
+Der ''Puppen-Brunnen'' befindet sich auf dem Mittelstreifen des Südwalls, dort wo die Hochstraße ihn quert.
+
+=== Freizeit und Erholung ===
+
+Krefeld bietet eine Vielzahl von Erholungsmöglichkeiten. Diese erstrecken sich vom einfachen Cafés über Naherholungsgebiete wie den [[Krefelder Stadtwald|Stadtwald]] bis hin zum [[Krefelder Zoo|Zoo]]. Der Elfrater See lädt im Sommer zum Schwimmen oder Beachvolleyball ein. Die Stadt Krefeld verfügt zudem über drei [[Hallenbad|Hallenbäder]] sowie mehrere [[Freibad|Freibäder]].
+
+==== Krefelder Parkanlagen ====
+
+:''siehe auch [[Krefelder Parkanlagen]]''
+
+[[Bild:Haus Greifenhorst Krefeld.jpg|thumb|Haus Greiffenhorst im gleichnamigen Park<br/>
+<small>
+{{Koordinate Text|51_20_11_N_6_39_8_E_type:landmark_scale:1:1000_region:DE|51° 20′ 11″ N, 6° 39′ 8″ O}}
+</small>]]
+
+Krefeld ist reich an Grün und nach eigenen Angaben sogar die zweitgrünste Stadt Deutschlands. Dies beweist die große Zahl an [[Allee]]n und öffentlichen Grünflächen, mehrere [[Gartenkunst|Park]]s und allem voran der [[Krefelder Stadtwald]], ein im weiteren Umkreis der Stadt beliebtes Erholungs- und Waldgebiet nahe dem Zentrum von Krefeld.
+
+Krefeld nahm an dem Projekt [[Euroga 2002 plus]], der dezentralen Landesgartenschau, teil und sanierte dafür eine Vielzahl seiner historischen Parkanlagen. Diese wurden hierfür wieder in ihre ursprüngliche Form zurückversetzt. Von den Krefelder Parkanlagen wurden alleine neun, nämlich Haus Esters und Haus Lange, Burgpark Linn, Greiffenhorstpark, Landschaftspark und Arboretum Heilmannshof, Schönwasserpark, Sollbrüggenpark, der Krefelder Stadtwald und der Schönhausenpark 2004/2005 in die [[Straße der Gartenkunst zwischen Rhein und Maas]] aufgenommen.
+
+Bei den meisten der historischen Parkanlagen handelt es sich um Schenkungen von reichen Textilfabrikanten. Einer der großzügigsten Stifter war der [[Seidenbaron]] [[Friedrich Heinrich von Friedrich Freiherr von der Leyen]]. Die Wohltäter ließen diese Parks nicht ganz uneigennützig entstehen, besuchten sie doch selbst gerne diese Anlagen für Ausflüge und Picknicks. Deshalb findet sich auch in beinahe jeder historischen Parkanlage ein Ausflugs- oder [[Jagdschloss|Jagdschlösschen]] oder ein [[Pavillon]], der an den Stifter erinnern soll. Beste Beispiele sind das Haus Sollbrüggen, das heute als [[Musikschule]] dient oder Haus Greifenhorst, das als Ausstellungsraum genutzt wird. Auch der [[Krefelder Zoo]] ist aus solch einem Ausflugspark entstanden, das Haus Grotenburg dient heute als Zoorestaurant und Ausflugslokal.
+Viel in Sachen Grünflächen hat Krefeld auch dem [[Bürgermeister]] Johann Johansen zu verdanken, der während seiner Amtszeit zwischen 1911 und 1930 die Bildung eines Krefelder Grüngürtels vorantrieb.
+
+Einen großen Beitrag zum öffentlichen Grün tragen auch die beiden Hauptfriedhöfe bei.
+
+[[Bild:Krefelder Grünanlagen.png|right|350px]]
+
+Größte Krefelder Grünanlagen:
+
+{|
+| width="250" |
+* Bruckhausen-Park (1)
+* Burgpark Hüls (2)
+* Burgpark Linn (3)
+* Crön Park (4)
+* [[Greiffenhorstpark]] (5)
+* Holthausens Kull (6)
+* Kaiser-Friedrich-Hain (7)
+* Kaiser-Wilhelm-Park (8)
+* Kaiserpark (9)
+* Neuenhofen-Park (10)
+* Rheinpromenade Uerdingen (11)
+| width="250" |
+* Schönhausenpark (12)
+* Schönwasserpark (13)
+* [[Sollbrüggenpark]] (14)
+* Stadtgarten (15)
+* Stadtpark Fischeln (16)
+* Stadtpark Uerdingen (17)
+* Friedhöfe (18)
+* Forstwald (19)
+* Hülser Berg (mit Kliedbruch und Hülser Bruch) (20)
+* [[Krefelder Stadtwald|Stadtwald]] (21)
+|}
+
+==== Botanischer Garten ====
+
+Der [[Botanischer Garten Krefeld|Botanische Garten in Krefeld]] bietet dem Besucher viele exotische und heimischen Arten in einer gepflegten Anlage zum betrachten. Er liegt am Rand des Schönwasserparks im Stadtbezirk Oppum-Linn (Stadtteil [[Bockum]]). Bereits 1928 entwickelte sich der Botanische Garten aus einem kleinen Schulgarten heraus. Auf einer Fläche von 3,6&nbsp;[[Hektar|ha]] wachsen hier heute rund 5000 Pflanzenarten in wissenschaftlichen Abteilungen und Themengärten. Der Eintritt ist kostenlos, ausgenommen bei Sonderveranstaltungen.
+
+==== Krefelder Zoo ====
+
+Der [[Krefelder Zoo]] wurde 1938 gegründet. Er beherbergt auf einer Fläche von 13&nbsp;[[Hektar|ha]] derzeit einen Tierbestand von ca. 1300 Tieren aus 225 verschiedenen Arten. Zu den besonderen Attraktionen gehören das Affentropenhaus in welchem drei [[Menschenaffen]]arten ohne Trenngitter oder Trennscheiben leben, die tiergeografisch gegliederte Vogeltropenhalle, das 1998 eröffnete Regenwaldhaus, die Elefantendressur von Wolfgang Nehring, eine Vogelfreifluganlage und vor allem viele seltene Tierarten. Die neueste Attraktion ist das Wildkatzengehege. Jährlich besuchen rund 380.000 Besucher den Zoo.
+
+==== Hülser Berg ====
+
+Beim [[Hülser Berg]] handelt es sich um einen in der letzten [[Eiszeitalter|Eiszeit]] entstandenen Geröllberg ([[Moräne|Endmoräne]]), der heute vollständig bewaldet ist und als Ausflugsziel dient. Auf dem Hülser Berg befindet sich die Hülser Bergschenke. Weiterhin befindet sich dort ebenfalls ein Aussichtsturm, der damit auch den höchsten Punkt Krefelds darstellt.
+Der Fachbereich Jugend veranstaltet auf dem Hülser Berg jedes Jahr im Sommer ein [[Seifenkiste]]nrennen.
+
+==== Elfrather See ====
+
+Das Naherholungsgebiet [[Elfrather See]] bietet viele Möglichkeiten für Wassersport und einen Badesee. Der See entstand zwischen den 1970er und 2000er Jahren aus einer Kiesgrube. Auf der 3&nbsp;km langen Regattastrecke werden Wettkämpfe im [[Segeln]], [[Rudern]] und [[Windsurfen]] ausgetragen. Aber auch [[Tauchen|Taucher]], [[Angeln (Fischfang)|Angler]], [[Jogging|Jogger]], [[Modellbau|Bootsmodellbauer]] und [[Spaziergang|Spaziergänger]] kommen auf ihre Kosten.
+
+=== Sport ===
+
+[[Bild:20041217006-kev-fans.jpg|thumb|Eishockey-Fans des [[KEV]]]]
+
+Der Sport hat in Krefeld einen sehr hohen Stellenwert. In über 250 ansässigen [[Sportverein]]en kann man über 200 [[Sportart]]en nachgehen. In zahlreichen Sportarten ist Krefeld in den ersten Ligen vertreten.
+
+In Krefeld gibt es in jedem Stadtteil mindestens eine städtische Sportanlage mit einem Asche- oder Rasenfußballplatz und einer Laufbahn. Des Weiteren existieren drei Eisstadien, wobei der [[Königpalast|KönigPALAST]] nur von den [[Krefeld Pinguine]]n genutzt wird. Krefeld verfügt über drei öffentliche Badeanstalten sowie mehrere Freibäder. Einen großen Stellenwert im Krefelder Sport hat der [[Bayer AG|Bayerkonzern]]. Er unterhält mehrere Sportvereine verschiedenster Sportrichtungen, die zusammengenommen eine Mitgliederzahl von fast 18.000 Mitgliedern erreichen, sowie mehrere Sportstätten verschiedenster Art.
+
+Eishockey hat in Krefeld eine lange Tradition. Der Eishockey-Verein Krefeld Pinguine, ist einer der bekanntesten Vertreter des Krefelder Sports. Er spielt in der [[Deutsche Eishockey Liga|DEL]] und konnte sich zuletzt in der Saison 2002/03 den [[Deutscher Meister (Eishockey)|Meistertitel]] sichern. ''Siehe auch: [[Eishockey in Krefeld]]''
+
+Den größten [[fußball]]erischen Erfolg konnte der 1905 gegründete [[KFC Uerdingen 05|KFC Uerdingen]] im Jahre 1985 (damals unter dem Namen Bayer 05 Uerdingen) als DFB-Pokalsieger feiern. Momentan spielt er in der Verbandsliga.
+
+Derzeit erfolgreicher präsentiert sich der [[Crefelder HTC|Crefelder Hockey und Tennis Club]]. Er spielt sowohl auf dem Feld als auch in der Halle in der [[Hockey]]-Bundesliga und wurde in der Saison 2005/2006 Deutscher Feldhockey-Meister und in der Saison 2006/2007 Deutscher Hallenhockey-Meister.
+
+Im [[Rollhockey]] spielen sowohl die Damen- als auch die Herrenmannschaft des [[Hülser Sportverein]] jeweils in der 1.Bundesliga.
+
+Gleich drei Krefelder Vereine spielen beim [[Wasserball]] in der ersten Bundesliga. Der SSF Aegir Uerdingen, der SV Bayer Uerdingen sowie der SVK 72.
+
+Der [[Inline-Skaterhockey]]-Verein, „Skating Bears“, mehrfacher Deutscher Meister und Europameister, ist der größte Skater-Hockeyverein in Deutschland.
+
+In der [[Tennis]]bundesliga ist Krefeld durch den HTC Blau-Weiss Krefeld vertreten.
+
+Im [[Handball]] spielt der [[SC Bayer 05 Uerdingen]] in der Regionalliga West. Der [[TV Krefeld-Oppum]] wurde 1931 (Deutscher Turngau) sowie 1966 und 1968 deutscher Feldhandballmeister.
+
+Für Nordrhein-Westfälische Verhältnisse ist Krefeld mit seinen vier [[Stockschießen|Stockschieß]]-Vereinen eine Hochburg. Die Vereine [[EC Krefeld]], SK Bayer Uerdingen, Seidenstädter ES und Krefelder ES 90 stellen bei Damen, Herren und im Mixed Spitzenmannschaften Nordrhein-Westfalens.
+
+Des Weiteren stammen viele Reiter von Weltrang aus Krefeld. So die Brüder Peter Schiergen (Rennreiten) und Heiner Schiergen (Dressur). Krefeld beherbergt das Trainingslager der spanischen Equipe (Kornaue, Trainer Jean Bemelmanns) und war Standort für die Ausbildung der deutschen Olympiamannschaft in der Vielseitigkeit (Stall Kühnen, Reiter Ralf Ehrenbrink). Auch dient die Pferderennbahn im Krefelder Stadtwald renommierten Rennställen als Quartier (Mäder/Hofer).
+
+==== Sportveranstaltungen ====
+
+Der SSV Krefeld-Gartenstadt richtet jedes Jahr im Juni Deutschlands größtes DHB Masters-Turnier im ''[[Beachhandball]]'' aus. 16 Mannschaften (8 Frauen und 8 Männerteams) kämpfen auf der Sandanlage am Elfrather See um Masterpunkte und um den Einzug ins Finale der Deutschen Meisterschaft in Cuxhaven. Weiter finden an den Tagen Donnerstag bis Sonntag die offenen Stadtmeisterschaften im Beachhandball statt, an der 42 Männer- und Frauenteams teilnehmen.
+
+Kurz nach [[Tour de France]] und [[Deutschland Tour]] finden jedes zweite Jahr die ''SWK Classics'' statt. Bei diesem Radrennen über etwa 40 Runden und insgesamt 90&nbsp;km treten neben lokalen Radrennfahrern auch Radrennprofis an.
+
+Der SC Bayer 05 Uerdingen richtet seit 1988 jährlich den ''Krefeld [[Triathlon]]'' am Elfrather See aus.
+
+Im Tischtennis richtet der SC Bayer 05 Uerdingen jährlich eine Woche nach Ostern in der Uerdinger Halle das Bayer-Frühjahrsturnier aus, welches weit über die Grenzen Deutschlands bekannt ist.
+
+=== Regelmäßige Veranstaltungen ===
+
+In Krefeld findet eine Vielzahl von regelmäßigen Veranstaltungen statt.
+Im Februar fängt es, wie im Rheinland üblich, mit dem ''[[Karnevalsumzug|Rosenmontagszug]]'' an. Um die 180.000 Menschen säumen jedes Jahr den Zugweg.
+
+Am zweiten Maiwochenende steht der ''Niederrheinische Pottbäckermarkt'' an. Von Rathausplatz über die Karl-Wilhelm Straße bis zum Theaterplatz erstrecken sich die Stände von rund 120 Keramikern aus mehreren Ländern. Rund 50.000 Besucher werden jedes Jahr gezählt.
+Kurz darauf findet wie auch im Herbst die ''Sprödentalkirmes'' auf dem Sprödentalplatz mit über 100 Schaustellern statt.
+
+Im späten Frühjahr wird dann im Botanischen Garten ''Art of Eden'' veranstaltet. Im Rahmen des zum Leben erwachten, blühenden Gartens präsentieren sich Künstler mit ihren Skulpturen.
+[[Bild:Seiltanz-flachsmarkt2006.jpg|thumb|Flachsmarkt 2006]]
+Jedes Jahr am [[Pfingsten|Pfingstwochenende]] findet um die [[Burg Linn]] und in der angrenzenden [[Linn (Krefeld)|Linn]]er Altstadt der überregional bekannte [[Flachsmarkt]] statt. Der mittelalterliche Handwerkermarkt ist der größte Handwerkermarkt Deutschlands. Hier bieten mittlerweile über 300 Händler ihre Waren an.
+
+Im Rahmen des'' Krefelder Kultursommers'' werden eine Vielzahl an Veranstaltungen angeboten, so das Jazzfestival ''Jazz an einem Sommerabend'' auf der Burg Linn. Auf dem vom Jazzklub veranstalteten Festival treten neben regionalen Jazzmusikern auch namhafte Jazzgrößen auf. Ebenfalls eine Veranstaltung des Krefelder Kultursommers ist das am letzten Ferienwochenende der Sommerferien stattfindende ''Folklorefest'' (Folk- und Weltmusikfestival) „umsonst & draußen“ am Platz an der Alten Kirche. Im Spätsommer findet dann im Stadtteil [[Hüls (Krefeld)|Hüls]] der ''Bottermaat'', ein mittelalterlicher Handwerkermarkt statt.
+
+Seit 1992 richtet Krefeld jährlich im Frühherbst die ''[[größte Straßenmodenschau der Welt]]'' aus. [[Einzelhandel|Einzelhändler]], [[Designer]] und Hersteller verwandeln das Zentrum der Samt- und Seidenstadt für ein Wochenende in einen großen [[Laufsteg]]. Auf Großbühnen präsentieren Models den meist mehr als 500.000 Zuschauern die jüngsten Trends in Mode und Design. Musik, Moderation und viele Sonderaktionen ergänzen den Schaulauf. Im Rahmen der Veranstaltung verleiht die Stadt jedes Jahr den anerkannten Modemarketingpreis „[[Goldene Seidenschleife|Die Goldene Seidenschleife]]“ und das Deutsche Krawatteninstitut kürt den „[[Krawattenmann des Jahres]]“.
+
+Weiter gehts am 1. und 2. Advent. Da findet in Krefeld der ''Suedgang'' statt, ein Tag der offenen Ateliers.
+Und mit dem ebenfalls im Advent öffnenden [[Weihnachtsmarkt]] klingt das Jahr dann aus. Die Stände erstrecken sich vom Dionysiusplatz über die Rheinstraße bis zur Hochstraße.
+
+Des Weiteren veranstaltet der Einzelhandel übers Jahr verteilt in nicht festgelegten Abständen die so genannten ''Krefelder Samstage''. In der Innenstadt finden dann in vielen Geschäften, aber auch in der Fußgängerzone themenbezogene Ausstellungen, Beratungen und Aktionen statt.
+
+An den [[Jüdische Kulturtage im Rheinland]] nimmt die Stadt regelmäßig teil. Das letzte mal im März 2007.
+
+=== Märkte ===
+
+[[Bild:Schwanenmarkt Krefeld.jpg|thumb|Schwanenmarkt<br/>
+<small>
+{{Koordinate Text|51_19_54_N_6_33_44_E_type:landmark_scale:1:1000_region:DE|51° 19′ 54″ N, 6° 33′ 44″ O}}
+</small>]]
+
+Krefeld erhielt 1361 das [[Marktrecht]] zugesprochen. Der älteste Handelsplatz in Krefeld ist der ''„Schwanenmarkt“'', ein Platz unweit Krefelds ältester Kirche, der „Alten Kirche“. Der Name stammt von einem [[Brunnen]] mit einem [[Schwäne|Schwan]], der sich auf dem Platz befand. Hier werden heutzutage keine Märkte mehr veranstaltet, doch wurde 1971 das ''„Schwanenmarkt-City-Center“'', ein modernes [[Einkaufszentrum]] mitten in der Innenstadt eröffnet. Der Haupteingang befindet sich am Schwanenmarkt.
+
+1900 wurde die Krefelder [[Halle (Architektur)#Markthalle|Markthalle]] an der Friedrichstraße eröffnet. 120 Stände waren in der prunkvollen Halle untergebracht. Die Halle wurde im [[Zweiter Weltkrieg|Krieg]] schwer getroffen, der Marktbetrieb aber nach notdürftigen Reparaturen wieder aufgenommen. 65 Jahre später – 1965 war die Markthalle Geschichte. Sie wich dem Neubau eines [[Kaufhaus]]es. Ebenfalls auf der Friedrichstraße, nahe der Gartenstraße, eröffnete im selben Jahr eine neue Markthalle, allerdings bot sie nur noch Platz für 25 Händler. 1986 schließlich schloss auch diese nachdem nur noch ein Häufchen Händler übrig geblieben war, und der Grundstückseigentümer dort einen Neubau plante.
+
+In der Politik wurde seitdem das Wiederbeleben der Markthallentradition immer wieder ohne Ergebnis diskutiert. 2006 erledigte sich dieses Thema von selbst. Aus privater Initiative wurde der ''„Krefelder Stadtmarkt“'' aus der Taufe gehoben. Rund um das Behnisch-Haus führen täglich 20 feste Marktbeschicker sowie zusätzlich wechselnde Stände die Markthallentradition, wenn auch ohne Halle, fort.
+
+Des weiteren existieren heutzutage 17 [[Wochenmarkt|Wochenmärkte]] auf dem Krefelder Stadtgebiet. Der mit Abstand größte Markt findet jeden Dienstag und Freitag auf dem Westwall statt.
+
+== Kulinarisches ==
+
+=== Braukunst ===
+
+[[Bild:Gleumes Krefeld.jpg|thumb|Hausbrauerei Gleumes<br/>
+<small>
+{{Koordinate Text|51_20_16_N_6_33_34_E_type:landmark_scale:1:2000_region:DE|51° 20′ 16″ N, 6° 33′ 34″ O}}
+</small>]]
+
+[[Altbier]] hat in Krefeld Tradition. Es gab hier einst eine beträchtliche Zahl von Brauhäusern mit noch heute klangvollen Namen wie Tivoli, Wienges oder Rhenania. Von der Vielzahl an [[Brauerei]]en hat jedoch nur das Traditionshaus [[Brauerei Gleumes|Gleumes]] überlebt, das auch heute noch sehr erfolgreich nicht nur für den Hausausschank selber in Krefeld braut. Gleumes braut auch das Bier für das wiedereröffnete und ebenso traditionsreiche Krefelder Brauhaus „Herbst Pitt“ nach Originalrezept.
+
+Letztes Opfer des großen Brauereisterbens war die [[Brauerei Rhenania]] in Krefeld-Königshof. Rhenania-Alt wird nun von der [[Krombacher Brauerei]] in Kreuztal-Krombach gebraut. Seit dem wird es von vielen Krefelder Bürgern verschmäht, auch wenn die Krombacher Brauerei mittlerweile sogar das zum Brauen benötigte Wasser aus Krefeld in Tankwagen liefern lässt, um den ursprünglichen Geschmack annähernd zu erzielen. Am Standort der alten Brauerei Rhenania wird nun von einem ehemaligen Mitarbeiter in der neuen „[[Brauerei Königshof]]“ wieder Bier gebraut und zwar unter der Marke „Landfürst“ – dies mittlerweile so erfolgreich, dass die Brauerei Ende 2004 ihre Kapazitäten durch neue Tanklager und Braukessel erweiterte. Dort wird auch für andere Altbiermarken Bier gebraut.
+
+Als das bekannte „[[Biermischgetränk#Krefelder|Krefelder]]“ bezeichnet man heute meistens ein Mischgetränk aus [[Altbier]] und Cola. Ursprünglich war damit jedoch die Mischung von Alt mit Dunkelbier (Malzbier) gemeint. Im Raum Krefeld heißt dieses Bier „Alt-Schuss“.
+
+=== Gastronomie ===
+
+[[Bild:Nordbahnhof Krefeld.jpg|thumb|Gaststätte Nordbahnhof<br/>
+<small>
+{{Koordinate Text|51_20_21_N_6_33_10_E_type:landmark_scale:1:2000_region:DE|51° 20′ 21″ N, 6° 33′ 10″ O}}
+</small>]]
+
+* Vom ''„Gasthof Korff – Zum Königshof“'' an der Kölner Straße wird angenommen, dass er der älteste Gasthof Krefelds ist. Sein Ursprung geht auf den „Großbeekerhof“ im Jahr 1792 zurück in dem viele Berühmtheiten der Geschichte abstiegen, wie zum Beispiel 1811 [[Napoléon Bonaparte]] sowie zehn Jahre später König [[Friedrich Wilhelm III. (Preußen)|Friedrich Wilhelm III.]] von [[Preußen]]. Seit diesem königlichen Besuch ist es dem Haus gestattet, den Beinamen „Königshof“ zu führen. Der Name „Königshof“ gab dem dortigen Stadtteil den Namen. Den Namen „Gasthof Korff“ erhielt der Gasthof 1869 durch den damaligen gleichnamigen Besitzer.
+* Der ''„Dachsbau“'' an der Hubertusstraße befindet sich seit 1858 am selben Platz und bietet heute neben regionaler Küche 18 Biere vom Fass und weitere 25 Flaschenbiere.
+* Im ''„Nordbahnhof“'' am Oranierring, dem Bahnhof für den historischen Dampfzug [[Schluff (Eisenbahn)|Schluff]], befindet sich im alten Wartesaal ein Restaurant der [[Rheinische Küche|rheinischen Küche]]. Für Gesellschaften wird der „Blaue Wagon“ genutzt, ein alter Speisewagen auf einem eigenen Gleis des Bahnhofs.
+
+=== Naschwerk ===
+
+Eine am ganzen Niederrhein bekannte Spezialität ist die [[Grillagetorte]], die 1908 vom Krefelder [[Konditorei|Konditor]] Wilms aus der Taufe gehoben wurde.
+
+Bereits 1863 produzierte der niederländische Bäckermeister Johann Wilhelm Gruyters auf der Petersstraße Kekse und anderes Gebäck. Bis heute erwuchs aus dieser kleinen Bäckerei die Firma W. Gruyters, nach eigenen Angaben führender deutscher Gebäck-Anbieter auf dem Markt für Gemeinschaftsverpflegung, vor allem für Krankenhäuser und Kantinen. Produziert wird auch heute noch mitten in Krefeld, seit 1940 jedoch auf der Tannenstraße.
+
+Die rautenförmigen [[Nougat]]stückchen mit Schokoladenüberzug der Marke „[[Nappo]]“ wurden von 1925 bis zur Werksschließung Ende 2006 bei Dr. Helle in Krefeld produziert.
+
+Das Produkt der Firma [[Dextro Energy]] wird in seiner bekannten Form bei [[Cargill]] (früher Cerestar) in Krefeld-Linn hergestellt.
+
+== Infrastruktur und Verkehr ==
+
+=== Luftverkehr ===
+
+Krefeld verfügt über einen eigenen [[Flugplatz]], den [[Flugplatz Krefeld-Egelsberg]] im Stadtteil [[Traar]].
+
+Auf dem ehemaligen Verkehrsflugplatz Krefeld wurde nach dem Zweiten Weltkrieg die Siedlung Gartenstadt als komplett neuer Stadtteil Krefelds errichtet.
+
+Der [[Flughafen Düsseldorf International]] ist ungefähr 20&nbsp;km entfernt und über die A 57 und A 44 erreichbar.
+
+=== Schifffahrt ===
+
+Krefeld verfügt in Linn über einen kleinen [[Binnenhafen]] mit Anschluss an den [[Rhein]], mit Hafenanlagen direkt am Fluss und einem Wendebecken am hinteren Ende. Über die Einfahrt zum Hafen führt eine historische [[Drehbrücke (Krefeld)|Drehbrücke]]. Die Reederei [[Köln-Düsseldorfer]] hat in Uerdingen eine Anlegestelle.
+
+=== Schienen- und Busverkehr ===
+
+[[Bild:Krefeld_HBF.jpg|thumb|Der Krefelder Hauptbahnhof wurde 1907 erbaut<br/>
+<small>
+{{Koordinate Text|51_19_33_N_6_34_10_E_type:landmark_scale:1:2000_region:DE|51° 19′ 33″ N, 6° 34′ 10″ O}}
+</small>]]
+
+Der Bahnhof [[Krefeld Hauptbahnhof]] liegt an der zweigleisigen elektrifizierten [[Liste der deutschen Kursbuchstrecken#Region Nordrhein-Westfalen .28400 bis 499.29|DB-Kursbuchstrecke 425]] [[Mönchengladbach]] – [[Duisburg]] – [[Essen]] – [[Gelsenkirchen]] – [[Münster (Westfalen)|Münster]], auf der im [[Öffentlicher Personennahverkehr#Schienenpersonennahverkehr|Schienenpersonennahverkehr]] in der Regel im Stundentakt der „Rhein-Haardt-Express“ [[Liste der SPNV-Linien in NRW#Linien 1–10|(RE 2)]] und halbstündlich die „Rhein-Niers-Bahn“ [[Liste der SPNV-Linien in NRW#Linien 31–40|(RB 33)]] verkehren.
+
+* [[Bahnstrecke Aachen–Mönchengladbach]]
+* [[Linksniederrheinische Strecke]]
+
+Außer dem Hauptbahnhof gibt es an dieser Strecke die Bahnhöfe bzw. Haltepunkte Forsthaus, Hohenbudberg Bayerwerk, Krefeld-Linn, Krefeld-[[Oppum]] und Krefeld-[[Uerdingen]].
+
+In Krefeld kreuzt die Bahnstrecke von [[Kleve]] nach [[Düsseldorf]] ([[Liste der deutschen Kursbuchstrecken#Region Nordrhein-Westfalen .28400 bis 499.29|KBS 495]]). Auf dieser Strecke fährt halbstündlich der „Niers-Express“ ([[Liste der SPNV-Linien in NRW#Linien 1–10|RE 10]]) und von Krefeld nach Köln im Stundentakt der „Rhein-Münsterland-Express“ ([[Liste der SPNV-Linien in NRW#Linien 1–10|RE 7]]).
+
+Die nächstgelegenen [[Intercity-Express|ICE]]-Bahnhöfe sind [[Duisburg]] und [[Düsseldorf]]. Die frühere Bedeutung Krefelds als [[Eisenbahnknoten]]punkt ist jedoch nach Stilllegung des großen [[Rangierbahnhof]]s Hohenbudberg ''(an der Strecke nach Duisburg; früher auf Krefelder Stadtgebiet, heute unmittelbar hinter der Stadtgrenze gelegen)'' und des östlich vom Hauptbahnhof gelegenen [[Güterbahnhof]]s sowie nach Aufgabe des [[Eisenbahn|Personenfernverkehrs]] zurückgegangen. Als wichtige Betriebseinrichtung besteht noch das [[Ausbesserungswerk]] KKROX Krefeld-Oppum, in das der ICE zur Wartung kommt.
+
+Den [[Öffentlicher Personennahverkehr#Straßenpersonennahverkehr|Straßenpersonennahverkehr]] bedienen die U76, eine normalspurige [[Stadtbahn]] der [[Rheinbahn (Unternehmen)|Rheinbahn]], und vier meterspurige [[Straßenbahn]]linien sowie zahlreiche lokale und regionale [[Linie (Verkehr)|Buslinie]]n der Krefelder [[SWK MOBIL]].
+Die U76, früher [[K-Bahn]], der Rheinbahn Düsseldorf bietet als einzige Straßenbahn Deutschlands in manchen Zügen einen Bistro-Speisewagen.
+
+Für den gesamten [[Öffentlicher Personennahverkehr|öffentlichen Personennahverkehr]] (ÖPNV) gilt der Tarif des [[Verkehrsverbund Rhein-Ruhr|Verkehrsverbundes Rhein-Ruhr]] (VRR) und tarifraumüberschreitend der [[NRW-Tarif]].
+
+Der Krefelder Hauptbahnhof wird der [[Bahnhofskategorie]] 4 zugeordnet. Die als „hoch frequentierter Nahverkehrssystemhalt/Nahverkehrsknoten“ bezeichneten Stationen richten sich mit ihrer hohen Dichte an [[Regionalbahn]]en und [[Regional-Express]]-Zügen an [[Pendler]] und lassen sich mit [[Busbahnhof|Busbahnhöfen]] vergleichen. Damit ist Krefeld eine der größten deutschen Städte, an denen nur Regionalzüge verkehren. Ab Oktober 2007 stellt die [[DB Station&Service]] deswegen auch den Dienst am stationären ServicePoint ein, da ein dauerhafter Betrieb eigenwirtschaftlich nicht darstellbar ist.
+
+=== Straßen ===
+
+[[Bild:Krefeld Strassen.png|300px|right]]
+
+:''Siehe auch: [[Bedeutende Straßen und Plätze von Rhein-Ruhr#Krefeld|Bedeutende Straßen und Plätze von Krefeld]]
+
+Durch das Stadtgebiet Krefelds führt in nordsüdlicher Richtung die [[Bundesautobahn 57|A 57]] ([[Köln]] – [[Nimwegen]]), die sich südlich von Krefeld am Autobahnkreuz Meerbusch mit der [[Bundesautobahn 44|A 44]] ([[Aachen]] – [[Kassel]]) und nördlich am Autobahnkreuz Moers mit der [[Bundesautobahn 40|A 40]] [[Venlo]] – [[Dortmund]] kreuzt.
+
+Das innerstädtische Straßennetz hat eine Gesamtlänge von 760&nbsp;km, davon sind 370&nbsp;km als [[Tempo-30-Zone]]n (136 Zonen) gekennzeichnet. Krefeld ist eine der wenigen Städte in NRW, in der eine flächenhafte Tempo-30-Zonen-Regelung realisiert worden ist: Zwischen 1988 und 1998 kennzeichnete die Stadt all ihre Wohngebiete als „30er-Zonen“.
+
+Erstmals wurden in Krefeld auch die nach ihr benannten [[Bremsschwelle|Krefelder Kissen]] zur Verkehrsberuhigung eingesetzt.
+
+=== Fahrrad ===
+
+Krefeld hat ein hohe Dichte an Radfahrern und Fahrradläden, die Fahrradfreundlichkeit wird sehr groß geschrieben. Davon zeugen mehr als 250&nbsp;km ausgewiesener Radwege sowie etliche für Radfahrer in beide Richtungen befahrbare Einbahnstraßen und der Vorsitz der [[Arbeitsgemeinschaft fahrradfreundliche Städte und Gemeinden in Nordrhein-Westfalen|Arbeitsgemeinschaft fahrradfreundlicher Städte NRW]]. Durch Krefeld verläuft die [[NiederRheinroute]]. Des Weiteren ist Krefeld ein Start-/Zielort des [[Niederrheinischer Radwandertag|Niederrheinischen Radwandertags]].
+
+Der [[ADFC]]-Ortsverband unterhält einen Infoladen am südlichen Rand der Innenstadt. Am westlichen Ende des Hauptbahnhofs gibt es eine [[Fahrradstation]] mit bewachter Unterstellmöglichkeit und Reparaturdienst. Der [[Allgemeiner Deutscher Automobil-Club|ADAC]] vergab Krefeld in seinem Test: „Radfahren in Städten“ 2004 die Note „Gut“.
+
+=== Historische Dampfeisenbahn ===
+
+[[Bild:Bismark.jpg|thumb|Der [[Schluff (Eisenbahn)|Schluff]]]]
+
+In Krefeld fährt eine der ältesten [[Nichtbundeseigene Eisenbahn|Privatbahn]]en Deutschlands, die bereits [[1868]] gegründet wurde. Im Volksmund wird diese Bahn als [[Schluff (Eisenbahn)|Schluff]] bezeichnet. Gemeint ist damit das niederrheinische Wort für „[[Pantoffel]]“, die „[[Hausschuh|Schluffe]]“, an die das zischende Geräusch der [[Dampflokomotive]] erinnert. Der Schluff wurde in die Denkmalliste der Stadt Krefeld aufgenommen.
+
+Vom ursprünglichen Streckennetz ist nur noch eine Verbindung zwischen [[Tönisvorst|St.Tönis]] und dem [[Hülser Berg]] übrig geblieben. Auf dieser Strecke fährt seit dem 1. Mai 1980 eine [[Museumsbahn|Museumseisenbahn]] an jedem Sonn- und Feiertag zwischen Mai und Oktober mit Zwischenstation am historischen Krefelder Nordbahnhof. In einem Gepäckwagen können Fahrräder mitgeführt werden.
+
+== Wirtschaft ==
+
+[[Bild:Hafen Krefeld.jpg|thumb|Der Rheinhafen – ein wichtiger Bestandteil der Krefelder Wirtschaft<br/>
+<small>
+{{Koordinate Text|51_20_32_N_6_39_51_E_type:landmark_scale:1:20000_region:DE|51° 20′ 32″ N, 6° 39′ 51″ O}}
+</small>]]
+
+Nach dem Niedergang der Textilindustrie liegen die Schwerpunkte bei den in Krefeld ansässigen Unternehmen in den Bereichen [[chemische Industrie]], [[Metallindustrie]], [[Maschinenbau]] und [[Fahrzeugbau]]. Trotz allem hat die [[Textilindustrie]] noch immer einen hohen Stellenwert.
+
+=== Chemische Industrie ===
+
+[[Bild:Degussa Krefeld.jpg|thumb|Multi-User Standort Krefeld (Evonik, Ashland, Bozzetto)<br/>
+<small>
+{{Koordinate Text|51_19_12_N_6_34_60_E_type:landmark_scale:1:5000_region:DE|51° 19′ 12″ N, 6° 34′ 60″ O}}
+</small>]]
+
+Die chemische Industrie ist traditionell in Krefeld zuhause, unterhält doch der Chemie-Konzern [[Bayer AG]] sein zweitgrößtes und chronologisch gesehen zweites Werk überhaupt im Krefelder Stadtteil Uerdingen am [[Rhein]]. Hier werden hauptsächlich [[Kunststoff]]e wie zum Beispiel [[Polycarbonate|Makrolon]], der [[Rohstoff]] für viele [[Compact Disc|CD]]s und [[DVD]]s, aber auch [[Pigment|Farbpigmente]] und [[Polyurethan]] produziert. Es wurden einige Betriebe aus Bayer ausgegliedert und als eigenständige Unternehmen weitergeführt.
+
+Der [[Evonik Industries]]-Standort Krefeld mit der Evonik [[Stockhausen GmbH]] liegt im Stadtteil Fischeln-Königshof. Hier werden [[Flockungshilfsmittel]] (von der [[Ashland%2C_Inc|Ashland Deutschland GmbH]]), [[Superabsorber]] sowie Hautpflegemittel hergestellt. Ferner sitzt in Krefeld Europas einziger Produzent von [[Rizinusöl]]- und [[Leinöl]]derivaten: Alberdingk Boley GmbH.
+
+In Rheinnähe finden sich noch viele andere kleinere Unternehmen. Des Weiteren unterhält die Firma [[Henkel-Konzern|Henkel]] in Linn am Hafen ein Fragrance Center. Hier werden z.&nbsp;B. neue Duftstoffe für Waschmittel entwickelt.
+
+=== Metallindustrie ===
+
+[[Bild:ThyssenKrupp Nirosta Hauptverwaltung.jpg|thumb|Die alte Betriebsverwaltung der ThyssenKrupp Nirosta<br/>
+<small>
+{{Koordinate Text|51_18_24_N_6_32_44_E_type:landmark_scale:1:2000_region:DE|51° 18′ 24″ N, 6° 32′ 44″ O}}
+</small>]]
+
+Die Panzerungen der [[Castor (Kerntechnik)|Castorbehälter]] werden bei der Firma [[Siempelkamp]] in Krefeld hergestellt.
+
+Von [[August Thyssen]] und anderen Industriellen wurden 1900 in Krefeld ein Stahlwerk mit dem Schwerpunkt [[Werkzeugstahl|Werkzeugstähle]] errichtet. Heute befindet sich hier der Firmensitz der [[ThyssenKrupp Nirosta|ThyssenKrupp Nirosta GmbH]] und das zugehörige Werk Krefeld sowie das Werk Krefeld der Firma Deutsche Edelstahlwerke GmbH (DEW).
+
+=== Maschinenbau ===
+
+[[Bild:Kuesters.jpg|thumb|Der Textilmaschinenbauer Küsters <br/>
+<small>
+{{Koordinate Text|51_18_39_N_6_33_9_E_type:landmark_scale:1:2000_region:DE|51° 18′ 39″ N, 6° 33′ 9″ O}}
+</small>]]
+
+Bedingt durch die vielen Unternehmen des Textilgewerbes in der Stadt siedelte sich auch eine ansehnliche Zahl von Maschinenbaufirmen an, vornehmlich für Textilmaschinen. Der Niedergang der Textilindustrie in Krefeld, auch aufgrund der wachsenden Konkurrenz aus Fernost, zog auch viele Maschinenbaufirmen mit sich, darunter so bekannte Namen wie zum Beispiel die Firma Zangs. Am Markt behaupten konnte sich bisher die Firma „Küsters“ im Textilmaschinenbau.
+
+Die Firma [[WUMAG]] TEXROLL in Linn fertigt Edelstahlzylinder, Textiltrockner, [[Walzen]] und [[Maschine]]n für die Textil-, Papier- und Kunststoffindustrie.
+
+=== Fahrzeugbau ===
+
+Im Stadtteil [[Oppum]] wurde bereits 1891 die erste Reparaturwerkstatt der Bahn errichtet. Heute ist das [[Intercity-Express|ICE]]-Instandhaltungswerk Krefeld eines der modernsten Werke für die schwere Fahrzeuginstandhaltung der [[Deutsche Bahn|Bahn]]. Knapp 700 Mitarbeiter sind hier beschäftigt. ICE und elektrische [[Triebwagen|Triebzüge]] des [[Öffentlicher Personennahverkehr|Nahverkehrs]] werden generalüberholt, das heißt, alle Bauteile der Fahrzeuge werden geprüft, erneuert oder aufgearbeitet. Dazu gehören [[Drehgestell]]e, [[Radsatz|Radsätze]], aber auch kleine Teile wie [[Stoßdämpfer]].
+
+Teile des [[Intercity-Express|ICE]] werden bei [[Siemens Transportation Systems|Siemens TS]] im ehemaligen Werk der [[DUEWAG]] in Krefeld gefertigt, aber auch [[S-Bahn]]en, [[U-Bahn|Untergrund-]] und [[Straßenbahn]]en.
+
+Dulevo produziert [[Kehrmaschine|Kehrsaugmaschinen, Naßschrubbautomaten und Straßenreinigungsmaschinen]].
+
+Die Firma [[WUMAG]] ELEVANT in Linn fertigt LKW-[[Hubarbeitsbühne]]n von 11 bis 103 m Arbeitshöhe.
+
+=== Textilindustrie ===
+
+Im 18. Jahrhundert hatte die blühende Textilindustrie Krefeld groß gemacht. [[Samt]], [[Seide]] und [[Brokatstoff|Seidenbrokat]] waren die Verkaufsschlager. Kaiser und Könige aus der ganzen Welt und nicht zuletzt der katholische [[Klerus]] kleideten sich gerne in prunkvollen Gewändern aus den kostbaren Stoffen aus Krefeld. Firmen wie ''Floh'', ''Von Beckerath'' oder ''Von der Leyen'', um nur die drei größten zu nennen, belieferten prominente Kunden wie [[Napoléon Bonaparte]] oder den preußischen König [[Friedrich II. (Preußen)|Friedrich II]]. Der Niedergang der Samt- und Seidenindustrie in Krefeld begann im 19. Jahrhundert. Es vollzog sich ein langwieriger Prozess, welcher seinen vorläufig tiefsten Punkt während des Ersten Weltkrieges erreichte. Die größeren Firmen, darunter die Eingangs erwähnten größten drei, hatten sich schon zuvor konsolidiert und zu den ''Vereinigten Seidenwebereien AG'', oder kurz ''VerSeidAG'', zusammengeschlossen und sind sogar bis heute konkurrenzfähig. Die Zeit zwischen den Weltkriegen sorgte für einen kurzzeitigen Aufschwung. Die Welt verlangte wieder nach Samt und Seide aus Krefeld. Gleich zwei Direktoren der VerSeidAG, die Herren Lange und Esters, gaben ihre [[Bauhaus]]-Villen bei [[Ludwig Mies van der Rohe]] in Auftrag. Auch die neue Verwaltung der VerSeidAG wurde vom Stararchitekten entworfen. Im Zweiten Weltkrieg wurden viele Fabriken durch Luftangriffe der Alliierten zerstört, da hier nun kein edles Tuch mehr gewebt wurde, sondern kriegswichtiges Material wie Stoffe für Uniformen und LKW-Planen. Nach dem Zweiten Weltkrieg gab es für eine kurze Zeit einen neuerlichen Aufschwung, doch ein päpstliches [[Dekret]] Mitte des 20. Jahrhunderts, welches den Geistlichen das Tragen von allzu kostbaren Gewändern verbot, setzte mittelbar den meisten spezialisierten Firmen ein Ende.
+
+[[Bild:VerSeidAG Krefeld.jpg|thumb|Die von [[Ludwig Mies van der Rohe]] geplante VerSeidAg Fabrik<br/><small>
+{{Koordinate Text|51_20_38_N_6_32_46_E_type:landmark_scale:1:1000_region:DE|51° 20′ 38″ N, 6° 32′ 46″ O}}
+</small>]]
+
+Doch vor allem die [[Krawatte]]n-Produktion ist auch heute noch jedem als typisches Krefelder Produkt ein Begriff. Krefeld ist hier führend in [[Europa]]. Noch immer stammen über zwei Drittel aller in [[Deutschland]] gefertigten [[Krawatte|Halsgebinde]] aus Krefeld. Das Herstellen von exklusiven Krawattenstoffen und Tüchern sowie deren Webmuster ist eine Spezialität einer Vielzahl Krefelder Firmen.
+
+Die einstmals ruhmreiche [[Seide]]nindustrie ist in Krefeld nur noch mit wenigen Firmen vertreten, aber dennoch gibt es dort die höchste Dichte an Seidenwebereien weltweit.
+
+Manche Textilhersteller haben sich heute vor allem auf Industrietextilien sowie deren [[Textilveredelung|Veredelung]] und [[Ausrüstung (Textil)|Ausrüstung]] spezialisiert. Die Produktpalette reicht bei den größten Firmen, zu denen die TAG (Textil Ausrüstungs-Gesellschaft), VBL (Voss-Biermann & Lawaczeck) und VerSeidAG (Vereinigte Seidenwebereien AG) gehören, von Stoffen in [[Tarnung|Tarnfarbe]]n für die [[United States Army]] bis zu [[Hochtechnologie]]-Material für Segel von Sportsegelbooten oder Großseglern wie zum Beispiel der [[Alexander von Humboldt (Schiff)|Alexander von Humboldt]].
+
+=== Medien ===
+
+In Krefeld befindet sich der Sitz der Veranstaltergemeinschaft Lokalfunk Krefeld/Viersen e.&nbsp;V. – Betriebsgesellschaft für Lokalfunk Krefeld/Viersen GmbH & Co. KG. Diese veranstalten das private Hörfunkprogramm „[[Welle Niederrhein]]“.
+
+In Krefeld befindet sich ferner ein [[Pressehaus]] der „[[Westdeutsche Zeitung|Westdeutschen Zeitung]]“. Diese [[Tageszeitung]] wird in Düsseldorf mit einer Lokalausgabe als „Krefelder Zeitung“ herausgegeben. Über das regionale Geschehen Krefelds berichtet auch die „[[Rheinische Post]]“, die ebenfalls in Düsseldorf erscheint und mehrere Lokalausgaben hat. – Ursprünglich (bis 1970) handelte es sich bei der "Westdeutschen Zeitung" um eine eigenständige Krefelder Zeitung, die im Hause C. Busch-du Fallois Söhne erschien.
+
+=== Nahrungs- und Genussmittelindustrie ===
+
+Im Stadtteil [[Uerdingen]] wird seit dem frühen 19. Jahrhundert der bekannte Branntwein [[Dujardin (Branntwein)|Dujardin Imperial]] hergestellt, weiterhin der klare Wacholderschnaps [[Uerdinger (Spirituose)|Uerdinger]].
+Früher existierte noch die niederländische C.J. Van Houten & Zoon (siehe [[Conrad J. van Houten]]) in Krefeld.
+
+=== Sonstiges ===
+
+* In Krefeld befindet sich der Hauptsitz der Haustierbedarfs [[Franchising|Franchise]]-Gesellschaft [[Fressnapf]].
+* Die Lumino Licht Elektronik GmbH, eine der führenden Hersteller in der [[dynamische Fahrgastinformation]]stechnik, ist in Krefeld beheimatet.
+* Die Deutschland-Zentrale der SITEL GmbH hat in Krefeld ihren Sitz.
+* Die [[österreich]]ische Firma [[EVVA]] produziert am Standort Krefeld mechanische Schließzylinder und weitere Produkte aus dem Bereich Sicherheitstechnik.
+* [[Kawai]], ein [[japan]]ischer und weltweit zweitgrößter Hersteller von [[Musikinstrument]]en wie [[Flügel (Tasteninstrument)|Flügeln]], [[Klavier|Piano]]s, [[Klavier]]en und [[Synthesizer]]n, hat seinen Deutschlandsitz in Krefeld. Kawai veranstaltet regelmäßig Klavierkonzerte mit weltberühmten Pianisten, natürlich auf den eigenen Instrumenten.
+* [[Canon]], ein ebenfalls japanischer Hersteller von Geräten aus der [[Unterhaltungselektronik]], hat ebenfalls seine Deutschlandzentrale in Krefeld. Für die Sparte Foto von Canon gibt es eine weitere Niederlassung im direkt benachbarten Ort [[Willich]].
+* [[Toshiba]], auch ein japanisches Unternehmen, hat in Krefeld seine Deutschlandzentrale für die Sparte Kassen-, Ident- und Drucksysteme.
+
+== Persönlichkeiten ==
+
+=== Ehrenbürger ===
+
+Die Stadt Krefeld hat folgenden Personen das [[Ehrenbürger]]recht verliehen (Auflistung chronologisch nach Verleihungsjahr):
+{| cellpadding="8"
+|
+* 1863: Gottfried Reinarz, Dechant
+* 1875: Friedrich August Märklin
+* 1881: Friedrich Christian Roos
+* 1907: Emil de Greiff
+* 1915: Fritz de Greiff
+* 1918: [[Georg von Rheinbaben]]
+* 1922: Edmund ter Meer
+|
+* 1927: Heinrich Theißen
+* 1930: [[Johannes Johansen]]
+* 1938: Friedrich Aldehoff
+* 1950: Gregor von Schwamborn
+* 1963: Eugen Angerhausen
+* 1967: Otto Brües
+* 1970: Josef Hellenbrock
+| valign="top" |
+* 1973: [[Margarete Engländer]]
+* 1986: Paul Wember
+* 1988: Lore Cattepoel
+* 1990: Aurel Billstein
+* 1990: [[Adolf Luther]]
+* 2002: [[Hansheinz Hauser]]
+* 2005: Helga Lauffs
+|}
+
+=== Söhne und Töchter der Stadt Krefeld ===
+
+Bedeutende Persönlichkeiten Krefelds sind in der [[Liste der Söhne und Töchter der Stadt Krefeld]] zu finden.
+
+=== Musiker und Musikgruppen ===
+
+* [[Blind Guardian]], Protagonisten des deutschen Melodic Metals und im deutschsprachigen Raum, in den USA und in Japan sehr erfolgreich
+* [[Andrea Berg]], deutsche Schlagersängerin
+* [[Bernd Liffers]], deutscher Kirchenmusiker und Organist
+* [[Schmackes Brass Band]], Handgemachter Dixieland-Jazz
+* [[Japanische Kampfhörspiele]], [[Grindcore]]-Band
+* [[M. Walking on the Water]]
+* [[Whikings]], Independent-Rock mit deutschen Texten
+
+== Literatur ==
+
+* ''Preußens Städte. Denkschrift zum 100jährigen Jubiläum der Städteordnung vom 19. November 1808.'' Hrsg. im Auftrag des Vorstandes des Preußischen Städtetages von Prof. Dr. Heinrich Silbergleit. Berlin 1908.
+* ''Deutsches Städtebuch. Handbuch städtischer Geschichte.'' Bd 3 T 3. Rheinisches Städtebuch. Im Auftrage der Arbeitsgemeinschaft der historischen Kommissionen und mit Unterstützung des Deutschen Städtetages, des Deutschen Städtebundes und des Deutschen Gemeindetages, hrsg. von Erich Keyser. Stuttgart 1956.
+* Reinhard Feinendegen und Hans Vogt: ''Krefeld. Die Geschichte der Stadt.'' 4 Bde. Krefeld 1998ff, ISBN 3-9804181-6-2, ISBN 3-9804181-7-0, ISBN 3-9808235-2-0, ISBN 3-9806517-9-7
+* Ernst Klusen, Hermann Stoffels und Theo Zart: ''Das Musikleben der Stadt Krefeld 1780–1945.'' Zwei Bde., (Beiträge zur rheinischen Musikgeschichte Band 124). Köln 1979/1980.
+* Christoph Dohr: ''Musikleben und Komponisten in Krefeld. Das 20. Jahrhundert.'' (Krefelder Studien Bd. 5, zgl. Beiträge zur rheinischen Musikgeschichte Bd. 144). Kassel und Krefeld 1994.
+
+== Einzelnachweise ==
+
+<references/>
+
+== Weblinks ==
+
+{{Commons|Krefeld}}
+{{Wikinews|Portal:Krefeld|Themenportal Krefeld}}
+
+* [http://www.krefeld.de/ Offizielle Website der Stadt]
+* {{dmoz|World/Deutsch/Regional/Europa/Deutschland/Nordrhein-Westfalen/Städte_und_Gemeinden/K/Krefeld/|Krefeld}}
+* [http://www.krefeldwiki.de/ aktuelle Ergänzungen respektive aktueller Klatsch zu Krefeld]
+
+{{Navigationsleiste Kreise und kreisfreie Städte in Nordrhein-Westfalen}}
+{{Lesenswert}}
+
+[[Kategorie:Ort in Nordrhein-Westfalen]]
+[[Kategorie:Krefeld| ]]
+[[Kategorie:Kreisfreie Stadt in Nordrhein-Westfalen]]
+[[Kategorie:Gemeinde in Nordrhein-Westfalen]]
+[[Kategorie:Rheinland]]
+[[Kategorie:Ort mit Binnenhafen]]
+
+[[ar:كريفيلد]]
+[[bg:Крефелд]]
+[[ca:Krefeld]]
+[[da:Krefeld]]
+[[en:Krefeld]]
+[[eo:Krefeld]]
+[[es:Krefeld]]
+[[et:Krefeld]]
+[[fi:Krefeld]]
+[[fr:Krefeld]]
+[[id:Krefeld]]
+[[it:Krefeld]]
+[[ja:クレーフェルト]]
+[[ksh:Krieevel]]
+[[lt:Krėfeldas]]
+[[nl:Krefeld]]
+[[nn:Krefeld]]
+[[no:Krefeld]]
+[[pdc:Krefeld]]
+[[pl:Krefeld]]
+[[pt:Krefeld]]
+[[ro:Krefeld]]
+[[ru:Крефельд]]
+[[simple:Krefeld]]
+[[sk:Krefeld]]
+[[sv:Krefeld]]
+[[tr:Krefeld]]
+[[vo:Krefeld]]
+[[zh:克雷费尔德]]
