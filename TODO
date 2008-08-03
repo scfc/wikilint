@@ -1,0 +1,24 @@
+* use strict;
+
+* use warnings;
+
+* Make sure links are checked case-sensitively except for
+  first character in German articles (use canonical name).
+
+* Check weblinks for accessibility.
+
+* Check for {{Gesundheitshinweis}} and {{Rechtshinweis}}.
+
+* Make units configurable.
+
+* Check for formatting of currencies.
+
+* Check for formatting of legal paragraphs.
+
+* Check for formatting of brackets and punctuation marks in
+  the same way as their content, i. e. "''(so)''" or
+  "'''„A quote.“'''".
+
+* Check for no spaces in front of <ref>s and right
+  positioning at the end of sentences or subordinate
+  clauses.
