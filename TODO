@@ -22,3 +22,5 @@
 * Check for no spaces in front of <ref>s and right
   positioning at the end of sentences or subordinate
   clauses.
+
+* Use FastCGI.
