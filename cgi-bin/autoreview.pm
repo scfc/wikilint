@@ -1764,13 +1764,11 @@ sub read_files {
 
 	if ( $language eq "de" ) {
 		# words to avoid
-		open(WORDS, "< ./avoid_words_de.txt") || die "cant open avoid_words_de.txt: $!\n";
+		open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
 
 		while(<WORDS>) {
 			if (!/^#/) {
 				chomp;
-				# i don't have a clue why i have to "decode" the utf8-file but doesn't work otherwise
-				utf8::decode($_);
 				push @avoid_words, qr/(\b$_\b)/;
 			}
 		}
@@ -1838,12 +1836,12 @@ sub read_files {
 	}
 	elsif ( $language eq "en" ) {
 		# words to avoid
-		open(WORDS, "< ./avoid_words_en.txt") || die "cant open avoid_words_en.txt\n";
+		open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/en/avoid_words.txt') || die ("Can't open ../../lib/langdata/en/avoid_words.txt: $!\n");
 
 		while(<WORDS>) {
 			if (!/^#/) {
 				chomp;
-				push @avoid_words, qr/\b$_\b/;
+				push @avoid_words, qr/(\b$_\b)/;
 			}
 		}
 		close(WORDS);
