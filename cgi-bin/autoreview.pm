@@ -1776,12 +1776,10 @@ sub read_files {
 
 		# fill-words
 		# aber, auch, nun, dann, doch, wohl, allerdings, eigentlich, jeweils
-		open(FILLWORDS, "< ./fill_words_de.txt") || die "cant open fill_words_de.txt\n";
+		open (FILLWORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/fill_words.txt') || die ("Can't open ../../lib/langdata/de/fill_words.txt: $!\n");
 		while(<FILLWORDS>) {
 			if (!/^#/) {
 				chomp;
-				# i don't have a clue why i have to "decode" the utf8-file but doesn't work otherwise
-				utf8::decode($_);
 				push @fill_words, qr/(\b$_\b)/;
 			}
 		}
