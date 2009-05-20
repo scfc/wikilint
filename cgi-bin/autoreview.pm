@@ -1787,14 +1787,12 @@ sub read_files {
 		}
 		close(FILLWORDS);
 
-		# abbriviations
-		open(ABBR, "< ./abbreviations_de.txt") || die "cant open abbreviations_de.txt\n";
+		# abbreviations
+		open (ABBR, '<:encoding(UTF-8)', '../../lib/langdata/de/abbreviations.txt') || die ("Can't open ../../lib/langdata/de/abbreviations.txt: $!\n");
 		while(<ABBR>) {
 			if (!/^#/ && length($_)> 1 ) {
 				chomp;
 				s/\./\\\./g;
-				# i don't have a clue why i have to "decode" the utf8-file but doesn't work otherwise
-				utf8::decode($_);
 				push @abbreviations, qr/(\b$_)/;
 			}
 		}
