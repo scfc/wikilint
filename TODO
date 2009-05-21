@@ -3,7 +3,8 @@
 * use warnings;
 
 * Make sure links are checked case-sensitively except for
-  first character in German articles (use canonical name).
+  first character in German articles (use canonical name);
+  take care of underscore vs. space as well.
 
 * Check weblinks for accessibility.
 
