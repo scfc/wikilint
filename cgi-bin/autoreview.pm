@@ -1812,13 +1812,11 @@ sub read_files {
 		close(BKL);
 
 		# typos
-		open(TYPO, "< ./typo.list.de.txt") || die "cant open typo.list.de.txt\n";
+		open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
 		while(<TYPO>) {
 			if (!/^#/ && length($_)> 1 ) {
 				chomp;
 				$typo = $_;
-				# i don't have a clue why i have to "decode" the utf8-file but doesn't work otherwise
-				utf8::decode($typo);
 
 				# it's far faster to search for /tree/ and /Tree/ than /tree/i so ...
 				$typo = lc( $typo );
