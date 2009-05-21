@@ -450,7 +450,4 @@ sub output {
 		print "<a name=\"EM\">EM = Avoid exclamation marks<p>\n";
 		print "<a name=\"WORDS\">WORDS = Words to avoid, see <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Words_to_avoid\">WP: Words to avoid</a><p>\n";
 	}
-
-	# allow browsers to jump to anchors
-	print "<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;<p>&nbsp;\n";
 }
