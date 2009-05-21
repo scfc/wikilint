@@ -1,5 +1,3 @@
-# wörter, die man in der deutschen wikipedia vermeiden sollte
-# grundlage: http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten
 alles über
 alles zum Thema
 bedauerlicherweise
@@ -72,7 +70,7 @@ ungefähr so
 unser
 unsere
 verschiedenste
-weitere Informationen finden Sie 
+weitere Informationen finden Sie
 wichtigste
 wie bereits erwähnt
 wie der Name sagt

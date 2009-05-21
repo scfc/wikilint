@@ -10,6 +10,7 @@ originally written by Arnim Rupp and was then published
 under GPL3 license and transferred to the WP-Tool-Server and
 maintained by Daniel Arnold.
 
+
 Directories:
 ------------
 
@@ -18,6 +19,24 @@ Directories:
 
 * Below the wikilint directory you can find all files needed
   by wikilint client side (browser).
+
+
+Sources for Word Lists:
+-----------------------
+
+- abbreviations.txt: Abbreviations to avoid, always with and
+  without (non-breaking) spaces, maintained manually.
+- avoid_words.txt: Words to avoid, for German Wikipedia cf.
+  <URI:http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten>.
+- disambs.txt: Disambiguation pages and redirects to those,
+  dumped from toolserver database.
+- fill_words.txt: Filler words, maintained manually.
+- redirs.txt: Redirects and their targets, dumped from tool-
+  server database.
+- typos.txt: Typos, case-insensitive, for German Wikipedia
+  cf.
+  <URI:http://de.wikipedia.org/wiki/Wikipedia:Helferlein/Rechtschreibprüfung/Wortliste>.
+
 
 URLs:
 -----

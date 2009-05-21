@@ -1,4 +1,3 @@
-# liste der füllworter
 aber
 auch
 nun

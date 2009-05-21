@@ -1,5 +1,3 @@
-# Falsche Schreibungen unabhaengig von Gross- und Kleinschreibung:
-# list from http://tools.wikimedia.de/~apper/sc/check.php?list=1 without case-sensitive parts
 aba
 abeit
 abeiten

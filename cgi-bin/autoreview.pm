@@ -1765,12 +1765,9 @@ sub read_files {
 	if ( $language eq "de" ) {
 		# words to avoid
 		open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
-
 		while(<WORDS>) {
-			if (!/^#/) {
-				chomp;
-				push @avoid_words, qr/(\b$_\b)/;
-			}
+			chomp;
+			push @avoid_words, qr/(\b$_\b)/;
 		}
 		close(WORDS);
 
@@ -1778,21 +1775,17 @@ sub read_files {
 		# aber, auch, nun, dann, doch, wohl, allerdings, eigentlich, jeweils
 		open (FILLWORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/fill_words.txt') || die ("Can't open ../../lib/langdata/de/fill_words.txt: $!\n");
 		while(<FILLWORDS>) {
-			if (!/^#/) {
-				chomp;
-				push @fill_words, qr/(\b$_\b)/;
-			}
+			chomp;
+			push @fill_words, qr/(\b$_\b)/;
 		}
 		close(FILLWORDS);
 
 		# abbreviations
 		open (ABBR, '<:encoding(UTF-8)', '../../lib/langdata/de/abbreviations.txt') || die ("Can't open ../../lib/langdata/de/abbreviations.txt: $!\n");
 		while(<ABBR>) {
-			if (!/^#/ && length($_)> 1 ) {
-				chomp;
-				s/\./\\\./g;
-				push @abbreviations, qr/(\b$_)/;
-			}
+			chomp;
+			s/\./\\\./g;
+			push @abbreviations, qr/(\b$_)/;
 		}
 		close(ABBR);
 
@@ -1810,17 +1803,15 @@ sub read_files {
 		# typos
 		open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
 		while(<TYPO>) {
-			if (!/^#/ && length($_)> 1 ) {
-				chomp;
-				$typo = $_;
+			chomp;
+			$typo = $_;
 
-				# it's far faster to search for /tree/ and /Tree/ than /tree/i so ...
-				$typo = lc( $typo );
+			# it's far faster to search for /tree/ and /Tree/ than /tree/i so ...
+			$typo = lc( $typo );
 
-				# ignore case only in 1st letter to speed up search (that's factor 5* to complete /i !)
-				$typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
-				push @is_typo, qr/(?<![-\*])\b($typo)\b/;
-			}
+			# ignore case only in 1st letter to speed up search (that's factor 5* to complete /i !)
+			$typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
+			push @is_typo, qr/(?<![-\*])\b($typo)\b/;
 		}
 		close(TYPO);
 	}
@@ -1829,10 +1820,8 @@ sub read_files {
 		open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/en/avoid_words.txt') || die ("Can't open ../../lib/langdata/en/avoid_words.txt: $!\n");
 
 		while(<WORDS>) {
-			if (!/^#/) {
-				chomp;
-				push @avoid_words, qr/(\b$_\b)/;
-			}
+			chomp;
+			push @avoid_words, qr/(\b$_\b)/;
 		}
 		close(WORDS);
 	}

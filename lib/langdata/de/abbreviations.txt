@@ -1,4 +1,3 @@
-# abkürzungen, immer mit und ohne leerzeichen, &amp;nbsp; (das man in der webdarstellung nicht sieht ohne "quelltext betrachten")
 i.d.r.
 i. d. r.
 i.&nbsp;d.&nbsp;r.
