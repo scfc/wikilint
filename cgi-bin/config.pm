@@ -63,8 +63,6 @@ $proposal = "<span class=proposal>";
 	'20-99999-ungenügend'
 );
 
-$redir_file = '../../lib/langdata/de/redirs.txt';
-
 $botname = "Bot.Wikilint";
 $botpw = ""; # refill
 

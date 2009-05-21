@@ -1512,35 +1512,25 @@ sub do_review {
 	$review_letters .="l" x $times;
 
 	# do self-wikilinks
-	$self_lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
-        utf8::decode($self_lemma);
-	my $self_linkle = "http://de.wikipedia.org/wiki/$self_lemma";
-	$times = $page =~ s/(\[\[)$self_lemma(\]\]|\|.+?\]\])/$never$1<a href=\"$self_linkle\">$self_lemma<\/a><\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>$2/g;
+	$self_lemma =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
+	utf8::decode ($self_lemma);
+	my $self_linkle = 'http://de.wikipedia.org/wiki/' . $self_lemma;
+	$times = $page =~ s/(\[\[)$self_lemma(\]\]|\|.+?\]\])/$never$1<a href=\"$self_linkle\">$self_lemma<\/a>$2<\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>/g;
 	$review_level += $times * $never_level;
-	$review_letters .="m" x $times;
+	$review_letters .= "m" x $times;
 
-	my $redirs_list = "";
-	open(GREP,"-|") || exec "/usr/bin/grep","\\\[\\\[$self_lemma\\\]\\\]", $redir_file;
-	while (<GREP>) {
-		$redirs_list .= "match: $_";
-	}
-	close GREP;
-
-        utf8::decode($redirs_list);
-
-	my ( @redirs ) = split(/\n/, $redirs_list );
-	foreach my $redir ( @redirs ) {
-		# [[∑]] → [[Sigma]]
-		$redir =~ /\[\[(.+?)\]\]...\[\[(.+?)\]\]/;
-		my $from = $1;
-		my $to = $2;
-
-		my $self_linkle = "http://de.wikipedia.org/wiki/$from";
-		# avoid regexp-grouping by () in $from (e.g. "A3 (Autobahn)" with \Q...\E
-		$times = $page =~ s/(\[\[)\Q$from\E(\]\]|\|.+?\]\])/$never$1<a href=\"$self_linkle\">$from<\/a><\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>$2/g;
-		$review_level += $times * $never_level;
-		$review_letters .="m" x $times;
-	}
+	open (REDIRECTS, '<:encoding(UTF-8)', '../../lib/langdata/de/redirs.txt') || die ("Can't open ../../lib/langdata/de/redirs.txt: $!\n");
+	while (<REDIRECTS>)
+	  {
+	    next unless (/^([^\t]+)\t\Q$self_lemma\E\n$/);
+	    my $from = $1;
+	    my $self_linkle = 'http://de.wikipedia.org/wiki/' . $from;
+	    # avoid regexp-grouping by () in $from (e.g. "A3 (Autobahn)" with \Q...\E
+	    $times = $page =~ s/(\[\[)\Q$from\E(\]\]|\|.+?\]\])/$never$1<a href=\"$self_linkle\">$from<\/a>$2<\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>/g;
+	    $review_level += $times * $never_level;
+	    $review_letters .= 'm' x $times;
+	  }
+	close (REDIRECTS);
 
 	# one wikilink to one lemma per $max_words_per_wikilink words is ok (number made up by me ;)
 	my $too_much_links = $num_words/$max_words_per_wikilink +1;
