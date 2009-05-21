@@ -63,7 +63,7 @@ $proposal = "<span class=proposal>";
 	'20-99999-ungenügend'
 );
 
-$redir_file = "/home/timl/public_html/cgi-bin/redirs.txt";
+$redir_file = '../../lib/langdata/de/redirs.txt';
 
 $botname = "Bot.Wikilint";
 $botpw = ""; # refill
