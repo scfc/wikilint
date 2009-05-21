@@ -1797,17 +1797,13 @@ sub read_files {
 		close(ABBR);
 
 		# Begriffsklärungsseiten WP:BKL
-		open(BKL, "< ./BKL_converted.txt") || die "cant open BKL_converted.txt\n";
+		open (BKL, '<:encoding(UTF-8)', '../../lib/langdata/de/disambs.txt') || die ("Can't open ../../lib/langdata/de/disambs.txt: $!\n");
 		while(<BKL>) {
-			if (!/^#/ && length($_)> 1 ) {
-				chomp;
-				$bkl = $_;
-				# i don't have a clue why i have to "decode" the utf8-file but doesn't work otherwise
-				utf8::decode($bkl);
-				$is_bkl{ $bkl }++;
-				$bkl = lc($bkl);
-				$is_bkl_lc{ $bkl }++;
-			}
+			chomp;
+			$bkl = $_;
+			$is_bkl{ $bkl }++;
+			$bkl = lc($bkl);
+			$is_bkl_lc{ $bkl }++;
 		}
 		close(BKL);
 
