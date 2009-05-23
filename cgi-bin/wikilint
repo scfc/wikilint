@@ -49,6 +49,23 @@ use autoreview;
 my $myname = 'wikilint';
 my $tool_path = '/~timl/cgi-bin';
 
+sub begin_html ($)
+{
+  my ($title_lemma) = @_;
+
+  print header (-type => 'text/html; charset=utf-8'),
+        start_html (-title => 'wikilint ' . $title_lemma,
+                    -encoding => 'utf-8',
+                    -head => meta ({-http_equiv => 'Content-Type',
+                                    -content    => 'text/html; charset=utf-8'}),
+                    -lang => 'de-DE',
+                    -bgcolor => '#FFFFFF',
+                    -style => '/~timl/wikilint/wp.css'),
+        '<center>',
+        h1 ({-align => 'center'}, '<font face="helvetica, arial">wikilint</font>'),
+        '</center>';
+}
+
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
 
@@ -73,7 +90,7 @@ if (param()) {
 	$title_lemma =~ s/_/ /g;
 	$title_lemma = 'Testseite' if ( $testpage );
 
-	&begin_html();
+	begin_html ($title_lemma);
 
 	&read_files($language);
 
@@ -113,7 +130,7 @@ if (param()) {
 	}
 }
 else {
-	&begin_html();
+	begin_html ($title_lemma);
 	&print_explanation();
 	&print_form();
 	print p,
@@ -124,18 +141,6 @@ else {
 print "</body></html>\n";
 exit;
 
-sub begin_html {
-	print header (-type => 'text/html; charset=utf-8'),
-	       start_html(-title=>"wikilint $title_lemma",
-			-encoding=>'utf-8',
-			-head=>meta({-http_equiv=>'Content-Type',
-				       -content=>'text/html; charset=utf-8'})
-			-lang=>'de-DE',
-			 -bgcolor=>'#FFFFFF'),
-			"<link rel=stylesheet type=\"text/css\" href=\"/~timl/wikilint/wp.css\">",
-			"<center>",
-		       h1("<font face=helvetica,arial>wikilint</font>"),"</center>";
-}
 #######################################################################
 
 sub print_explanation {
@@ -215,7 +220,7 @@ sub parse_form {
 
 	# empty url/lemma
 	if ( !$url && !$lemma ) {
-		&begin_html();
+		begin_html ($title_lemma);
 		print "<h3>FEHLER: Keine URL angegeben</h3><hr><p>\n";
 		&print_form();
 		exit;
@@ -251,7 +256,7 @@ sub parse_form {
 			$url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i
 		)
 	)) {
-		&begin_html();
+		begin_html ($title_lemma);
 		print "wrong URL or Lemma $url<p>\n";
 		exit;
 	}
@@ -260,7 +265,7 @@ sub parse_form {
 
 	# only german or english so far
 	if ( ($language ne 'de' && $language ne 'en') ) {
-		&begin_html();
+		begin_html ($title_lemma);
 		print "wrong language<p>\n";
 		exit;
 	}
@@ -286,14 +291,13 @@ sub parse_form {
 			$url = "http://en.wikipedia.org/wiki/$lemma_conv";
 		}
 		else {
-			&begin_html();
+			begin_html ($title_lemma);
 			print "unsupported language<p>\n";
 			exit;
 
 		}
 	}
 
-			#&begin_html();
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
 }
 
