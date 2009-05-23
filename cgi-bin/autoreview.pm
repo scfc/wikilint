@@ -233,7 +233,7 @@ sub do_review {
 	}
 
 	# now special character-units like €, %
-	my ( @units_tmp ) = split(/;/, $units_special{ $language });
+	@units_tmp = split(/;/, $units_special{ $language });
 	foreach my $unit ( @units_tmp ) {
 		push @units, qr/((\d+?[,\.])?\d+? $unit)(\B|)/;
 		#push @units, qr/((\d+?[,\.])?\d+?$unit)(\B|)/;
@@ -683,7 +683,7 @@ sub do_review {
 			}
 
 			# do "baum . baum"
-			my $line_copyy = $line;
+			$line_copyy = $line;
 			$times = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.]) ([[:alpha:]]{2,}? )/$1$never$2<\/span><sup class=reference><a href=#plenk>[plenk ?]<\/a><\/sup>$3/g;
 			# if it happens more than once in one line, assume it's intetion
 			if ( $times == 1 ) {
