@@ -119,42 +119,24 @@ sub http_download ($$)
   return undef;
 }
 
-sub find_random_page {
+sub find_random_page ($)
+{
+  my ($language) = @_;
 
-	my ( $language ) = @_;
+  die ("Only de or en random page so far\n") unless ($language eq 'de' || $language eq 'en');
 
-	my ( $down_url);
+  # Create a user agent object with timeout set to 10 s.
+  my $ua = LWP::UserAgent->new (agent => 'toolserver.org/~timl/cgi-bin/wikilint', timeout => 10, max_redirect => 0);
 
-	if ( $language eq "de") {
-		$down_url = "http://de.wikipedia.org/wiki/Spezial:Zuf%C3%A4llige_Seite";
-	}
-	elsif ( $language eq "en") {
-		$down_url = "http://en.wikipedia.org/wiki/Special:Random";
-	}
-	else {
-		die "only de or en randmon page so far\n";
-	}
+  # Create a request
+  my $req = HTTP::Request->new (GET => $language eq 'de' ? 'http://de.wikipedia.org/wiki/Spezial:Zufällige_Seite' :
+                                       $language eq 'en' ? 'http://en.wikipedia.org/wiki/Special:Random' :
+                                       '');
 
-	# Create a user agent object
-	my $ua = LWP::UserAgent->new(max_redirect => 0);
-	# $ua->proxy(['http'], $proxy);
-	$ua->agent('toolserver.org/~timl/cgi-bin/wikilint');
-	# set timeout to 10 sec
-	$ua->timeout(10);
+  # Pass request to the user agent and get a response back
+  my $res = $ua->simple_request ($req);
 
-	# Create a request
-	my $req = HTTP::Request->new(GET => $down_url);
-
-	# Pass request to the user agent and get a response back
-	#my $res = $ua->request($req);
-	my $res = $ua->simple_request($req);
-
-	# Check the outcome of the response
-	my $answer = $res->as_string;
-	$answer=~/Location: (http:.+)/;
-	$random_url=$1;
-
-	( $random_url );
+  return $res->header ('Location');
 }
 
 sub do_review {
