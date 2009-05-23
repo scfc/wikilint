@@ -21,7 +21,7 @@ use utf8;
 @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
 sub download_page {
-	# create URL to download_from and call &http_download()
+	# create URL to download_from and call http_download()
 	# this sub get's called recusivly on wikipedia-#REDIRECTS[[]]
 	my ( $url, $lemma, $language, $oldid, $ignore_error, $recursion_depth ) = @_;
 
@@ -73,7 +73,7 @@ sub download_page {
 
 	#$down_url =~ s/’/%E2%80%99/g;
 
-	my ($page ) = &http_download($down_url, $ignore_error );
+	my ($page ) = http_download($down_url, $ignore_error );
 
 	# why [^'] ?
 	#if ( $page =~ /#REDIRECT *\[\[([^']+?)\]\]/i &&
@@ -84,7 +84,7 @@ sub download_page {
 			$redir_to = $1;
 			$redir_to =~ s/#.*//;
 			$redir_to = uri_escape_utf8($redir_to);
-			$page = &download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
+			$page = download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
         }
 
 	($page );
@@ -244,7 +244,7 @@ sub do_review {
 
 	# remove <math>, <code>, <!-- -->, <poem> (any stuff to completetly ignore )
 
-	( $page, $last_replaced_num ) = &remove_stuff_to_ignore( $page );
+	( $page, $last_replaced_num ) = remove_stuff_to_ignore( $page );
 
 	# check for at least one image
 	$nopic=0;
@@ -287,10 +287,10 @@ sub do_review {
 	}
 
 	# check for unformated weblinks in <ref></ref>
-	&check_unformated_refs( $page );
+	check_unformated_refs( $page );
 
 	# remove <ref></ref>
-	( $page, $last_replaced_num, $count_ref ) = &remove_refs_and_images( $page, $last_replaced_num );
+	( $page, $last_replaced_num, $count_ref ) = remove_refs_and_images( $page, $last_replaced_num );
 
 	# avoid marking comments <!-- as evil exclamation mark
 	$page =~ s/<!/&lt;&iexcl;/g;
@@ -320,7 +320,7 @@ sub do_review {
 			# other list: http://de.wikipedia.org/wiki/Benutzer:BWBot
 
 			# remove lines with <!--sic--> and {{Zitat...}}
-			( $page ) = &remove_stuff_for_typo_check( $page );
+			( $page ) = remove_stuff_for_typo_check( $page );
 
 			if ( $language eq "de" ) {
 				foreach my $typo ( @is_typo ) {
@@ -331,7 +331,7 @@ sub do_review {
 					$review_letters .="o" x $times;
 				}
 			}
-			( $page ) = &restore_stuff_quote( $page );
+			( $page ) = restore_stuff_quote( $page );
 		}
 	}
 	##########################################################
@@ -600,7 +600,7 @@ sub do_review {
 				!$year_article
 			) {
 				# tag date-links
-				$line = &tag_dates_first_line( $line );
+				$line = tag_dates_first_line( $line );
 
 				# remove date-links for copy/paste wikisource ( $line_org_wiki )
 				$times = $line_org_wiki =~ s/(?<!(\w\]\]| \(\*|. †) )\[\[(\d{1,4}( v. Chr.)?)\]\]/$1$2/g;
@@ -928,7 +928,7 @@ sub do_review {
 						}
 
 						# restore removed HTML-comments and the like:
-						$sentence_tmp_restored = &restore_stuff_to_ignore( $sentence, "substitue_tags" );
+						$sentence_tmp_restored = restore_stuff_to_ignore( $sentence, "substitue_tags" );
 
 						# remove <ref> in beginning of sentence because of no relevance
 						$sentence_tmp_restored =~ s/^\s*&lt;ref(&gt;| name=[^&]+?&gt;)[^&]+?&lt;\/ref&gt;//i;
@@ -1111,7 +1111,7 @@ sub do_review {
 				}
 			}
 
-			$line = &restore_quotes($line);
+			$line = restore_quotes($line);
 
 			# evil: [[Automobil|Auto]][[bahn]]
 			# ok: [[Bild:MIA index.jpg|thumb|Grafik der Startseite]][[Bild:CreativeCommond_logo_trademark.svg|right|120px|Logo der Creative Commons]]
@@ -1717,7 +1717,7 @@ sub do_review {
 	# fehlender {{Gesundheitshinweis}}, {{Rechtshinweis}}
 	# falsche datumsformatierungen
 	# konfigurierbar, max_words per sentence, ...
-	# ganzen <ref>-code raus, wird nicht mehr gebraucht wegen &remove_refs()
+	# ganzen <ref>-code raus, wird nicht mehr gebraucht wegen remove_refs()
 	# http://tools.wikimedia.de/~tangotango/whatredirectshere.php?lang=en&title=Produzent&subdom=de&domain=.wikipedia.org
 	# link-checker für weblinks
 	# z.B. -> z.&nbsp;B.
@@ -1740,8 +1740,8 @@ sub do_review {
 	# restore exclamation marks
 	$page =~ s/&iexcl;/!/g;
 
-	$page = &restore_stuff_to_ignore( $page, "substitute_tags" );
-	$new_page_org = &restore_stuff_to_ignore( $new_page_org );
+	$page = restore_stuff_to_ignore( $page, "substitute_tags" );
+	$new_page_org = restore_stuff_to_ignore( $new_page_org );
 
 	($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $new_page_org, $removed_links, $count_ref, $count_fillwords );
 }
@@ -2251,7 +2251,7 @@ sub get_pic_parameters {
 
 	#print "url: $url\n";
 
-	my $page = &http_download( $url );
+	my $page = http_download( $url );
 
 	my ( @lines2 ) = split(/\n/, $page );
 	my ( @lines );
@@ -2397,7 +2397,7 @@ sub remove_one_item {
 		$count_ref++;
 	}
 
-	# this is to keep $line and $line_org_wiki in &do_review() in sync, not allowed to remove lines from page!
+	# this is to keep $line and $line_org_wiki in do_review() in sync, not allowed to remove lines from page!
 	my $num_of_lines = $item =~ s/\n/\n/g;
 	my $append_newlines = "\n" x $num_of_lines;
 

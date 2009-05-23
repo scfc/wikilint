@@ -118,10 +118,10 @@ sub print_form ($)
 }
 
 if (param()) {
-	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
+	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form();
 
 	if ( $random_page ) {
-		$url = &find_random_page($language);
+		$url = find_random_page($language);
 	}
 
 	my $link_lemma;
@@ -143,7 +143,7 @@ if (param()) {
 
 	begin_html ($title_lemma);
 
-	&read_files($language);
+	read_files($language);
 
 	if ( $testpage ) {
 		open(TEST, "< ./test.html") || die "cant open test.html\n";
@@ -153,7 +153,7 @@ if (param()) {
 		close(TEST);
 	}
 	else {
-		$page = &download_page($url, '', $language, $oldid);
+		$page = download_page($url, '', $language, $oldid);
 	}
 
 	# [^'] to avoid jumping on #REDIRECT [[',']]
@@ -162,7 +162,7 @@ if (param()) {
 		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$tool_path/$myname?l=de&lemma=$to\">$1</a></h3><p>\n";
 	}
 	else {
-		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = &do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
+		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
 
 		# to avoid strange reactions in <textarea>, e.g. wth comments like <!-- -- -- -- -->
 		$propose_page =~ s/&/&amp;/g;
@@ -172,17 +172,17 @@ if (param()) {
 		$propose_page = '' if ( $removed_links == 0 );
 
 		if ( !$selftest ) {
-			&output( $page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words );
+			output( $page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words );
 		}
 		else {
-			&selftest( $page, $extra_message );
+			selftest( $page, $extra_message );
 		}
 	}
 }
 else {
 	begin_html ($title_lemma);
-	&print_explanation();
-	&print_form();
+	print_explanation();
+	print_form(undef);
 	print p,
 		br,
                "<hr />Veröffentlicht unter GPL. <br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt\">Tim&nbsp;Landscheidt</a>";
@@ -216,7 +216,7 @@ sub parse_form {
 	if ( !$url && !$lemma ) {
 		begin_html ($title_lemma);
 		print "<h3>FEHLER: Keine URL angegeben</h3><hr><p>\n";
-		&print_form();
+		print_form(undef);
 		exit;
 	}
 
@@ -303,9 +303,9 @@ sub output {
 	$page =~ s/(={2,9})\s*([^<]+?)\s*(={2,9})/<a name=\"$2\">$1$2$3<\/a>/g;
 
 	if ( $language eq 'de' ) {
-		$edit_link = &create_edit_link($lemma_org, 'de');
+		$edit_link = create_edit_link($lemma_org, 'de');
 		print "\n<font face=arial,helvetica>",h3("Geprüfter Artikel: <a href=\"$url\">$search_lemma</a> <font size=-1> [<a href=\"$edit_link\" target=\"_blank\">Bearbeiten in Wikipedia</a>]");
-		my $link = &create_ar_link($link_lemma, 'de');
+		my $link = create_ar_link($link_lemma, 'de');
 		$link .= "&oldid=$oldid" if ( $oldid );
 		print "Link zu dieser Seite: $link<br>\n";
 
@@ -315,15 +315,15 @@ sub output {
 		}
 
 		print "<p><table border=1><tr><td bgcolor=#CCCCCC><font face=\"arial,helvetica\">\n";
-		&print_explanation();
-		&print_form($url);
+		print_explanation();
+		print_form($url);
 		print "</table>\n";
 
 		print "<p><b><font color=red>Obacht!</font> Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22.04.2007. Bitte die Hinweise nicht unreflektiert übernehmen, wenn sich das automatisieren lassen würde, hätte ich einen <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Bots\">Bot</a> draus gemacht ;) Der Inhalt ist immer wichtiger als die Formatierung!</b><p>\n";
 
 		print br,"Problem-Quote f&uuml;r <a href=\"$url\">$search_lemma</a>: <b>$quotient</b> (nur bedingt aussagekräfig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)", p;
 
-		&create_review_summary_html( $review_letters, $language );
+		create_review_summary_html( $review_letters, $language );
 
 		print "<br>Anzahl der Einzelnachweise: <b>$count_ref</b><p>\n";
 		my $fillwords_quot;
@@ -338,7 +338,7 @@ sub output {
 	}
 	elsif ( $language eq 'en' ) {
 		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path/$myname\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
-		&print_explanation();
+		print_explanation();
 	}
 
 	print p,hr,p;
