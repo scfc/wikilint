@@ -25,3 +25,5 @@
   clauses.
 
 * Use FastCGI.
+
+* Move style markup to CSS.
