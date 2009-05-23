@@ -66,6 +66,15 @@ sub begin_html ($)
         '</center>';
 }
 
+sub print_explanation ()
+{
+  print table ({border => 0},
+               Tr (td (img ({src => '/~timl/wikilint/deflag.jpg'}) . b ('Dieser Dienst prüft automatisch Wikipedia-Seiten auf häufige Fehler. Bisher wird nur Deutsch und Englisch unterstützt.') . br () .
+                       b ('Bitte Kommentare, Fehler und Ideen ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'hier') . ' eintragen. (' .
+                          a ({href => '#explanations'}, 'Liste der Funktionen') . ')'))) .
+               Tr (td (img ({src => '/~timl/wikilint/gbflag.gif'}) . 'This service automatically reviews Wikipedia articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs &amp; ideas ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'here') . '.')));
+}
+
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
 
@@ -142,17 +151,6 @@ print "</body></html>\n";
 exit;
 
 #######################################################################
-
-sub print_explanation {
-	print "<table border=0>";
-	print "<tr><td><img src=/~timl/wikilint/deflag.jpg><td><b>Dieser Dienst pr&uuml;ft automatisch Wikipedia-Seiten auf h&auml;ufige Fehler. Bisher wird nur Deutsch und Englisch unterst&uuml;tzt.</b><br> \n";
-	print "<b>Bitte Kommentare, Fehler und Ideen <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">hier</a> eintragen.\n";
-	print "( <a href=\"#explanations\">Liste der Funktionen</a> )</b> \n";
-
-	print "<tr><td><img src=/~timl/wikilint/gbflag.gif><td>This service automatically reviews Wikipedia-articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs & ideas <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">here</a>.<p>\n";
-
-	print "</table>\n";
-}
 
 sub print_form {
 	my ( $url ) = @_;
