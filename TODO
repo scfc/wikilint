@@ -27,3 +27,6 @@
 * Use FastCGI.
 
 * Move style markup to CSS.
+
+* Establish clear contracts with regard to encoding/escaping
+  user input.
