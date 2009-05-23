@@ -73,8 +73,6 @@ sub download_page {
 	die if (length($language) != 2 );
 	die "evil url" if ($down_url =~ /[ ;]/ || $down_url =~ /\.\./ );
 
-	#$down_url =~ s/’/%E2%80%99/g;
-
 	my ($page ) = http_download($down_url, $ignore_error );
 
 	# why [^'] ?
@@ -199,7 +197,6 @@ sub do_review {
 	my ( @lines_org_wiki ) = split(/\n/, $page);
 
 	# remove <math>, <code>, <!-- -->, <poem> (any stuff to completetly ignore )
-
 	( $page, $last_replaced_num ) = remove_stuff_to_ignore( $page );
 
 	# check for at least one image
@@ -229,7 +226,6 @@ sub do_review {
 		if ( $language eq "de" ) {
 			my ( $en_lemma, $eng_message );
 			$times = $page =~ /^\[\[en:(.+?)\]\]/m;
-#print "XXXXXXXXXX $ page XXXXX<p>\n";
 			if ( $times ) {
 				$en_lemma = $1;
 				$eng_message ="(<a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$en_lemma&go=Seite\">$en_lemma</a>) ";
@@ -457,7 +453,6 @@ sub do_review {
 					if ( $8 ) {
 						# v. Chr. included, must be a date so leave as it is
 						$times_total += $times;
-#print "BISS: $times - $line <br>\n";
 					}
 					elsif (
 						# 747-200 good
@@ -470,7 +465,6 @@ sub do_review {
 					}
 					else {
 						$times_total += $times;
-#print "BISS2: $times - $line <br>\n";
 					}
 				}
 			} until ( !$times );
@@ -523,7 +517,6 @@ sub do_review {
 						# OK: '''[[Wasserstoff|H]]'''
 						# regexp uses alternation for 3 cases: /('''[[Wasserstoff]]'''|'''[[Wasserstoff|H2O]]'''| '''Wasserstoff''')/
 						# this part is for '''baum [[Wasserstoff|H]]''': [^￼\[\n]*?
-
 						$times = $line =~ s/(￼STARTBOLD)(([^￼\[\n]*?\[\[[^￼\]\|]{4,}?\]\])[^￼\[\n]*?|([^￼\[\n]*?\[\[[^￼]+?\|[^￼\]]{4,}?\]\][^￼\[\n]*?)|([^￼\[]{4,}?))(￼ENDBOLD)/$seldom'''$2'''<\/span><sup class=reference><a href=#BOLD>[BOLD]<\/a><\/sup>/g;
 						$review_level += $times * $seldom_level;
 						$review_letters .="F" x $times;
@@ -584,7 +577,6 @@ sub do_review {
 			$inside_comment=1;
 		}
 
-	#print "XXX:		inside_template: $inside_template  - inside_comment:  $inside_comment  <br>\n";
 		# dont count short lines, textbox-lines, templates, ...
 		if ( length( $line ) > 5 &&
 			$line !~ /^{/ &&
@@ -603,7 +595,6 @@ sub do_review {
 		}
 
 		# PLENK & KLEMP
-
 		if ( !$inside_ref &&
 			!$inside_comment &&
 			!$inside_template &&
@@ -680,8 +671,8 @@ sub do_review {
 		) {
 			# check for too long sentences. lot's of cases have to be considered which dots are sentence
 			# endings or not. order is important in these checks!
-
 			my $line_copy = $line;
+
 			# remove HTML-comments <!--
 			$line_copy =~ s/&lt;&iexcl;--.+?--&gt;//g;
 			# remove <ref>...</ref>
@@ -957,7 +948,6 @@ sub do_review {
 				$times = $line =~ s/(&lt;\/ref&gt;.[^\[<]*?)!([^\]&>]*?)/$1$seldom!<\/span><sup class=reference><a href=#EM>[EM3]<\/a><\/sup>$2/g;
 				$review_level += $times * $seldom_level;
 				$review_letters .="G" x $times;
-	#print "EM2: -$line-<p>\n";
 			}
 
 			foreach my $avoid_word ( @avoid_words ) {
@@ -1390,8 +1380,6 @@ sub do_review {
 
 	$page = $new_page;
 
-	##############################################################
-
 	#	no weblinks in section titles
 	# ... except de.wikipedia to avoid tagging BKL-tag as weblink in section
 	$times = $page =~ s/(={2,9}.*?)(http:\/\/(?!de\.wikipedia).+?)( .*?)(={2,9})/$1$never$2<\/span><sup class=reference><a href=#link_in_section_title>[LiST-Web]<\/a><\/sup>$3$4/g;
@@ -1581,7 +1569,6 @@ sub do_review {
 			if ( $language eq "de" ) {
 				my ( $en_lemma, $eng_message );
 				$times = $page =~ /^\[\[en:(.+?)\]\]/m;
-#print "XXXXXXXXXX $ page XXXXX<p>\n";
 				if ( $times ) {
 					$en_lemma = $1;
 					$eng_message ="(<a href=\"http://commons.wikimedia.org/wiki/Special:Search?search=$en_lemma&go=Seite\">$en_lemma</a>) ";
@@ -1779,7 +1766,6 @@ sub remove_year_and_date_links {
 	# [[1234]] or [[3 v. Chr.]]
 	$times = $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?)\]\]/$1/g;
 	$count_removed += $times;
-#print "XXX: $line<br>\n";
 
 	# [[1234|34]]
 	$times = $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?\|)(\d\d)(\]\])/$3/g;
@@ -2071,7 +2057,6 @@ sub check_unformated_refs {
 }
 sub remove_stuff_for_typo_check {
 	# remove lines with <!--sic--> and {{templates...}} and quotes, web & wikilinks
-
 	my ( $page ) = @_;
 
 	undef %replaced_stuff_quote;
@@ -2099,7 +2084,6 @@ sub remove_stuff_for_typo_check {
 		$line_copy =~ s/Q-REP/'/g;
 
 		# also does ''quote 'blub' quote on'' ??
-
 		$line_copy =~ s/(\"([^"]{3,}?)\")/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
 		$line_copy =~ s/(&lt;i&gt;(.{3,}?)&lt;\/i&gt;)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
 		$line_copy =~ s/(„([^“]{3,}?)“)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
@@ -2216,7 +2200,7 @@ sub selftest {
 			}
 		}
 		elsif ( $line =~ /evil/i ) {
-				#print "COMMENT: $line$br\n";
+				print "COMMENT: $line$br\n";
 		}
 		else {
 			# don't care
