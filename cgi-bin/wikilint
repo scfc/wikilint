@@ -73,6 +73,50 @@ sub print_explanation ()
                Tr (td (img ({src => '/~timl/wikilint/gbflag.gif'}) . 'This service automatically reviews Wikipedia articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs &amp; ideas ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'here') . '.')));
 }
 
+sub print_form ($)
+{
+  my ($url) = @_;
+
+  $url = $url || 'http://de.wikipedia.org/wiki/Amphetamin';
+
+  param ('url', $url);
+
+  print start_form (-method => 'GET',
+                    -action => $tool_path . '/' . $myname,
+                    -'accept-charset' => 'utf8',
+                    -enctype => 'application/x−www−form−urlencoded'),
+        'URL/Lemma: ', textfield (-name => 'url',
+                                  -default => $url,
+                                  -size => 70)," (Bei Problemen mit deutschen Umlauten die URL von Wikipedia kopieren)", p,
+        checkbox (-name => 'remove_century',
+                  -checked => 0,
+                  -value => 'ON',
+                  -label => ''),
+        b ('[[18. Jahrhundert]], [[April]], [[1960er]] auch entfernen') . '/also remove century links', br (),
+        checkbox (-name => 'do_typo_check',
+                  -checked => 1,
+                  -value => 'ON',
+                  -label => ''),
+        b ('Tippfehler-Prüfung (dauert etwas länger)') . '/Typo check',
+        '&nbsp;&nbsp;&nbsp;',
+        checkbox (-name => 'rnd',
+                  -checked => 0,
+                  -value => 'ON',
+                  -label => ''),
+        b ('Zufällige Seite') . '/Random Page',
+        '&nbsp;&nbsp;&nbsp;',
+        checkbox (-name => 'testpage',
+                  -checked => 0,
+                  -value => 'ON',
+                  -label => ''),
+        b ('Test Seite') . '/Testpage', br (),
+        b ('Sprache') . '/Language: ',
+        popup_menu (-name => 'l',
+                    -values => ['de', 'en']), ' (English language limited)', br (),
+        submit (-name => 'Go!'),
+        end_form ();
+}
+
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
 
@@ -146,49 +190,6 @@ else {
 
 print "</body></html>\n";
 exit;
-
-sub print_form {
-	my ( $url ) = @_;
-
-	$url = $url || "http://de.wikipedia.org/wiki/Amphetamin";
-
-	param ('url', $url );
-
-	print
-               start_form ( -method=>'GET',
-				-action=>"$tool_path/$myname",
-				-'accept-charset'=>'utf8',
-				-enctype=>"application/x−www−form−urlencoded"),
-               " URL / Lemma: ",textfield(-name =>'url',
-						-default => "$url",
-						-size => 70)," (Bei Problemen mit deutschen Umlauten die URL von Wikipedia kopieren)", p,
-		checkbox(-name=>'remove_century',
-                           -checked=>0,
-                           -value=>'ON',
-			-label=>''),
-                           "<b>[[18. Jahrhundert]], [[April]], [[1960er]] auch entfernen</b> / also remove century links ",br,
-		checkbox(-name=>'do_typo_check',
-                           -checked=>1,
-                           -value=>'ON',
-			-label=>''),
-                           "<b>Tippfehler-Prüfung (dauert etwas länger)</b> / Typo check","&nbsp;&nbsp;&nbsp;",
-		checkbox(-name=>'rnd',
-                           -checked=>0,
-                           -value=>'ON',
-			-label=>''),
-                           "<b>Zuf&auml;llige Seite</b> / Random Page ","&nbsp;&nbsp;&nbsp;",
-		checkbox(-name=>'testpage',
-                           -checked=>0,
-                           -value=>'ON',
-			-label=>''),
-                           "<b>Test Seite</b> / Testpage ",br,
-               " <b>Sprache</b> / Language: ",
-               popup_menu(-name=>'l',
-                          -values=>['de','en'])," (English language limited)",br,
-
-               submit(-name=>'Go!') ,
-               end_form;
-}
 
 sub parse_form {
 	my $url = param('url');
