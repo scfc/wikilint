@@ -1871,13 +1871,12 @@ sub tag_dates_rest_line {
 	}
 	($line );
 }
-sub create_edit_link {
-	my ( $lemma, $lang ) = @_;
-	my ( $edit_link );
-	if ( $lang eq "de" ) {
-		$edit_link ="http://de.wikipedia.org/w/index.php?title=$lemma&action=edit";
-	}
-	($edit_link);
+
+sub create_edit_link ($$)
+{
+  my ($lemma, $lang) = @_;
+
+  return ($lang eq 'de' || $lang eq 'en') ? 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&action=edit' : undef;
 }
 
 sub create_ar_link {
