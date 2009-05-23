@@ -96,8 +96,6 @@ sub http_download {
 	# Create a user agent object
 	my $ua = LWP::UserAgent->new;
 
-	# no proxy, Arnomane
-	# $ua->proxy(['http'], $proxy);
 	# set timeout to 10 sec
 	$ua->timeout(10);
 
@@ -119,7 +117,6 @@ sub http_download {
 
 		# Check the outcome of the response
 		if ($res->is_success) {
-			#print $res->content;
 			$is_ok = 1;
 		} else {
 			print "Problem beim Runterladen der Seite \"$down_url\" von Wikipedia, bitte später nochmal probieren: ";
@@ -138,11 +135,7 @@ sub http_download {
 		$tries++;
 	} until ( $tries > $http_retry || $is_ok );
 
-	# i don't have a clue why i have to "decode" the utf8-page delivered from wikipedia but it doesn't
-	# work otherwise
-	my $page = $res->content ;
-	utf8::decode($page) ;
-	( $page );
+	return $res->decoded_content ();
 }
 
 sub find_random_page {
