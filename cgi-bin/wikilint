@@ -61,9 +61,7 @@ sub begin_html ($)
                     -lang => 'de-DE',
                     -bgcolor => '#FFFFFF',
                     -style => '/~timl/wikilint/wp.css'),
-        '<center>',
-        h1 ({-align => 'center'}, '<font face="helvetica, arial">wikilint</font>'),
-        '</center>';
+        h1 ({-align => 'center'}, '<font face="helvetica, arial">wikilint</font>');
 }
 
 sub print_explanation ()
