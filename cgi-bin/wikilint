@@ -57,8 +57,8 @@ binmode STDOUT, ":utf8";
 use open ':utf8';
 #############################################################
 
-require 'config.pm';
-require 'autoreview.pm';
+use config;
+use autoreview;
 $myname = 'wikilint';
 
 if (param()) {

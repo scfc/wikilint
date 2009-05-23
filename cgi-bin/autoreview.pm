@@ -16,11 +16,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-@months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
-
-1;
-
 use utf8;
+
+@months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
 sub download_page {
 	# create URL to download_from and call &http_download()
@@ -2417,3 +2415,5 @@ sub restore_one_item {
 
 	( $return );
 }
+
+1;

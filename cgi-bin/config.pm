@@ -16,7 +16,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-1;
 use utf8;
 
 $max_words_per_sentence=50;
@@ -125,3 +124,5 @@ $units{"de"} = 'kg;cm;m;km;mm;l;dl;qm;Prozent;s;h;Nm;N;W;°C;Watt;Pf;Pfennig;Mar
 $units_special{"de"} = '°C;€;\$;£';
 # ignore missing &nbsp; in short lines
 $min_length_for_nbsp = 100;
+
+1;
