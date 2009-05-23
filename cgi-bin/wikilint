@@ -107,7 +107,6 @@ if (param()) {
 			$page .= $_;
 		}
 		close(TEST);
-		#$page = `cat test.html`;
 	}
 	else {
 		$page = &download_page($url, '', $language, $oldid);
@@ -147,8 +146,6 @@ else {
 
 print "</body></html>\n";
 exit;
-
-#######################################################################
 
 sub print_form {
 	my ( $url ) = @_;
@@ -222,14 +219,11 @@ sub parse_form {
 		exit;
 	}
 
-#print "XX: $url<p>\n";
 	# if people enter only the lemma in url-field
 	if ( $url =~ /^[\w öäüÖÄÜß\-()]+$/ && !$lemma ) {
 		$lemma = $url;
 		$url = '';
 	}
-
-#print "lemma: $lemma<p>\n";
 
 	# strip http://ix.de#section
 	$url =~ s/(.+?)#.*/$1/g;
@@ -256,8 +250,6 @@ sub parse_form {
 		print "wrong URL or Lemma $url<p>\n";
 		exit;
 	}
-
-	#$url =~ /([^\w\d\%\_\-\:\.\/\?\&=\(\)\s-])/
 
 	# only german or english so far
 	if ( ($language ne 'de' && $language ne 'en') ) {
@@ -323,7 +315,6 @@ sub output {
 
 		print "<p><table border=1><tr><td bgcolor=#CCCCCC><font face=\"arial,helvetica\">\n";
 		&print_explanation();
-#print "XXX: $url<p>\n";
 		&print_form($url);
 		print "</table>\n";
 
@@ -430,7 +421,7 @@ sub output {
 	}
 	else {
 		print "<h3>Explanation:</h3>\n";
-		#print "<a name=\"links_to_numbers\">LTN = Links to years and days should usually be avoided.<p>\n";
+		print "<a name=\"links_to_numbers\">LTN = Links to years and days should usually be avoided.<p>\n";
 		print "<a name=\"plenk\">Plenk = blank placed before a punctuation character, see also <a href=\"http://en.wikipedia.org/Plenk\">Plenk<\/a><p>\n";
 		print "<a name=\"link_in_section_title\">LiST = Link in section title<p>\n";
 		print "<a name=\"colon_minus_section\">CMS = ! ? - : in section title<p>\n";
