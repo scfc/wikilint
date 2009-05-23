@@ -16,7 +16,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-use CGI;
+use CGI qw/:standard/;
 use LWP::UserAgent;
 use utf8;
 
