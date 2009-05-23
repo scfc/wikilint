@@ -54,18 +54,6 @@ $seldom = "<span class=seldom>";
 $sometimes = "<span class=sometimes>";
 $proposal = "<span class=proposal>";
 
-@problem_quotient_grades = (
-	'0-0-sehr gut',
-	'0.1-5-gut',
-	'5-10-befriedigend',
-	'10-15-ausreichend',
-	'15-20-mangelhaft',
-	'20-99999-ungenügend'
-);
-
-$botname = "Bot.Wikilint";
-$botpw = ""; # refill
-
 # explanations of all problems found and stored in $review_letters
 # format: $text{"LANGUAGE|$review_letter"} = "LEVEL|SUMMARY|text";
 # SUMMARY can be:
@@ -137,10 +125,3 @@ $units{"de"} = 'kg;cm;m;km;mm;l;dl;qm;Prozent;s;h;Nm;N;W;°C;Watt;Pf;Pfennig;Mar
 $units_special{"de"} = '°C;€;\$;£';
 # ignore missing &nbsp; in short lines
 $min_length_for_nbsp = 100;
-
-# get pages slower in daytime
-$rush_hour_extra_seconds = 5;
-$rush_hour_start = 9;
-$rush_hour_end = 23;
-
-$table_hint{"de"} = "Die Tabelle ist sortierbar über die Kästchen mit den Dreiecken, das dauert bei großen Tabellen allerdings ein paar Sekunden. Bitte nicht Artikel nur wegen eines einzigen Problems ändern, sonst gibt es unnötig viele Versionen auf den Wikipedia-Servern. Besser ist es einen Artikel nach dem anderen vollständig zu bearbeiten.";
