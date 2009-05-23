@@ -46,9 +46,6 @@ use open ':utf8';
 use config;
 use autoreview;
 
-my $myname = 'wikilint';
-my $tool_path = '/~timl/cgi-bin';
-
 sub begin_html ($)
 {
   my ($title_lemma) = @_;
@@ -82,7 +79,7 @@ sub print_form ($)
   param ('url', $url);
 
   print start_form (-method => 'GET',
-                    -action => $tool_path . '/' . $myname,
+                    -action => $tool_path,
                     -'accept-charset' => 'utf8',
                     -enctype => 'application/x−www−form−urlencoded'),
         'URL/Lemma: ', textfield (-name => 'url',
@@ -159,7 +156,7 @@ if (param()) {
 	# [^'] to avoid jumping on #REDIRECT [[',']]
 	if ( $page =~ /#REDIRECT ?\[\[([^']+?)\]\]/ ) {
 		$to = $1;
-		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$tool_path/$myname?l=de&lemma=$to\">$1</a></h3><p>\n";
+		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$tool_path?l=de&lemma=$to\">$1</a></h3><p>\n";
 	}
 	else {
 		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
@@ -337,7 +334,7 @@ sub output {
 		print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)<p>\n";
 	}
 	elsif ( $language eq 'en' ) {
-		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path/$myname\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
+		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
 		print_explanation();
 	}
 

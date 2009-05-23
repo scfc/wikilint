@@ -1893,7 +1893,7 @@ sub create_ar_link {
 	}
 
 	if ( $lang eq "de" ) {
-		$ar_link ="http://toolserver.org/~timl/cgi-bin/$arname?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
+		$ar_link = $tool_path . "?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
 	}
 	($ar_link);
 }

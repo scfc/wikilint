@@ -18,6 +18,8 @@
 
 use utf8;
 
+$tool_path = 'http://toolserver.org/~timl/cgi-bin/wikilint';
+
 $max_words_per_sentence=50;
 $min_words_per_section=30;
 $max_words_per_wikilink=1000;
@@ -112,8 +114,6 @@ $text{"de|v"} = "2|S|Kein Leerzeichen vor einer öffnenden oder nach einer schli
 
 # order of columns in spider-review-result-table, for meaning of letters see above
 $table_order ="nMcENGJOPZabijdlmopstuqvkXArBCDFeQHRSTKLUVWYhfg";
-
-$arname ="wikilint";
 
 $farbe_html{"3"} = "#ffcbcb";
 $farbe_html{"2"} = "#ffebad";
