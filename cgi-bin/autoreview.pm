@@ -16,6 +16,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+use CGI;
+use LWP::UserAgent;
 use utf8;
 
 @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
@@ -90,52 +92,31 @@ sub download_page {
 	($page );
 }
 
-sub http_download {
-	my ( $down_url, $ignore_error ) = @_;
+sub http_download ($$)
+{
+  my ($down_url, $ignore_error) = @_;
 
-	# Create a user agent object
-	my $ua = LWP::UserAgent->new;
+  die ("URL too long\n") if (length ($down_url) > 300);
 
-	# set timeout to 10 sec
-	$ua->timeout(10);
+  # Create a user agent object with timeout set to 10 s.
+  my $ua = LWP::UserAgent->new (agent => 'toolserver.org/~timl/cgi-bin/wikilint', timeout => 10);
 
-	die "URL zu lang\n" if ( length( $down_url ) > 300 );
+  for (my $tries = 0; $tries < $http_retry; $tries++)
+    {
+      my $res = $ua->get ($down_url);
+      if ($res->is_success ())
+        { return $res->decoded_content (); }
+      print "Problem beim Runterladen der Seite \"" . $down_url . "\" von Wikipedia, bitte später nochmal probieren: ";
+      print b ($res->status_line ()), p ();
+      print 'Problem downloading the page from Wikipedia, please try again later: ';
+      print b ($res->status_line ()), p ();
 
-	$ua->agent('toolserver.org/~timl/cgi-bin/wikilint');
+      exit unless ($ignore_error);
 
-	# Create a request
-	my $req = HTTP::Request->new(GET => $down_url);
+      sleep ($wait_between_http_retry);
+    }
 
-	my $tries = 0;
-	my $is_ok = 0;
-
-	my $res;
-
-	do {
-		# Pass request to the user agent and get a response back
-		$res = $ua->request($req);
-
-		# Check the outcome of the response
-		if ($res->is_success) {
-			$is_ok = 1;
-		} else {
-			print "Problem beim Runterladen der Seite \"$down_url\" von Wikipedia, bitte später nochmal probieren: ";
-			$message =  $res->status_line;
-			print '<b>'.$message.'</b><p>';
-			print 'Problem downloading the page from Wikipedia, please try again later: ';
-			$message =  $res->status_line;
-			print '<b>'.$message.'</b><p>';
-
-			if ( !$ignore_error ) {
-				exit;
-			}
-
-			sleep $wait_between_http_retry;
-		}
-		$tries++;
-	} until ( $tries > $http_retry || $is_ok );
-
-	return $res->decoded_content ();
+  return undef;
 }
 
 sub find_random_page {
