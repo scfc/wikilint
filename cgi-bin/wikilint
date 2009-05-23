@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-###!/usr/bin/perl -CS
 #
 #    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
@@ -17,19 +16,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-#### DESCRIPTION:
-# wikilint (formerly Wikipedia Autoreviewer)
-# checks a wikipedia-page for "things that should be changed"
-# code-level: quick hacked proof of concept!
-# contains UTF8-characters so take care with editor and terminal-settings, win98 doesn't work!
-#
-
-$tool_path = "/~timl/cgi-bin";
-
-#############################################################
-# no config below here
-#############################################################
 
 use CGI qw/:standard/;
 use LWP::UserAgent;
@@ -59,7 +45,9 @@ use open ':utf8';
 
 use config;
 use autoreview;
-$myname = 'wikilint';
+
+my $myname = 'wikilint';
+my $tool_path = '/~timl/cgi-bin';
 
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = &parse_form();
@@ -104,7 +92,7 @@ if (param()) {
 	# [^'] to avoid jumping on #REDIRECT [[',']]
 	if ( $page =~ /#REDIRECT ?\[\[([^']+?)\]\]/ ) {
 		$to = $1;
-		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$toolurl/$myname?l=de&lemma=$to\">$1</a></h3><p>\n";
+		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$tool_path/$myname?l=de&lemma=$to\">$1</a></h3><p>\n";
 	}
 	else {
 		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = &do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
