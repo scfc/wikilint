@@ -2146,72 +2146,52 @@ sub create_review_summary_html ($$)
   print table ({border => 1}, Tr (th ('Prüfung') . th ('Ergebnis')) . $table);
 }
 
-sub selftest {
-	# check if reviewing test.html gave the right results indicated be GOOD vs. BAD vs. EVIL (=bad in comments)
-	my ( $page, $extra_messages ) = @_;
-	my ( @lines ) = split(/\n/, $page);
+sub selftest ($$)   # Check if reviewing test.html gave the right results indicated by GOOD vs. BAD vs. EVIL (= bad in comments).
+{
+  my ($page, $extra_messages) = @_;
+  my (%found_evil_messages, %found_evil_text);
 
-	my ( %found_evil_messages );
-	my ( %found_evil_text );
+  foreach my $line (split (/\n/, $page))
+    {
+      print "MISSED REPLACEMENT: $line$br\n" if ($line =~ /-R-.+?\d+-R-/);
 
-	my ( $br ) = '<br>';
+      if ($line =~ /bad/i || $line =~ /mixed/i)
+        {
+          if ($line !~ /</)
+            { print 'MISSING TAG: ', $line, br (); }
+        }
+      elsif ($line =~ /good/i)
+        {
+          if ($line =~ /</)
+            { print 'FALSE POSITIVE: ', $line, br (); }
+        }
+      elsif ($line =~ /evil/i)
+        { print 'COMMENT: ', $line, br (); }
+      else   # Don't care.
+        { }
 
-	foreach my $line ( @lines ) {
-		if ( $line =~ /-R-.+?\d+-R-/ ) {
-			print "MISSED REPLACEMENT: $line$br\n";
-		}
+      $found_evil_text {$1}++ if ($line =~ /evil(\d+)/i)   # Count to check all were found.
+    }
 
-		if ( $line =~ /bad/i || $line =~ /mixed/i ) {
+  my @lines = split (/\n/, $extra_messages);
+  foreach my $line (@lines)
+    {
+      if ($line =~ /saint/i)
+        { print 'MESG FALSE POSITIVE: ', $line, br (); }
+      elsif ($line =~ /evil(\d+)/i)   # Count to check all were found.
+        { $found_evil_messages {$1}++; }
+      else
+        {
+          if ($line !~ /Mehr als 5 Weblinks/ &&
+              $line !~ /Mehr als 5 Links bei "Siehe auch/ &&
+              $line !~ /keinen Link zum Wiktionary/ &&
+              $line !~ / #REDIRECTS zu/)
+            { print 'MESG FALSE POSITIVE: ', $line, br (); }
+        }
+    }
 
-			if ( $line !~ /</ ) {
-				print "MISSING TAG: $line$br\n";
-			}
-		}
-		elsif ( $line =~ /good/i ) {
-			if ( $line =~ /</ ) {
-				print "FALSE POSITIVE: $line$br\n";
-			}
-		}
-		elsif ( $line =~ /evil/i ) {
-				print "COMMENT: $line$br\n";
-		}
-		else {
-			# don't care
-		}
-
-		if ( $line =~ /evil(\d+)/i ) {
-			# ok!
-			# count for checking if all where found
-			$found_evil_text{ $1 }++;
-		}
-	}
-
-	my ( @lines ) = split(/\n/, $extra_messages);
-	foreach my $line ( @lines ) {
-		if ( $line =~ /saint/i ) {
-			print "MESG FALSE POSITIVE: $line$br\n";
-		}
-		elsif ( $line =~ /evil(\d+)/i ) {
-			# ok!
-			# count for checking if all where found
-			$found_evil_messages{ $1 }++;
-		}
-		else {
-			if ( $line !~ /Mehr als 5 Weblinks/ &&
-				$line !~ /Mehr als 5 Links bei "Siehe auch/ &&
-				$line !~ /keinen Link zum Wiktionary/ &&
-				$line !~ / #REDIRECTS zu/
-			) {
-				print "MESG FALSE POSITIVE: $line$br\n";
-			}
-		}
-	}
-
-	foreach my $evil ( keys %found_evil_text ) {
-		if ( !$found_evil_messages{ $evil } ) {
-			print "MISSING MESG: $evil\n";
-		}
-	}
+  foreach my $evil (keys %found_evil_text)
+    {  print 'MISSING MESG: ', $evil, "\n" unless ($found_evil_messages {$evil}); }
 }
 
 sub restore_quotes {
