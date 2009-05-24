@@ -1883,7 +1883,7 @@ sub create_ar_link ($$$$)
 {
   my ($lemma, $lang, $oldid, $do_typo_check) = @_;
 
-  return $tool_path . '/' . $arname . '?lemma=' . $lemma . '&l' . $lang .
+  return $tool_path . '?lemma=' . $lemma . '&l' . $lang .
          (defined ($oldid) ? '&oldid=' . $oldid : '') .
          ($do_typo_check   ? '&do_typo_check=ON' : '');
 }
