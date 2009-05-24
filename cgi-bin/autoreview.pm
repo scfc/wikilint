@@ -2128,7 +2128,7 @@ sub create_review_summary_html ($$)
 
       # Treat fill words differently.
       if ($letter eq 'C')
-        { $table .= "<tr><td bgcolor=\"" . $farbe_html {$level} . "\">$message<td>Siehe<br>unten\n"; }
+        { $table .= Tr (td ({bgcolor => $farbe_html {$level}}, $message) . td ('Siehe' . br () . 'unten')); }
       else
         {
           my $secondcell;
