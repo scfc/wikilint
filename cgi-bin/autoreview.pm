@@ -2173,8 +2173,7 @@ sub selftest ($$)   # Check if reviewing test.html gave the right results indica
       $found_evil_text {$1}++ if ($line =~ /evil(\d+)/i)   # Count to check all were found.
     }
 
-  my @lines = split (/\n/, $extra_messages);
-  foreach my $line (@lines)
+  foreach my $line (split (/\n/, $extra_messages))
     {
       if ($line =~ /saint/i)
         { print 'MESG FALSE POSITIVE: ', $line, br (); }
