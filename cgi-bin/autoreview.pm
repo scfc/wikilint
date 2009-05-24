@@ -1888,13 +1888,6 @@ sub create_ar_link ($$$$)
          ($do_typo_check   ? '&do_typo_check=ON' : '');
 }
 
-sub create_perma_link ($$$)
-{
-  my ($lemma, $lang, $oldid) = @_;
-
-  return 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&oldid=' . $oldid;
-}
-
 sub remove_stuff_to_ignore {
 	# inside <math>, <code> everything is allowed to remove before doing review and restore afterwards
 	my ( $page ) = @_;
