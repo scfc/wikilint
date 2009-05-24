@@ -20,7 +20,7 @@ use CGI qw/:standard/;
 use LWP::UserAgent;
 use utf8;
 
-@months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
+my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
 sub download_page {
 	# create URL to download_from and call http_download()
