@@ -2002,41 +2002,34 @@ sub restore_stuff_quote {
 	($page );
 }
 
-sub check_unformated_refs {
+sub check_unformated_refs ($)
+{
+  my ($page) = @_;
 
-	my ( $page ) = @_;
+  foreach $line (split (/\n/, $page))
+    {
+      foreach my $word (split (/\s/, $line))
+        {
+          if ($last_word !~ /^URL:/i &&
+              $word      !~ /{{\w+?\|[^}]*https?:\/\// &&
+              $word      !~ /url=/i &&
+              # Unformatted weblink: "http://rupp.de".
+              ($word =~ /(https?:\/\/.+)/ && $word !~ /(\[https?:\/\/.+)/) ||
+              # Unformatted weblink: "[http://rupp.de]".
+              $word  =~ /(\[https?:\/\/[^\s]+?\])/)
+            {
+              my $weblink = $1;
 
-	my ( @lines ) = split(/\n/, $page);
-
-	foreach $line ( @lines ) {
-		my ( @words ) = split(/\s/, $line );
-
-		foreach my $word ( @words ) {
-			if (
-				$last_word !~ /^URL:/i &&
-				$word !~ /{{\w+?\|[^}]*https?:\/\// &&
-				$word !~ /url=/i &&
-				# unformated weblink: http://rupp.de
-				( $word =~ /(https{0,1}:\/\/.+)/ &&
-				$word !~ /(\[https{0,1}:\/\/.+)/ ) ||
-				# unformated weblink: [http://rupp.de]
-				$word =~ /(\[https{0,1}:\/\/[^\s]+?\])/
-			) {
-				my $weblink = $1;
-
-				if ( $language eq "de" ) {
-					$extra_message .= $seldom."Unformatierter Weblink: </span>$weblink - Siehe <a href=\"http://de.wikipedia.org/wiki/WP:WEB#Formatierung\">WP:WEB#Formatierung</a><br>\n";
-				}
-				else {
-					#$extra_message .= $never."Link in \"see also\" which was used before:</span> [[$see_also_link]].<br>\n";
-				}
-				$review_level += $seldom_level;
-				$review_letters .="X";
-			}
-			$last_word = $word;
-		}
-	}
+              if ($language eq 'de')
+                { $extra_message .= $seldom . 'Unformatierter Weblink: </span>' . $weblink . ' – Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Formatierung'}, 'WP:WEB#Formatierung') . br () . "\n"; }
+              $review_level   += $seldom_level;
+              $review_letters .= 'X';
+            }
+          $last_word = $word;
+        }
+    }
 }
+
 sub remove_stuff_for_typo_check {
 	# remove lines with <!--sic--> and {{templates...}} and quotes, web & wikilinks
 	my ( $page ) = @_;
