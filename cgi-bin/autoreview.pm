@@ -2193,16 +2193,19 @@ sub selftest ($$)   # Check if reviewing test.html gave the right results indica
     {  print 'MISSING MESG: ', $evil, "\n" unless ($found_evil_messages {$evil}); }
 }
 
-sub restore_quotes {
-	my ( $line ) = @_;
-	$line =~ s/￼QSS.?%(.*?)￼QES.?%/''$1''/g;
-	$line =~ s/￼QSD%(.*?)￼QED%/\"$1\"/g;
-	$line =~ s/￼QST%(.*?)￼QET%/&lt;i&gt;$1&lt\/i&gt;/g;
-	$line =~ s/￼QSL%(.*?)￼QEL%/„$1“/g;
-	$line =~ s/￼QSF%(.*?)￼QEF%/«$1»/g;
-	$line =~ s/￼QSX%(.*?)￼QEX%/‚$1‘/g;
-	$line =~ s/￼QSC%(.*?)￼QEC%/&lt;sic&gt;$1&lt\/sic&gt;/g;
-	( $line );
+sub restore_quotes ($)
+{
+  my ($line) = @_;
+
+  $line =~ s/￼QSS.?%(.*?)￼QES.?%/''$1''/go;
+  $line =~ s/￼QSD%(.*?)￼QED%/\"$1\"/go;
+  $line =~ s/￼QST%(.*?)￼QET%/&lt;i&gt;$1&lt\/i&gt;/go;
+  $line =~ s/￼QSL%(.*?)￼QEL%/„$1“/go;
+  $line =~ s/￼QSF%(.*?)￼QEF%/«$1»/go;
+  $line =~ s/￼QSX%(.*?)￼QEX%/‚$1‘/go;
+  $line =~ s/￼QSC%(.*?)￼QEC%/&lt;sic&gt;$1&lt\/sic&gt;/go;
+
+  return $line;
 }
 
 sub remove_one_item {
