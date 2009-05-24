@@ -1689,73 +1689,78 @@ sub do_review {
 	($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $new_page_org, $removed_links, $count_ref, $count_fillwords );
 }
 
-sub read_files {
-	my ( $language) = @_;
-	die "language missing\n" if ( !$language );
+sub read_files ($)
+{
+  my ($language) = @_;
 
-	if ( $language eq "de" ) {
-		# words to avoid
-		open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
-		while(<WORDS>) {
-			chomp;
-			push @avoid_words, qr/(\b$_\b)/;
-		}
-		close(WORDS);
+  die "Language missing\n" unless (defined ($language));
 
-		# fill-words
-		# aber, auch, nun, dann, doch, wohl, allerdings, eigentlich, jeweils
-		open (FILLWORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/fill_words.txt') || die ("Can't open ../../lib/langdata/de/fill_words.txt: $!\n");
-		while(<FILLWORDS>) {
-			chomp;
-			push @fill_words, qr/(\b$_\b)/;
-		}
-		close(FILLWORDS);
+  if ($language eq 'de') 
+    {
+      # Words to avoid.
+      open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
+      while (<WORDS>) 
+        {
+          chomp ();
+          push (@avoid_words, qr/(\b$_\b)/);
+        }
+      close (WORDS);
 
-		# abbreviations
-		open (ABBR, '<:encoding(UTF-8)', '../../lib/langdata/de/abbreviations.txt') || die ("Can't open ../../lib/langdata/de/abbreviations.txt: $!\n");
-		while(<ABBR>) {
-			chomp;
-			s/\./\\\./g;
-			push @abbreviations, qr/(\b$_)/;
-		}
-		close(ABBR);
+      # Fill words ("aber", "auch", "nun", "dann", "doch", "wohl", "allerdings", "eigentlich", "jeweils").
+      open (FILLWORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/fill_words.txt') || die ("Can't open ../../lib/langdata/de/fill_words.txt: $!\n");
+      while (<FILLWORDS>) 
+        {
+          chomp ();
+          push (@fill_words, qr/(\b$_\b)/);
+        }
+      close (FILLWORDS);
 
-		# Begriffsklärungsseiten WP:BKL
-		open (BKL, '<:encoding(UTF-8)', '../../lib/langdata/de/disambs.txt') || die ("Can't open ../../lib/langdata/de/disambs.txt: $!\n");
-		while(<BKL>) {
-			chomp;
-			$bkl = $_;
-			$is_bkl{ $bkl }++;
-			$bkl = lc($bkl);
-			$is_bkl_lc{ $bkl }++;
-		}
-		close(BKL);
+      # Abbreviations.
+      open (ABBR, '<:encoding(UTF-8)', '../../lib/langdata/de/abbreviations.txt') || die ("Can't open ../../lib/langdata/de/abbreviations.txt: $!\n");
+      while (<ABBR>) 
+        {
+          chomp ();
+          s/\./\\\./g;
+          push (@abbreviations, qr/(\b$_)/);
+        }
+      close (ABBR);
 
-		# typos
-		open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
-		while(<TYPO>) {
-			chomp;
-			$typo = $_;
+      # Begriffsklärungsseiten/disambiguation pages.
+      open (BKL, '<:encoding(UTF-8)', '../../lib/langdata/de/disambs.txt') || die ("Can't open ../../lib/langdata/de/disambs.txt: $!\n");
+      while (<BKL>) 
+        {
+          chomp ();
+          $is_bkl {$_}++;
+          $is_bkl_lc {lc ($_)}++;
+        }
+      close (BKL);
 
-			# it's far faster to search for /tree/ and /Tree/ than /tree/i so ...
-			$typo = lc( $typo );
+      # Typos.
+      open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
+      while (<TYPO>) 
+        {
+          chomp ();
 
-			# ignore case only in 1st letter to speed up search (that's factor 5* to complete /i !)
-			$typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
-			push @is_typo, qr/(?<![-\*])\b($typo)\b/;
-		}
-		close(TYPO);
-	}
-	elsif ( $language eq "en" ) {
-		# words to avoid
-		open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/en/avoid_words.txt') || die ("Can't open ../../lib/langdata/en/avoid_words.txt: $!\n");
+          # It's far faster to search for /tree/ and /Tree/ than /tree/i so ...
+          $typo = lc ($_);
 
-		while(<WORDS>) {
-			chomp;
-			push @avoid_words, qr/(\b$_\b)/;
-		}
-		close(WORDS);
-	}
+          # Ignore case only in first letter to speed up search (that's factor 5 to complete /i!).
+          $typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
+          push (@is_typo, qr/(?<![-\*])\b($typo)\b/);
+        }
+      close(TYPO);
+    }
+  elsif ($language eq 'en') 
+    {
+      # Words to avoid.
+      open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/en/avoid_words.txt') || die ("Can't open ../../lib/langdata/en/avoid_words.txt: $!\n");
+      while (<WORDS>) 
+        {
+          chomp ();
+          push (@avoid_words, qr/(\b$_\b)/);
+        }
+      close (WORDS);
+    }
 }
 
 sub remove_year_and_date_links {
