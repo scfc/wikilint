@@ -114,6 +114,77 @@ sub print_form ($)
         end_form ();
 }
 
+sub parse_form ()
+{
+  my $url = param ('url');
+  my $language = param ('l');
+  my $random_page = param ('rnd');
+  my $lemma = param ('lemma');
+  my $testpage = param ('testpage');
+  my $remove_century = param ('remove_century');
+  my $action = param ('action');
+  my $oldid = param ('oldid');
+  my $do_typo_check = param ('do_typo_check');
+
+  # Normalize values.
+  $do_typo_check = 1 if ($do_typo_check);
+
+  die if ($oldid && $oldid =~ /\D/);
+  die if ($language && $language !~ /^\w\w$/);
+
+  utf8::decode ($url);
+  utf8::decode ($lemma);
+
+  # Empty URL/lemma.
+  if ($url eq '' && $lemma eq '')
+    {
+      begin_html ($title_lemma);
+      print h3 ('Fehler: Keine URL angegeben.'), hr (), p ();
+      print_form (undef);
+      exit;
+    }
+
+  # If people enter only the lemma in the URL field.
+  if ($url =~ /^[\w öäüÖÄÜß\-()]+$/ && $lemma eq '')
+    {
+      $lemma = $url;
+      $url   = '';
+    }
+
+  # Strip "#Section".
+  $url =~ s/#.*$//;
+
+  $language = param ('language') if ($language eq '');
+
+  # Check URL.
+  if ($url ne '' && ($url =~ /\.\./ || $url =~ /;/ || length ($url) > 150 ||
+      # If URL is passed only to wikipedia.org.
+      (($url =~ /https?:/ || $url =~ /:\/\//) && $url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i)))
+    {
+      begin_html ($title_lemma);
+      print "Wrong URL or lemma $url", p ();
+      exit;
+    }
+
+  # Only German or English so far.
+  if ($language ne 'de' && $language ne 'en')
+    {
+      begin_html ($title_lemma);
+      print "Wrong language", p ();
+      exit;
+    }
+
+  if ($url eq '' && $lemma ne '')
+    {
+      # Default to typo-check if lemma is passed.
+      $do_typo_check = 1;
+
+      $url = 'http://' . $language . '.wikipedia.org/wiki/' . uri_escape_utf8 ($lemma);
+    }
+
+  return ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
+}
+
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form();
 
@@ -187,105 +258,6 @@ else {
 
 print "</body></html>\n";
 exit;
-
-sub parse_form {
-	my $url = param('url');
-	my $language =param('l');
-	my $random_page=param('rnd');
-	my $lemma = param('lemma');
-	my $testpage = param('testpage');
-	my $remove_century = param('remove_century');
-	my $action = param('action');
-	my $oldid = param('oldid');
-	my $do_typo_check = param('do_typo_check');
-
-	$do_typo_check = 1 if ( $do_typo_check );
-	$random_page = 1 if ( $random_page );
-	$testpage = 1 if ( $testpage );
-
-	die if ( $oldid && $oldid =~ /\D/ );
-	die if ( $language && $language !~ /^\w\w$/ );
-
-	utf8::decode($url);
-	utf8::decode($lemma);
-
-	# empty url/lemma
-	if ( !$url && !$lemma ) {
-		begin_html ($title_lemma);
-		print "<h3>FEHLER: Keine URL angegeben</h3><hr><p>\n";
-		print_form(undef);
-		exit;
-	}
-
-	# if people enter only the lemma in url-field
-	if ( $url =~ /^[\w öäüÖÄÜß\-()]+$/ && !$lemma ) {
-		$lemma = $url;
-		$url = '';
-	}
-
-	# strip http://ix.de#section
-	$url =~ s/(.+?)#.*/$1/g;
-
-	if ( !$language ) {
-		$language =param('language');
-	}
-
-	# check URL
-	if ( $url && (
-		$url =~ /\.\./ ||
-		$url =~ /;/ ||
-		length($url)> 150 ||
-		(
-			# if URL is passed only to wikipedia.org
-			(
-				$url =~ /https?:/ ||
-				$url =~ /:\/\//
-			) &&
-			$url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i
-		)
-	)) {
-		begin_html ($title_lemma);
-		print "wrong URL or Lemma $url<p>\n";
-		exit;
-	}
-
-	# only german or english so far
-	if ( ($language ne 'de' && $language ne 'en') ) {
-		begin_html ($title_lemma);
-		print "wrong language<p>\n";
-		exit;
-	}
-
-	# nicer in logfile
-	if ( $random_page ) {
-		$random_page = 1 ;
-	}
-	else {
-		$random_page = 0 ;
-	}
-
-	if ( !$url && $lemma ) {
-		my $lemma_conv = uri_escape_utf8($lemma);
-
-		# default to typo-check if lemma is passed
-		$do_typo_check = 1;
-
-		if ( $language eq 'de' ) {
-			$url = "http://de.wikipedia.org/wiki/$lemma_conv";
-		}
-		elsif ( $language eq 'en' ) {
-			$url = "http://en.wikipedia.org/wiki/$lemma_conv";
-		}
-		else {
-			begin_html ($title_lemma);
-			print "unsupported language<p>\n";
-			exit;
-
-		}
-	}
-
-	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
-}
 
 sub output {
 	my ( $page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words ) = @_;
