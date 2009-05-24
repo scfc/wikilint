@@ -1879,23 +1879,13 @@ sub create_edit_link ($$)
   return ($lang eq 'de' || $lang eq 'en') ? 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&action=edit' : undef;
 }
 
-sub create_ar_link {
-	my ( $lemma, $lang, $oldid, $do_typo_check ) = @_;
+sub create_ar_link ($$$$)
+{
+  my ($lemma, $lang, $oldid, $do_typo_check) = @_;
 
-	my ( $oldid_tmp, $ar_link, $typo_tmp );
-
-	if ( $oldid ) {
-		$oldid_tmp = "&oldid=$oldid";
-	}
-
-	if ( $do_typo_check ) {
-		$typo_tmp ="&do_typo_check=ON";
-	}
-
-	if ( $lang eq "de" ) {
-		$ar_link = $tool_path . "?l=de&lemma=$lemma$oldid_tmp$typo_tmp";
-	}
-	($ar_link);
+  return $tool_path . '/' . $arname . '?lemma=' . $lemma . '&l' . $lang .
+         (defined ($oldid) ? '&oldid=' . $oldid : '') .
+         ($do_typo_check   ? '&do_typo_check=ON' : '');
 }
 
 sub create_perma_link {

@@ -156,7 +156,7 @@ if (param()) {
 	# [^'] to avoid jumping on #REDIRECT [[',']]
 	if ( $page =~ /#REDIRECT ?\[\[([^']+?)\]\]/ ) {
 		$to = $1;
-		print "<h3>Wikipedia redirect, please follow this link: <a href=\"$tool_path?l=de&lemma=$to\">$1</a></h3><p>\n";
+		print '<h3>Wikipedia redirect, please follow this link: <a href="' . create_ar_link ($to, 'de', $oldid, $do_typo_check) . '">' . $to . "</a></h3><p>\n";
 	}
 	else {
 		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
@@ -302,9 +302,7 @@ sub output {
 	if ( $language eq 'de' ) {
 		$edit_link = create_edit_link($lemma_org, 'de');
 		print "\n<font face=arial,helvetica>",h3("Geprüfter Artikel: <a href=\"$url\">$search_lemma</a> <font size=-1> [<a href=\"$edit_link\" target=\"_blank\">Bearbeiten in Wikipedia</a>]");
-		my $link = create_ar_link($link_lemma, 'de');
-		$link .= "&oldid=$oldid" if ( $oldid );
-		print "Link zu dieser Seite: $link<br>\n";
+		print "Link zu dieser Seite: " . create_ar_link ($link_lemma, 'de', $oldid, $do_typo_check) . "<br>\n";
 
 
 		if ( $oldid ) {
