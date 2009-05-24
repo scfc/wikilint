@@ -2190,7 +2190,7 @@ sub selftest ($$)   # Check if reviewing test.html gave the right results indica
     }
 
   foreach my $evil (keys %found_evil_text)
-    {  print 'MISSING MESG: ', $evil, "\n" unless ($found_evil_messages {$evil}); }
+    { print 'MISSING MESG: ', $evil, "\n" unless ($found_evil_messages {$evil}); }
 }
 
 sub restore_quotes ($)
