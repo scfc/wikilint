@@ -203,7 +203,7 @@ sub do_review {
 	$nopic=0;
 
 	if (
-		$page !~ /\[\[(Image|Bild):/i &&
+		$page !~ /\[\[(Bild|Datei|File|Image):/i &&
 		$page !~ /<gallery>/i &&
 		# pic in template
 		$page !~ /\|(.+?)=.+?\.(jpg|png|gif|bmp|tiff|svg)\b/i
@@ -586,8 +586,7 @@ sub do_review {
 			$line !~ /^__/ &&
 			!$inside_template &&
 			!$inside_comment &&
-			$line !~ /^\[\[Bild:/ &&
-			$line !~ /^\[\[Image:/ &&
+			$line !~ /^\[\[(Bild|Datei|File|Image):/ &&
 			$line !~ /^-R-I\d+-R--R-$/ &&
 			$line !~ /^-R-R\d+-R-$/
 		) {
@@ -605,8 +604,7 @@ sub do_review {
 			do {
 				$replaced = 0;
 				$replaced += $line =~ s/(https?:\/\/.+?)(\.)/$1PUNKTERSATZ$4/gi;
-				$replaced += $line =~ s/(Bild:[^\]]+?)(\.)/$1PUNKTERSATZ/gi;
-				$replaced += $line =~ s/(Image:[^\]]+?)(\.)/$1PUNKTERSATZ/gi;
+				$replaced += $line =~ s/((?:Bild|Datei|File|Image):[^\]]+?)(\.)/$1PUNKTERSATZ/gi;
 				$replaced += $line =~ s/({{.+?)(\.)/$1PUNKTERSATZ/gi;
 				$replaced += $line =~ s/(https?:\/\/.+?)(\,)/$1KOMMAERSATZ/gi;
 				$replaced += $line =~ s/({{.+?)(\.)/$1PUNKTERSATZ/gi;
@@ -1061,9 +1059,7 @@ sub do_review {
 
 			# evil: [[Automobil|Auto]][[bahn]]
 			# ok: [[Bild:MIA index.jpg|thumb|Grafik der Startseite]][[Bild:CreativeCommond_logo_trademark.svg|right|120px|Logo der Creative Commons]]
-			if ( $line !~ /\[\[Bild:/i &&
-				$line !~ /\[\[Image:/i
-			) {
+			if ( $line !~ /\[\[(?:Bild|Datei|File|Image):/i ) {
 				# [[^\[\]] instead of . is neccesarry ! to avoid marking  all of "[[a]] blub [[s]][[u]]"
 				$times = $line =~ s/(\[\[[^\[\]]+?\]\]\[\[[^\[\]]+?\]\])/$never$1<\/span><sup class=reference><a href=#DL>[DL]<\/a><\/sup>/g;
 				$review_level += $times * $never_level;
@@ -2108,7 +2104,7 @@ sub remove_refs_and_images {
 
 	# the (...){0,8} is for links inside the picture description, like [[Image:bild.jpg|This is a [[tree]] genau]]
 	# the ([^\]\[]*?) is for images with links in it
-	$page =~ s/(\[\[(Image:|Bild:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, "count_ref" )/gesi;
+	$page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, "count_ref" )/gesi;
 
 	# <gallery> ... </gallery>
 	# <gallery widths="200" heights =..></gallery>
