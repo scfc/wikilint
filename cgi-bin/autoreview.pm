@@ -1691,11 +1691,11 @@ sub read_files ($)
 
   die "Language missing\n" unless (defined ($language));
 
-  if ($language eq 'de') 
+  if ($language eq 'de')
     {
       # Words to avoid.
       open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
-      while (<WORDS>) 
+      while (<WORDS>)
         {
           chomp ();
           push (@avoid_words, qr/(\b$_\b)/);
@@ -1704,7 +1704,7 @@ sub read_files ($)
 
       # Fill words ("aber", "auch", "nun", "dann", "doch", "wohl", "allerdings", "eigentlich", "jeweils").
       open (FILLWORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/fill_words.txt') || die ("Can't open ../../lib/langdata/de/fill_words.txt: $!\n");
-      while (<FILLWORDS>) 
+      while (<FILLWORDS>)
         {
           chomp ();
           push (@fill_words, qr/(\b$_\b)/);
@@ -1713,7 +1713,7 @@ sub read_files ($)
 
       # Abbreviations.
       open (ABBR, '<:encoding(UTF-8)', '../../lib/langdata/de/abbreviations.txt') || die ("Can't open ../../lib/langdata/de/abbreviations.txt: $!\n");
-      while (<ABBR>) 
+      while (<ABBR>)
         {
           chomp ();
           s/\./\\\./g;
@@ -1723,7 +1723,7 @@ sub read_files ($)
 
       # Begriffsklärungsseiten/disambiguation pages.
       open (BKL, '<:encoding(UTF-8)', '../../lib/langdata/de/disambs.txt') || die ("Can't open ../../lib/langdata/de/disambs.txt: $!\n");
-      while (<BKL>) 
+      while (<BKL>)
         {
           chomp ();
           $is_bkl {$_}++;
@@ -1733,7 +1733,7 @@ sub read_files ($)
 
       # Typos.
       open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
-      while (<TYPO>) 
+      while (<TYPO>)
         {
           chomp ();
 
@@ -1746,11 +1746,11 @@ sub read_files ($)
         }
       close(TYPO);
     }
-  elsif ($language eq 'en') 
+  elsif ($language eq 'en')
     {
       # Words to avoid.
       open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/en/avoid_words.txt') || die ("Can't open ../../lib/langdata/en/avoid_words.txt: $!\n");
-      while (<WORDS>) 
+      while (<WORDS>)
         {
           chomp ();
           push (@avoid_words, qr/(\b$_\b)/);
@@ -2113,46 +2113,37 @@ sub remove_refs_and_images {
 	( $page, $global_removed_count, $count_ref );
 }
 
-sub create_review_summary_html {
-        my ( $review_letters, $language ) = @_;
-        my ( $result );
+sub create_review_summary_html ($$)
+{
+  my ($review_letters, $language) = @_;
+  my $table = '';
 
-	print "<h3>Zusammenfassung</h3><font face=\"arial,helvetica\"><table border=1 >\n";
-	print "<tr><th>Prüfung<th>Ergebnis\n";
+  my %count_letters;
+  foreach my $letter (split (//, $review_letters))
+    { $count_letters {$letter}++; }
 
-        my ( @letters ) = split(//, $review_letters );
-        my %count_letters;
-        foreach my $letter ( @letters ) {
-                $count_letters{ $letter }++;
+  foreach my $letter (split (//, $table_order))
+    {
+      my ($level, $summary, $message) = split(/\|/, $text {$language . '|' . $letter});
+
+      # Treat fill words differently.
+      if ($letter eq 'C')
+        { $table .= "<tr><td bgcolor=\"" . $farbe_html {$level} . "\">$message<td>Siehe<br>unten\n"; }
+      else
+        {
+          my $secondcell;
+          if ($count_letters {$letter} && $level eq '0')
+            { $secondcell = td ({bgcolor => 'yellow'}, $count_letters {$letter}); }
+          elsif ($count_letters {$letter})
+            { $secondcell = td ($count_letters {$letter}); }
+          else
+            { $secondcell = td ({bgcolor => 'lime'}, 'OK'); }
+          $table .= Tr (td ({bgcolor => $farbe_html {$level}}, $message) . $secondcell);
         }
+    }
 
-        my ( @order_letters ) = split(//, $table_order );
-
-        foreach my $letter ( @order_letters ) {
-		my ( $level, $summary, $message ) = split(/\|/, $text{"$language|$letter"});
-
-		# sonderlocke FILLWORDS
-		if ( $letter eq "C" ) {
-				#$result = "<td bgcolor=lime>OK\n";
-			print "<tr><td bgcolor=\"".$farbe_html{$level}."\">$message<td>Siehe<br>unten\n";
-		}
-		else {
-			print "<tr><td bgcolor=\"".$farbe_html{$level}."\">$message\n";
-			if ( $count_letters{ $letter } && $level eq "0" ) {
-				$result = "<td bgcolor=yellow>".$count_letters{ $letter }."\n";
-			}
-			elsif ( $count_letters{ $letter } ) {
-				#$result = "<td bgcolor=red>".$count_letters{ $letter }."\n";
-				$result = "<td>".$count_letters{ $letter }."\n";
-			}
-			else {
-				$result = "<td bgcolor=lime>OK\n";
-			}
-			print "$result\n";
-		}
-        }
-
-	print "</table>\n\n";
+  print h3 ('Zusammenfassung');
+  print table ({border => 1}, Tr (th ('Prüfung') . th ('Ergebnis')) . $table);
 }
 
 sub selftest {
