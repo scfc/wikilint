@@ -1888,12 +1888,11 @@ sub create_ar_link ($$$$)
          ($do_typo_check   ? '&do_typo_check=ON' : '');
 }
 
-sub create_perma_link {
-	my ( $lemma, $lang, $oldid ) = @_;
-	if ( $lang eq "de" ) {
-		$perma_link ="http://de.wikipedia.org/w/index.php?title=$lemma&oldid=$oldid"
-	}
-	($perma_link);
+sub create_perma_link ($$$)
+{
+  my ($lemma, $lang, $oldid) = @_;
+
+  return 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&oldid=' . $oldid;
 }
 
 sub remove_stuff_to_ignore {
