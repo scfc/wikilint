@@ -322,75 +322,79 @@ sub output ($$$$$$$$$$$$$)
     }
 }
 
-if (param()) {
-	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form();
+if (param ()) 
+  {
+    ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form ();
 
-	if ( $random_page ) {
-		$url = find_random_page($language);
-	}
+    $url = find_random_page ($language) if ($random_page);
 
-	my $link_lemma;
+    my $link_lemma;
 
-	if ( $url=~ /title=/ ) {
-		$url =~ /title=(.+)&/;
-		$link_lemma = $1;
-	}
-	else {
-		# get last part of url as lemma
-		$url =~ /.+\/(.+)/;
-		$link_lemma = $1;
-	}
-	$title_lemma = $link_lemma;
-	$title_lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
-	utf8::decode($title_lemma);
-	$title_lemma =~ s/_/ /g;
-	$title_lemma = 'Testseite' if ( $testpage );
+    if ($url =~ /title=/) 
+      {
+        $url =~ /title=(.+)&/;
+        $link_lemma = $1;
+      }
+    else 
+      {
+        # Get last part of URL as lemma.
+        $url =~ /.+\/(.+)/;
+        $link_lemma = $1;
+      }
+    $title_lemma = $link_lemma;
+    $title_lemma =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
+    utf8::decode ($title_lemma);
+    $title_lemma =~ s/_/ /g;
+    $title_lemma = 'Testseite' if ($testpage);
 
-	begin_html ($title_lemma);
+    begin_html ($title_lemma);
 
-	read_files($language);
+    read_files ($language);
 
-	if ( $testpage ) {
-		open(TEST, "< ./test.html") || die "cant open test.html\n";
-		while(<TEST>) {
-			$page .= $_;
-		}
-		close(TEST);
-	}
-	else {
-		$page = download_page($url, '', $language, $oldid);
-	}
+    if ($testpage) 
+      {
+        local ($/);
 
-	# [^'] to avoid jumping on #REDIRECT [[',']]
-	if ( $page =~ /#REDIRECT ?\[\[([^']+?)\]\]/ ) {
-		$to = $1;
-		print '<h3>Wikipedia redirect, please follow this link: <a href="' . create_ar_link ($to, 'de', $oldid, $do_typo_check) . '">' . $to . "</a></h3><p>\n";
-	}
-	else {
-		($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords ) = do_review( $page, $language, $remove_century, $link_lemma, $do_typo_check );
+        open (TEST, '<', 'test.html') || die ('Cannot open test.html');
+        $page = <TEST>;
+        close (TEST);
+      }
+    else 
+      { $page = download_page ($url, '', $language, $oldid); }
 
-		# to avoid strange reactions in <textarea>, e.g. wth comments like <!-- -- -- -- -->
-		$propose_page =~ s/&/&amp;/g;
-		$propose_page =~ s/</&lt;/g;
-		$propose_page =~ s/>/&gt;/g;
+    # [^'] to avoid jumping on #REDIRECT [[',']].
+    if ($page =~ /#REDIRECT ?\[\[([^']+?)\]\]/) 
+      {
+        $to = $1;
+        print '<h3>Wikipedia redirect, please follow this link: <a href="' . create_ar_link ($to, 'de', $oldid, $do_typo_check) . '">' . $to . "</a></h3><p>\n";
+      }
+    else 
+      {
+        ($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords) = do_review ($page, $language, $remove_century, $link_lemma, $do_typo_check);
 
-		$propose_page = '' if ( $removed_links == 0 );
+        # To avoid strange reactions in <textarea>, e. g. with comments like <!-- -- -- -- -->.
+        $propose_page =~ s/&/&amp;/g;
+        $propose_page =~ s/</&lt;/g;
+        $propose_page =~ s/>/&gt;/g;
 
-		if ( !$selftest ) {
-			output( $page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words );
-		}
-		else {
-			selftest( $page, $extra_message );
-		}
-	}
-}
-else {
-	begin_html ($title_lemma);
-	print_explanation();
-	print_form(undef);
-	print p,
-		br,
-               "<hr />Veröffentlicht unter GPL. <br />Kontakt: <a href=\"http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt\">Tim&nbsp;Landscheidt</a>";
+        $propose_page = '' if (!$removed_links);
+
+        if ($selftest) 
+          { selftest ($page, $extra_message); }
+        else 
+          { output ($page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words); }
+      }
+  }
+else 
+  {
+    begin_html ($title_lemma);
+    print_explanation ();
+    print_form (undef);
+    print p (),
+          br (),
+          hr (),
+          'Veröffentlicht unter GPL.', br (),
+          'Kontakt: ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt'}, 'Tim&nbsp;Landscheidt');
 }
 
 print "</body></html>\n";
