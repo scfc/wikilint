@@ -22,72 +22,62 @@ use utf8;
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
-sub download_page {
-	# create URL to download_from and call http_download()
-	# this sub get's called recusivly on wikipedia-#REDIRECTS[[]]
-	my ( $url, $lemma, $language, $oldid, $ignore_error, $recursion_depth ) = @_;
+sub download_page ($$$$;$$)   # Create URL to download from and call http_download ().
+{
+  # This function gets called recursively on Wikipedia #REDIRECT[[]]s.
+  my ($url, $lemma, $language, $oldid, $ignore_error, $recursion_depth) = @_;
+  my $down_url;
 
-	$recursion_depth++;
+  if ($url)
+    {
+      $lemma =  $url;
+      $lemma =~ s/^http:\/\/\w\w\.wikipedia\.org\/w(iki)?\///;
+    }
+  elsif ($lemma)
+    { $lemma =~ tr/ /_/; }
+  else
+    { die ("Neither URL nor lemma\n"); }
 
-	if ( $url ) {
-		$lemma = $url;
-		$lemma =~ s/^http:\/\/\w\w.wikipedia.org\/w(iki)?\///;
-	}
-	elsif ( $lemma ) {
-		$lemma =~ s/ /_/g;
-	}
-	else {
-		die "neither url nor lemma<p>\n";;
-	}
+  $oldid = $2 if ($lemma =~ s/index\.php\?title=(.+?)&oldid=(\d+)/$1/);
 
-	if ( $lemma =~ s/index.php\?title=(.+?)&oldid=(\d+)/$1/ ) {
-		$oldid = $2;
-	}
+  $downlemma =  $lemma;
+  $downlemma =~ tr/ /_/;
 
-	$downlemma = $lemma;
-	$downlemma =~ s/ /_/g;
+  # uri_escape can't be used because some characters are already escaped except &.
+  $downlemma =~ s/&amp;/%26/g;
+  $downlemma =~ s/&/%26/g;
+  $downlemma =~ s/’/%E2%80%99/g;
 
-	# uri_escape can't be used because some characters are already escape ...
-	#$downlemma = uri_escape($downlemma);
-	# ... except &
-	$downlemma =~ s/&amp;/%26/g;
-	$downlemma =~ s/&/%26/g;
-	$downlemma =~ s/’/%E2%80%99/g;
+  $lemma_org =  $lemma;
+  $lemma     =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
 
-	$lemma_org = $lemma;
-	$lemma =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
+  utf8::decode ($lemma);
 
-	utf8::decode($lemma);
+  $search_lemma =  $lemma;
+  $search_lemma =~ tr/_/ /;
 
-	$search_lemma = $lemma;
-	$search_lemma =~ s/_/ /g;
+  if ($oldid =~ /^\d+$/)
+    { $down_url = "http://$language.wikipedia.org/w/index.php?title=$downlemma&action=raw&oldid=$oldid"; }
+  else
+    { $down_url = "http://$language.wikipedia.org/w/index.php?title=$downlemma&action=raw"; }
 
-	if ( $oldid =~ /^\d+$/ ) {
-		$down_url= "http:\/\/$language.wikipedia.org\/w\/index.php?title=$downlemma&action=raw&oldid=$oldid";
-	}
-	else {
-		$down_url= "http:\/\/$language.wikipedia.org\/w\/index.php?title=$downlemma&action=raw";
-	}
+  # Some more security checks.
+  die if (length ($language) != 2);
+  die "Evil url" if ($down_url =~ /[ ;]/ || $down_url =~ /\.\./);
 
-	# some more security checks
-	die if (length($language) != 2 );
-	die "evil url" if ($down_url =~ /[ ;]/ || $down_url =~ /\.\./ );
+  my $page = http_download ($down_url, $ignore_error);
 
-	my ($page ) = http_download($down_url, $ignore_error );
+  if ($page =~ /#REDIRECT *\[\[(.+?)\]\]/i && $recursion_depth < 2)   # Don't get infinite loop on two redirects which point to each other.
+    {
+      my $redir_to;
 
-	# why [^'] ?
-	#if ( $page =~ /#REDIRECT *\[\[([^']+?)\]\]/i &&
-	if ( $page =~ /#REDIRECT *\[\[(.+?)\]\]/i &&
-		# don't get infinite loop on 2 redirects which point to each other
-		$recursion_depth < 3 )
-	{
-			$redir_to = $1;
-			$redir_to =~ s/#.*//;
-			$redir_to = uri_escape_utf8($redir_to);
-			$page = download_page( "", $redir_to, $language, $oldid, $ignore_error, $recursion_depth );
-        }
+      $redir_to =  $1;
+      $redir_to =~ s/#.*$//;
+      $redir_to =  uri_escape_utf8 ($redir_to);
+      $page     =  download_page ('', $redir_to, $language, $oldid, $ignore_error, $recursion_depth + 1);
+    }
 
-	($page );
+  return $page;
 }
 
 sub http_download ($$)
