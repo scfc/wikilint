@@ -525,7 +525,7 @@ sub do_review {
 					$line !~ /DATUM/ &&
 					$line !~ /STERBEDATUM/
 				) {
-					$line = &tag_dates_rest_line( $line );
+					$line = tag_dates_rest_line ($line);
 					( $line_org_wiki, $times ) = &remove_year_and_date_links( $line_org_wiki , $remove_century);
 					$removed_links += $times;
 				}
@@ -1809,48 +1809,51 @@ sub tag_dates_first_line {
 	( $line );
 }
 
-sub tag_dates_rest_line {
+sub tag_dates_rest_line ($)
+{
+  my ($line) = @_;
 
-	my ( $line ) = @_;
-	################### links to dates
-	# do [[2005]]
-	$times = $line =~ s/(\[\[[1-9]\d{0,3}( v. Chr.)?\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-	$review_level += $times * $seldom_level;
-	$review_letters .="K" x $times;
+  # Links to dates.
+  # Do [[2005]].
+  $times           = $line =~ s/(\[\[[1-9]\d{0,3}(?: v\. Chr\.)?\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $seldom_level;
+  $review_letters .= 'K' x $times;
 
-	# [[1878|78]]
-	$times = $line =~ s/(\[\[[1-9]\d{0,3}( v. Chr.)?\|)(\d\d)(\]\])/$seldom$1$2$3$4<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-	$review_level += $times * $seldom_level;
-	$review_letters .="K" x $times;
+  # [[1878|78]].
+  $times           = $line =~ s/(\[\[[1-9]\d{0,3}(?: v\. Chr\.)?\|\d\d\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $seldom_level;
+  $review_letters .= 'K' x $times;
 
-	# do [[17. Jahrhundert]] or [[17. Jahrhundert|whatever]]
-	$times = $line =~ s/(\[\[\d{1,2}\. Jahrhundert( v\. Chr\.)?[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-	$review_level += $times * $sometimes_level;
-	$review_letters .="U" x $times;
+  # Do [[17. Jahrhundert]] or [[17. Jahrhundert|whatever]].
+  $times           = $line =~ s/(\[\[\d{1,2}\. Jahrhundert( v\. Chr\.)?[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $sometimes_level;
+  $review_letters .= 'U' x $times;
 
-	# do [[1960er]] or [[1960er|60er]]
-	$times = $line =~ s/(\[\[\d{1,4}er[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-	$review_level += $times * $sometimes_level;
-	$review_letters .="V" x $times;
+  # Do [[1960er]] or [[1960er|60er]].
+  $times           = $line =~ s/(\[\[\d{1,4}er[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $sometimes_level;
+  $review_letters .= 'V' x $times;
 
-	# do [[1960er Jahre]]
-	$times = $line =~ s/(\[\[\d{1,4}er Jahre[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-	$review_level += $times * $sometimes_level;
-	$review_letters .="V" x $times;
+  # Do [[1960er Jahre]].
+  $times           = $line =~ s/(\[\[\d{1,4}er Jahre[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $sometimes_level;
+  $review_letters .= 'V' x $times;
 
-	# links to days
-	foreach my $month ( @months ) {
-		# do [[12. Mai]] or [[12. Mai|...]]
-		$times = $line =~ s/(\[\[\d{1,2}\. $month[\]\|]\]?)/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-		$review_level += $times * $seldom_level;
-		$review_letters .="L" x $times;
+  # Links to days.
+  foreach my $month (@months)
+    {
+      # Do [[12. Mai]] or [[12. Mai|…]].
+      $times           = $line =~ s/(\[\[\d{1,2}\. $month[\]\|]\]?)/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+      $review_level   += $times * $seldom_level;
+      $review_letters .= 'L' x $times;
 
-		# do [[Mai]] or [[Mai|...]]
-		$times = $line =~ s/(\[\[$month[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-		$review_level += $times * $sometimes_level;
-		$review_letters .="W" x $times;
-	}
-	($line );
+      # Do [[Mai]] or [[Mai|…]].
+      $times           = $line =~ s/(\[\[$month[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+      $review_level   += $times * $sometimes_level;
+      $review_letters .= 'W' x $times;
+    }
+
+  return $line;
 }
 
 sub create_edit_link ($$)
