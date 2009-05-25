@@ -235,7 +235,7 @@ sub output ($$$$$$$$$$$$$)
     {
       print h3 ('Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen (' . $removed_links . ' Stück).');
       print '(Am einfachsten kopieren durch "reinklicken", [Strg-A], [Strg-C], in Wikipedia einfügen mit [Strg-A], [Strg-V] und dann mit "Änderungen zeigen" kontrollieren.)', br ();
-      print textarea ({readonly => 1, name => 'page_without_links_to_years_and_dates', rows => 10, cols => 80}, $propose_page);
+      print textarea ({readonly => 1, name => 'page_without_links_to_years_and_dates', rows => 10, cols => 80, default => $propose_page});
     }
 
   if ($extra_message)
