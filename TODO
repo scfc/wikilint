@@ -30,3 +30,5 @@
 
 * Establish clear contracts with regard to encoding/escaping
   user input.
+
+* Generate valid HTML.
