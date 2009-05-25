@@ -185,6 +185,143 @@ sub parse_form ()
   return ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
 }
 
+sub output ($$$$$$$$$$$$$)
+{
+  my ($page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words) = @_;
+
+  # Include HTML line-breaks.
+  $page =~ s/\n/<br>\n/g;
+
+  # Include <a name> for each ==section==, tricky because of my own HTML in section-titles, e.g.:
+  # ==Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte==<br>.
+  $page =~ s/(={2,9})\s*(.*?)(<.*?>)(.*?)(<.*>)(.*?)\s*(={2,9})/<a name="$2$4$6">$1$2$3$4$5$6$7<\/a>/g;
+  # Now sections without HTML aka [^<].
+  $page =~ s/(={2,9})\s*([^<]+?)\s*(={2,9})/<a name="$2">$1$2$3<\/a>/g;
+
+  if ($language eq 'de')
+    {
+      print h3 ('Geprüfter Artikel: ' . a ({href => $url}, $search_lemma) . ' '  . small ('[' . a ({href => create_edit_link ($lemma_org, 'de')}, 'Bearbeiten in Wikipedia') . ']'));
+      print 'Link zu dieser Seite: ' . create_ar_link ($link_lemma, 'de', $oldid, $do_typo_check) . br ();
+
+      print h1 ('Achtung, dieses Review betrifft eine alte Version dieses Artikels!') if ($oldid);
+
+      print '<p><table border="1"><tr><td bgcolor="#CCCCCC"><font face="arial,helvetica">';
+      print_explanation ();
+      print_form ($url);
+      print '</table>';
+
+      print '<p><b><font color="red">Obacht!</font> Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22. April 2007. Bitte die Hinweise nicht unreflektiert übernehmen; wenn sich das automatisieren lassen würde, hätte ich einen <a href="http://de.wikipedia.org/wiki/Wikipedia:Bots">Bot</a> daraus gemacht ;). Der Inhalt ist immer wichtiger als die Formatierung!</b><p>';
+
+      print br (), 'Problem-Quote für ', a ({href => $url}, $search_lemma), ': ', b ($quotient), ' (nur bedingt aussagekräftig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)', p ();
+
+      create_review_summary_html ($review_letters, $language);
+
+      print br (), 'Anzahl der Einzelnachweise: ', b ($count_ref), p ();
+      my $fillwords_quot;
+      # Avoid division by zero.
+      $fillwords_quot = $count_fillwords ? int ($num_words / $count_fillwords) : 0;
+
+      print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)", p ();
+    }
+  elsif ($language eq 'en')
+    {
+      print h3 ('Lint: ' . a ({href => $url}, $search_lemma) . ' ' . small ('[' . a ({href => create_edit_link ($lemma_org, 'en')}, 'edit in Wikipedia') . '] [' . a ({href => $tool_path}, 'New review') . ']'), br (), 'Level: ', b ($review_level), p ());
+      print_explanation ();
+    }
+
+  print p (), hr (), p ();
+
+  if ($language eq 'de' && $propose_page && $removed_links > 1)
+    {
+      print h3 ('Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen (' . $removed_links . ' Stück).');
+      print '(Am einfachsten kopieren durch "reinklicken", [Strg-A], [Strg-C], in Wikipedia einfügen mit [Strg-A], [Strg-V] und dann mit "Änderungen zeigen" kontrollieren.)', br ();
+      print textarea ({readonly => 1, name => 'page_without_links_to_years_and_dates', rows => 10, cols => 80}, $propose_page);
+    }
+
+  if ($extra_message)
+    {
+      $extra_message =~ s/^/<li>/gm;
+      if ($language eq 'de')
+        {
+          print hr, h3 ('Allgemeine Anmerkungen (weitere unten in dem Wiki-Quelltext):');
+          print table ({border => 1}, Tr (th (b ('Legende:'))) .
+                                      Tr (td ('Ist ' . $never . 'sehr selten</span> sinnvoll.')) .
+                                      Tr (td ('Ist ' . $seldom . 'selten</span> sinnvoll, bitte prüfen.')) .
+                                      Tr (td ('Ist ' . $sometimes . 'manchmal</span> sinnvoll, bitte prüfen.')) .
+                                      Tr (td ($proposal . 'Vorschlag</span>, bitte prüfen, ob sinnvoll.')));
+          print p (), ul ($extra_message), p (), hr (), p ();
+        }
+      elsif ($language eq 'en')
+        {
+          print hr (), h3 ('General comments:');
+          print 'Is ' . $never . 'never</span> reasonable', br ();
+          print 'Is ' . $seldom . 'seldom</span> reasonable, please check.', br ();
+          print 'Is ' . $sometimes . 'sometimes</span> reasonable, please check.', br ();
+          print p (), ul ($extra_message), p (), hr (), p ();
+        }
+    }
+
+  print hr ();
+
+  # Order is important here!
+  # To preserve &nbsp; in browser-view, do only 3-5 to avoid doing &lt; and &gt; which this script abuses.
+  $page =~ s/&([a-zA-Z]{3,5};)/&amp;$1/g;
+  # To preserve &#x2011; in browser-view.
+  $page =~ s/&(#x?\d{1,5};)/&amp;$1/g;
+  # To preserve leading spaces in browser-view.
+  $page =~ s/^ /&nbsp;/gm;
+
+  print h3 ('Wiki-Quelltext mit Anmerkungen:');
+  print font ({face => 'courier'}, $page);
+  print hr ();
+
+  if ($language eq 'de')
+    {
+      print h3 (a ({name => 'explanations'}, 'Erläuterungen'));
+      print "<a name=\"links_to_numbers\">LTN = Links to numbers: Jahre und Jahrestage sollten im Allgemeinen nicht verlinkt werden, da es sehr selten jemandem hilft, auf das Jahr XY zu klicken (Ausnahme u.a. Geburts- und Sterbedaten in Personenartikeln), siehe <a href=\"http://de.wikipedia.org/wiki/WP:VL#Daten_verlinken\">WP:VL#Daten_verlinken<\/a> Das Verlinken von Monaten, Jahrzehnten und Jahrhunderten ist auch nur in Ausnahmefällen sinnvoll. Dazu gibt es auch ein <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Browser-Unterst%C3%BCtzung#Bookmarklet_zum_Entlinken_von_Jahreszahlen\">Bookmarklet</a><p>\n";
+      print "<a name=\"plenk\">Plenk = Leerzeichen vor Satzzeichen, siehe <a href=\"http://de.wikipedia.org/wiki/Plenk\">Plenk<\/a><p>\n";
+      print "<a name=\"klemp\">Klempen = Kein Leerzeichen nach Satzzeichen (oder fehlendes Leerzeichen nach Abkürzung ?), siehe <a href=\"http://de.wikipedia.org/wiki/Klempen\">Klempen<\/a><p>\n";
+      print "<a name=\"link_in_section_title\">LiST = Zwischenüberschriften sollten keine Wikilinks sein oder enthalten. In der Regel lässt sich derselbe Link genauso gut in den ersten Sätzen des folgenden Abschnitts setzen. Eine Ausnahme sind listenartige Artikel, bei denen die Überschriften nur der Gruppierung von Einzelpunkten dienen. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze\">WP:WSIGA</a> und <a href=\"http://de.wikipedia.org/wiki/WP:VL#.C3.9Cberschriften\">WP:VL#Überschriften</a>. Achtung, wenn der Link sinnvoll zum Textverständnis sein kann, bitte nicht einfach entfernen sondern in den Text übernehmen.<p>\n";
+      print "<a name=\"colon_minus_section\">CMS = : - ! ?  in Überschrift, siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze\">Wikipedia:Wie schreibe ich gute Artikel#Überschriften und Absätze</a><p>\n";
+      print "<a name=\"DL\">DL = Doppelter Link hintereinander, für den Leser ist die Grenze nicht ersichtlich, siehe <a href=\"http://de.wikipedia.org/wiki/WP:VL#Verlinkung_von_Teilw.C3.B6rtern\">Wikipedia:Verlinken#Verlinkung von Teilwörtern</a><p>\n";
+      print "<a name=\"EM\">EM = Ausrufezeichen vermeiden<p>\n";
+      print "<a name=\"WORDS\">WORDS = Wörter, die man vermeiden sollte. Dies sind beispielsweise Wörter, die den <a href=\"http://de.wikipedia.org/wiki/WP:NPOV\">neutralen Standpunkt</a> verletzen, <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Schreibweise_von_Zahlen#Zahlen_null_bis_zw.C3.B6lf_als_Flie.C3.9Ftext\">Zahlen über zwölf</a> (mit Ausnahmen!), relative Zeitangaben, die bald nicht mehr stimmen (z.B. \"derzeit\") und Anglizismen. Siehe <a href=\"http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten\">Wörter, die nicht in Wikipedia stehen sollten</a>.<p>\n";
+      print "<a name=\"FILLWORD\">Maybe fillword = Potentielle Füllwörter, die man <b>manchmal</b> ersatzlos streichen kann. Bitte den Satz oder Absatz vorher komplett lesen, ob dass Wort nicht doch sinnvoll ist oder das Verständnis erleichtert. Ein gewisse Menge an Füllwörtern ist normal. Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Wortwahl\">Wikipedia:Wie schreibe ich gute Artikel#Wortwahl</a>.<p>\n";
+      print "<a name=\"BOLD\">BOLD = Fettschrift ist zu vermeiden. Nur am Artikelanfang wird das Lemma eines Artikels noch einmal fett geschrieben, sowie Synonyme (für den dann auch Redirects angelegt sein sollten). Fremdwörter bitte nicht fett sondern kursiv schreiben (<a href=\"http://de.wikipedia.org/wiki/Wikipedia:Fremdwortformatierung\">WP:Fremdwortformatierung</a>). Manchmal ist Fettschrift noch sinnvoll in Formeln und bei Tabellenüberschriften. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_gute_Artikel_aussehen#Sonstiges\">WP:WGAA#Sonstiges</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Auszeichnung\">Wikipedia:Typografie#Auszeichnung</a><p>\n";
+      print "<a name=\"BOLD-INSTEAD-OF-SECTION\">BOLD-INSTEAD-OF-SECTION = Hier wurde eventuell Fettschrift statt eines Wikipedia-Abschnitts mit ==XYZ== verwendet. Bitte prüfen, ob sich ein Abschnitt lohnt. Eventuell mehrere Pseudo-Abschnitte zusammenfassen.<p>\n";
+      print "<a name=\"LC\">LC = Lowercase = Zeile oder Überschrift, die mit einem Kleinbuchstaben beginnt. Selten sinnvoll außer z.B. in Formeln.<p>\n";
+      print "<a name=\"BKL\">BKL = Link zu einer Begriffserklärungsseite. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&amp;oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>.<p>\n";
+      print "<a name=\"MAYBEBKL\">MAYBEBKL = Eventuell Link zu einer Begriffserklärungsseite, bitte prüfen. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&amp;oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>. (Der Grund, warum manche Links nicht sicher als BKLs identifiziert werden können, ist unterschiedliche Groß-/Kleinschreibung. Beispielsweise ist <a href=\"http://de.wikipedia.org/wiki/ZEUS\">ZEUS</a> eine BKL, würde es <a href=\"http://de.wikipedia.org/wiki/Zeus\">Zeus</a> nicht geben, würde eine Link zu \"Zeus\" zu \"ZEUS\" führen. Da dieser Dienst keine Liste aller Lemma hat, um das wissen zu können, werden diese Links als \"vielleicht BKL\" angezeigt.)<p>\n";
+      print "<a name=\"ABBREVIATION\">ABBREVIATION = Abkürzungen vermeiden: Statt „z. B.“ kann man so auch „beispielsweise“ schreiben, statt „i. d. R.“ auch „meistens“ oder einfach nur „meist“. Das Wort „beziehungsweise“, abgekürzt „bzw.“, das aus der Kanzleisprache stammt, lässt sich meist besser durch „oder“ ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch „und im anderen Fall“ oder schlicht durch „und“ ausdrücken siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen\">Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen</a>.<p>\n";
+      print "<a name=\"NBSP\">NBSP = Zwischen einer Zahl und einer Einheit sollte ein geschütztes Leerzeichen stehen. Dadurch wird ein automatischen Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindert. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung\">Wikipedia:Textgestaltung</a>.<p>\n";
+      print "<a name=\"ISBN\">ISBN = Falsch formatierte ISBN, durch den Doppelpunkt wird kein Link erzeugt.<p>\n";
+      print "<a name=\"TAG\">TAG = &lt;i&gt; oder &lt;b&gt; statt '' oder '''.<p>\n";
+      print "<a name=\"TAG2\">TAG2 = Tags die außerhalb von Tabellen nicht verwendet werden sollten: &lt;br \/&gt;, &lt;s&gt;, &lt;u&gt;, &lt;small&gt;, &lt;big&gt;, &lt;div align=\"center\"&gt; oder &lt;div align=\"right\"&gt;. Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung\">Wikipedia:Textgestaltung</a><p>\n";
+      print "<a name=\"FROMTO\">FROMTO = Sollte so formatiert sein: \"von 1971 bis 1986\". Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Datumskonventionen\">Wikipedia:Datumskonventionen</a><p>\n";
+      print "<a name=\"DOTDOTDOT\">DOTDOTDOT =  „...“ (← drei Zeichen) statt „…“.<p>\n";
+      print "<a name=\"SELFLINK\">SELFLINK =  Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect)<p>\n";
+      print "<a name=\"DOUBLEWORD\">DOUBLEWORD =  Wortdopplung ?<p>\n";
+      print "<a name=\"BISSTRICH\">BISSTRICH = Bei Zeitangaben Bis-Strich verwenden, am einfachsten den folgenden per Kopieren und Einfügen: –. Obacht: in diversen Zeichensätzen sind die Unterschiede zwischen den einzelnen Strichen nicht erkennbar. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Bis-Strich\">Wikipedia:Typografie#Bis-Strich</a> und <a href=\"http://de.wikipedia.org/wiki/Bis-Strich#Bis-Strich\">Bis-Strich</a>. <p>\n";
+      print "<a name=\"TYPO\">TYPO = Häufige Tippfehler. Tippfehler, die im Wikicode mit &lt;!--sic--&gt; markiert sind, wurden absichtlich so zitiert, siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Zitate#Zitate_im_Flie.C3.9Ftext\">Wikipedia:Zitate#Zitate_im_Fließtext</a>. Artikel mit Schweizer Rechtschreibung am Anfang mit &lt;!--schweizbezogen--&gt; markieren, dann findet keine Prüfung statt.  Bei Falschmeldungen bitte auf meiner <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">Diskussionsseite</a> Bescheid sagen.<p>\n";
+      print "<a name=\"APOSTROPH\">APOSTROPH = Eventuell falsches Apostroph, im Deutschen ' statt ’. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Apostroph#Typografisch_korrekt\">Apostroph#Typografisch_korrekt</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Weitere_Zeichen\">Wikipedia:Typografie#Weitere_Zeichen</a><p>\n";
+      print "<a name=\"GS\">GS = Bindestrich (-) statt Gedankenstrich (–). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Gedankenstrich\">Wikipedia:Typografie#Gedankenstrich</a> und <a href=\"http://de.wikipedia.org/wiki/Halbgeviertstrich#Gedankenstrich\">Halbgeviertstrich#Gedankenstrich</a><p>\n";
+      print "<a name=\"BRACKET\">BRACKET = Ungleiche Anzahl von Klammern<p>\n";
+      print "<a name=\"BRACKET2\">BRACKET2 = Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.<p>\n";
+      print "<a name=\"QUOTATION\">QUOTATION = Einfache Anführungszeichen (\"...\") statt den typografisch korrekten („...“). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur\">Erzeugung von Anführungszeichen</a><p>\n";
+    }
+  else
+    {
+      print h3 ('Explanation:');
+      print "<a name=\"links_to_numbers\">LTN = Links to years and days should usually be avoided.<p>\n";
+      print "<a name=\"plenk\">Plenk = blank placed before a punctuation character, see also <a href=\"http://en.wikipedia.org/Plenk\">Plenk<\/a><p>\n";
+      print "<a name=\"link_in_section_title\">LiST = Link in section title<p>\n";
+      print "<a name=\"colon_minus_section\">CMS = ! ? - : in section title<p>\n";
+      print "<a name=\"DL\">DL = Double link, reader can't recognize the border between the two<p>\n";
+      print "<a name=\"EM\">EM = Avoid exclamation marks<p>\n";
+      print "<a name=\"WORDS\">WORDS = Words to avoid, see <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Words_to_avoid\">WP: Words to avoid</a><p>\n";
+    }
+}
+
 if (param()) {
 	($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form();
 
@@ -257,144 +394,5 @@ else {
 }
 
 print "</body></html>\n";
+
 exit;
-
-sub output {
-	my ( $page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words ) = @_;
-
-	# include HTML-linebreaks
-	$page =~ s/\n/<br>\n/g;
-
-	# include <a name> for each ==section==, tricky because of my own HTML in section-titles, e.g.:
-	# ==Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte==<br>
-	$page =~ s/(={2,9})\s*(.*?)(<.*?>)(.*?)(<.*>)(.*?)\s*(={2,9})/<a name=\"$2$4$6\">$1$2$3$4$5$6$7<\/a>/g;
-	# now sections without HTML aka [^<]
-	$page =~ s/(={2,9})\s*([^<]+?)\s*(={2,9})/<a name=\"$2\">$1$2$3<\/a>/g;
-
-	if ( $language eq 'de' ) {
-		$edit_link = create_edit_link($lemma_org, 'de');
-		print "\n<font face=arial,helvetica>",h3("Geprüfter Artikel: <a href=\"$url\">$search_lemma</a> <font size=-1> [<a href=\"$edit_link\" target=\"_blank\">Bearbeiten in Wikipedia</a>]");
-		print "Link zu dieser Seite: " . create_ar_link ($link_lemma, 'de', $oldid, $do_typo_check) . "<br>\n";
-
-
-		if ( $oldid ) {
-			print "<h1>Achtung, dieses Review betrifft eine alte Version dieses Artikels!</h1>\n";
-		}
-
-		print "<p><table border=1><tr><td bgcolor=#CCCCCC><font face=\"arial,helvetica\">\n";
-		print_explanation();
-		print_form($url);
-		print "</table>\n";
-
-		print "<p><b><font color=red>Obacht!</font> Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22.04.2007. Bitte die Hinweise nicht unreflektiert übernehmen, wenn sich das automatisieren lassen würde, hätte ich einen <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Bots\">Bot</a> draus gemacht ;) Der Inhalt ist immer wichtiger als die Formatierung!</b><p>\n";
-
-		print br,"Problem-Quote f&uuml;r <a href=\"$url\">$search_lemma</a>: <b>$quotient</b> (nur bedingt aussagekräfig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)", p;
-
-		create_review_summary_html( $review_letters, $language );
-
-		print "<br>Anzahl der Einzelnachweise: <b>$count_ref</b><p>\n";
-		my $fillwords_quot;
-		# avopid DIV 0
-		if ( $count_fillwords ) {
-			$fillwords_quot = int( $num_words / $count_fillwords );
-		}
-		else {
-			$fillwords_quot =0;
-		}
-		print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)<p>\n";
-	}
-	elsif ( $language eq 'en' ) {
-		print h3("Lint: <a href=\"$url\">$search_lemma</a> <font size=-1>[<a href=\"http://en.wikipedia.org/w/index.php?title=$lemma_org&action=edit\">edit in Wikipedia</a>] [<a href=\"$tool_path\">New review</a>]</font>"),br,"Level: <b>$review_level</b>", p;
-		print_explanation();
-	}
-
-	print p,hr,p;
-
-	my $times = $review_letters =~ s/K/K/g;
-	$times += $review_letters =~ s/L/L/g;
-	if ( $language eq 'de' &&  $propose_page  && $removed_links > 1 ) {
-		print h3("Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen ($removed_links St&uuml;ck).")," (Am einfachsten kopieren durch \"reinklicken\", STRG-A & STRG-C, in Wikipedia einfügen mit STRG-A, STRG-V und dann mit \"Änderungen zeigen\" kontrollieren.)<br>\n";
-		print "\n\n<textarea readonly name=\"page_without_links_to_years_and_dates\" rows=10 cols=80>$propose_page\n</textarea>\n";
-	}
-
-	if ( $extra_message ) {
-		$extra_message =~ s/^/<li>/gm;
-		if ( $language eq 'de' ) {
-			print hr, h3("Allgemeine Anmerkungen (weitere unten im Wiki-Quelltext):\n");
-			print "<table border=1><tr><td><font face=arial,helvetica><b>Legende:</b><br>\n";
-			print 'Ist '.$never."sehr selten</span> sinnvoll<br>\n";
-			print 'Ist '.$seldom."selten</span> sinnvoll, bitte prüfen.<br>\n";
-			print 'Ist '.$sometimes."manchmal</span> sinnvoll, bitte prüfen.<br>\n";
-			print $proposal."Vorschlag</span>, bitte prüfen ob sinnvoll.<br>\n";
-			print "</table>\n";
-			print p,"\n",ul($extra_message),p,hr,p;
-
-		}
-		elsif ( $language eq 'en' ) {
-			print hr, h3("General comments:");
-			print 'Is '.$never."never</span> reasonable  <br>\n";
-			print 'Is '.$seldom."seldom</span> reasonable, please check.<br>\n";
-			print 'Is '.$sometimes."sometimes</span> reasonable, please check.<br>\n";
-			print p,ul($extra_message),p,hr,p;
-		}
-	}
-
-	print hr;
-
-	# order is important here!!!
-	# to preserve &nbsp; in browser-view, do only 3-5 to avoid doing &lt; and &gt; which this script abuses
-	$page =~ s/&([a-zA-Z]{3,5};)/&amp;$1/g;
-	# to preserve &#x2011; in browser-view
-	$page =~ s/&(#x?\d{1,5};)/&amp;$1/g;
-	# to preserve trailing spaces in browser-view
-	$page =~ s/^ /&nbsp;/gm;
-
-	print h3("Wiki-Quelltext mit Anmerkungen:");
-	print "<font face=courier>\n\n$page\n\n</font>\n";
-	print hr;
-
-	if ( $language eq 'de' ) {
-		print "<h3><a name=\"explanations\">Erläuterungen:</a></h3>\n";
-		print "<a name=\"links_to_numbers\">LTN = Links to numbers: Jahre und Jahrestage sollten im Allgemeinen nicht verlinkt werden, da es sehr selten jemandem hilft, auf das Jahr XY zu klicken (Ausnahme u.a. Geburts- und Sterbedaten in Personenartikeln), siehe <a href=\"http://de.wikipedia.org/wiki/WP:VL#Daten_verlinken\">WP:VL#Daten_verlinken<\/a> Das Verlinken von Monaten, Jahrzehnten und Jahrhunderten ist auch nur in Ausnahmef&auml;llen sinnvoll. Dazu gibt es auch ein <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Browser-Unterst%C3%BCtzung#Bookmarklet_zum_Entlinken_von_Jahreszahlen\">Bookmarklet</a><p>\n";
-		print "<a name=\"plenk\">Plenk = Leerzeichen vor Satzzeichen, siehe <a href=\"http://de.wikipedia.org/wiki/Plenk\">Plenk<\/a><p>\n";
-		print "<a name=\"klemp\">Klempen = Kein Leerzeichen nach Satzzeichen (oder fehlendes Leerzeichen nach Abkürzung ?), siehe <a href=\"http://de.wikipedia.org/wiki/Klempen\">Klempen<\/a><p>\n";
-		print "<a name=\"link_in_section_title\">LiST = Zwischenüberschriften sollten keine Wikilinks sein oder enthalten. In der Regel lässt sich derselbe Link genauso gut in den ersten Sätzen des folgenden Abschnitts setzen. Eine Ausnahme sind listenartige Artikel, bei denen die Überschriften nur der Gruppierung von Einzelpunkten dienen. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze\">WP:WSIGA</a> und <a href=\"http://de.wikipedia.org/wiki/WP:VL#.C3.9Cberschriften\">WP:VL#Überschriften</a>. Achtung, wenn der Link sinnvoll zum Textverständnis sein kann, bitte nicht einfach entfernen sondern in den Text übernehmen.<p>\n";
-		print "<a name=\"colon_minus_section\">CMS = : - ! ?  in Überschrift, siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze\">Wikipedia:Wie schreibe ich gute Artikel#Überschriften und Absätze</a><p>\n";
-		print "<a name=\"DL\">DL = Doppelter Link hintereinander, für den Leser ist die Grenze nicht ersichtlich, siehe <a href=\"http://de.wikipedia.org/wiki/WP:VL#Verlinkung_von_Teilw.C3.B6rtern\">Wikipedia:Verlinken#Verlinkung von Teilwörtern</a><p>\n";
-		print "<a name=\"EM\">EM = Ausrufezeichen vermeiden<p>\n";
-		print "<a name=\"WORDS\">WORDS = Wörter, die man vermeiden sollte. Dies sind beispielsweise Wörter, die den <a href=\"http://de.wikipedia.org/wiki/WP:NPOV\">neutralen Standpunkt</a> verletzen, <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Schreibweise_von_Zahlen#Zahlen_null_bis_zw.C3.B6lf_als_Flie.C3.9Ftext\">Zahlen über zwölf</a> (mit Ausnahmen!), relative Zeitangaben, die bald nicht mehr stimmen (z.B. \"derzeit\") und Anglizismen. Siehe <a href=\"http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten\">Wörter, die nicht in Wikipedia stehen sollten</a>.<p>\n";
-		print "<a name=\"FILLWORD\">Maybe fillword = Potentielle Füllwörter, die man <b>manchmal</b> ersatzlos streichen kann. Bitte den Satz oder Absatz vorher komplett lesen, ob dass Wort nicht doch sinnvoll ist oder das Verständnis erleichtert. Ein gewisse Menge an Füllwörtern ist normal. Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Wortwahl\">Wikipedia:Wie schreibe ich gute Artikel#Wortwahl</a>.<p>\n";
-		print "<a name=\"BOLD\">BOLD = Fettschrift ist zu vermeiden. Nur am Artikelanfang wird das Lemma eines Artikels noch einmal fett geschrieben, sowie Synonyme (für den dann auch Redirects angelegt sein sollten). Fremdwörter bitte nicht fett sondern kursiv schreiben (<a href=\"http://de.wikipedia.org/wiki/Wikipedia:Fremdwortformatierung\">WP:Fremdwortformatierung</a>). Manchmal ist Fettschrift noch sinnvoll in Formeln und bei Tabellenüberschriften. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_gute_Artikel_aussehen#Sonstiges\">WP:WGAA#Sonstiges</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Auszeichnung\">Wikipedia:Typografie#Auszeichnung</a><p>\n";
-		print "<a name=\"BOLD-INSTEAD-OF-SECTION\">BOLD-INSTEAD-OF-SECTION = Hier wurde eventuell Fettschrift statt eines Wikipedia-Abschnitts mit ==XYZ== verwendet. Bitte prüfen, ob sich ein Abschnitt lohnt. Eventuell mehrere Pseudo-Abschnitte zusammenfassen.<p>\n";
-		print "<a name=\"LC\">LC = Lowercase = Zeile oder Überschrift, die mit einem Kleinbuchstaben beginnt. Selten sinnvoll außer z.B. in Formeln.<p>\n";
-		print "<a name=\"BKL\">BKL = Link zu einer Begriffserklärungsseite. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>.<p>\n";
-		print "<a name=\"MAYBEBKL\">MAYBEBKL = Eventuell Link zu einer Begriffserklärungsseite, bitte prüfen. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, z.B. <a href=\"http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650\">Disteln</a>. Siehe auch <a href=\"http://de.wikipedia.org/wiki/WP:VL#Gut_zielen\">WP:VL#Gut_zielen</a>. (Der Grund, warum manche Links nicht sicher als BKLs identifiziert werden können, ist unterschiedliche Groß-/Kleinschreibung. Beispielsweise ist <a href=\"http://de.wikipedia.org/wiki/ZEUS\">ZEUS</a> eine BKL, würde es <a href=\"http://de.wikipedia.org/wiki/Zeus\">Zeus</a> nicht geben, würde eine Link zu \"Zeus\" zu \"ZEUS\" führen. Da dieser Dienst keine Liste aller Lemma hat, um das wissen zu können, werden diese Links als \"vielleicht BKL\" angezeigt.)<p>\n";
-
-		print "<a name=\"ABBREVIATION\">ABBREVIATION = Abkürzungen vermeiden: Statt „z. B.“ kann man so auch „beispielsweise“ schreiben, statt „i. d. R.“ auch „meistens“ oder einfach nur „meist“. Das Wort „beziehungsweise“, abgekürzt „bzw.“, das aus der Kanzleisprache stammt, lässt sich meist besser durch „oder“ ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch „und im anderen Fall“ oder schlicht durch „und“ ausdrücken siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen\">Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen</a>.<p>\n";
-		print "<a name=\"NBSP\">NBSP = Zwischen einer Zahl und einer Einheit sollte ein geschütztes Leerzeichen stehen. Dadurch wird ein automatischen Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindert. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung\">Wikipedia:Textgestaltung</a>.<p>\n";
-		print "<a name=\"ISBN\">ISBN = Falsch formatierte ISBN, durch den Doppelpunkt wird kein Link erzeugt.<p>\n";
-		print "<a name=\"TAG\">TAG = &lt;i&gt; oder &lt;b&gt; statt '' oder '''.<p>\n";
-		print "<a name=\"TAG2\">TAG2 = Tags die außerhalb von Tabellen nicht verwendet werden sollten: &lt;br \/&gt;, &lt;s&gt;, &lt;u&gt;, &lt;small&gt;, &lt;big&gt;, &lt;div align=\"center\"&gt; oder &lt;div align=\"right\"&gt;. Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung\">Wikipedia:Textgestaltung</a><p>\n";
-		print "<a name=\"FROMTO\">FROMTO = Sollte so formatiert sein: \"von 1971 bis 1986\". Siehe <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Datumskonventionen\">Wikipedia:Datumskonventionen</a><p>\n";
-		print "<a name=\"DOTDOTDOT\">DOTDOTDOT =  „...“ (← drei Zeichen) statt „…“.<p>\n";
-		print "<a name=\"SELFLINK\">SELFLINK =  Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect)<p>\n";
-		print "<a name=\"DOUBLEWORD\">DOUBLEWORD =  Wortdopplung ?<p>\n";
-		print "<a name=\"BISSTRICH\">BISSTRICH = Bei Zeitangaben Bis-Strich verwenden, am einfachsten den folgenden per Kopieren und Einfügen: –. Obacht: in diversen Zeichensätzen sind die Unterschiede zwischen den einzelnen Strichen nicht erkennbar. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Bis-Strich\">Wikipedia:Typografie#Bis-Strich</a> und <a href=\"http://de.wikipedia.org/wiki/Bis-Strich#Bis-Strich\">Bis-Strich</a>. <p>\n";
-		print "<a name=\"TYPO\">TYPO = Häufige Tippfehler. Tippfehler, die im Wikicode mit &lt;!--sic--&gt; markiert sind, wurden absichtlich so zitiert, siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Zitate#Zitate_im_Flie.C3.9Ftext\">Wikipedia:Zitate#Zitate_im_Fließtext</a>. Artikel mit Schweizer Rechtschreibung am Anfang mit &lt;!--schweizbezogen--&gt; markieren, dann findet keine Prüfung statt.  Bei Falschmeldungen bitte auf meiner <a href=\"http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt\">Diskussionsseite</a> Bescheid sagen.<p>\n";
-		print "<a name=\"APOSTROPH\">APOSTROPH = Eventuell falsches Apostroph, im Deutschen ' statt ’. Siehe auch <a href=\"http://de.wikipedia.org/wiki/Apostroph#Typografisch_korrekt\">Apostroph#Typografisch_korrekt</a> und <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Weitere_Zeichen\">Wikipedia:Typografie#Weitere_Zeichen</a><p>\n";
-		print "<a name=\"GS\">GS = Bindestrich (-) statt Gedankenstrich (–). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Gedankenstrich\">Wikipedia:Typografie#Gedankenstrich</a> und <a href=\"http://de.wikipedia.org/wiki/Halbgeviertstrich#Gedankenstrich\">Halbgeviertstrich#Gedankenstrich</a><p>\n";
-		print "<a name=\"BRACKET\">BRACKET = Ungleiche Anzahl von Klammern<p>\n";
-		print "<a name=\"BRACKET2\">BRACKET2 = Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.<p>\n";
-		print "<a name=\"QUOTATION\">QUOTATION = Einfache Anführungszeichen (\"...\") statt den typografisch korrekten („...“). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur\">Erzeugung von Anführungszeichen</a><p>\n";
-	}
-	else {
-		print "<h3>Explanation:</h3>\n";
-		print "<a name=\"links_to_numbers\">LTN = Links to years and days should usually be avoided.<p>\n";
-		print "<a name=\"plenk\">Plenk = blank placed before a punctuation character, see also <a href=\"http://en.wikipedia.org/Plenk\">Plenk<\/a><p>\n";
-		print "<a name=\"link_in_section_title\">LiST = Link in section title<p>\n";
-		print "<a name=\"colon_minus_section\">CMS = ! ? - : in section title<p>\n";
-		print "<a name=\"DL\">DL = Double link, reader can't recognize the border between the two<p>\n";
-		print "<a name=\"EM\">EM = Avoid exclamation marks<p>\n";
-		print "<a name=\"WORDS\">WORDS = Words to avoid, see <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Words_to_avoid\">WP: Words to avoid</a><p>\n";
-	}
-}
