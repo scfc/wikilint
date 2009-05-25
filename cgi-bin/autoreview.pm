@@ -1780,33 +1780,35 @@ sub remove_year_and_date_links ($$)
   return ($line, $count_removed);
 }
 
-sub tag_dates_first_line {
-	# this sub is for 1st line only!
-	my ( $line ) = @_;
+sub tag_dates_first_line ($)   # This function is for the first line only!
+{
+  my ($line) = @_;
+  my ($times);
 
-	# this subroutine buggy, this works:
-	#  Larry Wall (* [[27. September]] [[1954]] ; † [[30. April]] [[2145]] ) blub [[3. Mai]] blub [[1977]]
-	# this doesn't work:
-	#  Larry Wall (* [[27. September]] [[1954]] ; † [[30. April]] [[2145]] ) blub [[3. Mai]] [[1977]]
+  # This subroutine is buggy, this works:
+  # "Larry Wall (* [[27. September]] [[1954]] ; † [[30. April]] [[2145]] ) blub [[3. Mai]] blub [[1977]]",
+  # this doesn't work:
+  # "Larry Wall (* [[27. September]] [[1954]] ; † [[30. April]] [[2145]] ) blub [[3. Mai]] [[1977]]".
 
-	# replace years except birth & death = "r]] [[1234]]" or "* [[1971]]" or " † [[2012]]"
-	$times = $line =~ s/(?<!(\w\]\]| \(\*|. †|; \*) )(\[\[[1-9]\d{0,3}( v. Chr.)?\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN]<\/a><\/sup>/g;
-	$review_level += $times * $seldom_level;
-	$review_letters .="K" x $times;
+  # Replace years except birth and death = "r]] [[1234]]" or "* [[1971]]" or " † [[2012]]".
+  $times           = $line =~ s/(?<!(\w\]\]| \(\*|. †|; \*) )(\[\[[1-9]\d{0,3}( v\. Chr\.)?\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $seldom_level;
+  $review_letters .= 'K' x $times;
 
-	# [[1878|78]]
-	$times = $line =~ s/(\[\[[1-9]\d{0,3}( v. Chr.)?\|)(\d\d)(\]\])/$seldom$3<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-	$review_level += $times * $seldom_level;
-	$review_letters .="K" x $times;
+  # "[[1878|78]]".
+  $times           = $line =~ s/(\[\[[1-9]\d{0,3}( v\. Chr\.)?\|)(\d\d)(\]\])/$seldom$3<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $review_level   += $times * $seldom_level;
+  $review_letters .= 'K' x $times;
 
-	# replace days [[3. April]] except birth & death
-	foreach my $month ( @months ) {
-		$times = $line =~ s/(?<!(\*|†) )(\[\[(\d{1,2}\. )?$month\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
-		$review_level += $times * $seldom_level;
-		$review_letters .="L" x $times;
-	}
+  # Replace days ("[[3. April]]") except birth and death.
+  foreach my $month (@months)
+    {
+      $times           = $line =~ s/(?<!(\*|†) )(\[\[(\d{1,2}\. )?$month\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+      $review_level   += $times * $seldom_level;
+      $review_letters .= 'L' x $times;
+    }
 
-	( $line );
+  return $line;
 }
 
 sub tag_dates_rest_line ($)
