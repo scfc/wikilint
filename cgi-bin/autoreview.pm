@@ -1749,45 +1749,35 @@ sub read_files ($)
     }
 }
 
-sub remove_year_and_date_links {
-	my ( $line, $remove_century ) = @_;
+sub remove_year_and_date_links ($$)
+{
+  my ($line, $remove_century) = @_;
+  my ($count_removed);
 
-	my ( $times, $count_removed );
+  # [[1234]] or [[345 v. Chr.]].
+  $count_removed += $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?)\]\]/$1/go;
 
-	# [[1234]] or [[3 v. Chr.]]
-	$times = $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?)\]\]/$1/g;
-	$count_removed += $times;
+  # [[1234|34]].
+  $count_removed += $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?\|)(\d\d)(\]\])/$3/go;
 
-	# [[1234|34]]
-	$times = $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?\|)(\d\d)(\]\])/$3/g;
-	$count_removed += $times;
+  # Links to days [[12. April]].
+  $count_removed += $line =~ s/\[\[(\d{1,2}\. $_)\]\]/$1/g foreach (@months);
 
-	# links to days [[12. April]]
-	foreach my $month ( @months ) {
-		$times = $line =~ s/\[\[(\d{1,2}\. $month)\]\]/$1/g;
-		$count_removed += $times;
-	}
+  if ($remove_century)
+    {
+      $count_removed += $line =~ s/\[\[(\d{1,2}\. Jahrhundert( v\. Chr\.)?)\]\]/$1/go;
 
-	if ( $remove_century ) {
-		$times = $line =~ s/\[\[(\d{1,2}\. Jahrhundert( v\. Chr\.)?)\]\]/$1/g;
-		$count_removed += $times;
+      # Links to months [[April]].
+      $count_removed += $line =~ s/\[\[($_)\]\]/$1/g foreach (@months);
 
-		# links to months [[April]]
-		foreach my $month ( @months ) {
-			$times = $line =~ s/\[\[($month)\]\]/$1/g;
-			$count_removed += $times;
-		}
+      # Do [[1960er]] or [[1960er|60er]].
+      $count_removed += $line =~ s/\[\[(\d{1,4}er)(\|[^\]]*?)?]\]\]?/$1/go;
 
-		# do [[1960er]] or [[1960er|60er]]
-		$times = $line =~ s/\[\[(\d{1,4}er)(\|[^\]]*?)?]\]\]?/$1/g;
-		$count_removed += $times;
+      # Do [[1960er Jahre]].
+      $count_removed += $line =~ s/\[\[(\d{1,4}er Jahre)[\]\|]\]?/$1/go;
+    }
 
-		# do [[1960er Jahre]]
-		$times = $line =~ s/\[\[(\d{1,4}er Jahre)[\]\|]\]?/$1/g;
-		$count_removed += $times;
-	}
-
-	( $line, $count_removed );
+  return ($line, $count_removed);
 }
 
 sub tag_dates_first_line {
