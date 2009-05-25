@@ -1874,64 +1874,50 @@ sub create_ar_link ($$$$)
          ($do_typo_check   ? '&do_typo_check=ON' : '');
 }
 
-sub remove_stuff_to_ignore {
-	# inside <math>, <code> everything is allowed to remove before doing review and restore afterwards
-	my ( $page ) = @_;
+sub remove_stuff_to_ignore ($)
+{
+  # Inside <math>, <code>, etc. everything can be removed before review and restored afterwards.
+  my ($page) = @_;
+  my $lola = 0;
 
-	undef %replaced_stuff;
-# probleme mit sentence-split ? satzulaenge
-	my $lola =0;
-	my ( $times);
+  undef %replaced_stuff;
 
-	# <MATH>
-	while ( $times = $page =~ s/(<math>.*?<\/math>)/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
+  # "<math>".
+  while ($page =~ s/(<math>.*?<\/math>)/-R-R$lola-R-/si)
+    { $replaced_stuff {$lola++} = $1; }
 
-		$lola++;
-	}
+  # "<code>".
+  while ($page =~ s/(<code>.*?<\/code>)/-R-R$lola-R-/si)
+    { $replaced_stuff {$lola++} = $1; }
 
-	# <CODE>
-	while ( $times = $page =~ s/(<code>.*?<\/code>)/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
-		$lola++;
-	}
+  # "<nowiki>".
+  while ($page =~ s/(<nowiki>.*?<\/nowiki>)/-R-R$lola-R-/si)
+    { $replaced_stuff {$lola++} = $1; }
 
-	# <nowiki>
-	while ( $times = $page =~ s/(<nowiki>.*?<\/nowiki>)/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
-		$lola++;
-	}
+  # "{{Lückenhaft}}", "{{Quelle}}".
+  while ($page =~ s/({{(Lückenhaft|Quelle)[^}]*?}})/-R-R$lola-R-/si)
+    { $replaced_stuff {$lola++} = $1; }
 
-	# {{Lückenhaft } {{Quelle}}
-	while ( $times = $page =~ s/({{(Lückenhaft|Quelle)[^}]*?}})/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
-		$lola++;
-	}
+  # "<poem>".
+  while ($page =~ s/(<poem>.*?<\/poem>)/-R-R$lola-R-/si)
+    { $replaced_stuff {$lola++} = $1; }
 
-	# <POEM>
-	while ( $times = $page =~ s/(<poem>.*?<\/poem>)/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
-		$lola++;
-	}
+  # "<blockquote>".
+  while ($page =~ s/(<blockquote>.*?<\/blockquote>)/-R-R$lola-R-/si)
+    { $replaced_stuff {$lola++} = $1; }
 
-	# <blockquoe>
-	while ( $times = $page =~ s/(<blockquote>.*?<\/blockquote>)/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
-		$lola++;
-	}
+  # "<!-- -->".
+  while ($page =~ s/(<!--.+?-->)/-R-R$lola-R-/si)
+    {
+      $replaced_stuff {$lola} = $1;
 
-	# <!-- -->
-	while ( $times = $page =~ s/(<!--.+?-->)/-R-R$lola-R-/si ) {
-		$replaced_stuff{ $lola } = $1;
+      # Mark lines containing "<!--sic-->" for ignoring typos later.
+      if ($1 =~ /<!--\s*sic\s*-->/i)
+        { $page =~ s/-R-R$lola-R-/-R-R-SIC$lola-R-/; }
+      $lola++;
+    }
 
-		# mark lines containing <!--sic--> for ignoring typos later
-		if ( $1 =~ /<!--\s*sic\s*-->/i ) {
-			$page =~ s/-R-R$lola-R-/-R-R-SIC$lola-R-/;
-		}
-		$lola++;
-	}
-
-	($page, $lola );
+  return ($page, $lola);
 }
 
 sub restore_stuff_to_ignore {
