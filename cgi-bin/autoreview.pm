@@ -863,7 +863,7 @@ sub do_review {
 						}
 
 						# restore removed HTML-comments and the like:
-						$sentence_tmp_restored = restore_stuff_to_ignore( $sentence, "substitue_tags" );
+						$sentence_tmp_restored = restore_stuff_to_ignore( $sentence, 1 );
 
 						# remove <ref> in beginning of sentence because of no relevance
 						$sentence_tmp_restored =~ s/^\s*&lt;ref(&gt;| name=[^&]+?&gt;)[^&]+?&lt;\/ref&gt;//i;
@@ -1669,8 +1669,8 @@ sub do_review {
 	# restore exclamation marks
 	$page =~ s/&iexcl;/!/g;
 
-	$page = restore_stuff_to_ignore( $page, "substitute_tags" );
-	$new_page_org = restore_stuff_to_ignore( $new_page_org );
+	$page = restore_stuff_to_ignore( $page, 1 );
+	$new_page_org = restore_stuff_to_ignore( $new_page_org, 0 );
 
 	($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $new_page_org, $removed_links, $count_ref, $count_fillwords );
 }
@@ -1920,37 +1920,39 @@ sub remove_stuff_to_ignore ($)
   return ($page, $lola);
 }
 
-sub restore_stuff_to_ignore {
-	my ( $page, $substitute_tags ) = @_;
+sub restore_stuff_to_ignore ($$)
+{
+  my ($page, $substitute_tags) = @_;
+  my %replaced_stuff_tmp = %replaced_stuff;
 
-	%replaced_stuff_tmp = %replaced_stuff;
+  while (%replaced_stuff_tmp)
+    {
+      foreach my $lola (keys (%replaced_stuff_tmp))
+        {
+          # Before restoring the text, replace the "<>".
+          my $restore = $replaced_stuff_tmp {$lola};
+          if ($substitute_tags)
+            {
+              $restore =~ s/</&lt;/go;
+              $restore =~ s/>/&gt;/go;
+            }
 
-	do {
-		foreach my $lola ( keys %replaced_stuff_tmp ) {
-			my $restore = $replaced_stuff_tmp{ $lola };
-			# before restoring the text, replace the <>
-			if ( $substitute_tags ) {
-				$restore =~ s/</&lt;/g;
-				$restore =~ s/>/&gt;/g;
-			}
-			my $times = $page =~ s/-R-R(-SIC|-G)?$lola-R-/$restore/;
+          delete ($replaced_stuff_tmp {$lola}) unless ($page =~ s/-R-R(-SIC|-G)?$lola-R-/$restore/);
+        }
+    }
 
-			if ( !$times ) {
-				delete( $replaced_stuff_tmp{ $lola });
+  my $times2 = 0;
+  my $total  = 0;
+  my $todo   = keys (%remove_stuff_for_typo_check_array);
 
-			}
-		}
-	} until ( !%replaced_stuff_tmp );
+  do
+    {
+      $times2  = $page =~ s/-R-I(-G)?(\d+)-R-.*?-R-/restore_one_item ($2, \%remove_refs_and_images_array, $substitute_tags)/egs;
+      $total  += $times2;
+    }
+  until (!$times2 || $total == $todo);
 
-	my ( $times2, $total )=0;
-	$todo = keys %remove_stuff_for_typo_check_array;
-
-	do {
-		$times2 = $page =~ s/-R-I(-G)?(\d+)-R-.*?-R-/restore_one_item( $2, \%remove_refs_and_images_array, $substitute_tags)/ges;
-		$total += $times2;
-	} until ( !$times2 || $total == $todo );
-
-	($page );
+  return $page;
 }
 
 sub restore_stuff_quote {
