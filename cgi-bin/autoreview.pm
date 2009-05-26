@@ -1955,24 +1955,25 @@ sub restore_stuff_to_ignore ($$)
   return $page;
 }
 
-sub restore_stuff_quote {
-	# restoring is a bit tricky because the removed stuff might be inside each other, e.g.
-	# a removed comment inside a quote, so it has to be repeated until everything is restored
-	my ( $page, $substitute_tags ) = @_;
+sub restore_stuff_quote ($)
+{
+  # Restoring is a bit tricky because the removed stuff might be nested, e. g.
+  # a removed comment inside a quote, so it has to be repeated until everything is restored.
+  my ($page) = @_;
+  my $times2;
+  my $total = 0;
+  my $todo = keys (%remove_stuff_for_typo_check_array);
 
-	my ( $times2, $total )=0;
-	$todo = keys remove_stuff_for_typo_check_array;
+  do
+    {
+      $times2  = $page =~ s/-R-N(\d+)-R-.*?-R-/restore_one_item ($1, \%remove_stuff_for_typo_check_array)/egs;
+      $total  += $times2;
+    }
+  until (!$times2 || $total == $todo);
 
-	do {
-		#$times2 = $page =~ s/-R-N(\d+)-R-/$remove_stuff_for_typo_check_array{ $1 }/g;
-		$times2 = $page =~ s/-R-N(\d+)-R-.*?-R-/restore_one_item( $1, \%remove_stuff_for_typo_check_array )/ges;
-		$total += $times2;
+  $page =~ s/Q-REP/'/g;
 
-	} until ( !$times2 || $total == $todo );
-
-	$page =~ s/Q-REP/'/g;
-
-	($page );
+  return $page;
 }
 
 sub check_unformated_refs ($)
