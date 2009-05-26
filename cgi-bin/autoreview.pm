@@ -1966,7 +1966,7 @@ sub restore_stuff_quote ($)
 
   do
     {
-      $times2  = $page =~ s/-R-N(\d+)-R-.*?-R-/restore_one_item ($1, \%remove_stuff_for_typo_check_array)/egs;
+      $times2  = $page =~ s/-R-N(\d+)-R-.*?-R-/restore_one_item ($1, \%remove_stuff_for_typo_check_array, 0)/egs;
       $total  += $times2;
     }
   until (!$times2 || $total == $todo);
@@ -2191,16 +2191,18 @@ sub remove_one_item ($$\%;$)
   return "$prefix$global_removed_count-R-$append_newlines-R-";
 }
 
-sub restore_one_item {
-	my ( $lola, $ref_to_replaced_stuff_quote, $substitute_tags ) = @_;
-#$times2 = $page =~ s/-R-N(\d+)-R-/restore_one_item( $1, \%remove_stuff_for_typo_check_array )/g;
-	my $return = ${$ref_to_replaced_stuff_quote}{ $lola };
-	if ( $substitute_tags ) {
-		$return =~ s/</&lt;/g;
-		$return =~ s/>/&gt;/g;
-	}
+sub restore_one_item ($\%$)
+{
+  my ($lola, $ref_to_replaced_stuff_quote, $substitute_tags) = @_;
 
-	( $return );
+  my $return = ${$ref_to_replaced_stuff_quote} {$lola};
+  if ($substitute_tags)
+    {
+      $return =~ s/</&lt;/g;
+      $return =~ s/>/&gt;/g;
+    }
+
+  return $return;
 }
 
 1;
