@@ -2062,20 +2062,20 @@ sub remove_refs_and_images {
 
 	# lines with leading blank
 	# (?!\|) to avoid removing lines in table with leading blank like " | blub = blab"
-	$page =~ s/^( (?!\|).+)$/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, "count_ref" )/gemi;
+	$page =~ s/^( (?!\|).+)$/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, 1 )/gemi;
 
 	# <ref></ref>
 	# this one isn't perfect: [^<] because it prevent <ref> haha <- like this </ref> but still
 	# better than expanding an open <ref name=cc> over the whole page
-	$page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, "count_ref" )/gesi;
+	$page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, 1 )/gesi;
 
 	# the (...){0,8} is for links inside the picture description, like [[Image:bild.jpg|This is a [[tree]] genau]]
 	# the ([^\]\[]*?) is for images with links in it
-	$page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, "count_ref" )/gesi;
+	$page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, 1 )/gesi;
 
 	# <gallery> ... </gallery>
 	# <gallery widths="200" heights =..></gallery>
-	$page =~ s/(<gallery.*?>.+?<\/gallery>)/remove_one_item( $1, "-R-I-G", \%remove_refs_and_images_array, "count_ref" )/gesi;
+	$page =~ s/(<gallery.*?>.+?<\/gallery>)/remove_one_item( $1, "-R-I-G", \%remove_refs_and_images_array, 1 )/gesi;
 
 	( $page, $global_removed_count, $count_ref );
 }
@@ -2175,20 +2175,20 @@ sub restore_quotes ($)
   return $line;
 }
 
-sub remove_one_item {
-	my ( $item, $prefix, $ref_to_replaced_stuff_quote, $do_count_ref ) = @_;
-	$global_removed_count++;
-	${$ref_to_replaced_stuff_quote}{ $global_removed_count } = $item;
+sub remove_one_item ($$\%;$)
+{
+  my ($item, $prefix, $ref_to_replaced_stuff_quote, $do_count_ref) = @_;
 
-	if ( $do_count_ref && $item =~ /<\/ref>/i ) {
-		$count_ref++;
-	}
+  $global_removed_count++;
 
-	# this is to keep $line and $line_org_wiki in do_review() in sync, not allowed to remove lines from page!
-	my $num_of_lines = $item =~ s/\n/\n/g;
-	my $append_newlines = "\n" x $num_of_lines;
+  ${$ref_to_replaced_stuff_quote} {$global_removed_count} = $item;
 
-	( "$prefix$global_removed_count-R-$append_newlines-R-" );
+  $count_ref++ if ($do_count_ref && $item =~ /<\/ref>/i);
+
+  # This is to keep $line and $line_org_wiki in do_review() in sync, not allowed to remove lines from page!
+  my $append_newlines = "\n" x ($item =~ tr/\n//);
+
+  return "$prefix$global_removed_count-R-$append_newlines-R-";
 }
 
 sub restore_one_item {
