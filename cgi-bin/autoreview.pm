@@ -2049,31 +2049,31 @@ sub remove_stuff_for_typo_check ($)
   return ($page, $lola);
 }
 
-sub remove_refs_and_images {
-	my ( $page, $lola ) = @_;
+sub remove_refs_and_images ($$)
+{
+  my ($page, $lola) = @_;
+  my ($times);
+  local ($count_ref);
+  local ($global_removed_count) = 0;
 
-	my ( $times);
-	local ( $count_ref);
-	local ( $global_removed_count ) = 0;
+  # Lines with leading blank.
+  # "(?!\|)" to avoid removing lines in table with leading blank like " | blub = blab".
+  $page =~ s/^( (?!\|).+)$/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egim;
 
-	# lines with leading blank
-	# (?!\|) to avoid removing lines in table with leading blank like " | blub = blab"
-	$page =~ s/^( (?!\|).+)$/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, 1 )/gemi;
+  # "<ref></ref>".
+  # This one isn't perfect: "[^<]" because it prevents "<ref> haha <- like this </ref>" but still
+  # better than expanding an open "<ref name=cc>" over the whole page.
+  $page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
 
-	# <ref></ref>
-	# this one isn't perfect: [^<] because it prevent <ref> haha <- like this </ref> but still
-	# better than expanding an open <ref name=cc> over the whole page
-	$page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, 1 )/gesi;
+  # The "(...){0,8}" is for links inside the picture description, like "[[Image:bild.jpg|This is a [[tree]] genau]]",
+  # the "([^\]\[]*?)" is for images with links in it.
+  $page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
 
-	# the (...){0,8} is for links inside the picture description, like [[Image:bild.jpg|This is a [[tree]] genau]]
-	# the ([^\]\[]*?) is for images with links in it
-	$page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item( $1, "-R-I", \%remove_refs_and_images_array, 1 )/gesi;
+  # "<gallery> … </gallery>".
+  # "<gallery widths="200" heights =…></gallery>".
+  $page =~ s/(<gallery.*?>.+?<\/gallery>)/remove_one_item ($1, '-R-I-G', \%remove_refs_and_images_array, 1)/egis;
 
-	# <gallery> ... </gallery>
-	# <gallery widths="200" heights =..></gallery>
-	$page =~ s/(<gallery.*?>.+?<\/gallery>)/remove_one_item( $1, "-R-I-G", \%remove_refs_and_images_array, 1 )/gesi;
-
-	( $page, $global_removed_count, $count_ref );
+  return ($page, $global_removed_count, $count_ref);
 }
 
 sub create_review_summary_html ($$)
