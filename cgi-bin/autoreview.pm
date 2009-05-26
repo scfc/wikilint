@@ -2185,10 +2185,10 @@ sub remove_one_item ($$\%;$)
 
   $count_ref++ if ($do_count_ref && $item =~ /<\/ref>/i);
 
-  # This is to keep $line and $line_org_wiki in do_review() in sync, not allowed to remove lines from page!
+  # This is to keep $line and $line_org_wiki in do_review () in sync, not allowed to remove lines from page!
   my $append_newlines = "\n" x ($item =~ tr/\n//);
 
-  return "$prefix$global_removed_count-R-$append_newlines-R-";
+  return $prefix . $global_removed_count . '-R-' . $append_newlines . '-R-';
 }
 
 sub restore_one_item ($\%$)
