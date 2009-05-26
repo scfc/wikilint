@@ -2004,53 +2004,49 @@ sub check_unformated_refs ($)
     }
 }
 
-sub remove_stuff_for_typo_check {
-	# remove lines with <!--sic--> and {{templates...}} and quotes, web & wikilinks
-	my ( $page ) = @_;
+sub remove_stuff_for_typo_check ($)
+{
+  # Remove lines with "<!--sic-->" and "{{templates…}}" and quotes, web and wikilinks.
+  my ($page) = @_;
 
-	undef %replaced_stuff_quote;
+  $lola = 0;
 
-	my $ref_to_store_array = \%remove_stuff_for_typo_check_array;
+  # Remove complete_line with "<!--sic-->" marked earlier in remove_stuff ()
+  $page =~ s/^(.*-R-R-SIC\d+-R-.*)$/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/egim;
 
-	$lola =0;
+  # Any template like "{{Zitat}}".
+  $page =~ s/({{\w.{4,}?}})/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/egis;
 
-	# remove complete_line with <!--sic--> marked earlier in remove_stuff()
-	# uses /e execute sub remove_one_item() !
-	$page =~ s/^(.*-R-R-SIC\d+-R-.*)$/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/gemi;
+  # Quotes.
+  my $page_new = '';
 
-	# any template like  {{Zitat }}
-	$page =~ s/({{\w.{4,}?}})/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/gesi;
+  foreach my $line_copy (split (/\n/, $page))
+    {
+      # Only replace quotes with three or more letters.
+      # Remove single ' to be able to use [^'] in next line.
+      $line_copy =~ s/(?<!')'(?!')/Q-REP/g;
+      $times = $line_copy =~ s/((?<!')''([^']{3,}?)''(?!'))/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/Q-REP/'/g;
 
-	# quotes
-	my ( @lines ) = split(/\n/, $page );
-	my $page_new;
+      # Also does ''quote 'blub' quote on''?
+      $line_copy =~ s/(\"([^"]{3,}?)\")/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/(&lt;i&gt;(.{3,}?)&lt;\/i&gt;)/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/(„([^“]{3,}?)“)/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/(«([^»]{3,}?)»)/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/(‚([^‘]{3,}?)‘)/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/(&lt;sic&gt;(.{3,}?)&lt;\/sic&gt;)/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/egi;
 
-	foreach my $line_copy ( @lines ) {
-		# only replace quotes with 3 or more letters
-		# remove single ' to be able to use [^'] in next line
-		$line_copy =~ s/(?<!')'(?!')/Q-REP/g;
-		$times = $line_copy =~ s/((?<!')''([^']{3,}?)''(?!'))/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-		$line_copy =~ s/Q-REP/'/g;
+      $page_new .= $line_copy . "\n";
+    }
+  $page = $page_new;
 
-		# also does ''quote 'blub' quote on'' ??
-		$line_copy =~ s/(\"([^"]{3,}?)\")/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-		$line_copy =~ s/(&lt;i&gt;(.{3,}?)&lt;\/i&gt;)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-		$line_copy =~ s/(„([^“]{3,}?)“)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-		$line_copy =~ s/(«([^»]{3,}?)»)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-		$line_copy =~ s/(‚([^‘]{3,}?)‘)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-		$line_copy =~ s/(&lt;sic&gt;(.{3,}?)&lt;\/sic&gt;)/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/gei;
+  # Any "[[]]" wikilink.
+  $page =~ s/(\[\[[^\]]{1,150}?\]\])/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
 
-		$page_new .= "$line_copy\n";
-	}
-	$page = $page_new;
+  # Any "[]" weblink.
+  $page =~ s/(\[http.+?\])/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
 
-	# any [[]] wikilink
-	$page =~ s/(\[\[[^\]]{1,150}?\]\])/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-
-	# any [] weblink
-	$page =~ s/(\[http.+?\])/remove_one_item( $1, "-R-N", \%remove_stuff_for_typo_check_array )/ge;
-
-	( $page, $lola );
+  return ($page, $lola);
 }
 
 sub remove_refs_and_images {
