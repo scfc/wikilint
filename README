@@ -35,7 +35,9 @@ Sources for Word Lists:
   server database.
 - typos.txt: Typos, case-insensitive, for German Wikipedia
   cf.
-  <URI:http://de.wikipedia.org/wiki/Wikipedia:Helferlein/Rechtschreibprüfung/Wortliste>.
+  <URI:http://de.wikipedia.org/wiki/Wikipedia:Helferlein/Rechtschreibprüfung/Wortliste>
+  or
+  <URI:http://de.wikipedia.org/wiki/Wikipedia:Liste_von_Tippfehlern>.
 
 
 URLs:
