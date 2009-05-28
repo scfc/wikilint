@@ -182,7 +182,7 @@ sub do_review ($$$$$)
               $en_lemma    = $1;
               $eng_message = '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $en_lemma . '&go=Seite'}, $en_lemma) . ') ';
             }
-          $extra_message .= $proposal . 'Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $search_lemma . '&go=Seite'}, $search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . " oder dem lateinischen bei Tieren und Pflanzen).\n";
+          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $search_lemma . '&go=Seite'}, $search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . " oder dem lateinischen bei Tieren und Pflanzen).\n";
         }
       else
         { $extra_message .= "Proposal: include link to wikimedia commons\n"; }
@@ -1065,7 +1065,7 @@ sub do_review ($$$$$)
                  !$inside_comment                                       &&
                  $word !~ /\[?https?:\/\/.+?&lt;\/ref&gt;/)                  # Avoid "http://www.db.de</ref>".
             {
-              $extra_message  .= $seldom . 'Weblink außerhalb von ==Weblinks== und &lt;ref&gt;:…&lt;\/ref&gt;:<\/span> ' . $word . ' (Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Allgemeines'}, 'Wikipedia:Weblinks') . ')' . p () . "\n";
+              $extra_message  .= $seldom . 'Weblink außerhalb von ==Weblinks== und &lt;ref&gt;:…&lt;/ref&gt;:</span> ' . $word . ' (Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Allgemeines'}, 'Wikipedia:Weblinks') . ')' . p () . "\n";
               $review_level   += $never_level;
               $review_letters .= 'J';
             }
@@ -1382,7 +1382,7 @@ sub do_review ($$$$$)
       $review_letters .= 'f';
       if ($language eq 'de')
         {
-          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zum Wiktionary, siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Kunst#Weblinks'}, 'Kunst#Weblinks') . '. ' . a ({href => 'http://de.wiktionary.org/wiki/Spezial:Suche?search=$search_lemma&go=Seite'}, 'Prüfen, ob es einen Wiktionaryeintrag zu $search_lemma gibt') . ".\n"; }
+          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zum Wiktionary, siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Kunst#Weblinks'}, 'Kunst#Weblinks') . '. ' . a ({href => 'http://de.wiktionary.org/wiki/Spezial:Suche?search=' . $search_lemma . '&go=Seite'}, 'Prüfen, ob es einen Wiktionaryeintrag zu ' . $search_lemma . ' gibt') . ".\n"; }
     }
   # Check for "{{commons".
   if ($page !~ /(\{\{commons(cat)?(\|)?)|({{commons}})/i)
@@ -1397,14 +1397,14 @@ sub do_review ($$$$$)
               $en_lemma    = $1;
               $eng_message = '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $en_lemma . '&go=Seite'}, $en_lemma) . ') ';
             }
-          $extra_message .= $proposal . 'Vorschlag<\/span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (beispielsweise Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Wespe#Weblinks'}, 'Wespe#Weblinks') . '. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $search_lemma . '&go=Seite'}, $search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . ' oder dem lateinischen bei Tieren und Pflanzen). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen'}, 'Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen') . "\n";
+          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (beispielsweise Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Wespe#Weblinks'}, 'Wespe#Weblinks') . '. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $search_lemma . '&go=Seite'}, $search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . ' oder dem lateinischen bei Tieren und Pflanzen). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen'}, 'Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen') . "\n";
         }
       else
         { $extra_message .= "Proposal: include link to wikimedia commons\n"; }
     }
 
   # Always propose "whatredirectshere".
-  $extra_message .= $proposal . 'Vorschlag<\/span>: Weiterleitungen/#REDIRECTS zu [[' . $search_lemma . ']] ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php?lang=' . $language . '&title=' . $search_lemma . '&subdom=' . $language . '&domain=.wikipedia.org'}, 'prüfen') . ' mit ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php'}, 'Whatredirectshere') . "\n";
+  $extra_message .= $proposal . 'Vorschlag</span>: Weiterleitungen/#REDIRECTS zu [[' . $search_lemma . ']] ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php?lang=' . $language . '&title=' . $search_lemma . '&subdom=' . $language . '&domain=.wikipedia.org'}, 'prüfen') . ' mit ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php'}, 'Whatredirectshere') . "\n";
 
   # to do
   # -----
@@ -1533,7 +1533,7 @@ sub read_files ($)
         {
           chomp ();
 
-          # It's far faster to search for /tree/ and /Tree/ than /tree/i so ...
+          # It's far faster to search for /tree/ and /Tree/ than /tree/i so …
           $typo = lc ($_);
 
           # Ignore case only in first letter to speed up search (that's factor 5 to complete /i!).
@@ -1675,7 +1675,7 @@ sub create_ar_link ($$$$)
 {
   my ($lemma, $lang, $oldid, $do_typo_check) = @_;
 
-  return $tool_path . '?lemma=' . $lemma . '&l' . $lang .
+  return $tool_path . '?lemma=' . $lemma . '&l=' . $lang .
          (defined ($oldid) ? '&oldid=' . $oldid : '') .
          ($do_typo_check   ? '&do_typo_check=ON' : '');
 }
@@ -1871,7 +1871,7 @@ sub remove_refs_and_images ($$)
   # better than expanding an open "<ref name=cc>" over the whole page.
   $page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
 
-  # The "(...){0,8}" is for links inside the picture description, like "[[Image:bild.jpg|This is a [[tree]] genau]]",
+  # The "(…){0,8}" is for links inside the picture description, like "[[Image:bild.jpg|This is a [[tree]] genau]]",
   # the "([^\]\[]*?)" is for images with links in it.
   $page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
 

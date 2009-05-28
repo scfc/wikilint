@@ -307,7 +307,7 @@ sub output ($$$$$$$$$$$$$)
       print "<a name=\"GS\">GS = Bindestrich (-) statt Gedankenstrich (–). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Wikipedia:Typografie#Gedankenstrich\">Wikipedia:Typografie#Gedankenstrich</a> und <a href=\"http://de.wikipedia.org/wiki/Halbgeviertstrich#Gedankenstrich\">Halbgeviertstrich#Gedankenstrich</a><p>\n";
       print "<a name=\"BRACKET\">BRACKET = Ungleiche Anzahl von Klammern<p>\n";
       print "<a name=\"BRACKET2\">BRACKET2 = Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.<p>\n";
-      print "<a name=\"QUOTATION\">QUOTATION = Einfache Anführungszeichen (\"...\") statt den typografisch korrekten („...“). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur\">Erzeugung von Anführungszeichen</a><p>\n";
+      print "<a name=\"QUOTATION\">QUOTATION = Einfache Anführungszeichen (\"…\") statt den typografisch korrekten („…“). Siehe auch <a href=\"http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur\">Erzeugung von Anführungszeichen</a><p>\n";
     }
   else
     {
@@ -322,20 +322,20 @@ sub output ($$$$$$$$$$$$$)
     }
 }
 
-if (param ()) 
+if (param ())
   {
     ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form ();
 
     $url = find_random_page ($language) if ($random_page);
 
-    my $link_lemma;
+    my $link_lemma, $selftest;
 
-    if ($url =~ /title=/) 
+    if ($url =~ /title=/)
       {
         $url =~ /title=(.+)&/;
         $link_lemma = $1;
       }
-    else 
+    else
       {
         # Get last part of URL as lemma.
         $url =~ /.+\/(.+)/;
@@ -351,7 +351,7 @@ if (param ())
 
     read_files ($language);
 
-    if ($testpage) 
+    if ($selftest = $testpage)
       {
         local ($/);
 
@@ -359,16 +359,16 @@ if (param ())
         $page = <TEST>;
         close (TEST);
       }
-    else 
+    else
       { $page = download_page ($url, '', $language, $oldid); }
 
     # [^'] to avoid jumping on #REDIRECT [[',']].
-    if ($page =~ /#REDIRECT ?\[\[([^']+?)\]\]/) 
+    if ($page =~ /#REDIRECT ?\[\[([^']+?)\]\]/)
       {
         $to = $1;
         print '<h3>Wikipedia redirect, please follow this link: <a href="' . create_ar_link ($to, 'de', $oldid, $do_typo_check) . '">' . $to . "</a></h3><p>\n";
       }
-    else 
+    else
       {
         ($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords) = do_review ($page, $language, $remove_century, $link_lemma, $do_typo_check);
 
@@ -379,13 +379,13 @@ if (param ())
 
         $propose_page = '' if (!$removed_links);
 
-        if ($selftest) 
+        if ($selftest)
           { selftest ($page, $extra_message); }
-        else 
+        else
           { output ($page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words); }
       }
   }
-else 
+else
   {
     begin_html ($title_lemma);
     print_explanation ();
