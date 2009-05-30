@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 #
 #    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
@@ -19,7 +19,9 @@
 
 use CGI qw/:standard/;
 use LWP::UserAgent;
+use strict;
 use URI::Escape;
+use warnings;
 
 #############################################################
 # i don't get all this utf8-stuff but it kind of works now
@@ -46,12 +48,15 @@ use open ':utf8';
 use config;
 use autoreview;
 
+our ($language, $lemma_org, $search_lemma);
+my ($count_ref, $do_typo_check, $title_lemma, $url);
+
 sub begin_html ($)
 {
   my ($title_lemma) = @_;
 
   print header (-type => 'text/html; charset=utf-8'),
-        start_html (-title => 'wikilint ' . $title_lemma,
+        start_html (-title => 'wikilint' . (defined ($title_lemma) ? ' ' . $title_lemma : ''),
                     -encoding => 'utf-8',
                     -head => meta ({-http_equiv => 'Content-Type',
                                     -content    => 'text/html; charset=utf-8'}),
@@ -324,11 +329,13 @@ sub output ($$$$$$$$$$$$$)
 
 if (param ())
   {
+    my ($action, $oldid, $page, $random_page, $remove_century, $testpage);
+
     ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form ();
 
     $url = find_random_page ($language) if ($random_page);
 
-    my $link_lemma, $selftest;
+    my ($link_lemma, $selftest);
 
     if ($url =~ /title=/)
       {
@@ -365,19 +372,22 @@ if (param ())
     # [^'] to avoid jumping on #REDIRECT [[',']].
     if ($page =~ /#REDIRECT ?\[\[([^']+?)\]\]/)
       {
-        $to = $1;
+        my $to = $1;
+
         print '<h3>Wikipedia redirect, please follow this link: <a href="' . create_ar_link ($to, 'de', $oldid, $do_typo_check) . '">' . $to . "</a></h3><p>\n";
       }
     else
       {
+        my ($count_fillwords, $extra_message, $num_words, $propose_page, $quotient, $removed_links, $review_letters, $review_level);
+
         ($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords) = do_review ($page, $language, $remove_century, $link_lemma, $do_typo_check);
 
-        # To avoid strange reactions in <textarea>, e. g. with comments like <!-- -- -- -- -->.
+        # To avoid strange reactions in "<textarea>", e. g. with comments like "<!-- -- -- -- -->".
         $propose_page =~ s/&/&amp;/g;
         $propose_page =~ s/</&lt;/g;
         $propose_page =~ s/>/&gt;/g;
 
-        $propose_page = '' if (!$removed_links);
+        $propose_page = '' unless ($removed_links);
 
         if ($selftest)
           { selftest ($page, $extra_message); }

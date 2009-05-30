@@ -1,3 +1,4 @@
+#!/usr/bin/perl -w
 #
 #    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
@@ -16,12 +17,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+use config;
 use CGI qw/:standard/;
 use LWP::UserAgent;
+use strict;
 use utf8;
+use warnings;
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
+my (@abbreviations, @avoid_words, $count_ref, @fill_words, $global_removed_count, %is_bkl, %is_bkl_lc, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array, %replaced_stuff, $review_letters, $review_level);
 
+sub download_page ($$$$;$$);
 sub download_page ($$$$;$$)   # Create URL to download from and call http_download ().
 {
   # This function gets called recursively on Wikipedia #REDIRECT[[]]s.
@@ -40,7 +46,7 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
 
   $oldid = $2 if ($lemma =~ s/index\.php\?title=(.+?)&oldid=(\d+)/$1/);
 
-  $downlemma =  $lemma;
+  my $downlemma = $lemma;
   $downlemma =~ tr/ /_/;
 
   # uri_escape can't be used because some characters are already escaped except &.
@@ -48,18 +54,18 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
   $downlemma =~ s/&/%26/g;
   $downlemma =~ s/’/%E2%80%99/g;
 
-  $lemma_org =  $lemma;
-  $lemma     =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
+  $::lemma_org =  $lemma;
+  $lemma       =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
 
   utf8::decode ($lemma);
 
-  $search_lemma =  $lemma;
-  $search_lemma =~ tr/_/ /;
+  $::search_lemma =  $lemma;
+  $::search_lemma =~ tr/_/ /;
 
   if ($oldid =~ /^\d+$/)
-    { $down_url = "http://$language.wikipedia.org/w/index.php?title=$downlemma&action=raw&oldid=$oldid"; }
+    { $down_url = 'http://' . $language . '.wikipedia.org/w/index.php?title=' . $downlemma . '&action=raw&oldid=' . $oldid; }
   else
-    { $down_url = "http://$language.wikipedia.org/w/index.php?title=$downlemma&action=raw"; }
+    { $down_url = 'http://' . $language . '.wikipedia.org/w/index.php?title=' . $downlemma . '&action=raw'; }
 
   # Some more security checks.
   die if (length ($language) != 2);
@@ -130,14 +136,14 @@ sub find_random_page ($)
 sub do_review ($$$$$)
 {
   my ($page, $language, $remove_century, $self_lemma, $do_typo_check) = @_;
-  my ($dont_look_for_apostroph, $times, $section_title, $section_level, $count_words, $inside_weblinks, $count_weblinks, $inside_ref, $num_words, $count_ref, $count_see_also, $linkto, $inside_template, $new_page, $new_page_org, $words_in_section, $dont_count_words_in_section_title, $removed_links, $last_replaced_num, $inside_ref_word, $inside_comment_word, $inside_comment, $inside_literatur, $count_fillwords, $open_ended_sentence, $longest_sentence, $gallery_in_section, $weblinks_section_level, $section_sources, %count_linkto, $dont_look_for_klemp);
-  local ($review_letters) = '';
-  local ($extra_message) = '';
-  local ($review_level) = 0;
-  local (%remove_stuff_for_typo_check_array);
-  local ($global_removed_count) = 0;
+  my ($dont_look_for_apostroph, $times, $section_title, $section_level, $count_words, $inside_weblinks, $count_weblinks, $inside_ref, $num_words, $count_ref, $count_see_also, $linkto, $inside_template, $new_page, $new_page_org, $words_in_section, $dont_count_words_in_section_title, $removed_links, $last_replaced_num, $inside_ref_word, $inside_comment_word, $inside_comment, $inside_literatur, $count_fillwords, $open_ended_sentence, $longest_sentence, $gallery_in_section, $weblinks_section_level, $section_sources, %count_linkto, $dont_look_for_klemp, $literatur_section_level, $year_article);
+  my $extra_message = '';
 
-  $self_lemma_tmp = $self_lemma;
+  $global_removed_count = 0;
+  $review_letters = '';
+  $review_level = 0;
+
+  my $self_lemma_tmp = $self_lemma;
   $self_lemma_tmp =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
 
   # If the lemma contains a klemp, ignore it in the article, e. g. "[[Skulptur.Projekte]]".
@@ -151,7 +157,7 @@ sub do_review ($$$$$)
 
   my $schweizbezogen = $page =~ /<!--\s*schweizbezogen\s*-->/i;
 
-  if (my $year_article = $page =~ /{{Artikel Jahr.*?}}/ || $page =~ /{{Kalender Jahrestage.*?}}/)
+  if ($year_article = $page =~ /{{Artikel Jahr.*?}}/ || $page =~ /{{Kalender Jahrestage.*?}}/)
     { $extra_message .= b ('Jahres- oder Tages-Artikel') . ': Links zu Jahren ignoriert.' . br () . "\n"; }
 
   # For later use …
@@ -182,14 +188,14 @@ sub do_review ($$$$$)
               $en_lemma    = $1;
               $eng_message = '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $en_lemma . '&go=Seite'}, $en_lemma) . ') ';
             }
-          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $search_lemma . '&go=Seite'}, $search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . " oder dem lateinischen bei Tieren und Pflanzen).\n";
+          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $::search_lemma . '&go=Seite'}, $::search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . " oder dem lateinischen bei Tieren und Pflanzen).\n";
         }
       else
         { $extra_message .= "Proposal: include link to wikimedia commons\n"; }
     }
 
   # Check for unformatted weblinks in "<ref></ref>".
-  check_unformated_refs ($page);
+  check_unformatted_refs ($page, \$extra_message);
 
   # Remove "<ref></ref>".
   ($page, $last_replaced_num, $count_ref) = remove_refs_and_images ($page, $last_replaced_num);
@@ -240,7 +246,7 @@ sub do_review ($$$$$)
   # 2. HTTP-links except "<ref>" or in "==weblinks==".
   foreach my $line (split (/\n/, $page))
     {
-      $line_org_wiki = shift (@lines_org_wiki);
+      my $line_org_wiki = shift (@lines_org_wiki);
 
       my $line_org = $line;
 
@@ -276,7 +282,7 @@ sub do_review ($$$$$)
           $line =~ s/QM-ERS/"/g;
         }
 
-      $last_section_title = $section_title;
+      my $last_section_title = $section_title;
 
       # Section title.
       if ($line =~ /^(={2,9})(.+?)={2,9}/)
@@ -752,6 +758,8 @@ sub do_review ($$$$$)
                       $sentence_tmp !~ /«.{$short_quote_length,}?»/                    &&
                       $sentence_tmp !~ /«.{$short_quote_length,}?$/)
                     {
+                      my $sentence_tmp_restored;
+
                       $review_level   += $never_level;
                       $review_letters .= 'A';
 
@@ -1005,7 +1013,7 @@ sub do_review ($$$$$)
         }
 
       # Check line word by word.
-      $line_org_tmp = $line_org;
+      my $line_org_tmp = $line_org;
       # Ignore "<ref name="Jahresrueckblick"/>".
       $line_org_tmp =~ s/&lt;ref name=.+?\/&gt;//g;
 
@@ -1047,6 +1055,8 @@ sub do_review ($$$$$)
               !$inside_template         &&
               !$inside_comment_word)
             {
+              my $linkto_org;
+
               # This is a wikilink.
               $linkto_org = $1;
               $linkto     = lc ($linkto_org);
@@ -1073,12 +1083,12 @@ sub do_review ($$$$$)
           # Check for disambiguation pages.
           if ($word =~ /\[\[(.+?)[|\]]/)
             {
-              $linkto_org = $1;
+              my $linkto_org = $1;
 
               # First, 100 % case-sensitive match, because of "[[USA]]" vs. "[[Usa]]".
               if ($is_bkl {$linkto_org})
                 {
-                  my $times;
+                  my ($linkto_tmp, $times);
 
                   # Remove "_" already, otherwise links to Wikipedia with blank *and* wrong case don't work.
                   $linkto_tmp =  $linkto_org;
@@ -1097,7 +1107,7 @@ sub do_review ($$$$$)
                      lc ($linkto) ne "gen" &&
                      lc ($linkto) ne "gas")
                 {
-                  my $times;
+                  my ($linkto_tmp, $times);
 
                   # Remove "_" already, otherwise links to Wikipedia with blank *and* wrong case don't work.
                   $linkto_tmp =  $linkto;
@@ -1311,6 +1321,8 @@ sub do_review ($$$$$)
 
           if ($language eq 'de')
             {
+              my ($linkto_tmp, $linkto_tmp_ahrefname);
+
               $linkto_tmp            = ucfirst ($linkto);
               $linkto_tmp_ahrefname  = $linkto_tmp;
               $linkto_tmp_ahrefname  =~ tr/ /_/;
@@ -1382,7 +1394,7 @@ sub do_review ($$$$$)
       $review_letters .= 'f';
       if ($language eq 'de')
         {
-          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zum Wiktionary, siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Kunst#Weblinks'}, 'Kunst#Weblinks') . '. ' . a ({href => 'http://de.wiktionary.org/wiki/Spezial:Suche?search=' . $search_lemma . '&go=Seite'}, 'Prüfen, ob es einen Wiktionaryeintrag zu ' . $search_lemma . ' gibt') . ".\n"; }
+          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zum Wiktionary, siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Kunst#Weblinks'}, 'Kunst#Weblinks') . '. ' . a ({href => 'http://de.wiktionary.org/wiki/Spezial:Suche?search=' . $::search_lemma . '&go=Seite'}, 'Prüfen, ob es einen Wiktionaryeintrag zu ' . $::search_lemma . ' gibt') . ".\n"; }
     }
   # Check for "{{commons".
   if ($page !~ /(\{\{commons(cat)?(\|)?)|({{commons}})/i)
@@ -1397,14 +1409,14 @@ sub do_review ($$$$$)
               $en_lemma    = $1;
               $eng_message = '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $en_lemma . '&go=Seite'}, $en_lemma) . ') ';
             }
-          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (beispielsweise Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Wespe#Weblinks'}, 'Wespe#Weblinks') . '. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $search_lemma . '&go=Seite'}, $search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . ' oder dem lateinischen bei Tieren und Pflanzen). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen'}, 'Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen') . "\n";
+          $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (beispielsweise Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Wespe#Weblinks'}, 'Wespe#Weblinks') . '. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $::search_lemma . '&go=Seite'}, $::search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . ' oder dem lateinischen bei Tieren und Pflanzen). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen'}, 'Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen') . "\n";
         }
       else
         { $extra_message .= "Proposal: include link to wikimedia commons\n"; }
     }
 
   # Always propose "whatredirectshere".
-  $extra_message .= $proposal . 'Vorschlag</span>: Weiterleitungen/#REDIRECTS zu [[' . $search_lemma . ']] ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php?lang=' . $language . '&title=' . $search_lemma . '&subdom=' . $language . '&domain=.wikipedia.org'}, 'prüfen') . ' mit ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php'}, 'Whatredirectshere') . "\n";
+  $extra_message .= $proposal . 'Vorschlag</span>: Weiterleitungen/#REDIRECTS zu [[' . $::search_lemma . ']] ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php?lang=' . $language . '&title=' . $::search_lemma . '&subdom=' . $language . '&domain=.wikipedia.org'}, 'prüfen') . ' mit ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php'}, 'Whatredirectshere') . "\n";
 
   # to do
   # -----
@@ -1534,7 +1546,7 @@ sub read_files ($)
           chomp ();
 
           # It's far faster to search for /tree/ and /Tree/ than /tree/i so …
-          $typo = lc ($_);
+          my $typo = lc ($_);
 
           # Ignore case only in first letter to speed up search (that's factor 5 to complete /i!).
           $typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
@@ -1620,6 +1632,7 @@ sub tag_dates_first_line ($)   # This function is for the first line only!
 sub tag_dates_rest_line ($)
 {
   my ($line) = @_;
+  my $times;
 
   # Links to dates.
   # Do [[2005]].
@@ -1782,9 +1795,9 @@ sub restore_stuff_quote ($)
   return $page;
 }
 
-sub check_unformated_refs ($)
+sub check_unformatted_refs ($\$)
 {
-  my ($page) = @_;
+  my ($page, $extra_message) = @_;
 
   foreach $line (split (/\n/, $page))
     {
@@ -1800,8 +1813,8 @@ sub check_unformated_refs ($)
             {
               my $weblink = $1;
 
-              if ($language eq 'de')
-                { $extra_message .= $seldom . 'Unformatierter Weblink: </span>' . $weblink . ' – Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Formatierung'}, 'WP:WEB#Formatierung') . br () . "\n"; }
+              if ($::language eq 'de')
+                { ${$extra_message} .= $seldom . 'Unformatierter Weblink: </span>' . $weblink . ' – Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Formatierung'}, 'WP:WEB#Formatierung') . br () . "\n"; }
               $review_level   += $seldom_level;
               $review_letters .= 'X';
             }
@@ -1831,7 +1844,7 @@ sub remove_stuff_for_typo_check ($)
       # Only replace quotes with three or more letters.
       # Remove single ' to be able to use [^'] in next line.
       $line_copy =~ s/(?<!')'(?!')/Q-REP/g;
-      $times = $line_copy =~ s/((?<!')''([^']{3,}?)''(?!'))/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
+      $line_copy =~ s/((?<!')''([^']{3,}?)''(?!'))/remove_one_item ($1, '-R-N', \%remove_stuff_for_typo_check_array)/eg;
       $line_copy =~ s/Q-REP/'/g;
 
       # Also does ''quote 'blub' quote on''?
@@ -1858,9 +1871,13 @@ sub remove_stuff_for_typo_check ($)
 sub remove_refs_and_images ($$)
 {
   my ($page, $lola) = @_;
-  my ($times);
-  local ($count_ref);
-  local ($global_removed_count) = 0;
+  my ($count_ref_backup, $count_ref_return, $times);
+  my ($global_removed_count_backup, $global_removed_count_return);
+
+  $global_removed_count_backup = $global_removed_count;
+  $global_removed_count        = 0;
+  $count_ref_backup            = $count_ref;
+  undef $count_ref;
 
   # Lines with leading blank.
   # "(?!\|)" to avoid removing lines in table with leading blank like " | blub = blab".
@@ -1879,7 +1896,12 @@ sub remove_refs_and_images ($$)
   # "<gallery widths="200" heights =…></gallery>".
   $page =~ s/(<gallery.*?>.+?<\/gallery>)/remove_one_item ($1, '-R-I-G', \%remove_refs_and_images_array, 1)/egis;
 
-  return ($page, $global_removed_count, $count_ref);
+  $count_ref_return            = $count_ref;
+  $count_ref                   = $count_ref_backup;
+  $global_removed_count_return = $global_removed_count;
+  $global_removed_count        = $global_removed_count_backup;
+
+  return ($page, $global_removed_count_return, $count_ref_return);
 }
 
 sub create_review_summary_html ($$)
@@ -1922,7 +1944,7 @@ sub selftest ($$)   # Check if reviewing test.html gave the right results indica
 
   foreach my $line (split (/\n/, $page))
     {
-      print "MISSED REPLACEMENT: $line$br\n" if ($line =~ /-R-.+?\d+-R-/);
+      print 'MISSED REPLACEMENT: ' . $line . br () . "\n" if ($line =~ /-R-.+?\d+-R-/);
 
       if ($line =~ /bad/i || $line =~ /mixed/i)
         {
