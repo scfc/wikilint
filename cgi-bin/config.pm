@@ -1,3 +1,4 @@
+#!/usr/bin/perl -w
 #
 #    Program: Lint for Wikipedia articles
 #    Copyright (C) 2007  arnim rupp, email: arnim at rupp.de
@@ -16,51 +17,57 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+package config;
+
+use base 'Exporter';
+
+use strict;
 use utf8;
+use warnings;
 
-$tool_path = 'http://toolserver.org/~timl/cgi-bin/wikilint';
+our @EXPORT = qw($tool_path $max_words_per_sentence $min_words_per_section $max_words_per_wikilink $min_words_to_recommend_references_section $min_words_to_recommend_references $words_per_reference $max_weblinks $max_see_also $fillwords_per_words $short_quote_length $wait_between_http_retry $http_retry $never_level $seldom_level $sometimes_level $never $seldom $sometimes $proposal %text $table_order %farbe_html %units %units_special $min_length_for_nbsp);
 
-$max_words_per_sentence =   50;
-$min_words_per_section  =   30;
-$max_words_per_wikilink = 1000;
+our $tool_path = 'http://toolserver.org/~timl/cgi-bin/wikilint';
 
-# literature-section proposed:
-$min_words_to_recommend_references_section = 500;
-# <ref>'s proposed:
-$min_words_to_recommend_references = 1000;
-$words_per_reference               =  500;
-$max_weblinks                      =    5;
-$max_see_also                      =    5;
+our $max_words_per_sentence =   50;
+our $min_words_per_section  =   30;
+our $max_words_per_wikilink = 1000;
 
-# durchschnitt der frisch exzellenten artikel (1.2007-5.2007)
-$fillwords_per_words = 80;
 
-# quotes which have more characters this this don't count to complain on loooong sentences because they're real quotes
-$short_quote_length = 120;
+# Threshold to propose literature section.
+our $min_words_to_recommend_references_section = 500;
 
-# wait x seconds between HTTP-retry (500)
-$wait_between_http_retry = 10;
-# try this often:
-$http_retry = 5;
+# When to propose "<ref>"s.
+our $min_words_to_recommend_references = 1000;
+our $words_per_reference               =  500;
+our $max_weblinks                      =    5;
+our $max_see_also                      =    5;
 
-$never_level     = 4;
-$seldom_level    = 2;
-$sometimes_level = 1;
+# Threshold to warn against fill words (average German excellent articles (2007-01—2007-05)).
+our $fillwords_per_words = 80;
 
-# makes sense ...
-$never     = '<span class="never">';
-$seldom    = '<span class="seldom">';
-$sometimes = '<span class="sometimes">';
-$proposal  = '<span class="proposal">';
+# Quotes that have more characters than this don't count to complain on looong sentences because they're real quotes.
+our $short_quote_length = 120;
 
-# explanations of all problems found and stored in $review_letters
-# format: $text{"LANGUAGE|$review_letter"} = 'LEVEL|SUMMARY|text';
-# SUMMARY can be:
-# S = sum
-# C = count
-# X = max
-# not yet implemented: N = min
-# not yet implemented: A = average
+# Seconds to wait between HTTP retry.
+our $wait_between_http_retry = 10;
+# Number of tries.
+our $http_retry = 5;
+
+our $never_level     = 4;
+our $seldom_level    = 2;
+our $sometimes_level = 1;
+
+# Shortcuts.
+our $never     = '<span class="never">';
+our $seldom    = '<span class="seldom">';
+our $sometimes = '<span class="sometimes">';
+our $proposal  = '<span class="proposal">';
+
+# Explanations of all problems found and stored in $review_letters.
+# Format: $text {$language . '|' . $review_letter} = '$LEVEL|$SUMMARY|$TEXT';
+# $SUMMARY can be "S" (sum), "C" (count) or "X" (maximum).
+our %text;
 $text {'de|A'} = "2|S|Lange Sätze (mehr als $max_words_per_sentence Wörter)";
 $text {'de|B'} = '1|S|Wörter die in Wikipedia nicht stehen sollten';
 $text {'de|C'} = '1|S|Potentielle Füllwörter';
@@ -110,17 +117,19 @@ $text {'de|t'} = '1|S|Bindestrich (»-«) statt Gedankenstrich (»–«) verwend
 $text {'de|u'} = '1|S|Normale Anführungszeichen "" statt „ und “';
 $text {'de|v'} = '2|S|Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.';
 
-# order of columns in spider-review-result-table, for meaning of letters see above
-$table_order = 'nMcENGJOPZabijdlmopstuqvkXArBCDFeQHRSTKLUVWYhfg';
+# Order of rows in review table.
+our $table_order = 'nMcENGJOPZabijdlmopstuqvkXArBCDFeQHRSTKLUVWYhfg';
 
+our %farbe_html;
 $farbe_html {1} = '#b9ffc5';
 $farbe_html {2} = '#ffebad';
 $farbe_html {3} = '#ffcbcb';
 
-# for checking that &nbsp; is inbetween numbers and units: (case-sensitive!)
+# Units where a &nbsp; is mandatory (case-sensitive!).
+our (%units, %units_special);
 $units {'de'} = 'kg;cm;m;km;mm;l;dl;qm;Prozent;s;h;Nm;N;W;°C;Watt;Pf;Pfennig;Mark;RM;GBP;Pfund;SFr;m³;MW;EUR;EURO;Euro;Minuten;Stunden;Sekunden;Tage;Wochen;Monate;Jahre;Volt;Ampere;Watt;Ohm';
 $units_special {'de'} = '°C;€;\$;£';
-# ignore missing &nbsp; in short lines
-$min_length_for_nbsp = 100;
+# Ignore missing &nbsp; in short lines.
+our $min_length_for_nbsp = 100;
 
 1;
