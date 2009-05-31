@@ -395,7 +395,7 @@ sub do_review ($$$$$)
           my $line_tmp = $line;
           my $undo = 0;
           my $times_total = 0;
-          while (my $times = $line =~ s/( |\[\[)(\d{1,4})((\]\]| )?\-( ||\[\[)?)(\d{1,4})(\]\])?( +v\. Chr\.)?/$1$sometimes$2$3$6<\/span><sup class=reference><a href=#BISSTRICH>[BISSTRICH ?]<\/a><\/sup>$7$8/)   # Do "1980-1990" and "[[1980]]-[[1990]]".
+          while (my $times = $line =~ s/( |\[\[)(\d{1,4})((\]\]| )?\-( ||\[\[)?)(\d{1,4})(\]\])?( +[nv]\. Chr\.)?/$1$sometimes$2$3$6<\/span><sup class=reference><a href=#BISSTRICH>[BISSTRICH ?]<\/a><\/sup>$7$8/)   # Do "1980-1990" and "[[1980]]-[[1990]]".
             {
               my $from = $2;
               my $to   = $6;
@@ -496,7 +496,7 @@ sub do_review ($$$$$)
               $line = tag_dates_first_line ($line);
 
               # Remove date links for copy/paste wikisource ($line_org_wiki).
-              $removed_links += $line_org_wiki =~ s/(?<!(?:\w\]\]| \(\*|. †) )\[\[(\d{1,4}(?: v\. Chr\.)?)\]\]/$1/g;
+              $removed_links += $line_org_wiki =~ s/(?<!(?:\w\]\]| \(\*|. †) )\[\[(\d{1,4}(?: [nv]\. Chr\.)?)\]\]/$1/g;
 
               # Remove day and month links.
               $removed_links += $line_org_wiki =~ s/(?<!(\*|†) )\[\[((?:\d{1,2}\. )?$_)\]\]/$1/g foreach (@months);
@@ -1577,17 +1577,17 @@ sub remove_year_and_date_links ($$)
   my ($count_removed);
 
   # [[1234]] or [[345 v. Chr.]].
-  $count_removed += $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?)\]\]/$1/go;
+  $count_removed += $line =~ s/\[\[(\d{3,4}( [nv]\. Chr\.)?)\]\]/$1/go;
 
   # [[1234|34]].
-  $count_removed += $line =~ s/\[\[(\d{3,4}( v\. Chr\.)?\|)(\d\d)(\]\])/$3/go;
+  $count_removed += $line =~ s/\[\[(\d{3,4}( [nv]\. Chr\.)?\|)(\d\d)(\]\])/$3/go;
 
   # Links to days [[12. April]].
   $count_removed += $line =~ s/\[\[(\d{1,2}\. $_)\]\]/$1/g foreach (@months);
 
   if ($remove_century)
     {
-      $count_removed += $line =~ s/\[\[(\d{1,2}\. Jahrhundert( v\. Chr\.)?)\]\]/$1/go;
+      $count_removed += $line =~ s/\[\[(\d{1,2}\. Jahrhundert( [nv]\. Chr\.)?)\]\]/$1/go;
 
       # Links to months [[April]].
       $count_removed += $line =~ s/\[\[($_)\]\]/$1/g foreach (@months);
@@ -1613,12 +1613,12 @@ sub tag_dates_first_line ($)   # This function is for the first line only!
   # "Larry Wall (* [[27. September]] [[1954]] ; † [[30. April]] [[2145]] ) blub [[3. Mai]] [[1977]]".
 
   # Replace years except birth and death = "r]] [[1234]]" or "* [[1971]]" or " † [[2012]]".
-  $times           = $line =~ s/(?<!(\w\]\]| \(\*|. †|; \*) )(\[\[[1-9]\d{0,3}( v\. Chr\.)?\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times           = $line =~ s/(?<!(\w\]\]| \(\*|. †|; \*) )(\[\[[1-9]\d{0,3}( [nv]\. Chr\.)?\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
   $review_level   += $times * $seldom_level;
   $review_letters .= 'K' x $times;
 
   # "[[1878|78]]".
-  $times           = $line =~ s/(\[\[[1-9]\d{0,3}( v\. Chr\.)?\|)(\d\d)(\]\])/$seldom$3<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times           = $line =~ s/(\[\[[1-9]\d{0,3}( [nv]\. Chr\.)?\|)(\d\d)(\]\])/$seldom$3<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
   $review_level   += $times * $seldom_level;
   $review_letters .= 'K' x $times;
 
@@ -1640,17 +1640,17 @@ sub tag_dates_rest_line ($)
 
   # Links to dates.
   # Do [[2005]].
-  $times           = $line =~ s/(\[\[[1-9]\d{0,3}(?: v\. Chr\.)?\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times           = $line =~ s/(\[\[[1-9]\d{0,3}(?: [nv]\. Chr\.)?\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
   $review_level   += $times * $seldom_level;
   $review_letters .= 'K' x $times;
 
   # [[1878|78]].
-  $times           = $line =~ s/(\[\[[1-9]\d{0,3}(?: v\. Chr\.)?\|\d\d\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times           = $line =~ s/(\[\[[1-9]\d{0,3}(?: [nv]\. Chr\.)?\|\d\d\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
   $review_level   += $times * $seldom_level;
   $review_letters .= 'K' x $times;
 
   # Do [[17. Jahrhundert]] or [[17. Jahrhundert|whatever]].
-  $times           = $line =~ s/(\[\[\d{1,2}\. Jahrhundert( v\. Chr\.)?[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times           = $line =~ s/(\[\[\d{1,2}\. Jahrhundert( [nv]\. Chr\.)?[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
   $review_level   += $times * $sometimes_level;
   $review_letters .= 'U' x $times;
 
