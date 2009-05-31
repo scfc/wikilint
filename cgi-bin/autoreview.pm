@@ -23,6 +23,7 @@ use base 'Exporter';
 
 use config;
 use CGI qw/:standard/;
+use HTML::Entities;
 use LWP::UserAgent;
 use strict;
 use utf8;
@@ -1078,7 +1079,7 @@ sub do_review ($$$$$)
                  !$inside_comment                                       &&
                  $word !~ /\[?https?:\/\/.+?&lt;\/ref&gt;/)                  # Avoid "http://www.db.de</ref>".
             {
-              $extra_message  .= $seldom . 'Weblink außerhalb von ==Weblinks== und &lt;ref&gt;:…&lt;/ref&gt;:</span> ' . $word . ' (Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Allgemeines'}, 'Wikipedia:Weblinks') . ')' . p () . "\n";
+              $extra_message  .= $seldom . 'Weblink außerhalb von "== Weblinks ==" und "&lt;ref&gt;:…&lt;/ref&gt;":</span> ' . encode_entities ($word) . ' (Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Allgemeines'}, 'Wikipedia:Weblinks') . ')' . p () . "\n";
               $review_level   += $never_level;
               $review_letters .= 'J';
             }
@@ -1685,7 +1686,7 @@ sub create_edit_link ($$)
 {
   my ($lemma, $lang) = @_;
 
-  return ($lang eq 'de' || $lang eq 'en') ? 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&action=edit' : undef;
+  return 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&action=edit';
 }
 
 sub create_ar_link ($$$$)
@@ -1933,7 +1934,7 @@ sub create_review_summary_html ($$)
             { $secondcell = td ($count_letters {$letter}); }
           else
             { $secondcell = td ({bgcolor => 'lime'}, 'OK'); }
-          $table .= Tr (td ({bgcolor => $farbe_html {$level}}, $message) . $secondcell);
+          $table .= Tr (td ($level ? {bgcolor => $farbe_html {$level}} : {}, $message) . $secondcell);
         }
     }
 
