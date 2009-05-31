@@ -144,12 +144,16 @@ sub find_random_page ($)
 sub do_review ($$$$$)
 {
   my ($page, $language, $remove_century, $self_lemma, $do_typo_check) = @_;
-  my ($dont_look_for_apostroph, $times, $section_title, $section_level, $count_words, $inside_weblinks, $count_weblinks, $inside_ref, $num_words, $count_ref, $count_see_also, $linkto, $inside_template, $new_page, $new_page_org, $words_in_section, $dont_count_words_in_section_title, $removed_links, $last_replaced_num, $inside_ref_word, $inside_comment_word, $inside_comment, $inside_literatur, $count_fillwords, $open_ended_sentence, $longest_sentence, $gallery_in_section, $weblinks_section_level, $section_sources, %count_linkto, $dont_look_for_klemp, $literatur_section_level, $year_article);
-  my $extra_message = '';
+  my ($dont_look_for_apostroph, $times, $section_title, $section_level, $count_words, $inside_weblinks, $count_weblinks, $inside_ref, $num_words, $count_ref, $inside_template, $new_page, $new_page_org, $words_in_section, $dont_count_words_in_section_title, $removed_links, $last_replaced_num, $inside_ref_word, $inside_comment_word, $inside_comment, $inside_literatur, $count_fillwords, $open_ended_sentence, $gallery_in_section, $section_sources, %count_linkto, $dont_look_for_klemp, $literatur_section_level, $year_article);
+  my $count_see_also         = 0;
+  my $extra_message          = '';
+  my $longest_sentence       = 0;
+  my $weblinks_section_level = 0;
 
   $global_removed_count = 0;
-  $review_letters = '';
-  $review_level = 0;
+  $last_word            = '';
+  $review_letters       = '';
+  $review_level         = 0;
 
   my $self_lemma_tmp = $self_lemma;
   $self_lemma_tmp =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
@@ -305,7 +309,7 @@ sub do_review ($$$$$)
 
           if ($words_in_section                          &&
               # Avoid complaining on short "definition":
-              $last_section_title                        &&
+              defined ($last_section_title)              &&
               !$gallery_in_section                       &&
               $words_in_section < $min_words_per_section &&
               $last_section_title !~ /weblink/i          &&
@@ -488,16 +492,14 @@ sub do_review ($$$$$)
           # Don't replace date links in infoboxes.
           if ($line !~ /^(\||\{\{|\{\|)/ && !$year_article)
             {
-              my $times;
-
               # Tag date links.
               $line = tag_dates_first_line ($line);
 
               # Remove date links for copy/paste wikisource ($line_org_wiki).
-              $removed_links += $line_org_wiki =~ s/(?<!(\w\]\]| \(\*|. †) )\[\[(\d{1,4}( v\. Chr\.)?)\]\]/$1$2/g;
+              $removed_links += $line_org_wiki =~ s/(?<!(?:\w\]\]| \(\*|. †) )\[\[(\d{1,4}(?: v\. Chr\.)?)\]\]/$1/g;
 
               # Remove day and month links.
-              $removed_links += $line_org_wiki =~ s/(?<!(\*|†) )\[\[((\d{1,2}\. )?$_)\]\]/$1$2/g foreach (@months);
+              $removed_links += $line_org_wiki =~ s/(?<!(\*|†) )\[\[((?:\d{1,2}\. )?$_)\]\]/$1/g foreach (@months);
             }
         }
 
@@ -523,11 +525,10 @@ sub do_review ($$$$$)
           $line =~ /[,.]/)   # Only look for plenk and klemp if line contains "," or ".".
         {
           # Avoid complaining on dots in URLs by replacing "." with "PUNKTERSATZ".
-          while ($line =~ s/(https?:\/\/.+?)(\.)/$1PUNKTERSATZ$4/gi                  ||
-                 $line =~ s/((?:Bild|Datei|File|Image):[^\]]+?)(\.)/$1PUNKTERSATZ/gi ||
-                 $line =~ s/({{.+?)(\.)/$1PUNKTERSATZ/gi                             ||
-                 $line =~ s/(https?:\/\/.+?)(\,)/$1KOMMAERSATZ/gi                    ||
-                 $line =~ s/({{.+?)(\.)/$1PUNKTERSATZ/gi)
+          while ($line =~ s/(https?:\/\/.+?)\./$1PUNKTERSATZ/gi                    ||
+                 $line =~ s/((?:Bild|Datei|File|Image):[^\]]+?)\./$1PUNKTERSATZ/gi ||
+                 $line =~ s/({{.+?)\./$1PUNKTERSATZ/g                              ||
+                 $line =~ s/(https?:\/\/.+?),/$1KOMMAERSATZ/gi)
             { }
 
           # Avoid complaining on company names like "web.de" in the text.
@@ -535,7 +536,7 @@ sub do_review ($$$$$)
           $line =~ s/\.(\w\w\b)/PUNKTERSATZ$1/gi;
           $line =~ s/\.((com|org|net|biz|int|info|edu|gov)\b)/PUNKTERSATZ$1/gi;
           $line =~ s/([^\/]www)\.(\w)/$1PUNKTERSATZ$2/gi;
-          $line =~ s/\.(html|doc|exe|htm|pdf)/PUNKTERSATZ$2/gi;
+          $line =~ s/\.(html|doc|exe|htm|pdf)/PUNKTERSATZ$1/gi;
 
           # Do "baum .baum" (cf. <URI:http://de.wikipedia.org/wiki/Plenk>).
           my $line_copyy = $line;
@@ -587,7 +588,7 @@ sub do_review ($$$$$)
         }
 
       # Check for words to avoid and fill words except in "weblinks" and "literatur".
-      if ($section_title !~ /weblink/i && $section_title !~ /literatur/i && !$inside_ref)
+      if ((!defined ($section_title) || $section_title !~ /weblink/i && $section_title !~ /literatur/i) && !$inside_ref)
         {
           # Check for too long sentences. Lots of cases have to be considered which dots are sentence
           # endings or not. Order is important in these checks!
@@ -803,18 +804,18 @@ sub do_review ($$$$$)
           $line =~ s/&lt;sic&gt;(.*?)&lt;\/sic&gt;/￼QSC%$1￼QEC%/gi;
 
           # Avoid "!" always except in tables (= beginning of a line, "." matches anything except newline) and in "<ref>" and in quotes.
-          if ($inside_comment                                            ||
-              $inside_template                                           ||
-              ($last_section_title =~ /literatur/i && $line =~ /^\s?\*/) ||
-              $line =~ /￼QSS.*?!.*?￼QES/i                                ||
-              $line =~ /￼QSL.*?!.*?￼QEL/i                                ||
-              $line =~ /￼QSD.*?!.*?￼QED/i                                ||
-              $line =~ /￼QST.*?!.*?￼QET/i                                ||
-              $line =~ /￼QSF.*?!.*?￼QEF/i                                ||
-              $line =~ /￼QSX.*?!.*?￼QEX/i                                ||
-              $line =~ /￼QSC.*?!.*?￼QEC/i                                ||
-              $line =~ /(?<!')''[^']*?![^']*?$/i                         ||
-              $line =~ /^:/                                              ||
+          if ($inside_comment                                                                             ||
+              $inside_template                                                                            ||
+              (defined ($last_section_title) && $last_section_title =~ /literatur/i && $line =~ /^\s?\*/) ||
+              $line =~ /￼QSS.*?!.*?￼QES/i                                                                 ||
+              $line =~ /￼QSL.*?!.*?￼QEL/i                                                                 ||
+              $line =~ /￼QSD.*?!.*?￼QED/i                                                                 ||
+              $line =~ /￼QST.*?!.*?￼QET/i                                                                 ||
+              $line =~ /￼QSF.*?!.*?￼QEF/i                                                                 ||
+              $line =~ /￼QSX.*?!.*?￼QEX/i                                                                 ||
+              $line =~ /￼QSC.*?!.*?￼QEC/i                                                                 ||
+              $line =~ /(?<!')''[^']*?![^']*?$/i                                                          ||
+              $line =~ /^:/                                                                               ||
               # Avoid grammar-articles.
               $line =~ /imperativ/i)
             {
@@ -993,7 +994,8 @@ sub do_review ($$$$$)
         { $count_weblinks += $line =~ s/(https?:\/\/)/$1/gi; }   # Just count, replace with same (for more than one weblink per line).
 
       # Check for link in "==see also==" already linked to above.
-      if ($section_title =~ /(siehe auch|see also)/i &&
+      if (defined ($section_title)                   &&
+          $section_title =~ /(siehe auch|see also)/i &&
           $line !~ /\[\[\w\w:[^\]]+?\]\]/            &&
           $line !~ /\[\[Kategorie:[^\]]+?\]\]/i      &&
           $line !~ /\[\[category:[^\]]+?\]\]/i       &&
@@ -1059,17 +1061,10 @@ sub do_review ($$$$$)
 
           $inside_comment_word = 1 if ($word =~ /&lt;&iexcl;--/);
 
-          if ($word =~ /\[\[(.+?)[|\]]/ &&
+          if ($word =~ /\[\[(.+?)[|\]]/ &&   # This is a wikilink.
               !$inside_template         &&
               !$inside_comment_word)
-            {
-              my $linkto_org;
-
-              # This is a wikilink.
-              $linkto_org = $1;
-              $linkto     = lc ($linkto_org);
-              $count_linkto {$linkto}++;
-            }
+            { $count_linkto {lc ($1)}++; }
           elsif ($word =~ /\[?https?:\/\//                              &&
                  $word !~ /&lt;&iexcl;--/                               &&
                  $word !~ /{{\w+?\|[^}]*https?:\/\//                    &&   # Avoid templates like "{{SEP|http://plato.stanford.edu/entries/aristotle-ethics/index.html#7".
@@ -1092,6 +1087,7 @@ sub do_review ($$$$$)
           if ($word =~ /\[\[(.+?)[|\]]/)
             {
               my $linkto_org = $1;
+              my $linkto     = lc ($linkto_org);
 
               # First, 100 % case-sensitive match, because of "[[USA]]" vs. "[[Usa]]".
               if ($is_bkl {$linkto_org})
@@ -1167,7 +1163,7 @@ sub do_review ($$$$$)
               my $times;
 
               # "[\.,]" is for decimal divider.
-              $times           = $line =~ s/$unit/$sometimes$1<\/span><sup class=reference><a href=#NBSP>[NBSP]<\/a><\/sup>$3/g;
+              $times           = $line =~ s/$unit/$sometimes$1<\/span><sup class=reference><a href=#NBSP>[NBSP]<\/a><\/sup>/g;
               $review_level   += $times * $sometimes_level;
               $review_letters .= 'T' x $times;
             }
@@ -1320,7 +1316,7 @@ sub do_review ($$$$$)
 
   # One wikilink to one lemma per $max_words_per_wikilink words is okay (number made up by me ;).
   my $too_much_links = $num_words / $max_words_per_wikilink + 1;
-  foreach $linkto (keys %count_linkto)
+  foreach my $linkto (keys %count_linkto)
     {
       if ($count_linkto {$linkto} > $too_much_links)
         {
