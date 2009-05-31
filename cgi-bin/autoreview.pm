@@ -17,6 +17,10 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+package autoreview;
+
+use base 'Exporter';
+
 use config;
 use CGI qw/:standard/;
 use LWP::UserAgent;
@@ -24,8 +28,12 @@ use strict;
 use utf8;
 use warnings;
 
+our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page read_files selftest);
+our @EXPORT_OK = qw(remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
+
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
-my (@abbreviations, @avoid_words, $count_ref, @fill_words, $global_removed_count, %is_bkl, %is_bkl_lc, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array, %replaced_stuff, $review_letters, $review_level);
+my (@abbreviations, @avoid_words, $count_ref, @fill_words, $global_removed_count, %is_bkl, %is_bkl_lc, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
+our (%replaced_stuff, $review_letters, $review_level);   # Public only for tests.
 
 sub download_page ($$$$;$$);
 sub download_page ($$$$;$$)   # Create URL to download from and call http_download ().
@@ -62,7 +70,7 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
   $::search_lemma =  $lemma;
   $::search_lemma =~ tr/_/ /;
 
-  if ($oldid =~ /^\d+$/)
+  if (defined ($oldid) && $oldid =~ /^\d+$/)
     { $down_url = 'http://' . $language . '.wikipedia.org/w/index.php?title=' . $downlemma . '&action=raw&oldid=' . $oldid; }
   else
     { $down_url = 'http://' . $language . '.wikipedia.org/w/index.php?title=' . $downlemma . '&action=raw'; }
