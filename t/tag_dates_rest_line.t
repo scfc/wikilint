@@ -17,4 +17,4 @@ is (tag_dates_rest_line ('[[1960er Jahre]]'), '<span class="sometimes">[[1960er 
 is (tag_dates_rest_line ('[[12. Mai]] or [[12. Mai|...]]'), '<span class="seldom">[[12. Mai]]</span><sup class=reference><a href=#links_to_numbers>[LTN ?]</a></sup> or <span class="seldom">[[12. Mai|</span><sup class=reference><a href=#links_to_numbers>[LTN ?]</a></sup>...]]');
 is (tag_dates_rest_line ('[[Mai]] or [[Mai|...]]'), '<span class="sometimes">[[Mai]]</span><sup class=reference><a href=#links_to_numbers>[LTN ?]</a></sup> or <span class="sometimes">[[Mai|</span><sup class=reference><a href=#links_to_numbers>[LTN ?]</a></sup>...]]');
 is ($autoreview::review_level, 15);
-is ($autoreview::review_letters, 'KKUUVVVLLWW');
+is_deeply (\%autoreview::count_letters, {'K' => 2, 'U' => 2, 'V' => 3, 'L' => 2, 'W' => 2});
