@@ -145,7 +145,9 @@ sub find_random_page ($)
 sub do_review ($$$$$)
 {
   my ($page, $language, $remove_century, $self_lemma, $do_typo_check) = @_;
-  my ($dont_look_for_apostroph, $times, $section_title, $section_level, $count_words, $inside_weblinks, $count_weblinks, $inside_ref, $num_words, $count_ref, $inside_template, $new_page, $new_page_org, $words_in_section, $dont_count_words_in_section_title, $removed_links, $last_replaced_num, $inside_ref_word, $inside_comment_word, $inside_comment, $inside_literatur, $count_fillwords, $open_ended_sentence, $gallery_in_section, $section_sources, %count_linkto, $dont_look_for_klemp, $literatur_section_level, $year_article);
+  my ($dont_look_for_apostroph, $times, $section_title, $section_level, $count_words, $inside_weblinks, $inside_ref, $num_words, $count_ref, $inside_template, $new_page, $new_page_org, $words_in_section, $dont_count_words_in_section_title, $removed_links, $last_replaced_num, $inside_ref_word, $inside_comment_word, $inside_comment, $inside_literatur, $open_ended_sentence, $gallery_in_section, $section_sources, %count_linkto, $dont_look_for_klemp, $literatur_section_level, $year_article);
+  my $count_weblinks         = 0;
+  my $count_fillwords        = 0;
   my $count_see_also         = 0;
   my $extra_message          = '';
   my $longest_sentence       = 0;
@@ -195,12 +197,8 @@ sub do_review ($$$$$)
 
       if ($language eq 'de')
         {
-          my ($en_lemma, $eng_message);
-          if ($page =~ /^\[\[en:(.+?)\]\]/m)
-            {
-              $en_lemma    = $1;
-              $eng_message = '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $en_lemma . '&go=Seite'}, $en_lemma) . ') ';
-            }
+          my $eng_message = $page =~ /^\[\[en:(.+?)\]\]/m ? '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $1 . '&go=Seite'}, $1) . ') ' : '';
+
           $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält kein einziges Bild. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels ein Bild gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $::search_lemma . '&go=Seite'}, $::search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . " oder dem lateinischen bei Tieren und Pflanzen).\n";
         }
       else
@@ -1408,12 +1406,8 @@ sub do_review ($$$$$)
 
       if ($language eq 'de')
         {
-          my ($en_lemma, $eng_message);
-          if ($page =~ /^\[\[en:(.+?)\]\]/m)
-            {
-              $en_lemma    = $1;
-              $eng_message = '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $en_lemma . '&go=Seite'}, $en_lemma) . ') ';
-            }
+          my $eng_message = $page =~ /^\[\[en:(.+?)\]\]/m ? '(' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $1 . '&go=Seite'}, $1) . ') ' : '';
+
           $extra_message .= $proposal . 'Vorschlag</span> (der nur bei manchen Lemmas sinnvoll ist): Dieser Artikel enthält keinen Link zu den Wikimedia Commons, bei manchen Artikeln ist dies informativ (beispielsweise Künstler, Pflanzen, Tiere und Orte), siehe beispielsweise ' . a ({href => 'http://de.wikipedia.org/wiki/Wespe#Weblinks'}, 'Wespe#Weblinks') . '. Um zu schauen, ob es auf den Commons entsprechendes Material gibt, kann man einfach schauen, ob es in den anderssprachigen Versionen dieses Artikels einen Link gibt, oder selbst auf den Commons nach ' . a ({href => 'http://commons.wikimedia.org/wiki/Special:Search?search=' . $::search_lemma . '&go=Seite'}, $::search_lemma) . ' suchen (eventuell unter dem englischen Begriff ' . $eng_message . ' oder dem lateinischen bei Tieren und Pflanzen). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen'}, 'Wikimedia_Commons#In_Artikeln_auf_Bildergalerien_hinweisen') . "\n";
         }
       else
