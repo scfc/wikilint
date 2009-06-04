@@ -17,34 +17,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+use strict;
+use utf8;
+use warnings;
+
 use CGI qw/:standard/;
 use HTML::Entities;
 use LWP::UserAgent;
-use strict;
 use URI::Escape;
-use warnings;
-
-#############################################################
-# i don't get all this utf8-stuff but it kind of works now
-# IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# i had to change usr/lib/perl5/5.8.6/unicore/CaseFolding.txt and SpecialCasing.txt
-# to prevent perl from matching ß to ss (don't know if there is a better way)
-# to be able to look for "daß" without finding "dass".
-# in both files in uncommented the line starting with 00DF
-# and called "perl mktables" in the same directory.
-# this change is of course for the whole system!
-# IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-use utf8;
-use POSIX qw(locale_h);
-use URI::Escape 'uri_escape_utf8';
-
-setlocale(LC_CTYPE, 'german');
-setlocale(LC_ALL, 'german');
-
-binmode STDOUT, ":utf8";
-use open ':utf8';
-#############################################################
 
 use config;
 use autoreview;
@@ -206,6 +186,9 @@ sub output ($$$$$$$$$$$$$)
 
   if ($language eq 'de')
     {
+      my $formattedquotient;
+
+      ($formattedquotient = $quotient) =~ tr/./,/;
       print h3 ('Geprüfter Artikel: ' . a ({href => $url}, $search_lemma) . ' '  . small ('[' . a ({href => create_edit_link ($lemma_org, 'de')}, 'Bearbeiten in Wikipedia') . ']'));
       print 'Link zu dieser Seite: ' . encode_entities (create_ar_link ($link_lemma, 'de', $oldid, $do_typo_check)) . br ();
 
@@ -218,7 +201,7 @@ sub output ($$$$$$$$$$$$$)
 
       print '<p><b><font color="red">Obacht!</font> Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22. April 2007. Bitte die Hinweise nicht unreflektiert übernehmen; wenn sich das automatisieren lassen würde, hätte ich einen <a href="http://de.wikipedia.org/wiki/Wikipedia:Bots">Bot</a> daraus gemacht ;). Der Inhalt ist immer wichtiger als die Formatierung!</b><p>';
 
-      print br (), 'Problem-Quote für ', a ({href => $url}, $search_lemma), ': ', b ($quotient), ' (nur bedingt aussagekräftig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)', p ();
+      print br (), 'Problem-Quote für ', a ({href => $url}, $search_lemma), ': ', b ($formattedquotient), ' (nur bedingt aussagekräftig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)', p ();
 
       create_review_summary_html ($review_letters, $language);
 
@@ -365,6 +348,7 @@ sub output ($$$$$$$$$$$$$)
     }
 }
 
+binmode (STDOUT, ':encoding(UTF-8)');
 if (param ())
   {
     my ($action, $oldid, $page, $random_page, $remove_century, $testpage);
@@ -408,7 +392,7 @@ if (param ())
       {
         local ($/);
 
-        open (TEST, '<', '../t/testcases/de/' . param ('testhtml') . '.wiki') || die ('Cannot open ../t/testcases/de/' . param ('testhtml') . '.wiki');
+        open (TEST, '<:encoding(UTF-8)', '../t/testcases/de/' . param ('testhtml') . '.wiki') || die ('Cannot open ../t/testcases/de/' . param ('testhtml') . '.wiki');
         $page = <TEST>;
         close (TEST);
       }
