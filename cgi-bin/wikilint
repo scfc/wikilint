@@ -404,6 +404,14 @@ if (param ())
         $page = <TEST>;
         close (TEST);
       }
+    elsif (!defined ($ENV {'REMOTE_ADDR'}) && defined ($lemma_org = $search_lemma = param ('testhtml')))
+      {
+        local ($/);
+
+        open (TEST, '<', '../t/testcases/de/' . param ('testhtml') . '.wiki') || die ('Cannot open ../t/testcases/de/' . param ('testhtml') . '.wiki');
+        $page = <TEST>;
+        close (TEST);
+      }
     else
       { $page = download_page ($url, '', $language, $oldid); }
 
