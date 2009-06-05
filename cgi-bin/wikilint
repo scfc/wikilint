@@ -44,7 +44,7 @@ sub begin_html ($)
                     -lang => 'de-DE',
                     -bgcolor => '#FFFFFF',
                     -style => '/~timl/wikilint/wp.css'),
-        h1 ({-align => 'center'}, '<font face="helvetica, arial">wikilint</font>');
+        h1 ({-align => 'center', -face => 'helvetica, arial'}, 'wikilint');
 }
 
 sub print_explanation ()
@@ -194,12 +194,12 @@ sub output ($$$$$$$$$$$$$)
 
       print h1 ('Achtung, dieses Review betrifft eine alte Version dieses Artikels!') if ($oldid);
 
-      print '<p><table border="1"><tr><td bgcolor="#CCCCCC">';
+      print '<p /><table border="1"><tr><td bgcolor="#cccccc">';
       print_explanation ();
       print_form ($url);
-      print '</table>';
+      print '</td></tr></table>';
 
-      print '<p><b><font color="red">Obacht!</font> Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22. April 2007. Bitte die Hinweise nicht unreflektiert übernehmen; wenn sich das automatisieren lassen würde, hätte ich einen <a href="http://de.wikipedia.org/wiki/Wikipedia:Bots">Bot</a> daraus gemacht ;). Der Inhalt ist immer wichtiger als die Formatierung!</b><p>';
+      print p (b (span ({color => 'red'}, 'Obacht!') . ' Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22. April 2007. Bitte die Hinweise nicht unreflektiert übernehmen; wenn sich das automatisieren lassen würde, hätte ich einen ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Bots'}, 'Bot') . ' daraus gemacht ;). Der Inhalt ist immer wichtiger als die Formatierung!'));
 
       print br (), 'Problem-Quote für ', a ({href => $url}, $search_lemma), ': ', b ($formattedquotient), ' (nur bedingt aussagekräftig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)', p ();
 
@@ -229,7 +229,7 @@ sub output ($$$$$$$$$$$$$)
 
   if ($extra_message)
     {
-      $extra_message =~ s/^/<li>/gm;
+      $extra_message =~ s/^(.*)$/<li>$1<\/li>/gm;
       if ($language eq 'de')
         {
           print hr, h3 ('Allgemeine Anmerkungen (weitere unten in dem Wiki-Quelltext):');
