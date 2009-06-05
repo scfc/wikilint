@@ -242,7 +242,7 @@ sub do_review ($$$$$)
 
                   # "(?<!-)" to avoid strange words in German double-names like "meier-pabst".
                   # @is_typo is an array of regular expressions!
-                  $times                = $page =~ s/$typo/$seldom$1<\/span><sup class=reference><a href=#TYPO>[TYPO ?]<\/a><\/sup>/g;
+                  $times                = $page =~ s/$typo/$seldom$1<\/span><sup class="reference"><a href="#TYPO">[TYPO?]<\/a><\/sup>/g;
                   $review_level        += $times * $seldom_level;
                   $count_letters {'o'} += $times;
                 }
@@ -254,7 +254,7 @@ sub do_review ($$$$$)
   my $lola = 0;
 
   # 1. Too much wiki-links to the same page.
-  # 2. HTTP-links except "<ref>" or in "==weblinks==".
+  # 2. HTTP-links except "<ref>" or in "== Weblinks ==".
   foreach my $line (split (/\n/, $page))
     {
       my $line_org_wiki = shift (@lines_org_wiki);
@@ -280,13 +280,13 @@ sub do_review ($$$$$)
           while ($line =~ s/%"/%QM-ERS/g)
             {}
 
-          $times                = $line =~ s/("([^";]{3,}?)")/$sometimes$1<\/span><sup class=reference><a href=#QUOTATION>[QUOTATION ?]<\/a><\/sup>/g;
+          $times                = $line =~ s/("([^";]{3,}?)")/$sometimes$1<\/span><sup class="reference"><a href="#QUOTATION">[QUOTATION?]<\/a><\/sup>/g;
           $review_level        += $times * $sometimes_level;
           $count_letters {'u'} += $times;
 
           # "(?<!['\d\w])" to avoid "''", "'''" and coordinates "4'5"".
           # "\w" to avoid "d'Agoult".
-          $times                = $line =~ s/(?<!['\d\w])('([^';]{3,}?)')(?!')/$sometimes$1<\/span><sup class=reference><a href=#QUOTATION>[QUOTATION ?]<\/a><\/sup>/g;
+          $times                = $line =~ s/(?<!['\d\w])('([^';]{3,}?)')(?!')/$sometimes$1<\/span><sup class="reference"><a href="#QUOTATION">[QUOTATION?]<\/a><\/sup>/g;
           $review_level        += $times * $sometimes_level;
           $count_letters {'u'} += $times;
 
@@ -385,7 +385,7 @@ sub do_review ($$$$$)
           my $times;
 
           # "von 1420 bis 1462" instead of "von 12-13" (this has to be applied before LTN).
-          $times                = $line =~ s/(von (\[\[)?\d{1,4}(\]\])?[–-—](\[\[)?\d{1,4}(\|\d\d)?(\]\])?)/$never$1<\/span><sup class=reference><a href=#FROMTO>[FROMTO ?]<\/a><\/sup>/g;
+          $times                = $line =~ s/(von (\[\[)?\d{1,4}(\]\])?[–-—](\[\[)?\d{1,4}(\|\d\d)?(\]\])?)/$never$1<\/span><sup class="reference"><a href="#FROMTO">[FROMTO?]<\/a><\/sup>/g;
           $review_level        += $times * $never_level;
           $count_letters {'l'} += $times;
 
@@ -394,7 +394,7 @@ sub do_review ($$$$$)
           my $line_tmp = $line;
           my $undo = 0;
           my $times_total = 0;
-          while (my $times = $line =~ s/( |\[\[)(\d{1,4})((\]\]| )?\-( ||\[\[)?)(\d{1,4})(\]\])?( +[nv]\. Chr\.)?/$1$sometimes$2$3$6<\/span><sup class=reference><a href=#BISSTRICH>[BISSTRICH ?]<\/a><\/sup>$7$8/)   # Do "1980-1990" and "[[1980]]-[[1990]]".
+          while (my $times = $line =~ s/( |\[\[)(\d{1,4})((\]\]| )?\-( ||\[\[)?)(\d{1,4})(\]\])?( +[nv]\. Chr\.)?/$1$sometimes$2$3$6<\/span><sup class="reference"><a href="#BISSTRICH">[BISSTRICH?]<\/a><\/sup>$7$8/)   # Do "1980-1990" and "[[1980]]-[[1990]]".
             {
               my $from = $2;
               my $to   = $6;
@@ -448,7 +448,7 @@ sub do_review ($$$$$)
                     {
                       my $times;
 
-                      $times                = $line =~ s/(￼STARTBOLD)([^￼]+?)(￼ENDBOLD)(:?)/$sometimes'''$2'''<\/span><sup class=reference><a href=#BOLD-INSTEAD-OF-SECTION>[BOLD-INSTEAD-OF-SECTION ?]<\/a><\/sup>$4/g;
+                      $times                = $line =~ s/(￼STARTBOLD)([^￼]+?)(￼ENDBOLD)(:?)/$sometimes'''$2'''<\/span><sup class="reference"><a href="#BOLD-INSTEAD-OF-SECTION">[BOLD-INSTEAD-OF-SECTION?]<\/a><\/sup>$4/g;
                       $review_level        += $times * $sometimes_level;
                       $count_letters {'e'} += $times;
                     }
@@ -459,7 +459,7 @@ sub do_review ($$$$$)
                       # Okay: "'''[[Wasserstoff|H]]'''".
                       # Regular expression uses alternation for three cases: "/('''[[Wasserstoff]]'''|'''[[Wasserstoff|H2O]]'''| '''Wasserstoff''')/".
                       # This part is for "'''baum [[Wasserstoff|H]]'''": "[^￼\[\n]*?".
-                      $times                = $line =~ s/(￼STARTBOLD)(([^￼\[\n]*?\[\[[^￼\]\|]{4,}?\]\])[^￼\[\n]*?|([^￼\[\n]*?\[\[[^￼]+?\|[^￼\]]{4,}?\]\][^￼\[\n]*?)|([^￼\[]{4,}?))(￼ENDBOLD)/$seldom'''$2'''<\/span><sup class=reference><a href=#BOLD>[BOLD]<\/a><\/sup>/g;
+                      $times                = $line =~ s/(￼STARTBOLD)(([^￼\[\n]*?\[\[[^￼\]\|]{4,}?\]\])[^￼\[\n]*?|([^￼\[\n]*?\[\[[^￼]+?\|[^￼\]]{4,}?\]\][^￼\[\n]*?)|([^￼\[]{4,}?))(￼ENDBOLD)/$seldom'''$2'''<\/span><sup class="reference"><a href="#BOLD">[BOLD]<\/a><\/sup>/g;
                       $review_level        += $times * $seldom_level;
                       $count_letters {'F'} += $times;
                     }
@@ -468,7 +468,7 @@ sub do_review ($$$$$)
                   # "<big>", "<small>", "<s>", "<u>", "<br />", "<div align="center">", "<div align="right">".
                   my $times;
 
-                  $times                = $line =~ s/(&lt;(br ?(\/)?|center|big|small|s|u|div align="?center"?|div align="?right"?)&gt;)/$seldom$1<\/span><sup class=reference><a href=#TAG2>[TAG2]<\/a><\/sup>/g;
+                  $times                = $line =~ s/(&lt;(br ?(\/)?|center|big|small|s|u|div align="?center"?|div align="?right"?)&gt;)/$seldom$1<\/span><sup class="reference"><a href="#TAG2">[TAG2]<\/a><\/sup>/g;
                   $review_level        += $times * $seldom_level;
                   $count_letters {'k'} += $times;
                 }
@@ -540,7 +540,7 @@ sub do_review ($$$$$)
           # Do "baum .baum" (cf. <URI:http://de.wikipedia.org/wiki/Plenk>).
           my $line_copyy = $line;
           my $times;
-          $times = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.])([[:alpha:]]+? )/$1$never$2<\/span><sup class=reference><a href=#plenk>[plenk ?]<\/a><\/sup>$3/g;
+          $times = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.])([[:alpha:]]+? )/$1$never$2<\/span><sup class="reference"><a href="#plenk">[plenk?]<\/a><\/sup>$3/g;
           if ($times == 1)
             {
               $line                 = $line_copyy;
@@ -550,7 +550,7 @@ sub do_review ($$$$$)
 
           # Do "baum . baum".
           $line_copyy = $line;
-          $times      = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.]) ([[:alpha:]]{2,}? )/$1$never$2<\/span><sup class=reference><a href=#plenk>[plenk ?]<\/a><\/sup>$3/g;
+          $times      = $line_copyy =~ s/( [[:alpha:]]{2,}?)( [,.]) ([[:alpha:]]{2,}? )/$1$never$2<\/span><sup class="reference"><a href="#plenk">[plenk?]<\/a><\/sup>$3/g;
           # If it happens more than once in one line, assume it's intentional.
           if ($times == 1)
             {
@@ -566,18 +566,18 @@ sub do_review ($$$$$)
             {
               my $times;
 
-              $times                = $line =~ s/( [[:alpha:]][[:lower:]]{2,})([,.])([[:alpha:]][[:lower:]]{2,} )/$1$never$2<\/span><sup class=reference><a href=#klemp>[klemp ?]<\/a><\/sup>$3/g;
+              $times                = $line =~ s/( [[:alpha:]][[:lower:]]{2,})([,.])([[:alpha:]][[:lower:]]{2,} )/$1$never$2<\/span><sup class="reference"><a href="#klemp">[klemp?]<\/a><\/sup>$3/g;
               $review_level        += $times * $never_level;
               $count_letters {'c'} += $times;
             }
 
           # Do "blub.blub.Blub".
-          $times                = $line =~ s/([.,][[:alpha:]][[:lower:]]{2,})([,.])([[:upper:]][[:alpha:]]{2,}( |))/$1$never$2<\/span><sup class=reference><a href=#klemp>[klemp ?]<\/a><\/sup>$3$4/g;
+          $times                = $line =~ s/([.,][[:alpha:]][[:lower:]]{2,})([,.])([[:upper:]][[:alpha:]]{2,}( |))/$1$never$2<\/span><sup class="reference"><a href="#klemp">[klemp?]<\/a><\/sup>$3$4/g;
           $review_level        += $times * $never_level;
           $count_letters {'c'} += $times;
 
           # Do "blub.Blub.blub".
-          $times                = $line =~ s/([.,][A-ZÖÄÜ][[:lower:]]{2,})([,.])([[:alpha:]][[:lower:]]{2,}( |))/$1$never$2<\/span><sup class=reference><a href=#klemp>[klemp ?]<\/a><\/sup>$3$4/g;
+          $times                = $line =~ s/([.,][A-ZÖÄÜ][[:lower:]]{2,})([,.])([[:alpha:]][[:lower:]]{2,}( |))/$1$never$2<\/span><sup class="reference"><a href="#klemp">[klemp?]<\/a><\/sup>$3$4/g;
           $review_level        += $times * $never_level;
           $count_letters {'c'} += $times;
 
@@ -647,7 +647,7 @@ sub do_review ($$$$$)
           # Avoid splitting on "www.yahoo.com" or middle dot of "z.B.".
           $line_copy =~ s/(\w)\.(\w)/$1&#46;$2/g;
 
-          # Avoid splitting on my own question marks in "[LTN ?]".
+          # Avoid splitting on my own question marks in "[LTN?]".
           $line_copy =~ s/\?\]/FRAGERS]/g;
 
           # A sure sign of a sentence ending dot "mit der Nummer 22. Im Folgejahr".
@@ -832,7 +832,7 @@ sub do_review ($$$$$)
               do
                 {
                   # Avoid "!" in wikilinks and HTML tags, "$!" and "26!" (factorial) and chess ("e2e4!").
-                  $times                = $line =~ s/([^\[<\$]+?[^\d\[<\$])!([^\]&>]*?$)/$1$seldom!<\/span><sup class=reference><a href=#EM>[EM1]<\/a><\/sup>$2/g;
+                  $times                = $line =~ s/([^\[<\$]+?[^\d\[<\$])!([^\]&>]*?$)/$1$seldom!<\/span><sup class="reference"><a href="#EM">[EM1]<\/a><\/sup>$2/g;
                   $review_level        += $times * $seldom_level;
                   $count_letters {'G'} += $times;
                 }
@@ -843,10 +843,10 @@ sub do_review ($$$$$)
               my $times;
 
               # Match "!" before "<ref>" and after "</ref>".
-              $times                = $line =~ s/(.[^\[<]*?)!([^\]&>]*?&lt;ref&gt;)/$1$seldom!<\/span><sup class=reference><a href=#EM>[EM2]<\/a><\/sup>$2/g;
+              $times                = $line =~ s/(.[^\[<]*?)!([^\]&>]*?&lt;ref&gt;)/$1$seldom!<\/span><sup class="reference"><a href="#EM">[EM2]<\/a><\/sup>$2/g;
               $review_level        += $times * $seldom_level;
               $count_letters {'G'} += $times;
-              $times                = $line =~ s/(&lt;\/ref&gt;.[^\[<]*?)!([^\]&>]*?)/$1$seldom!<\/span><sup class=reference><a href=#EM>[EM3]<\/a><\/sup>$2/g;
+              $times                = $line =~ s/(&lt;\/ref&gt;.[^\[<]*?)!([^\]&>]*?)/$1$seldom!<\/span><sup class="reference"><a href="#EM">[EM3]<\/a><\/sup>$2/g;
               $review_level        += $times * $seldom_level;
               $count_letters {'G'} += $times;
             }
@@ -872,7 +872,7 @@ sub do_review ($$$$$)
                     {
                       my $times;
 
-                      $times                = $line =~ s/$avoid_word/$sometimes$1<\/span><sup class=reference><a href=#WORDS>[WORDS ?]<\/a><\/sup>/gi;
+                      $times                = $line =~ s/$avoid_word/$sometimes$1<\/span><sup class="reference"><a href="#WORDS">[WORDS?]<\/a><\/sup>/gi;
                       $review_level        += $times * $sometimes_level;
                       $count_letters {'B'} += $times;
                     }
@@ -911,8 +911,8 @@ sub do_review ($$$$$)
                           # Fill words are not /i because:
                           # 1. In the beginning of a line they're mostly useful.
                           # 2. To avoid e. g. tagging "zum Wohl des Reiches" (wohl).
-                          $times = $line =~ s/$fill_word/$sometimes$1<\/span><sup class=reference><a href=#FILLWORD>[FILLWORD ?]<\/a><\/sup>/g;
-                          # This $review_level is counted separately because a certain amount of fill words is ok.
+                          $times = $line =~ s/$fill_word/$sometimes$1<\/span><sup class="reference"><a href="#FILLWORD">[FILLWORD?]<\/a><\/sup>/g;
+                          # This $review_level is counted separately because a certain number of fill words is ok.
                           $count_letters {'C'} += $times;
                           $count_fillwords     += $times;
                         }
@@ -938,7 +938,7 @@ sub do_review ($$$$$)
                     {
                       my $times;
 
-                      $times                = $line =~ s/$abbreviation/$sometimes$1<\/span><sup class=reference><a href=#ABBREVIATION>[ABBREVIATION]<\/a><\/sup>/gi;
+                      $times                = $line =~ s/$abbreviation/$sometimes$1<\/span><sup class="reference"><a href="#ABBREVIATION">[ABBREVIATION]<\/a><\/sup>/gi;
                       $review_level        += $times * $sometimes_level;
                       $count_letters {'D'} += $times;
                     }
@@ -954,7 +954,7 @@ sub do_review ($$$$$)
               my $times;
 
               # "[[^\[\]]" instead of "." is neccesarry to avoid marking all of "[[a]] blub [[s]][[u]]".
-              $times                = $line =~ s/(\[\[[^\[\]]+?\]\]\[\[[^\[\]]+?\]\])/$never$1<\/span><sup class=reference><a href=#DL>[DL]<\/a><\/sup>/g;
+              $times                = $line =~ s/(\[\[[^\[\]]+?\]\]\[\[[^\[\]]+?\]\])/$never$1<\/span><sup class="reference"><a href="#DL">[DL]<\/a><\/sup>/g;
               $review_level        += $times * $never_level;
               $count_letters {'E'} += $times;
             }
@@ -966,7 +966,7 @@ sub do_review ($$$$$)
         {
           my $times;
 
-          $times                = $line =~ s/^([[:lower:]][[:lower:]]+? )/$seldom$1<\/span><sup class=reference><a href=#LC>[LC ?]<\/a><\/sup>/g;
+          $times                = $line =~ s/^([[:lower:]][[:lower:]]+? )/$seldom$1<\/span><sup class="reference"><a href="#LC">[LC?]<\/a><\/sup>/g;
           $review_level        += $times * $seldom_level;
           $count_letters {'a'} += $times;
         }
@@ -985,7 +985,7 @@ sub do_review ($$$$$)
 
       # Small section title.
       my $times;
-      $times                = $line =~ s/^(={2,9} ?\b?)([[:lower:]].+?)( ?={2,9})/$1$seldom$2<\/span><sup class=reference><a href=#LC>[LC ?]<\/a><\/sup>$3/g;
+      $times                = $line =~ s/^(={2,9} ?\b?)([[:lower:]].+?)( ?={2,9})/$1$seldom$2<\/span><sup class="reference"><a href="#LC">[LC?]<\/a><\/sup>$3/g;
       $review_level        += $times * $seldom_level;
       $count_letters {'b'} += $times;
 
@@ -1098,7 +1098,7 @@ sub do_review ($$$$$)
                   $linkto_tmp =~ tr/_/ /;
                   $line       =~ s/$linkto_org/$linkto_tmp/g;
 
-                  $times                = $line =~ s/(\[\[)($linkto_tmp)([|\]])/$1$seldom<a href="http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel">$2<\/a><\/span><sup class=reference><a href=#BKL>[BKL]<\/a><\/sup>$3/gi;
+                  $times                = $line =~ s/(\[\[)($linkto_tmp)([|\]])/$1$seldom<a href="http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel">$2<\/a><\/span><sup class="reference"><a href="#BKL">[BKL]<\/a><\/sup>$3/gi;
                   $review_level        += $times * $seldom_level;
                   $count_letters {'d'} += $times;
                 }
@@ -1117,7 +1117,7 @@ sub do_review ($$$$$)
                   $linkto_tmp =~ tr/_/ /;
                   $line       =~ s/$linkto/$linkto_tmp/g;
 
-                  $times                = $line =~ s/(\[\[)($linkto_tmp)(\||\]\])/$1$sometimes<a href="http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel">$2<\/a><\/span><sup class=reference><a href=#MAYBEBKL>[MAYBEBKL ?]<\/a><\/sup>$3/gi;
+                  $times                = $line =~ s/(\[\[)($linkto_tmp)(\||\]\])/$1$sometimes<a href="http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel">$2<\/a><\/span><sup class="reference"><a href="#MAYBEBKL">[MAYBEBKL?]<\/a><\/sup>$3/gi;
                   $review_level        += $times * $sometimes_level;
                   $count_letters {'d'} += $times;
                 }
@@ -1137,7 +1137,7 @@ sub do_review ($$$$$)
               my $times;
 
               # This regular expression won't hit "tree.tree" but that's not wanted anyway.
-              $times                = $line =~ s/($word $word)/$never$1<\/span><sup class=reference><a href=#DOUBLEWORD>[DOUBLEWORD ?]<\/a><\/sup>/i;
+              $times                = $line =~ s/($word $word)/$never$1<\/span><sup class="reference"><a href="#DOUBLEWORD">[DOUBLEWORD?]<\/a><\/sup>/i;
               $review_level        += $times * $never_level;
               $count_letters {'n'} += $times;
             }
@@ -1162,13 +1162,13 @@ sub do_review ($$$$$)
               my $times;
 
               # "[\.,]" is for decimal divider.
-              $times                = $line =~ s/$unit/$sometimes$1<\/span><sup class=reference><a href=#NBSP>[NBSP]<\/a><\/sup>/g;
+              $times                = $line =~ s/$unit/$sometimes$1<\/span><sup class="reference"><a href="#NBSP">[NBSP]<\/a><\/sup>/g;
               $review_level        += $times * $sometimes_level;
               $count_letters {'T'} += $times;
             }
 
           # Good: "[[Dr. phil.]]".
-          $times                = $line =~ s/(?<!\[)(Dr\. )(\w)/$sometimes$1<\/span><sup class=reference><a href=#NBSP>[NBSP]<\/a><\/sup>$2/g;
+          $times                = $line =~ s/(?<!\[)(Dr\. )(\w)/$sometimes$1<\/span><sup class="reference"><a href="#NBSP">[NBSP]<\/a><\/sup>$2/g;
           $review_level        += $times * $sometimes_level;
           $count_letters {'T'} += $times;
         }
@@ -1182,7 +1182,7 @@ sub do_review ($$$$$)
           my $times;
 
           # Avoid complaining on "''italic''" with "(?<!')".
-          $times                = $line =~ s/(\w+)?$bad_search_apostroph/$sometimes$1$2<\/span><sup class=reference><a href=#APOSTROPH>[APOSTROPH ?]<\/a><\/sup>/go;
+          $times                = $line =~ s/(\w+)?$bad_search_apostroph/$sometimes$1$2<\/span><sup class="reference"><a href="#APOSTROPH">[APOSTROPH?]<\/a><\/sup>/go;
           $review_level        += $times * $sometimes_level / 3;
           $count_letters {'s'} += $times;
         }
@@ -1193,18 +1193,18 @@ sub do_review ($$$$$)
         {
           my $times;
 
-          $times                = $line =~ s/$bad_search/$1$sometimes$2<\/span><sup class=reference><a href=#GS>[GS ?]<\/a><\/sup>$3/g;
+          $times                = $line =~ s/$bad_search/$1$sometimes$2<\/span><sup class="reference"><a href="#GS">[GS?]<\/a><\/sup>$3/g;
           $review_level        += $times * $sometimes_level;
           $count_letters {'t'} += $times;
         }
 
       # Do missing spaces before brackets.
-      $times                = $line =~ s/([[:alpha:]]{3,}?\()([[:alpha:]]{3,})/$seldom$1<\/span><sup class=reference><a href=#BRACKET2>[BRACKET2 ?]<\/a><\/sup>$2/g;
+      $times                = $line =~ s/([[:alpha:]]{3,}?\()([[:alpha:]]{3,})/$seldom$1<\/span><sup class="reference"><a href="#BRACKET2">[BRACKET2?]<\/a><\/sup>$2/g;
       $review_level        += $times * $seldom_level;
       $count_letters {'v'} += $times;
 
       # … missing spaces after brackets.
-      $times                = $line =~ s/([[:alpha:]]{3,})(\)[[:alpha:]]{3,}?)/$1$seldom$2<\/span><sup class=reference><a href=#BRACKET2>[BRACKET2 ?]<\/a><\/sup>/g;
+      $times                = $line =~ s/([[:alpha:]]{3,})(\)[[:alpha:]]{3,}?)/$1$seldom$2<\/span><sup class="reference"><a href="#BRACKET2">[BRACKET2?]<\/a><\/sup>/g;
       $review_level        += $times * $seldom_level;
       $count_letters {'v'} += $times;
 
@@ -1220,37 +1220,37 @@ sub do_review ($$$$$)
 
   # No weblinks in section titles.
   # … except "de.wikipedia" to avoid tagging BKL tag as weblink in section.
-  $times                = $page =~ s/(={2,9}.*?)(http:\/\/(?!de\.wikipedia).+?)( .*?)(={2,9})/$1$never$2<\/span><sup class=reference><a href=#link_in_section_title>[LiST-Web]<\/a><\/sup>$3$4/g;
+  $times                = $page =~ s/(={2,9}.*?)(http:\/\/(?!de\.wikipedia).+?)( .*?)(={2,9})/$1$never$2<\/span><sup class="reference"><a href="#link_in_section_title">[LiST-Web]<\/a><\/sup>$3$4/g;
   $review_level        += $times * $never_level;
   $count_letters {'N'} += $times;
 
   # No wikilinks in section titles.
-  $times                = $page =~ s/(={2,9}.*?)(\[\[.+?\]\])(.*?={2,9})/$1$never$2<\/span><sup class=reference><a href=#link_in_section_title>[LiST]<\/a><\/sup>$3$4/g;
+  $times                = $page =~ s/(={2,9}.*?)(\[\[.+?\]\])(.*?={2,9})/$1$never$2<\/span><sup class="reference"><a href="#link_in_section_title">[LiST]<\/a><\/sup>$3$4/g;
   $review_level        += $times * $never_level;
   $count_letters {'O'} += $times;
 
   # No ":!?" in section titles.
-  $times                = $page =~ s/(={2,9}.*?)([:\?!])( .*?)(={2,9})/$1$sometimes$2<\/span><sup class=reference><a href=#colon_minus_section>[CMS]<\/a><\/sup>$3$4/g;
+  $times                = $page =~ s/(={2,9}.*?)([:\?!])( .*?)(={2,9})/$1$sometimes$2<\/span><sup class="reference"><a href="#colon_minus_section">[CMS]<\/a><\/sup>$3$4/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'P'} += $times;
 
   # No "-" except "==Haus- und Hofnarr==".
-  $times                = $page =~ s/(={2,9}.*?)( - )(.*?)(={2,9})/$1$sometimes$2<\/span><sup class=reference><a href=#colon_minus_section>[CMS]<\/a><\/sup>$3$4/g;
+  $times                = $page =~ s/(={2,9}.*?)( - )(.*?)(={2,9})/$1$sometimes$2<\/span><sup class="reference"><a href="#colon_minus_section">[CMS]<\/a><\/sup>$3$4/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'P'} += $times;
 
   # Do "ISBN: 3-540-42849-6".
-  $times                = $page =~ s/(ISBN: \d[\d\- ]{11,15}\d)/$never$1<\/span><sup class=reference><a href=#ISBN>[ISBN]<\/a><\/sup>/g;
+  $times                = $page =~ s/(ISBN: \d[\d\- ]{11,15}\d)/$never$1<\/span><sup class="reference"><a href="#ISBN">[ISBN]<\/a><\/sup>/g;
   $review_level        += $times * $never_level;
   $count_letters {'i'} += $times;
 
   # Bracket errors on templates, e. g. "{ISSN|0097-8507}}".
   # Expect template name to be not longer than 20 characters.
-  $times                = $page =~ s/(?<!{)({[^{}]{1,20}?\|[^{}]+?}})/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
+  $times                = $page =~ s/(?<!{)({[^{}]{1,20}?\|[^{}]+?}})/$seldom$1<\/span><sup class="reference"><a href="#BRACKET">[BRACKET?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'q'} += $times;
   # "{{ISSN|0097-8507}".
-  $times                = $page =~ s/({{[^{}]{1,20}?\|[^{}]+?}(?!}))/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
+  $times                = $page =~ s/({{[^{}]{1,20}?\|[^{}]+?}(?!}))/$seldom$1<\/span><sup class="reference"><a href="#BRACKET">[BRACKET?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'q'} += $times;
 
@@ -1258,36 +1258,36 @@ sub do_review ($$$$$)
   # Expect wikilink to be not longer than 80 characters.
   # Good: "[[#a|[a]]".
   # "\D" to avoid "[1  + [3+4]]".
-  $times                = $page =~ s/(?<![\[\|])(\[[^\[\]\d][^\[\]]{1,80}?\]\])/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
+  $times                = $page =~ s/(?<![\[\|])(\[[^\[\]\d][^\[\]]{1,80}?\]\])/$seldom$1<\/span><sup class="reference"><a href="#BRACKET">[BRACKET?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'q'} += $times;
 
   # "[[Baum]".
   # Expect wikilink to be not longer than 80 characters.
-  $times                = $page =~ s/(?<!\[)(\[\[[^\[\]]{1,80}?\](?!\]))/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
+  $times                = $page =~ s/(?<!\[)(\[\[[^\[\]]{1,80}?\](?!\]))/$seldom$1<\/span><sup class="reference"><a href="#BRACKET">[BRACKET?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'q'} += $times;
 
   # "[[[Baum]]".
   # Expect wikilink to be not longer than 80 characters.
-  $times                = $page =~ s/(\[\[\[[^\[\]]{1,80}?\]\](?!\]))/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
+  $times                = $page =~ s/(\[\[\[[^\[\]]{1,80}?\]\](?!\]))/$seldom$1<\/span><sup class="reference"><a href="#BRACKET">[BRACKET?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'q'} += $times;
 
   # "[[Baum]]]".
   # Expect wikilink to be not longer than 80 characters.
   # Good: "[[Image:Baum.jpg [[Baum]]]]".
-  $times                = $page =~ s/(\[\[[^\[\]]{1,80}?\]\]\](?!\]))/$seldom$1<\/span><sup class=reference><a href=#BRACKET>[BRACKET ?]<\/a><\/sup>/g;
+  $times                = $page =~ s/(\[\[[^\[\]]{1,80}?\]\]\](?!\]))/$seldom$1<\/span><sup class="reference"><a href="#BRACKET">[BRACKET?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'q'} += $times;
 
   # "<i>" and "<b>" instead of "''" and "'''".
-  $times                = $page =~ s/(&lt;[ib]&gt;)/$never$1<\/span><sup class=reference><a href=#TAG>[TAG]<\/a><\/sup>/g;
+  $times                = $page =~ s/(&lt;[ib]&gt;)/$never$1<\/span><sup class="reference"><a href="#TAG">[TAG]<\/a><\/sup>/g;
   $review_level        += $times * $never_level;
   $count_letters {'j'} += $times;
 
   # „...“ (= three dots) instead of „…“.
-  $times                = $page =~ s/(\.\.\.)/$sometimes$1<\/span><sup class=reference><a href=#DOTDOTDOT>[DOTDOTDOT]<\/a><\/sup>/g;
+  $times                = $page =~ s/(\.\.\.)/$sometimes$1<\/span><sup class="reference"><a href="#DOTDOTDOT">[DOTDOTDOT]<\/a><\/sup>/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'l'} += $times;
 
@@ -1295,7 +1295,7 @@ sub do_review ($$$$$)
   $self_lemma =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
   utf8::decode ($self_lemma);
   my $self_linkle       = 'http://de.wikipedia.org/wiki/' . $self_lemma;
-  $times                = $page =~ s/(\[\[)$self_lemma(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$self_lemma<\/a>$2<\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>/g;
+  $times                = $page =~ s/(\[\[)$self_lemma(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$self_lemma<\/a>$2<\/span><sup class="reference"><a href="#SELFLINK">[SELFLINK]<\/a><\/sup>/g;
   $review_level        += $times * $never_level;
   $count_letters {'m'} += $times;
 
@@ -1307,7 +1307,7 @@ sub do_review ($$$$$)
       my $from = $1;
       my $self_linkle = 'http://de.wikipedia.org/wiki/' . $from;
       # Avoid regular expression grouping by "()" in $from (e. g. "A3 (Autobahn)") with "\Q…\E".
-      $times                = $page =~ s/(\[\[)\Q$from\E(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$from<\/a>$2<\/span><sup class=reference><a href=#SELFLINK>[SELFLINK]<\/a><\/sup>/g;
+      $times                = $page =~ s/(\[\[)\Q$from\E(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$from<\/a>$2<\/span><sup class="reference"><a href="#SELFLINK">[SELFLINK]<\/a><\/sup>/g;
       $review_level        += $times * $never_level;
       $count_letters {'m'} += $times;
     }
@@ -1332,7 +1332,7 @@ sub do_review ($$$$$)
               $extra_message        .= a ({name => 'TML-' . $linkto_tmp_ahrefname}) . $seldom . 'Zu viele Links zu [[' . $linkto_tmp . ']] (' . $count_linkto {$linkto} . ' Stück)</span>, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#H.C3.A4ufigkeit_der_Verweise'}, 'WP:VL#Häufigkeit_der_Verweise') . br () . "\n";
 
               # This one "(?<!\| )" to avoid tagging links in tables (which isn't perfect but perl doesn't do variable length look behind).
-              $page =~ s/(?<!\| )(\[\[$linkto_tmp\b)/$seldom$1<\/span><sup class=reference><a href=#TML-$linkto_tmp_ahrefname>[TML:$count_linkto{$linkto}x]<\/a><\/sup>/gi;
+              $page =~ s/(?<!\| )(\[\[$linkto_tmp\b)/$seldom$1<\/span><sup class="reference"><a href="#TML-$linkto_tmp_ahrefname">[TML:$count_linkto{$linkto}x]<\/a><\/sup>/gi;
             }
           else
             { $extra_message .= $seldom . 'Too many links to [[' . $linkto . ']] (' . $count_linkto {$linkto} . ')</span>' . br () . "\n"; }
@@ -1610,19 +1610,19 @@ sub tag_dates_first_line ($)   # This function is for the first line only!
   # "Larry Wall (* [[27. September]] [[1954]] ; † [[30. April]] [[2145]] ) blub [[3. Mai]] [[1977]]".
 
   # Replace years except birth and death = "r]] [[1234]]" or "* [[1971]]" or " † [[2012]]".
-  $times                = $line =~ s/(?<!(\w\]\]| \(\*|. †|; \*) )(\[\[[1-9]\d{0,3}( [nv]\. Chr\.)?\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(?<!(\w\]\]| \(\*|. †|; \*) )(\[\[[1-9]\d{0,3}( [nv]\. Chr\.)?\]\])/$seldom$2<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'K'} += $times;
 
   # "[[1878|78]]".
-  $times                = $line =~ s/(\[\[[1-9]\d{0,3}( [nv]\. Chr\.)?\|)(\d\d)(\]\])/$seldom$3<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(\[\[[1-9]\d{0,3}( [nv]\. Chr\.)?\|)(\d\d)(\]\])/$seldom$3<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'K'} += $times;
 
   # Replace days ("[[3. April]]") except birth and death.
   foreach my $month (@months)
     {
-      $times                = $line =~ s/(?<!(\*|†) )(\[\[(\d{1,2}\. )?$month\]\])/$seldom$2<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+      $times                = $line =~ s/(?<!(\*|†) )(\[\[(\d{1,2}\. )?$month\]\])/$seldom$2<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
       $review_level        += $times * $seldom_level;
       $count_letters {'L'} += $times;
     }
@@ -1637,27 +1637,27 @@ sub tag_dates_rest_line ($)
 
   # Links to dates.
   # Do [[2005]].
-  $times                = $line =~ s/(\[\[[1-9]\d{0,3}(?: [nv]\. Chr\.)?\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(\[\[[1-9]\d{0,3}(?: [nv]\. Chr\.)?\]\])/$seldom$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'K'} += $times;
 
   # [[1878|78]].
-  $times                = $line =~ s/(\[\[[1-9]\d{0,3}(?: [nv]\. Chr\.)?\|\d\d\]\])/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(\[\[[1-9]\d{0,3}(?: [nv]\. Chr\.)?\|\d\d\]\])/$seldom$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $seldom_level;
   $count_letters {'K'} += $times;
 
   # Do [[17. Jahrhundert]] or [[17. Jahrhundert|whatever]].
-  $times                = $line =~ s/(\[\[\d{1,2}\. Jahrhundert( [nv]\. Chr\.)?[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(\[\[\d{1,2}\. Jahrhundert( [nv]\. Chr\.)?[\]\|]\]?)/$sometimes$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'U'} += $times;
 
   # Do [[1960er]] or [[1960er|60er]].
-  $times                = $line =~ s/(\[\[\d{1,4}er[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(\[\[\d{1,4}er[\]\|]\]?)/$sometimes$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'V'} += $times;
 
   # Do [[1960er Jahre]].
-  $times                = $line =~ s/(\[\[\d{1,4}er Jahre[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+  $times                = $line =~ s/(\[\[\d{1,4}er Jahre[\]\|]\]?)/$sometimes$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'V'} += $times;
 
@@ -1665,12 +1665,12 @@ sub tag_dates_rest_line ($)
   foreach my $month (@months)
     {
       # Do [[12. Mai]] or [[12. Mai|…]].
-      $times                = $line =~ s/(\[\[\d{1,2}\. $month[\]\|]\]?)/$seldom$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+      $times                = $line =~ s/(\[\[\d{1,2}\. $month[\]\|]\]?)/$seldom$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
       $review_level        += $times * $seldom_level;
       $count_letters {'L'} += $times;
 
       # Do [[Mai]] or [[Mai|…]].
-      $times                = $line =~ s/(\[\[$month[\]\|]\]?)/$sometimes$1<\/span><sup class=reference><a href=#links_to_numbers>[LTN ?]<\/a><\/sup>/g;
+      $times                = $line =~ s/(\[\[$month[\]\|]\]?)/$sometimes$1<\/span><sup class="reference"><a href="#links_to_numbers">[LTN?]<\/a><\/sup>/g;
       $review_level        += $times * $sometimes_level;
       $count_letters {'W'} += $times;
     }
