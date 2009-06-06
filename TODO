@@ -1,7 +1,3 @@
-* use strict;
-
-* use warnings;
-
 * Make sure links are checked case-sensitively except for
   first character in German articles (use canonical name);
   take care of underscore vs. space as well.
