@@ -20,21 +20,30 @@
 package autoreview;
 
 use base 'Exporter';
-
-use config;
-use CGI qw/:standard/;
-use HTML::Entities;
-use LWP::UserAgent;
 use strict;
 use utf8;
 use warnings;
 
-our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page read_files selftest);
+use CGI qw/:standard/;
+use HTML::Entities;
+use LWP::UserAgent;
+use URI::Escape;
+
+use config;
+
+our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page read_files selftest EscapeSectionTitle);
 our @EXPORT_OK = qw(remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 my (@abbreviations, @avoid_words, $count_ref, @fill_words, $global_removed_count, %is_bkl, %is_bkl_lc, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
 our (%replaced_stuff, %count_letters, $review_level);   # Public only for tests.
+
+sub EscapeSectionTitle ($)
+{
+  my ($SectionTitle) = @_;
+
+  return uri_escape_utf8 ('section-' . $SectionTitle);
+}
 
 sub download_page ($$$$;$$);
 sub download_page ($$$$;$$)   # Create URL to download from and call http_download ().
@@ -296,7 +305,7 @@ sub do_review ($$$$$)
       my $last_section_title = $section_title;
 
       # Section title.
-      if ($line =~ /^(={2,9})(.+?)={2,9}/)
+      if ($line =~ /^(={2,9})\s*(.+?)\s*={2,9}/)
         {
           $section_level = length ($1);
           $section_title = $2;
@@ -320,9 +329,9 @@ sub do_review ($$$$$)
               $last_section_title !~ /referenz/i)
             {
               if ($language eq 'de')
-                { $extra_message .= $sometimes . 'Kurzer Abschnitt: ' . a ({href => '#' . $last_section_title}, '==' . $last_section_title . '==') . ' (' . $words_in_section . ' Wörter)</span> Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WSIGA#.C3.9Cberschriften_und_Abs.C3.A4tze'}, 'WP:WSIGA#Überschriften_und_Absätze') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Grundregeln'}, 'Wikipedia:Typografie#Grundregeln') . '.' . br () . "\n"; }
+                { $extra_message .= $sometimes . 'Kurzer Abschnitt: ' . a ({href => '#' . EscapeSectionTitle ($last_section_title)}, '== ' . $last_section_title . ' ==') . ' (' . $words_in_section . ' Wörter)</span> Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WSIGA#.C3.9Cberschriften_und_Abs.C3.A4tze'}, 'WP:WSIGA#Überschriften_und_Absätze') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Grundregeln'}, 'Wikipedia:Typografie#Grundregeln') . '.' . br () . "\n"; }
               else
-                { $extra_message .= $sometimes . 'Very short section: ==' . $last_section_title . '== (' . $words_in_section . ' words)</span>' . br () . "\n"; }
+                { $extra_message .= $sometimes . 'Very short section: == ' . $last_section_title . ' == (' . $words_in_section . ' words)</span>' . br () . "\n"; }
               $review_level += $sometimes_level;
               $count_letters {'I'}++;
             }
@@ -342,15 +351,15 @@ sub do_review ($$$$$)
             { $inside_weblinks = 0; }
 
           # Check if we're in section "literatur" or in a subsection of it.
-          # Beware of "==Heilquellen==".
+          # Beware of "== Heilquellen ==".
           if ($section_title =~ /Quellen/ || $section_title =~ /literatur/i)
             {
               $inside_literatur        = 1;
               $literatur_section_level = $section_level;
 
               # Only this case is still "$inside_weblinks".
-              # "==Weblinks==
-              #  ===Quellen===".
+              # "== Weblinks ==
+              #  === Quellen ===".
               $inside_weblinks = 0 if ($section_level <= $weblinks_section_level);
             }
           elsif ($inside_literatur && $section_level > $literatur_section_level)   # Keep status.
@@ -992,7 +1001,7 @@ sub do_review ($$$$$)
       if ($inside_weblinks && !$inside_literatur && $line =~ /https?:\/\//i)
         { $count_weblinks += $line =~ s/(https?:\/\/)/$1/gi; }   # Just count, replace with same (for more than one weblink per line).
 
-      # Check for link in "==see also==" already linked to above.
+      # Check for link in "== See also ==" already linked to above.
       if (defined ($section_title)                   &&
           $section_title =~ /(siehe auch|see also)/i &&
           $line !~ /\[\[\w\w:[^\]]+?\]\]/            &&
@@ -1234,7 +1243,7 @@ sub do_review ($$$$$)
   $review_level        += $times * $sometimes_level;
   $count_letters {'P'} += $times;
 
-  # No "-" except "==Haus- und Hofnarr==".
+  # No "-" except "== Haus- und Hofnarr ==".
   $times                = $page =~ s/(={2,9}.*?)( - )(.*?)(={2,9})/$1$sometimes$2<\/span><sup class="reference"><a href="#colon_minus_section">[CMS]<\/a><\/sup>$3$4/g;
   $review_level        += $times * $sometimes_level;
   $count_letters {'P'} += $times;
@@ -1357,7 +1366,7 @@ sub do_review ($$$$$)
         {
           if ($section_sources)
             {
-              $tmp_text = ', aber Abschnitt ' . a ({href => '#' . $section_sources}, '==' . $section_sources . '==');
+              $tmp_text = ', aber Abschnitt ' . a ({href => '#' . EscapeSectionTitle ($section_sources)}, '== ' . $section_sources . ' ==');
               $count_letters {'H'}++;
             }
           else

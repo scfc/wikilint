@@ -178,11 +178,11 @@ sub output ($$$$$$$$$$$$$)
   # Include HTML line-breaks.
   $page =~ s/\n/br () . "\n"/eg;
 
-  # Include <a name> for each ==section==, tricky because of my own HTML in section-titles, e.g.:
-  # ==Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte==<br>.
-  $page =~ s/(={2,9})\s*(.*?)(<.*?>)(.*?)(<.*>)(.*?)\s*(={2,9})/<a name="$2$4$6">$1$2$3$4$5$6$7<\/a>/g;
+  # Include '<a name="…">' for each "== Section ==", tricky because of my own HTML in section titles, e. g.:
+  # "== Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte ==<br />".
+  $page =~ s/((={2,9})\s*(.*?)<.*?>(.*?)<.*>(.*?)\s*\2)/a ({id => EscapeSectionTitle ($3 . $4 . $5)}, $1)/eg;
   # Now sections without HTML aka [^<].
-  $page =~ s/(={2,9})\s*([^<]+?)\s*(={2,9})/<a name="$2">$1$2$3<\/a>/g;
+  $page =~ s/((={2,9})\s*([^<]+?)\s*\2)/a ({id => EscapeSectionTitle ($3)}, $1)/eg;
 
   if ($language eq 'de')
     {
