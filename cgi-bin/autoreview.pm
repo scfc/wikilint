@@ -25,6 +25,8 @@ use utf8;
 use warnings;
 
 use CGI qw(:standard);
+use DB_File;
+use DBM_Filter;
 use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
@@ -35,7 +37,7 @@ our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_r
 our @EXPORT_OK = qw(remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
-my (@abbreviations, @avoid_words, $count_ref, @fill_words, $global_removed_count, %is_bkl, %is_bkl_lc, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
+my (@abbreviations, @avoid_words, $count_ref, %Disambs, @fill_words, $global_removed_count, @is_typo, $last_word, $line, $lola, %Redirs, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
 our (%replaced_stuff, %count_letters, $review_level);   # Public only for tests.
 
 sub EscapeSectionTitle ($)
@@ -1095,10 +1097,8 @@ sub do_review ($$$$$)
           if ($word =~ /\[\[(.+?)[|\]]/)
             {
               my $linkto_org = $1;
-              my $linkto     = lc ($linkto_org);
 
-              # First, 100 % case-sensitive match, because of "[[USA]]" vs. "[[Usa]]".
-              if ($is_bkl {$linkto_org})
+              if ($Disambs {$linkto_org})
                 {
                   my ($linkto_tmp, $times);
 
@@ -1109,25 +1109,6 @@ sub do_review ($$$$$)
 
                   $times                = $line =~ s/(\[\[)($linkto_tmp)([|\]])/$1$seldom<a href="http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel">$2<\/a><\/span><sup class="reference"><a href="#BKL">[BKL]<\/a><\/sup>$3/gi;
                   $review_level        += $times * $seldom_level;
-                  $count_letters {'d'} += $times;
-                }
-              # Second, case-insensitive because we just know there's "[[Usa]]" in the list,
-              # and "[[usa]]" in the article might also be evil.
-              # Anyway, exclude "USA" because that happens too often and is just false positive.
-              elsif ($is_bkl_lc {$linkto}  &&
-                     lc ($linkto) ne "usa" &&
-                     lc ($linkto) ne "gen" &&
-                     lc ($linkto) ne "gas")
-                {
-                  my ($linkto_tmp, $times);
-
-                  # Remove "_" already, otherwise links to Wikipedia with blank *and* wrong case don't work.
-                  $linkto_tmp =  $linkto;
-                  $linkto_tmp =~ tr/_/ /;
-                  $line       =~ s/$linkto/$linkto_tmp/g;
-
-                  $times                = $line =~ s/(\[\[)($linkto_tmp)(\||\]\])/$1$sometimes<a href="http:\/\/de.wikipedia.org\/wiki\/Spezial:Suche?search=$2&go=Artikel">$2<\/a><\/span><sup class="reference"><a href="#MAYBEBKL">[MAYBEBKL?]<\/a><\/sup>$3/gi;
-                  $review_level        += $times * $sometimes_level;
                   $count_letters {'d'} += $times;
                 }
             }
@@ -1308,19 +1289,15 @@ sub do_review ($$$$$)
   $review_level        += $times * $never_level;
   $count_letters {'m'} += $times;
 
-  open (REDIRECTS, '<:encoding(UTF-8)', '../../lib/langdata/de/redirs.txt') || die ("Can't open ../../lib/langdata/de/redirs.txt: $!\n");
-  while (<REDIRECTS>)
+  while (my ($RedirectFrom, $RedirectTo) = each (%Redirs))
     {
-      my $times;
-      next unless (/^([^\t]+)\t\Q$self_lemma\E\n$/);
-      my $from = $1;
-      my $self_linkle = 'http://de.wikipedia.org/wiki/' . $from;
-      # Avoid regular expression grouping by "()" in $from (e. g. "A3 (Autobahn)") with "\Q…\E".
-      $times                = $page =~ s/(\[\[)\Q$from\E(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$from<\/a>$2<\/span><sup class="reference"><a href="#SELFLINK">[SELFLINK]<\/a><\/sup>/g;
+      next if ($RedirectTo ne $self_lemma);
+      my $self_linkle = 'http://de.wikipedia.org/wiki/' . $RedirectFrom;
+      # Avoid regular expression grouping by "()" in $RedirectFrom (e. g. "A3 (Autobahn)") with "\Q…\E".
+      my $times             = $page =~ s/(\[\[)\Q$RedirectFrom\E(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$RedirectFrom<\/a>$2<\/span><sup class="reference"><a href="#SELFLINK">[SELFLINK]<\/a><\/sup>/g;
       $review_level        += $times * $never_level;
       $count_letters {'m'} += $times;
     }
-  close (REDIRECTS);
 
   # One wikilink to one lemma per $max_words_per_wikilink words is okay (number made up by me ;).
   my $too_much_links = $num_words / $max_words_per_wikilink + 1;
@@ -1540,14 +1517,12 @@ sub read_files ($)
       close (ABBR);
 
       # Begriffsklärungsseiten/disambiguation pages.
-      open (BKL, '<:encoding(UTF-8)', '../../lib/langdata/de/disambs.txt') || die ("Can't open ../../lib/langdata/de/disambs.txt: $!\n");
-      while (<BKL>)
-        {
-          chomp ();
-          $is_bkl {$_}++;
-          $is_bkl_lc {lc ($_)}++;
-        }
-      close (BKL);
+      my $db_d = tie (%Disambs, 'DB_File', '../../lib/langdata/de/disambs.db', O_RDONLY, 0666, $DB_BTREE) or die ("Can't open ../../lib/langdata/de/disambs.db: $!\n");
+      $db_d->Filter_Push ('utf8');
+
+      # Redirects.
+      my $db_r = tie (%Redirs, 'DB_File', '../../lib/langdata/de/redirs.db', O_RDONLY, 0666, $DB_BTREE) or die ("Can't open ../../lib/langdata/de/redirs.db: $!\n");
+      $db_r->Filter_Push ('utf8');
 
       # Typos.
       open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
