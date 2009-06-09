@@ -20,13 +20,13 @@
 package autoreview;
 
 use base 'Exporter';
+use feature qw(state);
 use strict;
 use utf8;
 use warnings;
 
 use CGI qw(:standard);
-use DB_File;
-use DBM_Filter;
+use DBI;
 use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
@@ -37,7 +37,7 @@ our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_r
 our @EXPORT_OK = qw(remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
-my (@abbreviations, @avoid_words, $count_ref, %Disambs, @fill_words, $global_removed_count, @is_typo, $last_word, $line, $lola, %Redirs, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
+my (@abbreviations, @avoid_words, $count_ref, $DB, @fill_words, $global_removed_count, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
 our (%replaced_stuff, %count_letters, $review_level);   # Public only for tests.
 
 sub EscapeSectionTitle ($)
@@ -45,6 +45,16 @@ sub EscapeSectionTitle ($)
   my ($SectionTitle) = @_;
 
   return uri_escape_utf8 ('section-' . $SectionTitle);
+}
+
+sub IsDisambiguation ($)
+{
+  my ($Title) = @_;
+  state $s = $DB->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ?;') or die ($DB->errstr ());
+
+  $s->execute ($Title) or die ($DB->errstr ());
+
+  return $s->fetch ();
 }
 
 sub download_page ($$$$;$$);
@@ -1098,7 +1108,7 @@ sub do_review ($$$$$)
             {
               my $linkto_org = $1;
 
-              if ($Disambs {$linkto_org})
+              if (IsDisambiguation ($linkto_org))
                 {
                   my ($linkto_tmp, $times);
 
@@ -1289,9 +1299,12 @@ sub do_review ($$$$$)
   $review_level        += $times * $never_level;
   $count_letters {'m'} += $times;
 
-  while (my ($RedirectFrom, $RedirectTo) = each (%Redirs))
+  my $RedirectFrom;
+  my $s = $DB->prepare ('SELECT FromTitle FROM Redirects WHERE ToTitle = ?') or die ($DB->errstr ());
+  $s->execute ($self_lemma) or die ($DB->errstr ());
+  $s->bind_columns (\($RedirectFrom)) or die ($DB->errstr ());
+  while ($s->fetch ())
     {
-      next if ($RedirectTo ne $self_lemma);
       my $self_linkle = 'http://de.wikipedia.org/wiki/' . $RedirectFrom;
       # Avoid regular expression grouping by "()" in $RedirectFrom (e. g. "A3 (Autobahn)") with "\Q…\E".
       my $times             = $page =~ s/(\[\[)\Q$RedirectFrom\E(\]\]|\|.+?\]\])/$never$1<a href="$self_linkle">$RedirectFrom<\/a>$2<\/span><sup class="reference"><a href="#SELFLINK">[SELFLINK]<\/a><\/sup>/g;
@@ -1488,6 +1501,11 @@ sub read_files ($)
 
   if ($language eq 'de')
     {
+      # Open database.
+      $DB = DBI->connect ('dbi:SQLite:dbname=../../lib/langdata/de/cache.db', '', '') or die (DBI->errstr ());
+      $DB->{PrintError} = 0;
+      $DB->{unicode}    = 1;
+
       # Words to avoid.
       open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
       while (<WORDS>)
@@ -1515,14 +1533,6 @@ sub read_files ($)
           push (@abbreviations, qr/(\b$_)/);
         }
       close (ABBR);
-
-      # Begriffsklärungsseiten/disambiguation pages.
-      my $db_d = tie (%Disambs, 'DB_File', '../../lib/langdata/de/disambs.db', O_RDONLY, 0666, $DB_BTREE) or die ("Can't open ../../lib/langdata/de/disambs.db: $!\n");
-      $db_d->Filter_Push ('utf8');
-
-      # Redirects.
-      my $db_r = tie (%Redirs, 'DB_File', '../../lib/langdata/de/redirs.db', O_RDONLY, 0666, $DB_BTREE) or die ("Can't open ../../lib/langdata/de/redirs.db: $!\n");
-      $db_r->Filter_Push ('utf8');
 
       # Typos.
       open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
