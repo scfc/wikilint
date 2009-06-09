@@ -1,5 +1,4 @@
 install: test
-	rm -Rf ~/lib ~/public_html/cgi-bin ~/public_html/wikilint
 	cp -R cgi-bin wikilint ~/public_html/
 	cp -R lib ~/
 
