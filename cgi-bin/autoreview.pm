@@ -1800,6 +1800,7 @@ sub check_unformatted_refs ($\$)
         {
           if ($last_word !~ /^URL:/i &&
               $word      !~ /{{\w+?\|[^}]*https?:\/\// &&
+              $last_word !~ /url=/i &&
               $word      !~ /url=/i &&
               # Unformatted weblink: "http://rupp.de".
               ($word =~ /(https?:\/\/.+)/ && $word !~ /(\[https?:\/\/.+)/) ||
