@@ -1,0 +1,181 @@
+'''Gerald Bast''' (* [[1955]] in [[Linz]]) ist ein [[Österreich|österreichischer]] [[Jurist|Hochschuljurist]] und seit 2000 [[Rektor]] der [[Universität für angewandte Kunst Wien]].<ref>{{internetquelle
+|autor=Thomas Trenkler 
+|url=http://derstandard.at/2803256?sap=2&_pid=6328800 
+|titel=„Das philosophische Studium generale“
+|werk=[[Der Standard]]
+|datum=2007-03-14
+|zugriff=2009-12-03 
+}}</ref>
+
+== Leben ==
+
+Von 1974 bis 1979 studierte Gerald Bast [[Rechtswissenschaft|Rechts-]] und [[Wirtschaftswissenschaften]] an der [[Universität Linz]], wo er 1979 zum [[Doktor]] der Rechtswissenschaften promoviert wurde.<ref name="cvREKO">{{internetquelle
+|hrsg=[[Österreichische Universitätenkonferenz]] 
+|url=http://www.reko.ac.at/mitglieder/rektoren_rektorinnen/index.php?ID=131#P131
+|titel=Rektor Dr. Gerald Bast 
+|zugriff=2009-12-03 
+}}</ref> Nach seinem [[Gerichtsjahr]] war Bast kurz [[Richteramtsanwärter]] am [[Bezirksgericht|Bezirks-]] und am [[Gerichtsorganisation in Österreich#Landesgerichte|Landesgericht]] Linz, bevor er 1981 als [[Beamter#Österreich|Beamter]] ins [[Bundesministerium für Wissenschaft und Forschung]] wechselte. Von 1991 bis 1999 war Bast Leiter der ''Abteilung für Organisationsrecht, Grundsatzfragen der Reform der Universitäten und Kunsthochschulen und rechtliche Angelegenheiten der universitären Teilrechtsfähigkeit'' des Wissenschaftsministeriums. 
+
+Seit 1987 ist Gerald Bast [[Nebentätigkeit|nebenbei]] als Vortragender und Prüfer an der Verwaltungsakademie des Bundes auf [[Schloss Laudon]] tätig. Von 1992 bis 1997 war er darüber hinaus Konsulent für die [[Ludwig Boltzmann Gesellschaft]].<ref name="cvangewandte"></ref> 1997 wurde Bast die [[Gewerberecht|gewerberechtliche]] Befähigung zur Ausübung der Tätigkeit als [[Unternehmensberater]] für Wissenschafts- und Bildungseinrichtungen zuerkannt.<ref name="cvREKO"></ref>
+
+== Leistungen ==
+
+Im Jahr 2000 wurde Bast zum ersten Mal zum Rektor der Universität für angewandte Kunst Wien gewählt.<ref name="cvangewandte">{{internetquelle
+|url=http://www.dieangewandte.at/jart/prj3/angewandte/main.jart?rel=de&content-id=1232606866327&reserve-mode=active 
+|hrsg=[[Universität für angewandte Kunst Wien]]
+|titel= Curriculum Vitae Dr. Gerald Bast 
+|zugriff=2009-12-03 
+}}</ref> Seit damals ist er als Beamter des Wissenschaftsministeriums karenziert.<ref name="gpeBMWF">{{internetquelle
+|hrsg=[[Bundesministerium für Wissenschaft und Forschung]]
+|url= http://www.bmwf.gv.at/uploads/media/Geschaeftseinteilung_Stand_1._August_2009_01.pdf
+|format=PDF, ca. 211 KB
+|titel=Geschäftseinteilung
+|seiten=9
+|datum=2009-08-01 
+|zugriff=2009-12-03 
+}}</ref> In den Jahren 2003 und 2006 wurde Bast in diesem Amt bestätigt.<ref>{{internetquelle
+|url=http://sciencev1.orf.at/sciencev1.orf.at/science/news/73185.html 
+|titel=Uni-Reform: Umsetzung mit Hindernissen 
+|werk=Science.ORF.at
+|datum=2003-04-16 
+|zugriff=2009-12-04 
+}}</ref><ref>{{internetquelle
+|autor=[[Universität für angewandte Kunst Wien]] 
+|url=http://www.ots.at/presseaussendung/OTS_20061218_OTS0201 
+|titel=OTS0201: Angewandte: Amtierender Rektor Gerald Bast wiedergewählt
+|werk=[[Austria Presse Agentur|APA]]-OTS 
+|datum=2006-12-18
+|zugriff=2009-12-04 
+}}</ref> Obwohl er seine Karriere als Ministerialbeamter begann, gilt Bast als vehementer Kritiker des [[Universitätsgesetz 2002|Universitätsgesetzes 2002]] und der im Jahr 2001 (wieder-)eingeführten [[Studiengebühr#Österreich|Studiengebühren]].<ref>{{internetquelle
+|autor=Gerald Bast
+|url=http://www0.eduhi.at/verein/kreidekreis/zitiert/zitiert-0302/20021109Unigesetz.htm 
+|titel=Unigesetz, wir folgen dir! 
+|werk=[[Der Standard]] 
+|datum=2002-11-09
+|zugriff=2009-12-04 
+}}</ref><ref>{{internetquelle
+|autor=Gerald Bast
+|url=http://derstandard.at/1256743533676/Gerald-Bast-Hilfe-die-Deutschen-kommen 
+|titel=Hilfe, die Deutschen kommen! 
+|werk=[[Der Standard]] 
+|datum=2009-10-29 
+|zugriff=2009-12-04 
+}}</ref>
+
+Gerald Bast ist stellvertretender Vorsitzender des [[Dachverband der Universitäten|Dachverbandes der österreichischen Universitäten]], Sprecher der Rektoren der österreichischen [[Kunstuniversität]]en und Vizepräsident der der [[Österreichische Universitätenkonferenz|Österreichischen Universitätenkonferenz]] sowie der [[European League of Institutes of the Arts]] (ELIA). Bast ist Mitglied des wissenschaftlichen Beirates der ''Zeitschrift für Hochschulrecht, Hochschulmanagement und Hochschulpolitik''.<ref name="cvangewandte"></ref>
+
+== Ausgewählte Werke ==
+
+* {{Literatur
+ | Autor=Gerald Bast
+ | Titel= Universitäts-Organisationsgesetz
+ | Verlag=Orac-Verlag
+ | Ort=[[Wien]]
+ | Jahr=1990
+ | ISBN=3700701160
+ | Typ=wl
+}}
+
+* {{Literatur
+ | Autor=Gerald Bast und Karl Vodrazka
+ | Titel= Universität und Drittmittel
+ | Verlag=[[Österreichische Rektorenkonferenz]]
+ | Ort=[[Wien]]
+ | Jahr=1990
+ | ISBN=3-901113-02-9
+ | Typ=wl
+ | Kommentar=Gemeinsam mit Karl Vodrazka
+}}
+
+* G. Bast (Hrsg.): Universitäts-Management. Internationales. Symposium, BMWF, Wien 1990 
+
+* G. Bast (Hrsg.): Materialien zur Hochschulreform, Bände 1, 2, 3 und 5, BMWF, Wien 1991-1993
+
+* {{Literatur
+ | Autor=Gerald Bast
+ | Titel=The New Austrian University System: Autonomy by Decentralization
+ | Sammelwerk=Higher Education Policy
+ | Band=Vol. 8
+ | Nummer=3
+ | Jahr=1995
+ | Monat=September
+ | Seiten=33–36
+ | ISSN=1682-3451
+ | DOI=10.1057/hep.1995.41
+ | Typ=wl
+}}
+
+*{{Literatur
+ | Autor=Gerald Bast
+ | Herausgeber=[[Rudolf Strasser]]
+ | Titel=Das Rollenbild des Universitätsassistenten nach der Universitätsreform 1993
+ | Sammelwerk=Beiträge zum Universitätsrecht
+ | Band=Bd. 19
+ | Verlag=[[Verlag_Manz|Manzsche Verlags- und Universitätsbuchhandlung]]
+ | Ort=[[Wien]]
+ | Jahr=1996
+ | ISBN= 978-3214056995
+ | Typ=wl
+}}
+
+* {{Literatur
+ | Herausgeber=Gerald Bast
+ | Titel=UOG 1993 (Universitäts-Organisationsgesetz)
+ | Verlag=[[Verlag_Manz|Manzsche Verlags- und Universitätsbuchhandlung]]
+ | Auflage=2. erweiterte
+ | Ort=Wien
+ | Jahr=1998
+ | ISBN=978-3214034559
+ | Typ=wl
+}}
+
+* {{Literatur
+ | Herausgeber=Gerald Bast, Ewald Langeder und Babette Klemmer
+ | Titel=UniStG (Universitäts-Studiengesetz)
+ | Verlag=[[Verlag_Manz|Manzsche Verlags- und Universitätsbuchhandlung]]
+ | Auflage=2. neu bearbeitete und erweiterte
+ | Ort=[[Wien]]
+ | Jahr=2002
+ | ISBN=978-3214034597
+ | Typ=wl
+}}
+
+* Country Report Austria. In: Democracy and Governance in Higher Education, Council of Europe and Kluwer Law International, The Hague, Netherlands 1998 
+
+* G. Bast, K. Vodrazka: Drittmittelmanagement an Universitäten - Akquirierung / Verwaltung / Gebarung. Ein Anwenderhandbuch,  2. überarbeitete Auflage, Rektorenkonferenz, Wien 2000
+
+* {{Literatur
+ | Herausgeber=Gerald Bast
+ | Titel=Universitätsgesetz 2002
+ | Verlag=[[Verlag_Manz|Manzsche Verlags- und Universitätsbuchhandlung]]
+ | Ort=[[Wien]]
+ | Jahr=2003
+ | ISBN=978-3214090890
+ | Typ=wl
+}}
+
+== Weblinks ==
+* {{DNB-Portal|132117622}}
+
+== Einzelnachweise ==
+
+<references />
+
+{{Normdaten|PND=132117622}}
+
+{{SORTIERUNG:Bast, Gerald}}
+[[Kategorie:Rektor einer Universität in Österreich]]
+[[Kategorie:Verwaltungsjurist]]
+[[Kategorie:Österreicher]]
+[[Kategorie:Geboren 1955]]
+[[Kategorie:Mann]]
+
+{{Personendaten
+|NAME=Bast, Gerald
+|ALTERNATIVNAMEN=
+|KURZBESCHREIBUNG=österreichischer Jurist und Rektor
+|GEBURTSDATUM=1955
+|GEBURTSORT=Linz
+|STERBEDATUM=
+|STERBEORT=
+}}
