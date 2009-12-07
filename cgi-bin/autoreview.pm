@@ -34,7 +34,7 @@ use URI::Escape qw(uri_escape_utf8);
 use config;
 
 our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page read_files selftest EscapeSectionTitle);
-our @EXPORT_OK = qw(remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
+our @EXPORT_OK = qw(check_unformatted_refs remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 my (@abbreviations, @avoid_words, $count_ref, $DB, @fill_words, $global_removed_count, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
@@ -1793,6 +1793,7 @@ sub restore_stuff_quote ($)
 sub check_unformatted_refs ($\$)
 {
   my ($page, $extra_message) = @_;
+  my $last_word = '';
 
   foreach $line (split (/\n/, $page))
     {
