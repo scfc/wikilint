@@ -1795,28 +1795,25 @@ sub check_unformatted_refs ($\$)
   my ($page, $extra_message) = @_;
   my $last_word = '';
 
-  foreach $line (split (/\n/, $page))
+  foreach my $word (split (/\s/, $page))
     {
-      foreach my $word (split (/\s/, $line))
+      if ($last_word !~ /^URL:/i &&
+          $word      !~ /{{\w+?\|[^}]*https?:\/\// &&
+          $last_word !~ /url=/i &&
+          $word      !~ /url=/i &&
+          # Unformatted weblink: "http://rupp.de".
+          ($word =~ /(https?:\/\/.+)/ && $word !~ /(\[https?:\/\/.+)/) ||
+          # Unformatted weblink: "[http://rupp.de]".
+          $word  =~ /(\[https?:\/\/[^\s]+?\])/)
         {
-          if ($last_word !~ /^URL:/i &&
-              $word      !~ /{{\w+?\|[^}]*https?:\/\// &&
-              $last_word !~ /url=/i &&
-              $word      !~ /url=/i &&
-              # Unformatted weblink: "http://rupp.de".
-              ($word =~ /(https?:\/\/.+)/ && $word !~ /(\[https?:\/\/.+)/) ||
-              # Unformatted weblink: "[http://rupp.de]".
-              $word  =~ /(\[https?:\/\/[^\s]+?\])/)
-            {
-              my $weblink = $1;
-
-              if ($::language eq 'de')
-                { ${$extra_message} .= $seldom . 'Unformatierter Weblink: </span>' . $weblink . ' – Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Formatierung'}, 'WP:WEB#Formatierung') . br () . "\n"; }
-              $review_level += $seldom_level;
-              $count_letters {'X'}++;
-            }
-          $last_word = $word;
+          my $weblink = $1;
+  
+          if ($::language eq 'de')
+            { ${$extra_message} .= $seldom . 'Unformatierter Weblink: </span>' . $weblink . ' – Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Formatierung'}, 'WP:WEB#Formatierung') . br () . "\n"; }
+          $review_level += $seldom_level;
+          $count_letters {'X'}++;
         }
+      $last_word = $word;
     }
 }
 
