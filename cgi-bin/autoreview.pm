@@ -1693,48 +1693,22 @@ sub create_ar_link ($$$$)
   return $u->canonical ()->as_string ();
 }
 
+# Inside "<math>", "<code>", etc. everything can be removed
+# before review and restored afterwards.
 sub remove_stuff_to_ignore ($)
 {
-  # Inside <math>, <code>, etc. everything can be removed before review and restored afterwards.
   my ($page) = @_;
   my $lola = 0;
 
   undef %replaced_stuff;
 
-  # "<math>".
-  while ($page =~ s/(<math>.*?<\/math>)/-R-R$lola-R-/si)
+  # Mark lines containing "<!--sic-->" for ignoring typos later.
+  while ($page =~ s/(<!--\s*sic\s*-->)/-R-R-SIC$lola-R-/is)
     { $replaced_stuff {$lola++} = $1; }
 
-  # "<code>".
-  while ($page =~ s/(<code>.*?<\/code>)/-R-R$lola-R-/si)
+  # "<!-- -->", "<blockquote>", "<code>", "<math>", "<nowiki>", "poem", "{{Lückenhaft}}" and "{{Quelle}}".
+  while ($page =~ s/(<!--.+?-->|<(blockquote|code|math|nowiki|poem)>.*?<\/\2>|\{\{(?:Lückenhaft|Quelle)[^}]*?\}\})/-R-R$lola-R-/is)
     { $replaced_stuff {$lola++} = $1; }
-
-  # "<nowiki>".
-  while ($page =~ s/(<nowiki>.*?<\/nowiki>)/-R-R$lola-R-/si)
-    { $replaced_stuff {$lola++} = $1; }
-
-  # "{{Lückenhaft}}", "{{Quelle}}".
-  while ($page =~ s/({{(Lückenhaft|Quelle)[^}]*?}})/-R-R$lola-R-/si)
-    { $replaced_stuff {$lola++} = $1; }
-
-  # "<poem>".
-  while ($page =~ s/(<poem>.*?<\/poem>)/-R-R$lola-R-/si)
-    { $replaced_stuff {$lola++} = $1; }
-
-  # "<blockquote>".
-  while ($page =~ s/(<blockquote>.*?<\/blockquote>)/-R-R$lola-R-/si)
-    { $replaced_stuff {$lola++} = $1; }
-
-  # "<!-- -->".
-  while ($page =~ s/(<!--.+?-->)/-R-R$lola-R-/si)
-    {
-      $replaced_stuff {$lola} = $1;
-
-      # Mark lines containing "<!--sic-->" for ignoring typos later.
-      if ($1 =~ /<!--\s*sic\s*-->/i)
-        { $page =~ s/-R-R$lola-R-/-R-R-SIC$lola-R-/; }
-      $lola++;
-    }
 
   return ($page, $lola);
 }

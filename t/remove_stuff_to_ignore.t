@@ -11,5 +11,5 @@ require_ok ('autoreview');
 undef %autoreview::replaced_stuff;
 is_deeply ([remove_stuff_to_ignore ('Kontrollgruppe.')], ['Kontrollgruppe.', 0]);
 ok (!defined (%autoreview::replaced_stuff));
-is_deeply ([remove_stuff_to_ignore ('Das <math>ist</math> <code>ein</code> <blockquote>Test</blockquote>. <poem>Und ein {{Lückenhaft}} Gedicht.</poem> {{Quelle}} <!-- Kommentar --> <!--sic-->')], ['Das -R-R0-R- -R-R1-R- -R-R4-R-. -R-R3-R- -R-R2-R- -R-R5-R- -R-R-SIC6-R-', 7]);
-is_deeply (\%autoreview::replaced_stuff, {'6' => '<!--sic-->', '4' => '<blockquote>Test</blockquote>', '1' => '<code>ein</code>', '3' => '<poem>Und ein {{Lückenhaft}} Gedicht.</poem>', '0' => '<math>ist</math>', '2' => '{{Quelle}}', '5' => '<!-- Kommentar -->'});
+is_deeply ([remove_stuff_to_ignore ('Das <math>ist</math> <code>ein</code> <blockquote>Test</blockquote>. <poem>Und ein {{Lückenhaft}} Gedicht.</poem> {{Quelle}} <!-- Kommentar --> <!--sic-->')], ['Das -R-R1-R- -R-R2-R- -R-R3-R-. -R-R4-R- -R-R5-R- -R-R6-R- -R-R-SIC0-R-', 7]);
+is_deeply (\%autoreview::replaced_stuff, {'0' => '<!--sic-->', '3' => '<blockquote>Test</blockquote>', '2' => '<code>ein</code>', '4' => '<poem>Und ein {{Lückenhaft}} Gedicht.</poem>', '1' => '<math>ist</math>', '5' => '{{Quelle}}', '6' => '<!-- Kommentar -->'});
