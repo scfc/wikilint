@@ -94,7 +94,7 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
   # Security check.
   die if (length ($language) != 2);
 
-  my $down_url = new URL ('http://' . $language . '.wikipedia.org/w/index.php');
+  my $down_url = new URI ('http://' . $language . '.wikipedia.org/w/index.php');
   my %p = ('title' => $downlemma, 'action' => 'raw');
   $p {'oldid'} = $oldid if (defined ($oldid) && $oldid =~ /^\d+$/);
   $down_url->query_form (\%p);
