@@ -62,7 +62,6 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
 {
   # This function gets called recursively on Wikipedia #REDIRECT[[]]s.
   my ($url, $lemma, $language, $oldid, $ignore_error, $recursion_depth) = @_;
-  my $down_url;
 
   if ($url)
     {
@@ -92,16 +91,15 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
   $::search_lemma =  $lemma;
   $::search_lemma =~ tr/_/ /;
 
-  if (defined ($oldid) && $oldid =~ /^\d+$/)
-    { $down_url = 'http://' . $language . '.wikipedia.org/w/index.php?title=' . $downlemma . '&action=raw&oldid=' . $oldid; }
-  else
-    { $down_url = 'http://' . $language . '.wikipedia.org/w/index.php?title=' . $downlemma . '&action=raw'; }
-
-  # Some more security checks.
+  # Security check.
   die if (length ($language) != 2);
-  die "Evil url" if ($down_url =~ /[ ;]/ || $down_url =~ /\.\./);
 
-  my $page = http_download ($down_url, $ignore_error);
+  my $down_url = new URL ('http://' . $language . '.wikipedia.org/w/index.php');
+  my %p = ('title' => $downlemma, 'action' => 'raw');
+  $p {'oldid'} = $oldid if (defined ($oldid) && $oldid =~ /^\d+$/);
+  $down_url->query_form (\%p);
+
+  my $page = http_download ($down_url->as_string (), $ignore_error);
 
   if ($page =~ /#REDIRECT *\[\[(.+?)\]\]/i && $recursion_depth < 2)   # Don't get infinite loop on two redirects which point to each other.
     {
@@ -1676,16 +1674,23 @@ sub create_edit_link ($$)
 {
   my ($lemma, $lang) = @_;
 
-  return 'http://' . $lang . '.wikipedia.org/w/index.php?title=' . $lemma . '&action=edit';
+  my $u = new URI ('http://' . $lang . '.wikipedia.org/w/index.php') or die ('Cannot construct Wikipedia link.');;
+  $u->query_form ({'title' => $lemma, 'action' => 'edit'});
+
+  return $u->canonical ()->as_string ();
 }
 
 sub create_ar_link ($$$$)
 {
   my ($lemma, $lang, $oldid, $do_typo_check) = @_;
 
-  return $tool_path . '?lemma=' . $lemma . '&l=' . $lang .
-         (defined ($oldid) ? '&oldid=' . $oldid : '') .
-         ($do_typo_check   ? '&do_typo_check=ON' : '');
+  my $u = new URI ($tool_path) or die ('Cannot construct wikilint link.');
+  my %p = ('lemma' => $lemma, 'l' => $lang);
+  $p {'oldid'} = $oldid if (defined ($oldid));
+  $p {'do_typo_check'} = 'ON' if ($do_typo_check);
+  $u->query_form (\%p);
+
+  return $u->canonical ()->as_string ();
 }
 
 sub remove_stuff_to_ignore ($)
