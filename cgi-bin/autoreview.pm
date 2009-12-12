@@ -1861,9 +1861,10 @@ sub remove_refs_and_images ($$)
   # better than expanding an open "<ref name=cc>" over the whole page.
   $page =~ s/(<ref(>| +name ?= ?)[^<]+?<\/ref>)/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
 
-  # The "(…){0,8}" is for links inside the picture description, like "[[Image:bild.jpg|This is a [[tree]] genau]]",
-  # the "([^\]\[]*?)" is for images with links in it.
-  $page =~ s/(\[\[(Bild:|Datei:|File:|Image:)([^\]\[]*?)([^\]]+?\[\[[^\]]+?\]\][^\]]+?){0,8}\]\])/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
+  # The "(…)*" is for links inside the picture description,
+  # like "[[Image:bild.jpg|This is a [[tree]] genau]]", the
+  # "([^][]*?)" is for images with links in it.
+  $page =~ s/(\[\[(Bild:|Datei:|File:|Image:)[^][]+(?:\[\[[^][]*\]\][^][]*)*[^][]*\]\])/remove_one_item ($1, '-R-I', \%remove_refs_and_images_array, 1)/egis;
 
   # "<gallery> … </gallery>".
   # "<gallery widths="200" heights =…></gallery>".
