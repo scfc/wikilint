@@ -95,9 +95,7 @@ sub download_page ($$$$;$$)   # Create URL to download from and call http_downlo
   die if (length ($language) != 2);
 
   my $down_url = new URI ('http://' . $language . '.wikipedia.org/w/index.php');
-  my %p = ('title' => $downlemma, 'action' => 'raw');
-  $p {'oldid'} = $oldid if (defined ($oldid) && $oldid =~ /^\d+$/);
-  $down_url->query_form (\%p);
+  $down_url->query_form ({'title' => $downlemma, 'action' => 'raw', defined ($oldid) && $oldid =~ /^\d+$/ ? ('oldid' => $oldid) : ()});
 
   my $page = http_download ($down_url->as_string (), $ignore_error);
 
@@ -1685,10 +1683,7 @@ sub create_ar_link ($$$$)
   my ($lemma, $lang, $oldid, $do_typo_check) = @_;
 
   my $u = new URI ($tool_path) or die ('Cannot construct wikilint link.');
-  my %p = ('lemma' => $lemma, 'l' => $lang);
-  $p {'oldid'} = $oldid if (defined ($oldid));
-  $p {'do_typo_check'} = 'ON' if ($do_typo_check);
-  $u->query_form (\%p);
+  $u->query_form ({'lemma' => $lemma, 'l' => $lang, defined ($oldid) ? ('oldid' => $oldid) : (), $do_typo_check ? ('do_typo_check' => 'ON') : ()});
 
   return $u->canonical ()->as_string ();
 }
