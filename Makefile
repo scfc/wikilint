@@ -1,5 +1,6 @@
 install: test
-	cp -R cgi-bin wikilint ~/public_html/
+	cp cgi-bin/{autoreview.pm,config.pm,wikilint} ~/public_html/cgi-bin/
+	cp wikilint/{deflag.jpg,gbflag.gif,wp.css} ~/public_html/wikilint/
 	cp -R lib ~/
 
 all: lib/langdata/de/cache.db
