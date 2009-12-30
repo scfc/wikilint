@@ -6,8 +6,8 @@ use strict;
 use warnings;
 use utf8;
 
-BEGIN { use_ok ('autoreview', 'check_unformatted_refs'); }
-require_ok ('autoreview');
+BEGIN { use_ok ('Wikilint', 'check_unformatted_refs'); }
+require_ok ('Wikilint');
 
 our ($language) = 'de';
 

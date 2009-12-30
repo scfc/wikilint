@@ -5,8 +5,8 @@ use Test::More tests => 12;
 use strict;
 use warnings;
 
-BEGIN { use_ok ('autoreview', 'tag_dates_rest_line'); }
-require_ok ('autoreview');
+BEGIN { use_ok ('Wikilint', 'tag_dates_rest_line'); }
+require_ok ('Wikilint');
 
 is (tag_dates_rest_line ('Kontrollgruppe.'), 'Kontrollgruppe.');
 is (tag_dates_rest_line ('[[2005]]'), '<span class="seldom">[[2005]]</span><sup class="reference"><a href="#links_to_numbers">[LTN?]</a></sup>');
@@ -16,5 +16,5 @@ is (tag_dates_rest_line ('[[1960er]] or [[1960er|60er]]'), '<span class="sometim
 is (tag_dates_rest_line ('[[1960er Jahre]]'), '<span class="sometimes">[[1960er Jahre]]</span><sup class="reference"><a href="#links_to_numbers">[LTN?]</a></sup>');
 is (tag_dates_rest_line ('[[12. Mai]] or [[12. Mai|...]]'), '<span class="seldom">[[12. Mai]]</span><sup class="reference"><a href="#links_to_numbers">[LTN?]</a></sup> or <span class="seldom">[[12. Mai|</span><sup class="reference"><a href="#links_to_numbers">[LTN?]</a></sup>...]]');
 is (tag_dates_rest_line ('[[Mai]] or [[Mai|...]]'), '<span class="sometimes">[[Mai]]</span><sup class="reference"><a href="#links_to_numbers">[LTN?]</a></sup> or <span class="sometimes">[[Mai|</span><sup class="reference"><a href="#links_to_numbers">[LTN?]</a></sup>...]]');
-is ($autoreview::review_level, 15);
-is_deeply (\%autoreview::count_letters, {'K' => 2, 'U' => 2, 'V' => 3, 'L' => 2, 'W' => 2});
+is ($Wikilint::review_level, 15);
+is_deeply (\%Wikilint::count_letters, {'K' => 2, 'U' => 2, 'V' => 3, 'L' => 2, 'W' => 2});

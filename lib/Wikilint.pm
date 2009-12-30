@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-package autoreview;
+package Wikilint;
 
 use base 'Exporter';
 use feature qw(state);
@@ -30,8 +30,7 @@ use DBI;
 use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
-
-use config;
+use Wikilint::Config;
 
 our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page read_files selftest EscapeSectionTitle);
 our @EXPORT_OK = qw(check_unformatted_refs remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.

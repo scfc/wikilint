@@ -25,9 +25,8 @@ use CGI qw(:standard);
 use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
-
-use config;
-use autoreview;
+use Wikilint;
+use Wikilint::Config;
 
 our ($VERSION) = 0.1;
 

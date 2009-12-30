@@ -5,8 +5,8 @@ use Test::More tests => 18;
 use strict;
 use warnings;
 
-BEGIN { use_ok ('autoreview', 'remove_year_and_date_links'); }
-require_ok ('autoreview');
+BEGIN { use_ok ('Wikilint', 'remove_year_and_date_links'); }
+require_ok ('Wikilint');
 
 is_deeply ([remove_year_and_date_links ('Kontrollgruppe.', 0)], ['Kontrollgruppe.', 0]);
 is_deeply ([remove_year_and_date_links ('Kontrollgruppe.', 1)], ['Kontrollgruppe.', 0]);

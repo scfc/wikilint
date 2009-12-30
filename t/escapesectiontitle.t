@@ -5,8 +5,8 @@ use Test::More tests => 7;
 use strict;
 use warnings;
 
-BEGIN { use_ok ('autoreview', 'EscapeSectionTitle'); }
-require_ok ('autoreview');
+BEGIN { use_ok ('Wikilint', 'EscapeSectionTitle'); }
+require_ok ('Wikilint');
 
 is (EscapeSectionTitle ('18. Jahrhundert'), 'section-18.%20Jahrhundert');
 is (EscapeSectionTitle ('Abgeordnete für Krefeld'), 'section-Abgeordnete%20f%C3%83%C2%BCr%20Krefeld');
