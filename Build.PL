@@ -78,8 +78,11 @@ my $build = $class->new (dist_name         => 'wikilint',
                                                'URI::Escape' => 0},
                          build_requires    => {'App::Build'     => 0,    # Needed for installing the software.
                                                'DBD::SQLite'    => 0},   # Needed for compiling the cache.
-                         extra_dirs        => ['cgi-bin', 'htdocs'],
-                         install_path      => {'share' => 'share'},
+                         extra_dirs        => {'cgi-bin' => {dest_dir => $ENV {'HOME'} . '/public_html/cgi-bin'},
+                                               'htdocs'  => {dest_dir => $ENV {'HOME'} . '/public_html/wikilint'}},
+                         install_path      => {'lib'     => $ENV {'HOME'} . '/lib',
+                                               'libdoc'  => $ENV {'HOME'} . '/man/man3',
+                                               'share'   => $ENV {'HOME'} . '/share'},
                          dynamic_config    => 1,
                          create_packlist   => 0);
 
