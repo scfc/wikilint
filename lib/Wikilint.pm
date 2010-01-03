@@ -1494,15 +1494,17 @@ sub read_files ($)
 
   die "Language missing\n" unless (defined ($language));
 
+  my $LangDataDir = $ENV {'HOME'} . '/share/langdata';
+
   if ($language eq 'de')
     {
       # Open database.
-      $DB = DBI->connect ('dbi:SQLite:dbname=../../lib/langdata/de/cache.db', '', '') or die (DBI->errstr ());
+      $DB = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/de/cache.db', '', '') or die (DBI->errstr ());
       $DB->{PrintError} = 0;
       $DB->{unicode}    = 1;
 
       # Words to avoid.
-      open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/avoid_words.txt') || die ("Can't open ../../lib/langdata/de/avoid_words.txt: $!\n");
+      open (WORDS, '<:encoding(UTF-8)', $LangDataDir . '/de/avoid_words.txt') || die ("Can't open de/avoid_words.txt: $!\n");
       while (<WORDS>)
         {
           chomp ();
@@ -1511,7 +1513,7 @@ sub read_files ($)
       close (WORDS);
 
       # Fill words ("aber", "auch", "nun", "dann", "doch", "wohl", "allerdings", "eigentlich", "jeweils").
-      open (FILLWORDS, '<:encoding(UTF-8)', '../../lib/langdata/de/fill_words.txt') || die ("Can't open ../../lib/langdata/de/fill_words.txt: $!\n");
+      open (FILLWORDS, '<:encoding(UTF-8)', $LangDataDir . '/de/fill_words.txt') || die ("Can't open de/fill_words.txt: $!\n");
       while (<FILLWORDS>)
         {
           chomp ();
@@ -1520,7 +1522,7 @@ sub read_files ($)
       close (FILLWORDS);
 
       # Abbreviations.
-      open (ABBR, '<:encoding(UTF-8)', '../../lib/langdata/de/abbreviations.txt') || die ("Can't open ../../lib/langdata/de/abbreviations.txt: $!\n");
+      open (ABBR, '<:encoding(UTF-8)', $LangDataDir . '/de/abbreviations.txt') || die ("Can't open de/abbreviations.txt: $!\n");
       while (<ABBR>)
         {
           chomp ();
@@ -1530,7 +1532,7 @@ sub read_files ($)
       close (ABBR);
 
       # Typos.
-      open (TYPO, '<:encoding(UTF-8)', '../../lib/langdata/de/typos.txt') || die ("Can't open ../../lib/langdata/de/typos.txt: $!\n");
+      open (TYPO, '<:encoding(UTF-8)', $LangDataDir . '/de/typos.txt') || die ("Can't open de/typos.txt: $!\n");
       while (<TYPO>)
         {
           chomp ();
@@ -1547,7 +1549,7 @@ sub read_files ($)
   elsif ($language eq 'en')
     {
       # Words to avoid.
-      open (WORDS, '<:encoding(UTF-8)', '../../lib/langdata/en/avoid_words.txt') || die ("Can't open ../../lib/langdata/en/avoid_words.txt: $!\n");
+      open (WORDS, '<:encoding(UTF-8)', $LangDataDir . '/en/avoid_words.txt') || die ("Can't open en/avoid_words.txt: $!\n");
       while (<WORDS>)
         {
           chomp ();
