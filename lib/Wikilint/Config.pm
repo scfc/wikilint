@@ -33,7 +33,6 @@ our $max_words_per_sentence =   50;
 our $min_words_per_section  =   30;
 our $max_words_per_wikilink = 1000;
 
-
 # Threshold to propose literature section.
 our $min_words_to_recommend_references_section = 500;
 

@@ -432,7 +432,7 @@ else
           hr (),
           'Veröffentlicht unter GPL.', br (),
           'Kontakt: ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt'}, 'Tim&nbsp;Landscheidt');
-}
+  }
 
 print "</body></html>\n";
 

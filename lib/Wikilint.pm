@@ -1782,7 +1782,7 @@ sub check_unformatted_refs ($\$)
           $word  =~ /(\[https?:\/\/[^\s]+?\])/)
         {
           my $weblink = $1;
-  
+
           if ($::language eq 'de')
             { ${$extra_message} .= $seldom . 'Unformatierter Weblink: </span>' . $weblink . ' – Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:WEB#Formatierung'}, 'WP:WEB#Formatierung') . br () . "\n"; }
           $review_level += $seldom_level;
