@@ -29,6 +29,8 @@ use URI::Escape qw(uri_escape_utf8);
 use config;
 use autoreview;
 
+our ($VERSION) = 0.1;
+
 our ($language, $lemma_org, $search_lemma);
 my ($count_ref, $do_typo_check, $title_lemma, $url);
 
