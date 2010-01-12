@@ -64,57 +64,56 @@ our $sometimes = '<span class="sometimes">';
 our $proposal  = '<span class="proposal">';
 
 # Explanations of all problems found and stored in $review_letters.
-# Format: $text {$language . '|' . $review_letter} = '$LEVEL|$SUMMARY|$TEXT';
+# Format: $text {$language}->{$review_letter} = [$LEVEL, $SUMMARY, $TEXT];
 # $SUMMARY can be "S" (sum), "C" (count) or "X" (maximum).
-our %text;
-$text {'de|A'} = "2|S|Lange Sätze (mehr als $max_words_per_sentence Wörter)";
-$text {'de|B'} = '1|S|Wörter, die in Wikipedia nicht stehen sollten';
-$text {'de|C'} = '1|S|Potentielle Füllwörter';
-$text {'de|D'} = '1|S|Abkürzung';
-$text {'de|E'} = '3|S|Doppel-Wikilink ohne erkennbaren Übergang';
-$text {'de|F'} = '2|S|Fettschrift im Text (außerhalb der Lemma-Definition und Tabellen)';
-$text {'de|G'} = '3|S|Ausrufezeichen außerhalb von Zitaten';
-$text {'de|H'} = '1|C|Wenige Einzelnachweise, aber Abschnitt "== Literatur =="';
-$text {'de|I'} = '1|S|Sehr kurzer Abschnitt';
-$text {'de|J'} = '3|S|Weblink in Text (außerhalb von "&lt;ref&gt;" und "== Weblinks =="';
-$text {'de|K'} = '2|S|Wikilinks zu Jahren (außer Geburts- und Sterbedaten in Biografien)';
-$text {'de|L'} = '2|S|Wikilinks zu Tagen (außer Geburts- und Sterbedaten in Biografien)';
-$text {'de|M'} = '3|S|Plenk';
-$text {'de|N'} = '3|S|Weblink in Abschnitts-Titel';
-$text {'de|O'} = '3|S|Wikilink in Abschnitts-Titel';
-$text {'de|P'} = '3|S|Doppelpunkt, Ausrufe- oder Fragezeichen in Abschnitts-Titel';
-$text {'de|Q'} = '1|S|Zu viele Wikilinks zum gleichen Lemma';
-$text {'de|R'} = '2|C|Wenige Einzelnachweise';
-$text {'de|S'} = '2|C|Zu viele Weblinks';
-$text {'de|T'} = '2|S|Kein geschütztes Leerzeichen vor Einheit';
-$text {'de|U'} = '2|S|Wikilinks zu Jahrhunderten';
-$text {'de|V'} = '2|S|Wikilinks zu Jahrzehnten';
-$text {'de|W'} = '2|S|Wikilinks zu Monaten';
-$text {'de|X'} = '2|S|Unformatierte Weblinks';
-$text {'de|Y'} = '1|C|Zu viele Links bei "== Siehe auch =="';
-$text {'de|Z'} = '3|S|Link bei "== Siehe auch ==", der vorher schon gesetzt ist';
-$text {'de|a'} = '3|S|Satz, der klein geschrieben beginnt';
-$text {'de|b'} = '3|S|Abschnitts-Titel, der klein geschrieben beginnt';
-$text {'de|c'} = '3|S|Klemp';
-$text {'de|d'} = '2|S|Link zu Begriffsklärungs-Seite';
-$text {'de|e'} = '1|S|Fettschrift als Abschnittsersatz';
-$text {'de|f'} = '0|C|Vorschlag: Kein Wiktionary-Link';
-$text {'de|g'} = '0|C|Vorschlag: Kein Wikimedia-Commons-Link';
-$text {'de|h'} = '0|C|Vorschlag: Kein Bild im Artikel';
-$text {'de|i'} = '3|S|Falsch formatierte ISBN';
-$text {'de|j'} = "3|S|\"&lt;i&gt;\" oder \"&lt;b&gt;\" statt \"''\" oder \"'''\"";
-$text {'de|k'} = '2|S|Tags, die nicht verwendet werden sollten: "&lt;s&gt;", "&lt;u&gt;", "&lt;small&gt;" oder "&lt;big&gt;"';
-$text {'de|l'} = '2|S|"..." (drei Zeichen) statt "…"';
-$text {'de|m'} = '3|S|Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect)';
-$text {'de|n'} = '3|S|Wortdopplung';
-$text {'de|o'} = '2|S|Häufige Tippfehler';
-$text {'de|p'} = '1|S|Minus statt Bis-Strich';
-$text {'de|q'} = '2|S|Klammer falsch bei Vorlage oder Wikilink';
-$text {'de|r'} = '2|X|Anzahl der Wörter im längsten Satz';
-$text {'de|s'} = "1|S|Falsches Apostroph, \"'\" statt \"’\"";
-$text {'de|t'} = '1|S|Bindestrich ("-") statt Gedankenstrich ("–") verwendet';
-$text {'de|u'} = "1|S|Normale Anführungszeichen '\"\"' statt \"„\" und \"“\"";
-$text {'de|v'} = '2|S|Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.';
+our %text = ('de' => {'A' => [2, 'S', 'Lange Sätze (mehr als ' . $max_words_per_sentence . ' Wörter)'],
+                      'B' => [1, 'S', 'Wörter, die in Wikipedia nicht stehen sollten'],
+                      'C' => [1, 'S', 'Potentielle Füllwörter'],
+                      'D' => [1, 'S', 'Abkürzung'],
+                      'E' => [3, 'S', 'Doppel-Wikilink ohne erkennbaren Übergang'],
+                      'F' => [2, 'S', 'Fettschrift im Text (außerhalb der Lemma-Definition und Tabellen)'],
+                      'G' => [3, 'S', 'Ausrufezeichen außerhalb von Zitaten'],
+                      'H' => [1, 'C', 'Wenige Einzelnachweise, aber Abschnitt "== Literatur =="'],
+                      'I' => [1, 'S', 'Sehr kurzer Abschnitt'],
+                      'J' => [3, 'S', 'Weblink in Text (außerhalb von "&lt;ref&gt;" und "== Weblinks =="'],
+                      'K' => [2, 'S', 'Wikilinks zu Jahren (außer Geburts- und Sterbedaten in Biografien)'],
+                      'L' => [2, 'S', 'Wikilinks zu Tagen (außer Geburts- und Sterbedaten in Biografien)'],
+                      'M' => [3, 'S', 'Plenk'],
+                      'N' => [3, 'S', 'Weblink in Abschnitts-Titel'],
+                      'O' => [3, 'S', 'Wikilink in Abschnitts-Titel'],
+                      'P' => [3, 'S', 'Doppelpunkt, Ausrufe- oder Fragezeichen in Abschnitts-Titel'],
+                      'Q' => [1, 'S', 'Zu viele Wikilinks zum gleichen Lemma'],
+                      'R' => [2, 'C', 'Wenige Einzelnachweise'],
+                      'S' => [2, 'C', 'Zu viele Weblinks'],
+                      'T' => [2, 'S', 'Kein geschütztes Leerzeichen vor Einheit'],
+                      'U' => [2, 'S', 'Wikilinks zu Jahrhunderten'],
+                      'V' => [2, 'S', 'Wikilinks zu Jahrzehnten'],
+                      'W' => [2, 'S', 'Wikilinks zu Monaten'],
+                      'X' => [2, 'S', 'Unformatierte Weblinks'],
+                      'Y' => [1, 'C', 'Zu viele Links bei "== Siehe auch =="'],
+                      'Z' => [3, 'S', 'Link bei "== Siehe auch ==", der vorher schon gesetzt ist'],
+                      'a' => [3, 'S', 'Satz, der klein geschrieben beginnt'],
+                      'b' => [3, 'S', 'Abschnitts-Titel, der klein geschrieben beginnt'],
+                      'c' => [3, 'S', 'Klemp'],
+                      'd' => [2, 'S', 'Link zu Begriffsklärungs-Seite'],
+                      'e' => [1, 'S', 'Fettschrift als Abschnittsersatz'],
+                      'f' => [0, 'C', 'Vorschlag: Kein Wiktionary-Link'],
+                      'g' => [0, 'C', 'Vorschlag: Kein Wikimedia-Commons-Link'],
+                      'h' => [0, 'C', 'Vorschlag: Kein Bild im Artikel'],
+                      'i' => [3, 'S', 'Falsch formatierte ISBN'],
+                      'j' => [3, 'S', "\"&lt;i&gt;\" oder \"&lt;b&gt;\" statt \"''\" oder \"'''\""],
+                      'k' => [2, 'S', 'Tags, die nicht verwendet werden sollten: "&lt;s&gt;", "&lt;u&gt;", "&lt;small&gt;" oder "&lt;big&gt;"'],
+                      'l' => [2, 'S', '"..." (drei Zeichen) statt "…"'],
+                      'm' => [3, 'S', 'Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect)'],
+                      'n' => [3, 'S', 'Wortdopplung'],
+                      'o' => [2, 'S', 'Häufige Tippfehler'],
+                      'p' => [1, 'S', 'Minus statt Bis-Strich'],
+                      'q' => [2, 'S', 'Klammer falsch bei Vorlage oder Wikilink'],
+                      'r' => [2, 'X', 'Anzahl der Wörter im längsten Satz'],
+                      's' => [1, 'S', "Falsches Apostroph, \"'\" statt \"’\""],
+                      't' => [1, 'S', 'Bindestrich ("-") statt Gedankenstrich ("–") verwendet'],
+                      'u' => [1, 'S', "Normale Anführungszeichen '\"\"' statt \"„\" und \"“\""],
+                      'v' => [2, 'S', 'Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.']});
 
 # Order of rows in review table.
 our $table_order = 'nMcENGJOPZabijdlmopstuqvkXArBCDFeQHRSTKLUVWYhfg';

@@ -1885,7 +1885,7 @@ sub create_review_summary_html ($$)
 
   foreach my $letter (split (//, $table_order))
     {
-      my ($level, $summary, $message) = split(/\|/, $text {$language . '|' . $letter});
+      my ($level, $summary, $message) = @{$text {$language}->{$letter}};
 
       # Treat fill words differently.
       if ($letter eq 'C')
