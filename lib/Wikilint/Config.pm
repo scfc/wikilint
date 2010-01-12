@@ -118,10 +118,9 @@ our %text = ('de' => {'A' => [2, 'S', 'Lange Sätze (mehr als ' . $max_words_per
 # Order of rows in review table.
 our $table_order = 'nMcENGJOPZabijdlmopstuqvkXArBCDFeQHRSTKLUVWYhfg';
 
-our %farbe_html;
-$farbe_html {1} = '#b9ffc5';
-$farbe_html {2} = '#ffebad';
-$farbe_html {3} = '#ffcbcb';
+our %farbe_html = (1 => '#b9ffc5',
+                   2 => '#ffebad',
+                   3 => '#ffcbcb');
 
 # Units where a &nbsp; is mandatory (case-sensitive!).
 our %units         = ('de' => ['kg',      'cm',      'm',        'km',
