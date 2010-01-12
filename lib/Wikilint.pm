@@ -1999,4 +1999,9 @@ sub restore_one_item ($\%$)
   return $return;
 }
 
+END
+{
+  $DB->disconnect () if (defined ($DB));
+}
+
 1;

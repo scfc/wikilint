@@ -45,6 +45,7 @@ my $class = App::Build->subclass (code => 'sub process_langdata_files
           chomp ();
           $s->execute ($_) or die ($DB->errstr ());
         }
+      $s->finish ();
       close (DISAMBS);
 
       # Redirects.
@@ -56,6 +57,7 @@ my $class = App::Build->subclass (code => 'sub process_langdata_files
           /^([^\t]+)\t([^\t]+)\n/ or die;
           $s->execute ($1, $2) or die ($DB->errstr ());
         }
+      $s->finish ();
       close (REDIRECTS);
 
       # Close database.
