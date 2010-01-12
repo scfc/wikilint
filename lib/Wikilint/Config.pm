@@ -124,9 +124,18 @@ $farbe_html {2} = '#ffebad';
 $farbe_html {3} = '#ffcbcb';
 
 # Units where a &nbsp; is mandatory (case-sensitive!).
-our (%units, %units_special);
-$units {'de'} = 'kg;cm;m;km;mm;l;dl;qm;Prozent;s;h;Nm;N;W;°C;Watt;Pf;Pfennig;Mark;RM;GBP;Pfund;SFr;m³;MW;EUR;EURO;Euro;Minuten;Stunden;Sekunden;Tage;Wochen;Monate;Jahre;Volt;Ampere;Watt;Ohm';
-$units_special {'de'} = '°C;€;\$;£';
+our %units         = ('de' => ['kg',      'cm',      'm',        'km',
+                               'mm',      'l',       'dl',       'qm',
+                               'Prozent', 's',       'h',        'Nm',
+                               'N',       'W',       '°C',       'Watt',
+                               'Pf',      'Pfennig', 'Mark',     'RM',
+                               'GBP',     'Pfund',   'SFr',      'm³',
+                               'MW',      'EUR',     'EURO',     'Euro',
+                               'Minuten', 'Stunden', 'Sekunden', 'Tage',
+                               'Wochen',  'Monate',  'Jahre',    'Volt',
+                               'Ampere',  'Watt',    'Ohm']);
+our %units_special = ('de' => ['°C', '€', '\$', '£']);
+
 # Ignore missing &nbsp; in short lines.
 our $min_length_for_nbsp = 100;
 

@@ -193,9 +193,9 @@ sub do_review ($$$$$)
 
   # For later use …
   my @units;
-  push (@units, qr/((?:\d+?[,.])?\d+? ?$_)\b/) foreach (split (/;/, $units {$language}));
+  push (@units, qr/((?:\d+?[,.])?\d+? ?$_)\b/) foreach (@{$units {$language}});
   # Now special-character units like "€", "%".
-  push (@units, qr/((?:\d+?[,.])?\d+? $_)/) foreach (split (/;/, $units_special {$language}));
+  push (@units, qr/((?:\d+?[,.])?\d+? $_)/) foreach (@{$units_special {$language}});
 
   # Store original lines for building "modified wikisource for cut & paste".
   my (@lines_org_wiki) = split (/\n/, $page);
