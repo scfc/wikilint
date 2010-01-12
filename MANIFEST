@@ -8,6 +8,7 @@ htdocs/wp.css
 lib/Wikilint.pm
 lib/Wikilint/Config.pm
 MANIFEST			This list of files
+META.yml
 README
 share/langdata/de/abbreviations.txt
 share/langdata/de/avoid_words.txt
@@ -35,4 +36,3 @@ t/testcases/de/Rama_III..wiki
 t/testcases/de/Rama_VI..html
 t/testcases/de/Rama_VI..wiki
 TODO
-META.yml
