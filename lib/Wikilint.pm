@@ -407,18 +407,18 @@ sub do_review ($$$$$)
 
           # Usage of en-dashes at ranges: "1974–1977" (not "1974-1977"), etc.
           # Caution: The different dashes aren't recognizable in terminal fonts!
-          my $line_tmp = $line;
-          my $undo = 0;
+          my $line_tmp    = $line;
+          my $undo        = 0;
           my $times_total = 0;
-          while (my $times = $line =~ s/( |\[\[)(\d{1,4})((\]\]| )?\-( ||\[\[)?)(\d{1,4})(\]\])?( +[nv]\. Chr\.)?/$1$sometimes$2$3$6<\/span><sup class="reference"><a href="#BISSTRICH">[BISSTRICH?]<\/a><\/sup>$7$8/)   # Do "1980-1990" and "[[1980]]-[[1990]]".
+          while (my $times = $line =~ s/( |\[\[)(\d{1,4})((\]\]| )?\-( ||\[\[)?)(\d{1,4})((?:\]\])?)((?: +[nv]\. Chr\.)?)/$1$sometimes$2$3$6<\/span><sup class="reference"><a href="#BISSTRICH">[BISSTRICH?]<\/a><\/sup>$7$8/)   # Do "1980-1990" and "[[1980]]-[[1990]]".
             {
               my $from = $2;
               my $to   = $6;
 
-              if ($8)   # "v. Chr." included, must be a date so leave as is.
+              if ($8 ne '')   # "v. Chr." included, must be a date so leave as is.
                 { $times_total += $times; }
-              elsif ((length ($from) <= length ($to) && $from > $to) ||   # "747-200" good.
-                     (length ($from) == 4 && length ($to) == 2 && substr ($from, 2, 2) > $to))   # 1971-30 good
+              elsif ((length ($from) <= length ($to) && $from > $to)                          ||   # "747-200" good.
+                     (length ($from) == 4 && length ($to) == 2 && substr ($from, 2, 2) > $to))     # "1971-30" good.
                 { $undo = 1; }
               else
                 { $times_total += $times; }
