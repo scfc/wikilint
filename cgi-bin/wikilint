@@ -375,8 +375,6 @@ if (param ())
 
     begin_html ($title_lemma);
 
-    read_files ($language);
-
     if ($selftest = $testpage)
       {
         local ($/);

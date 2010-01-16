@@ -31,29 +31,25 @@ use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
 use Wikilint::Config;
+use Wikilint::DB;
 
-our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page read_files selftest EscapeSectionTitle);
+our @EXPORT = qw(create_ar_link create_edit_link create_review_summary_html do_review download_page find_random_page selftest EscapeSectionTitle);
 our @EXPORT_OK = qw(check_unformatted_refs remove_stuff_to_ignore remove_year_and_date_links tag_dates_rest_line);   # Public only for tests.
 
 my @months = ('Januar', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
-my (@abbreviations, @avoid_words, $count_ref, $DB, @fill_words, $global_removed_count, @is_typo, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
+my ($count_ref, $DB, $global_removed_count, $last_word, $line, $lola, %remove_refs_and_images_array, %remove_stuff_for_typo_check_array);
 our (%replaced_stuff, %count_letters, $review_level);   # Public only for tests.
+
+BEGIN
+{
+  $DB = new Wikilint::DB;
+}
 
 sub EscapeSectionTitle ($)
 {
   my ($SectionTitle) = @_;
 
   return uri_escape_utf8 ('section-' . $SectionTitle);
-}
-
-sub IsDisambiguation ($)
-{
-  my ($Title) = @_;
-  state $s = $DB->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ?;') or die ($DB->errstr ());
-
-  $s->execute ($Title) or die ($DB->errstr ());
-
-  return $s->fetch ();
 }
 
 sub download_page ($$$$;$$);
@@ -252,7 +248,7 @@ sub do_review ($$$$$)
 
           if ($language eq 'de')
             {
-              foreach my $typo (@is_typo)
+              foreach my $typo ($DB->GetTypos ($language))
                 {
                   my $times;
 
@@ -867,7 +863,7 @@ sub do_review ($$$$$)
               $count_letters {'G'} += $times;
             }
 
-          foreach my $avoid_word (@avoid_words)
+          foreach my $avoid_word ($DB->GetAvoidWords ($language))
             {
               # Check if that word is used in "<ref>" or in quote (buggy because doesn't show same word outside "<ref>" in same line)
               # or in "{{Zitat …}}".
@@ -896,7 +892,7 @@ sub do_review ($$$$$)
             }
 
           # Fill words.
-          foreach my $fill_word (@fill_words)
+          foreach my $fill_word ($DB->GetFillWords ($language))
             {
               # Performance: Don't make all the following checks if there's no fill word anyway.
               if ($line =~ /$fill_word/)
@@ -937,7 +933,7 @@ sub do_review ($$$$$)
             }
 
           # Abbreviations.
-          foreach my $abbreviation (@abbreviations)
+          foreach my $abbreviation ($DB->GetAbbreviations ($language))
             {
               # Performance: Don't make all the following checks if there's no abbreviation anyway.
               if ($line =~ /$abbreviation/i)
@@ -1103,7 +1099,7 @@ sub do_review ($$$$$)
             {
               my $linkto_org = $1;
 
-              if (IsDisambiguation ($linkto_org))
+              if ($DB->IsDisambiguation ($language, $linkto_org))
                 {
                   my ($linkto_tmp, $times);
 
@@ -1294,11 +1290,7 @@ sub do_review ($$$$$)
   $review_level        += $times * $never_level;
   $count_letters {'m'} += $times;
 
-  my $RedirectFrom;
-  my $s = $DB->prepare ('SELECT FromTitle FROM Redirects WHERE ToTitle = ?') or die ($DB->errstr ());
-  $s->execute ($self_lemma) or die ($DB->errstr ());
-  $s->bind_columns (\($RedirectFrom)) or die ($DB->errstr ());
-  while ($s->fetch ())
+  foreach my $RedirectFrom ($DB->GetRedirects ($language, $self_lemma))
     {
       my $self_linkle = 'http://de.wikipedia.org/wiki/' . $RedirectFrom;
       # Avoid regular expression grouping by "()" in $RedirectFrom (e. g. "A3 (Autobahn)") with "\Q…\E".
@@ -1486,77 +1478,6 @@ sub do_review ($$$$$)
   use Data::Dumper;
 
   return ($page, $review_level, $num_words, $extra_message, $quotient, join ('', map { $_ x $count_letters {$_}; } (sort (keys (%count_letters)))), $new_page_org, $removed_links, $count_ref, $count_fillwords);
-}
-
-sub read_files ($)
-{
-  my ($language) = @_;
-
-  die "Language missing\n" unless (defined ($language));
-
-  my $LangDataDir = $ENV {'HOME'} . '/share/langdata';
-
-  if ($language eq 'de')
-    {
-      # Open database.
-      $DB = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/de/cache.db', '', '') or die (DBI->errstr ());
-      $DB->{PrintError} = 0;
-      $DB->{unicode}    = 1;
-
-      # Words to avoid.
-      open (WORDS, '<:encoding(UTF-8)', $LangDataDir . '/de/avoid_words.txt') || die ("Can't open de/avoid_words.txt: $!\n");
-      while (<WORDS>)
-        {
-          chomp ();
-          push (@avoid_words, qr/(\b$_\b)/);
-        }
-      close (WORDS);
-
-      # Fill words ("aber", "auch", "nun", "dann", "doch", "wohl", "allerdings", "eigentlich", "jeweils").
-      open (FILLWORDS, '<:encoding(UTF-8)', $LangDataDir . '/de/fill_words.txt') || die ("Can't open de/fill_words.txt: $!\n");
-      while (<FILLWORDS>)
-        {
-          chomp ();
-          push (@fill_words, qr/(\b$_\b)/);
-        }
-      close (FILLWORDS);
-
-      # Abbreviations.
-      open (ABBR, '<:encoding(UTF-8)', $LangDataDir . '/de/abbreviations.txt') || die ("Can't open de/abbreviations.txt: $!\n");
-      while (<ABBR>)
-        {
-          chomp ();
-          s/\./\\\./g;
-          push (@abbreviations, qr/(\b$_)/);
-        }
-      close (ABBR);
-
-      # Typos.
-      open (TYPO, '<:encoding(UTF-8)', $LangDataDir . '/de/typos.txt') || die ("Can't open de/typos.txt: $!\n");
-      while (<TYPO>)
-        {
-          chomp ();
-
-          # It's far faster to search for /tree/ and /Tree/ than /tree/i so …
-          my $typo = lc ($_);
-
-          # Ignore case only in first letter to speed up search (that's factor 5 to complete /i!).
-          $typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
-          push (@is_typo, qr/(?<![-\*])\b($typo)\b/);
-        }
-      close(TYPO);
-    }
-  elsif ($language eq 'en')
-    {
-      # Words to avoid.
-      open (WORDS, '<:encoding(UTF-8)', $LangDataDir . '/en/avoid_words.txt') || die ("Can't open en/avoid_words.txt: $!\n");
-      while (<WORDS>)
-        {
-          chomp ();
-          push (@avoid_words, qr/(\b$_\b)/);
-        }
-      close (WORDS);
-    }
 }
 
 sub remove_year_and_date_links ($$)
@@ -1997,11 +1918,6 @@ sub restore_one_item ($\%$)
     }
 
   return $return;
-}
-
-END
-{
-  $DB->disconnect () if (defined ($DB));
 }
 
 1;
