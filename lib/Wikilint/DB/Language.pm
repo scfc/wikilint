@@ -175,12 +175,7 @@ sub GetRedirects
   my @Result  = ();
   my $FromTitle;
 
-  $self->{'RedirectionsStatement'}->execute ($Title) or die ($self->{'DB'}->errstr ());
-  $self->{'RedirectionsStatement'}->bind_columns (\$FromTitle);
-  while ($self->{'RedirectionsStatement'}->fetch ())
-    { push (@Result, $FromTitle); }
-
-  return @Result;
+  return @{$self->{'DB'}->selectcol_arrayref ($self->{'RedirectionsStatement'}, {}, $Title)};
 }
 
 =item GetTypos ()
