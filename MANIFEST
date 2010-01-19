@@ -7,6 +7,8 @@ htdocs/gbflag.gif
 htdocs/wp.css
 lib/Wikilint.pm
 lib/Wikilint/Config.pm
+lib/Wikilint/DB.pm
+lib/Wikilint/DB/Language.pm
 MANIFEST			This list of files
 META.yml
 README
