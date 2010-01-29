@@ -21,6 +21,12 @@ use strict;
 use utf8;
 use warnings;
 
+if (defined ($ENV {'SERVER_NAME'}) && $ENV {'SERVER_NAME'} eq 'toolserver.org')
+  {
+    push (@INC, '/home/timl/lib');
+    push (@INC, '/home/timl/lib/perl5');
+  }
+
 use CGI qw(:standard);
 use HTML::Entities;
 use LWP::UserAgent;
