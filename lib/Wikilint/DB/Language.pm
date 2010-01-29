@@ -52,7 +52,7 @@ sub new
   my $LangDataDir = $ENV {'HOME'} . '/share/langdata/' . $self->{'Language'};
 
   # Open database.
-  if (defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', '')))
+  if (-e $LangDataDir . '/cache.db' && defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', '')))
     {
       $self->{'DB'}->{PrintError}        = 0;
       $self->{'DB'}->{unicode}           = 1;
@@ -172,10 +172,8 @@ sub GetRedirects
 {
   my $self    = shift;
   my ($Title) = @_;
-  my @Result  = ();
-  my $FromTitle;
 
-  return @{$self->{'DB'}->selectcol_arrayref ($self->{'RedirectionsStatement'}, {}, $Title)};
+  return defined ($self->{'DB'}) ? @{$self->{'DB'}->selectcol_arrayref ($self->{'RedirectionsStatement'}, {}, $Title)} : ();
 }
 
 =item GetTypos ()
@@ -203,9 +201,14 @@ sub IsDisambiguation
   my $self    = shift;
   my ($Title) = @_;
 
-  $self->{'DisambiguationStatement'}->execute ($Title) or die ($self->{'DB'}->errstr ());
+  if (defined ($self->{'DB'}))
+    {
+      $self->{'DisambiguationStatement'}->execute ($Title) or die ($self->{'DB'}->errstr ());
 
-  return $self->{'DisambiguationStatement'}->fetch ();
+      return $self->{'DisambiguationStatement'}->fetch ();
+    }
+  else
+    { return 0; }
 }
 
 =item DESTROY
