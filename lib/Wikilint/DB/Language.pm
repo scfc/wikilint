@@ -52,11 +52,18 @@ sub new
   my $LangDataDir = $ENV {'HOME'} . '/share/langdata/' . $self->{'Language'};
 
   # Open database.
-  if (-e $LangDataDir . '/cache.db' && defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', '')))
+  if (-e $LangDataDir . '/use-toolserver.db' && defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki-p.db.toolserver.org;mysql_read_default_group=client;mysql_read_default_file=/home/timl/.my.cnf')))
     {
       $self->{'DB'}->{PrintError}        = 0;
       $self->{'DB'}->{unicode}           = 1;
-      $self->{'DisambiguationStatement'} = $self->{'DB'}->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ?;') or die ($self->{'DB'}->errstr ());
+      $self->{'DisambiguationStatement'} = $self->{'DB'}->prepare ("SELECT 1 FROM categorylinks JOIN page ON cl_from = page_id WHERE cl_to = 'Begriffsklärung' AND page_namespace = 0 AND page_title = REPLACE(?, ' ', '_') UNION SELECT 1 FROM categorylinks JOIN page AS p1 ON cl_from = p1.page_id JOIN redirect ON rd_namespace = p1.page_namespace AND rd_title = p1.page_title JOIN page AS p2 ON rd_from = p2.page_id WHERE cl_to = 'Begriffsklärung' AND p2.page_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
+      $self->{'RedirectionsStatement'}   = $self->{'DB'}->prepare ("SELECT FromTitle FROM (SELECT REPLACE(page_title, '_', ' ') AS FromTitle, REPLACE(rd_title, '_', ' ') AS ToTitle FROM page JOIN redirect ON page_id = rd_from WHERE page_namespace = 0 AND rd_namespace = 0) WHERE ToTitle = ?;") or die ($self->{'DB'}->errstr ());
+    }
+  elsif (-e $LangDataDir . '/cache.db' && defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', '')))
+    {
+      $self->{'DB'}->{PrintError}        = 0;
+      $self->{'DB'}->{unicode}           = 1;
+      $self->{'DisambiguationStatement'} = $self->{'DB'}->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ? OR Title = ?;') or die ($self->{'DB'}->errstr ());
       $self->{'RedirectionsStatement'}   = $self->{'DB'}->prepare ('SELECT FromTitle FROM Redirects WHERE ToTitle = ?;') or die ($self->{'DB'}->errstr ());
     }
 
@@ -203,9 +210,15 @@ sub IsDisambiguation
 
   if (defined ($self->{'DB'}))
     {
-      $self->{'DisambiguationStatement'}->execute ($Title) or die ($self->{'DB'}->errstr ());
+      $self->{'DisambiguationStatement'}->execute ($Title, $Title) or die ($self->{'DB'}->errstr ());
+      if ($self->{'DisambiguationStatement'}->fetch ())
+        {
+          $self->{'DisambiguationStatement'}->finish ();
 
-      return $self->{'DisambiguationStatement'}->fetch ();
+          return 1;
+        }
+      else
+        { return 0; }
     }
   else
     { return 0; }
