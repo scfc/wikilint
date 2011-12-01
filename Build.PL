@@ -64,6 +64,27 @@ my $class = App::Build->subclass (code => 'sub process_langdata_files
       $DB->commit () or die ($DB->errstr ());
       $DB->disconnect ();
     }
+}
+
+sub configure
+{
+  my $self = shift;
+
+  use IO::File;
+
+  my $Filename = $self->{"properties"}->{"extra_dirs"}->{"cgi-bin"}->{"dest_dir"} . "/wikilint";
+  my $FixIn    = IO::File->new ($Filename,            "<:encoding(UTF-8)") or die ($!);
+  my $FixOut   = IO::File->new ($Filename . ".fixed", ">:encoding(UTF-8)") or die ($!);
+  for (my $UseSeen = 0; defined ($_ = <$FixIn>); )
+    {
+      if (!$UseSeen && ($UseSeen = /^use (?!(strict|utf8|warnings);\n$)/))
+        { printf $FixOut "use lib \x27%s\x27;\n\n", $self->{"properties"}->{"install_path"}->{"lib"}; }
+      print $FixOut $_;
+    }
+  close ($FixOut);
+  close ($FixIn);
+  rename ($Filename . ".fixed", $Filename) or die ($!);
+  chmod (0555, $Filename);
 }');
 
 my $build = $class->new (dist_name         => 'wikilint',
