@@ -1400,8 +1400,8 @@ sub do_review ($$$$$)
         { $extra_message .= "Proposal: include link to wikimedia commons\n"; }
     }
 
-  # Always propose "whatredirectshere".
-  $extra_message .= $proposal . 'Vorschlag</span>: Weiterleitungen/#REDIRECTS zu [[' . $::search_lemma . ']] ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php?lang=' . $language . '&title=' . $::search_lemma . '&subdom=' . $language . '&domain=.wikipedia.org'}, 'prüfen') . ' mit ' . a ({href => 'http://toolserver.org/~tangotango/whatredirectshere.php'}, 'Whatredirectshere') . "\n";
+  # Always propose "Whatlinkshere".
+  $extra_message .= $proposal . 'Vorschlag</span>: Weiterleitungen/#REDIRECTS zu [[' . $::search_lemma . ']] ' . a ({href => 'http://' . $language . '.wikipedia.org/w/index.php?title=Special:Whatlinkshere/' . $::search_lemma . '&hidetrans=1&hidelinks=1'}, 'prüfen') . "\n";
 
   # to do
   # -----
