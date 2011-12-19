@@ -1477,7 +1477,7 @@ sub do_review ($$$$$)
 
   use Data::Dumper;
 
-  return ($page, $review_level, $num_words, $extra_message, $quotient, join ('', map { $_ x $count_letters {$_}; } (sort (keys (%count_letters)))), $new_page_org, $removed_links, $count_ref, $count_fillwords);
+  return ($page, $review_level, $num_words, $extra_message, $quotient, join ('', map { $_ x $count_letters {$_}; } (sort (keys (%count_letters)))), $new_page_org, $removed_links, $count_ref, $count_fillwords, $DB->GetDatabaseState ($language));
 }
 
 sub remove_year_and_date_links ($$)

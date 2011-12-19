@@ -84,6 +84,23 @@ sub GetAvoidWords ($)
   return $self->{'Languages'}->{$Language}->GetAvoidWords ();
 }
 
+=item GetDatabaseState (LANGUAGE)
+
+Returns the state timestamps for LANGUAGE.
+
+=cut
+
+sub GetDatabaseState ($)
+{
+  my $self = shift;
+  my ($Language) = @_;
+
+  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+
+  return $self->{'Languages'}->{$Language}->{'DisambiguationPagesState'} . '/' .
+         $self->{'Languages'}->{$Language}->{'RedirectsState'};
+}
+
 =item GetFillWords (LANGUAGE)
 
 Returns the list of filler words for LANGUAGE.

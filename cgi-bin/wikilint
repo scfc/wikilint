@@ -170,9 +170,9 @@ sub parse_form ()
   return ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
 }
 
-sub output ($$$$$$$$$$$$$)
+sub output ($$$$$$$$$$$$$$)
 {
-  my ($page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words) = @_;
+  my ($page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words, $DatabaseState) = @_;
 
   # Include HTML line-breaks.
   $page =~ s/\n/br () . "\n"/eg;
@@ -210,6 +210,8 @@ sub output ($$$$$$$$$$$$$)
       $fillwords_quot = $count_fillwords ? int ($num_words / $count_fillwords) : 0;
 
       print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)", p ();
+
+      print p ("Stand der Datenbanken: " . $DatabaseState);
     }
   elsif ($language eq 'en')
     {
@@ -403,9 +405,9 @@ if (param ())
       }
     else
       {
-        my ($count_fillwords, $extra_message, $num_words, $propose_page, $quotient, $removed_links, $review_letters, $review_level);
+        my ($count_fillwords, $extra_message, $num_words, $propose_page, $quotient, $removed_links, $review_letters, $review_level, $DatabaseState);
 
-        ($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords) = do_review ($page, $language, $remove_century, $link_lemma, $do_typo_check);
+        ($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords, $DatabaseState) = do_review ($page, $language, $remove_century, $link_lemma, $do_typo_check);
 
         # To avoid strange reactions in "<textarea>", e. g. with comments like "<!-- -- -- -- -->".
         $propose_page =~ s/&/&amp;/g;
@@ -417,7 +419,7 @@ if (param ())
         if ($selftest)
           { selftest ($page, $extra_message); }
         else
-          { output ($page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words); }
+          { output ($page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words, $DatabaseState); }
       }
   }
 else
