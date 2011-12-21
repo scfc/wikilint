@@ -56,7 +56,7 @@ sub new
     {
       $self->{'DB'}->{PrintError}         = 0;
       $self->{'DB'}->{unicode}            = 1;
-      $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ("SELECT 1 FROM categorylinks JOIN page ON cl_from = page_id WHERE cl_to = 'Begriffsklärung' AND page_namespace = 0 AND page_title = REPLACE(?, ' ', '_') UNION SELECT 1 FROM categorylinks JOIN page AS p1 ON cl_from = p1.page_id JOIN redirect ON rd_namespace = p1.page_namespace AND rd_title = p1.page_title JOIN page AS p2 ON rd_from = p2.page_id WHERE cl_to = 'Begriffsklärung' AND p2.page_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
+      $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ("SELECT 1 FROM categorylinks JOIN page ON cl_from = page_id WHERE cl_to = 'Begriffsklärung' AND page_namespace = 0 AND page_title = REPLACE(?, ' ', '_') UNION SELECT 1 FROM categorylinks JOIN page AS p1 ON cl_from = p1.page_id JOIN redirect ON rd_namespace = p1.page_namespace AND rd_title = p1.page_title JOIN page AS p2 ON rd_from = p2.page_id WHERE cl_to = 'Begriffsklärung' AND p2.page_namespace = 0 AND p2.page_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
       $self->{'RedirectionsStatement'}    = $self->{'DB'}->prepare ("SELECT REPLACE(page_title, '_', ' ') AS FromTitle FROM page JOIN redirect ON page_id = rd_from WHERE page_namespace = 0 AND rd_namespace = 0 AND rd_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
       $self->{'DisambiguationPagesState'} = '(online)';
       $self->{'RedirectsState'}           = '(online)';
