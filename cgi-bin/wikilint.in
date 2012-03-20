@@ -17,6 +17,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+use lib (split (/:/, exists ($ENV {'WIKILINTPERLLIBDIR'}) ? $ENV {'WIKILINTPERLLIBDIR'} : '@PMDIR@'));
+
 use strict;
 use utf8;
 use warnings;
@@ -25,8 +27,12 @@ use CGI qw(:standard);
 use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
-use Wikilint;
-use Wikilint::Config;
+
+BEGIN
+  {
+    use Wikilint;
+    use Wikilint::Config;
+  }
 
 our ($VERSION) = 0.1;
 
@@ -389,7 +395,7 @@ if (param ())
       {
         local ($/);
 
-        open (TEST, '<:encoding(UTF-8)', '../t/testcases/de/' . param ('testhtml') . '.wiki') || die ('Cannot open ../t/testcases/de/' . param ('testhtml') . '.wiki');
+        open (TEST, '<:encoding(UTF-8)', 'testcases/de/' . param ('testhtml') . '.wiki') || die ('Cannot open testcases/de/' . param ('testhtml') . '.wiki');
         $page = <TEST>;
         close (TEST);
       }

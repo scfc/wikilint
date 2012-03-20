@@ -49,7 +49,7 @@ sub new
   die ("Language missing\n") unless (defined ($self->{'Language'}));
   die ("Unknown language: " . $self->{'Language'} . "\n") unless ($self->{'Language'} eq 'de' || $self->{'Language'} eq 'en');
 
-  my $LangDataDir = $ENV {'HOME'} . '/share/langdata/' . $self->{'Language'};
+  my $LangDataDir = (exists ($ENV {'WIKILINTLANGDATADIR'}) ? $ENV {'WIKILINTLANGDATADIR'} : '@PKGLANGDATADIR@') . '/' . $self->{'Language'};
 
   # Open database.
   if (-e $LangDataDir . '/use-toolserver.db' && defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki-p.db.toolserver.org;mysql_read_default_group=client;mysql_read_default_file=/home/timl/.my.cnf')))
