@@ -46,6 +46,21 @@ AC_SUBST([pmdir],            [$PMDIR])
 AC_SUBST([pmwikilintdir],    ['$(pmdir)/Wikilint'])
 AC_SUBST([pmwikilintdbdir],  ['$(pmdir)/Wikilint/DB'])
 
+# URL paths.
+AC_ARG_WITH([tool_path],
+            AS_HELP_STRING([--with-tool_path=URL],
+                           [Use URL as tool path]),
+            [TOOL_PATH=${withval}],
+            [TOOL_PATH=http://toolserver.org/~timl/cgi-bin/wikilint])
+AC_ARG_WITH([static_html_path],
+            AS_HELP_STRING([--with-static_html_path=URL],
+                           [Use URL as static HTML path]),
+            [STATIC_HTML_PATH=${withval}],
+            [STATIC_HTML_PATH=/~timl/wikilint/])
+AC_SUBST([tool_path],        [$TOOL_PATH])
+AC_SUBST([static_html_path], [$STATIC_HTML_PATH])
+
+
 AC_CONFIG_FILES([Makefile
                  cgi-bin/Makefile
                  htdocs/Makefile

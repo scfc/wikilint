@@ -48,17 +48,17 @@ sub begin_html ($)
                     -encoding => 'utf-8',
                     -lang => 'de-DE',
                     -bgcolor => '#FFFFFF',
-                    -style => '/~timl/wikilint/wp.css'),
+                    -style => $static_html_path . 'wp.css'),
         h1 ({-align => 'center', -face => 'helvetica, arial'}, 'wikilint');
 }
 
 sub print_explanation ()
 {
   print table ({border => 0},
-               Tr (td (img ({src => '/~timl/wikilint/deflag.jpg', alt => 'Deutsche Flagge'}) . b ('Dieser Dienst prüft automatisch Wikipedia-Seiten auf häufige Fehler. Bisher wird nur Deutsch und Englisch unterstützt.') . br () .
+               Tr (td (img ({src => $static_html_path . 'deflag.jpg', alt => 'Deutsche Flagge'}) . b ('Dieser Dienst prüft automatisch Wikipedia-Seiten auf häufige Fehler. Bisher wird nur Deutsch und Englisch unterstützt.') . br () .
                        b ('Bitte Kommentare, Fehler und Ideen ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'hier') . ' eintragen. (' .
                           a ({href => '#explanations'}, 'Liste der Funktionen') . ')'))) .
-               Tr (td (img ({src => '/~timl/wikilint/gbflag.gif', alt => 'English flag'}) . 'This service automatically reviews Wikipedia articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs &amp; ideas ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'here') . '.')));
+               Tr (td (img ({src => $static_html_path . 'gbflag.gif', alt => 'English flag'}) . 'This service automatically reviews Wikipedia articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs &amp; ideas ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'here') . '.')));
 }
 
 sub print_form ($)

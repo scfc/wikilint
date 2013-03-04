@@ -25,9 +25,10 @@ use strict;
 use utf8;
 use warnings;
 
-our @EXPORT = qw($tool_path $max_words_per_sentence $min_words_per_section $max_words_per_wikilink $min_words_to_recommend_references_section $min_words_to_recommend_references $words_per_reference $max_weblinks $max_see_also $fillwords_per_words $short_quote_length $wait_between_http_retry $http_retry $never_level $seldom_level $sometimes_level $never $seldom $sometimes $proposal %text $table_order %farbe_html %units %units_special $min_length_for_nbsp);
+our @EXPORT = qw($tool_path $static_html_path $max_words_per_sentence $min_words_per_section $max_words_per_wikilink $min_words_to_recommend_references_section $min_words_to_recommend_references $words_per_reference $max_weblinks $max_see_also $fillwords_per_words $short_quote_length $wait_between_http_retry $http_retry $never_level $seldom_level $sometimes_level $never $seldom $sometimes $proposal %text $table_order %farbe_html %units %units_special $min_length_for_nbsp);
 
-our $tool_path = 'http://toolserver.org/~timl/cgi-bin/wikilint';
+our $tool_path        = exists ($ENV {'WIKILINTTOOL_PATH'})        ? $ENV {'WIKILINTTOOL_PATH'}        : '@TOOL_PATH@';
+our $static_html_path = exists ($ENV {'WIKILINTSTATIC_HTML_PATH'}) ? $ENV {'WIKILINTSTATIC_HTML_PATH'} : '@STATIC_HTML_PATH@';
 
 our $max_words_per_sentence =   50;
 our $min_words_per_section  =   30;
