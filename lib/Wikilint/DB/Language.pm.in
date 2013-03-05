@@ -64,7 +64,7 @@ sub new
   elsif (-e $LangDataDir . '/cache.db' && defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', '')))
     {
       $self->{'DB'}->{PrintError}         = 0;
-      $self->{'DB'}->{unicode}            = 1;
+      $self->{'DB'}->{sqlite_unicode}     = 1;
       $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ? OR Title = ?;') or die ($self->{'DB'}->errstr ());
       $self->{'RedirectionsStatement'}    = $self->{'DB'}->prepare ('SELECT FromTitle FROM Redirects WHERE ToTitle = ?;') or die ($self->{'DB'}->errstr ());
       $self->{'DisambiguationPagesState'} = $self->{'DB'}->selectrow_array ("SELECT datetime(SUBSTR(Title, 2), 'unixepoch') FROM DisambiguationPages WHERE SUBSTR(Title, 1, 1) = '#';") or die ($self->{'DB'}->errstr ());
