@@ -8,6 +8,7 @@ use utf8;
 use warnings;
 
 use DBI;
+use MediaWiki::API;
 
 =head1 NAME
 
@@ -52,7 +53,16 @@ sub new
   my $LangDataDir = (exists ($ENV {'WIKILINTLANGDATADIR'}) ? $ENV {'WIKILINTLANGDATADIR'} : '@PKGLANGDATADIR@') . '/' . $self->{'Language'};
 
   # Open database.
-  if (exists ($ENV {'WIKILINTUSEDB'}) && $ENV {'WIKILINTUSEDB'} eq 'true' &&
+  if (exists ($ENV {'WIKILINTUSEAPI'}) && $ENV {'WIKILINTUSEAPI'} eq 'true')
+    {
+      $self->{'APIData'}                        = {};
+      $self->{'MWApi'}                          = MediaWiki::API->new ();
+      $self->{'MWApi'}->{'config'}->{'api_url'} = 'https://' . $self->{'Language'} . '.wikipedia.org/w/api.php';
+      $self->{'DisambiguationPagesState'}       = '(MediaWiki API)';
+      $self->{'RedirectsState'}                 = '(MediaWiki API)';
+      $self->{'MWApi'}->{'ua'}->agent ('wikilint (https://tools.wmflabs.org/wikilint/; tim@tim-landscheidt.de)');
+    }
+  elsif (exists ($ENV {'WIKILINTUSEDB'}) && $ENV {'WIKILINTUSEDB'} eq 'true' &&
       defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki.labsdb;mysql_read_default_group=client;mysql_read_default_file=' . (getpwuid ($<)) [7] . '/replica.my.cnf')))
     {
       $self->{'DB'}->{PrintError}         = 0;
@@ -180,11 +190,52 @@ to TITLE.
 
 =cut
 
+sub _GetAPIResult
+{
+  my $self    = shift;
+  my ($Query) = @_;
+  my $Result  = [];
+
+  $Query->{'continue'} = '';
+  while (1)
+    {
+      my $r = $self->{'MWApi'}->api ($Query) ||
+          die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
+      push (@{$Result}, $r->{'query'}) if (exists ($r->{'query'}));
+      if (exists ($r->{'continue'}))
+        {
+          @{$Query} {keys ($r->{'continue'})} = values ($r->{'continue'});
+        }
+      else
+        {
+          last;
+        }
+    }
+
+  return $Result;
+}
+
 sub GetRedirects
 {
   my $self    = shift;
   my ($Title) = @_;
   my $r;
+
+  if (defined ($self->{'MWApi'}))
+    {
+      my $r = $self->_GetAPIResult ({'action'      => 'query',
+                                     'titles'      => $Title,
+                                     'prop'        => 'redirects',
+                                     'rdprop'      => 'title',
+                                     'rdnamespace' => 0,
+                                     'rdlimit'     => 500});
+      if (!defined ($r))
+        {
+          die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
+        }
+
+      return map { map { map { $_->{'title'}; } @{$_->{'redirects'}}; } (values (%{$_->{'pages'}})) } @{$r};
+    }
 
   if (!defined ($self->{'DB'}))   # Fail gracefully if we don't have a database connection.
     { return (); }
@@ -208,19 +259,46 @@ sub GetTypos
   return @{$self->{'Typos'}};
 }
 
-=item IsDisambiguation (TITLE)
+=item IsDisambiguation (PAGE, TITLE)
 
-Checks whether TITLE refers to a disambiguation page in this
-language.
+Checks whether the link TITLE in PAGE refers to a
+disambiguation page in this language.
 
 =cut
 
 sub IsDisambiguation
 {
-  my $self    = shift;
-  my ($Title) = @_;
+  my $self           = shift;
+  my ($Page, $Title) = @_;
 
-  if (defined ($self->{'DB'}))
+  if (defined ($self->{'MWApi'}))
+    {
+      if (!exists ($self->{'APIData'}->{$Page}))
+        {
+          my $r = $self->_GetAPIResult ({'action'    => 'query',
+                                         'generator' => 'links',
+                                         'titles'    => $Page,
+                                         'prop'      => 'pageprops',
+                                         'ppprop'    => 'disambiguation',
+                                         'gpllimit'  => 500});
+          if (!defined ($r))
+            {
+              die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
+            }
+
+          $self->{'APIData'}->{$Page} = {};
+          foreach my $p (map { values ($_->{'pages'}); } @{$r})
+            {
+              if (exists ($p->{'pageprops'}) && exists ($p->{'pageprops'}->{'disambiguation'}))
+                {
+                  $self->{'APIData'}->{$Page}->{$p->{'title'}} = 1;
+                }
+            }
+        }
+
+      return exists ($self->{'APIData'}->{$Page}->{$Title}) ? $self->{'APIData'}->{$Page}->{$Title} : 0;
+    }
+  elsif (defined ($self->{'DB'}))
     {
       $self->{'DisambiguationStatement'}->execute ($Title, $Title) or die ($self->{'DB'}->errstr ());
       if ($self->{'DisambiguationStatement'}->fetch ())

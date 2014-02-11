@@ -1099,7 +1099,7 @@ sub do_review ($$$$$)
             {
               my $linkto_org = $1;
 
-              if ($DB->IsDisambiguation ($language, $linkto_org))
+              if ($DB->IsDisambiguation ($language, $self_lemma, $linkto_org))
                 {
                   my ($linkto_tmp, $times);
 

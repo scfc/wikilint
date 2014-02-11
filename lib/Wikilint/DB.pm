@@ -19,7 +19,7 @@ Wikilint::DB - Object interface to Wikipedia data
 
     $DB = new Wikilint::DB ();
     @fw = $DB->GetAvoidWords ('en');
-    $i = $DB->IsDisambiguation ('de', 'A46');
+    $i = $DB->IsDisambiguation ('de', '0', 'Null');
 
 =head1 DESCRIPTION
 
@@ -150,23 +150,23 @@ sub GetTypos ($)
   return $self->{'Languages'}->{$Language}->GetTypos ();
 }
 
-=item IsDisambiguation (LANGUAGE, TITLE)
+=item IsDisambiguation (LANGUAGE, PAGE, TITLE)
 
-Checks whether TITLE refers to a disambiguation page in
-LANGUAGE.
+Checks whether the link TITLE in PAGE refers to a
+disambiguation page in LANGUAGE.
 
 =back
 
 =cut
 
-sub IsDisambiguation ($$)
+sub IsDisambiguation
 {
   my $self = shift;
-  my ($Language, $Title) = @_;
+  my ($Language, $Page, $Title) = @_;
 
   $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->IsDisambiguation ($Title);
+  return $self->{'Languages'}->{$Language}->IsDisambiguation ($Page, $Title);
 }
 
 =head1 SEE ALSO
