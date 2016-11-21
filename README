@@ -44,7 +44,7 @@ URLs:
 -----
 
 wikilint runs at:
-http://toolserver.org/~timl/cgi-bin/wikilint
+https://tools.wmflabs.org/wikilint/cgi-bin/wikilint
 
 The full documentation can be found at:
-http://wiki.ts.wikimedia.org/view/~timl/wikilint
+https://wikitech.wikimedia.org/wiki/Tool:Wikilint
