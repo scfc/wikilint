@@ -52,7 +52,8 @@ sub new
   my $LangDataDir = (exists ($ENV {'WIKILINTLANGDATADIR'}) ? $ENV {'WIKILINTLANGDATADIR'} : '@PKGLANGDATADIR@') . '/' . $self->{'Language'};
 
   # Open database.
-  if (-e $LangDataDir . '/use-toolserver.db' && defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki-p.db.toolserver.org;mysql_read_default_group=client;mysql_read_default_file=/home/timl/.my.cnf')))
+  if (exists ($ENV {'WIKILINTUSEDB'}) && $ENV {'WIKILINTUSEDB'} eq 'true' &&
+      defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki-p.db.toolserver.org;mysql_read_default_group=client;mysql_read_default_file=/home/timl/.my.cnf')))
     {
       $self->{'DB'}->{PrintError}         = 0;
       $self->{'DB'}->{unicode}            = 1;
