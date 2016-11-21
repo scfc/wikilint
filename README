@@ -3,12 +3,12 @@ Abstract:
 
 wikilint (formerly Wikipedia Autoreviewer) is a web based
 service to find errors (like typos and wrong formating) in
-Wikipedia articles and make proposals how to improve
-them. Most features work currently only for the German WP
-but some are also available for English arcticles. It was
-originally written by Arnim Rupp and was then published
-under GPL3 license and transferred to the WP-Tool-Server and
-maintained by Daniel Arnold.
+Wikipedia articles and make proposals how to improve them.
+Most features work currently only for the German WP but some
+are also available for English articles.  It was originally
+written by Arnim Rupp and was then published under GPL3
+license and transferred to the WP-Tool-Server and maintained
+by Daniel Arnold.
 
 
 Directories:
@@ -31,8 +31,8 @@ Sources for Word Lists:
 - disambs.txt: Disambiguation pages and redirects to those,
   dumped from toolserver database.
 - fill_words.txt: Filler words, maintained manually.
-- redirs.txt: Redirects and their targets, dumped from tool-
-  server database.
+- redirs.txt: Redirects and their targets, dumped from
+  toolserver database.
 - typos.txt: Typos, case-insensitive, for German Wikipedia
   cf.
   <URI:http://de.wikipedia.org/wiki/Wikipedia:Helferlein/Rechtschreibprüfung/Wortliste>
