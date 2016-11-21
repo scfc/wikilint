@@ -53,7 +53,7 @@ sub new
 
   # Open database.
   if (exists ($ENV {'WIKILINTUSEDB'}) && $ENV {'WIKILINTUSEDB'} eq 'true' &&
-      defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki-p.db.toolserver.org;mysql_read_default_group=client;mysql_read_default_file=/home/timl/.my.cnf')))
+      defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki.labsdb;mysql_read_default_group=client;mysql_read_default_file=' . (getpwuid ($<)) [7] . '/replica.my.cnf')))
     {
       $self->{'DB'}->{PrintError}         = 0;
       $self->{'DB'}->{unicode}            = 1;
