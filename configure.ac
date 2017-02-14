@@ -9,7 +9,7 @@ AC_PROG_INSTALL
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 AC_PROG_AWK
 
-AX_PROG_PERL_MODULES([CGI DBD::SQLite DBI HTML::Entities LWP::UserAgent URI::Escape],
+AX_PROG_PERL_MODULES([CGI DBD::SQLite DBI HTML::Entities LWP::UserAgent MediaWiki::API URI::Escape],
                      [],
                      [AC_MSG_ERROR(Perl module requirements unfulfilled)])
 
