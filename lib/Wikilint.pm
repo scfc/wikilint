@@ -1475,8 +1475,6 @@ sub do_review ($$$$$)
   $page         = restore_stuff_to_ignore ($page,         1);
   $new_page_org = restore_stuff_to_ignore ($new_page_org, 0);
 
-  use Data::Dumper;
-
   return ($page, $review_level, $num_words, $extra_message, $quotient, join ('', map { $_ x $count_letters {$_}; } (sort (keys (%count_letters)))), $new_page_org, $removed_links, $count_ref, $count_fillwords, $DB->GetDatabaseState ($language));
 }
 
