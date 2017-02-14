@@ -38,14 +38,13 @@ Creates a new object.
 
 =cut
 
-sub new
-{
-  my $class = shift;
-  my $self  = {};
+sub new {
+    my $class = shift;
+    my $self  = {};
 
-  $self->{'Languages'} = {};
+    $self->{'Languages'} = {};
 
-  return bless ($self, $class);
+    return bless ($self, $class);
 }
 
 =head1 METHODS
@@ -58,14 +57,13 @@ Returns the list of abbreviations for LANGUAGE.
 
 =cut
 
-sub GetAbbreviations ($)
-{
-  my $self = shift;
-  my ($Language) = @_;
+sub GetAbbreviations ($) {
+    my $self = shift;
+    my ($Language) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->GetAbbreviations ();
+    return $self->{'Languages'}->{$Language}->GetAbbreviations ();
 }
 
 =item GetAvoidWords (LANGUAGE)
@@ -74,14 +72,13 @@ Returns the list of words to avoid for LANGUAGE.
 
 =cut
 
-sub GetAvoidWords ($)
-{
-  my $self = shift;
-  my ($Language) = @_;
+sub GetAvoidWords ($) {
+    my $self = shift;
+    my ($Language) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->GetAvoidWords ();
+    return $self->{'Languages'}->{$Language}->GetAvoidWords ();
 }
 
 =item GetDatabaseState (LANGUAGE)
@@ -90,15 +87,14 @@ Returns the state timestamps for LANGUAGE.
 
 =cut
 
-sub GetDatabaseState ($)
-{
-  my $self = shift;
-  my ($Language) = @_;
+sub GetDatabaseState ($) {
+    my $self = shift;
+    my ($Language) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->{'DisambiguationPagesState'} . '/' .
-         $self->{'Languages'}->{$Language}->{'RedirectsState'};
+    return $self->{'Languages'}->{$Language}->{'DisambiguationPagesState'} . '/' .
+        $self->{'Languages'}->{$Language}->{'RedirectsState'};
 }
 
 =item GetFillWords (LANGUAGE)
@@ -107,14 +103,13 @@ Returns the list of filler words for LANGUAGE.
 
 =cut
 
-sub GetFillWords ($)
-{
-  my $self = shift;
-  my ($Language) = @_;
+sub GetFillWords ($) {
+    my $self = shift;
+    my ($Language) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->GetFillWords ();
+    return $self->{'Languages'}->{$Language}->GetFillWords ();
 }
 
 =item GetRedirects (LANGUAGE, TITLE)
@@ -124,14 +119,13 @@ TITLE.
 
 =cut
 
-sub GetRedirects
-{
-  my $self = shift;
-  my ($Language, $Title) = @_;
+sub GetRedirects {
+    my $self = shift;
+    my ($Language, $Title) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->GetRedirects ($Title);
+    return $self->{'Languages'}->{$Language}->GetRedirects ($Title);
 }
 
 =item GetTypos (LANGUAGE)
@@ -140,14 +134,13 @@ Returns the list of typos for LANGUAGE.
 
 =cut
 
-sub GetTypos ($)
-{
-  my $self = shift;
-  my ($Language) = @_;
+sub GetTypos ($) {
+    my $self = shift;
+    my ($Language) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->GetTypos ();
+    return $self->{'Languages'}->{$Language}->GetTypos ();
 }
 
 =item IsDisambiguation (LANGUAGE, PAGE, TITLE)
@@ -159,14 +152,13 @@ disambiguation page in LANGUAGE.
 
 =cut
 
-sub IsDisambiguation
-{
-  my $self = shift;
-  my ($Language, $Page, $Title) = @_;
+sub IsDisambiguation {
+    my $self = shift;
+    my ($Language, $Page, $Title) = @_;
 
-  $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
+    $self->{'Languages'}->{$Language} = new Wikilint::DB::Language ($Language) unless (defined ($self->{'Languages'}->{$Language}));
 
-  return $self->{'Languages'}->{$Language}->IsDisambiguation ($Page, $Title);
+    return $self->{'Languages'}->{$Language}->IsDisambiguation ($Page, $Title);
 }
 
 =head1 SEE ALSO

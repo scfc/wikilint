@@ -40,104 +40,90 @@ and connects to the corresponding database.
 
 =cut
 
-sub new
-{
-  my $class = shift;
-  my $self  = {};
-  my $F;
+sub new {
+    my $class = shift;
+    my $self  = {};
+    my $F;
 
-  $self->{'Language'} = shift;
-  die ("Language missing\n") unless (defined ($self->{'Language'}));
-  die ("Unknown language: " . $self->{'Language'} . "\n") unless ($self->{'Language'} eq 'de' || $self->{'Language'} eq 'en');
+    $self->{'Language'} = shift;
+    die ("Language missing\n") unless (defined ($self->{'Language'}));
+    die ("Unknown language: " . $self->{'Language'} . "\n") unless ($self->{'Language'} eq 'de' || $self->{'Language'} eq 'en');
 
-  my $LangDataDir = (exists ($ENV {'WIKILINTLANGDATADIR'}) ? $ENV {'WIKILINTLANGDATADIR'} : '@PKGLANGDATADIR@') . '/' . $self->{'Language'};
+    my $LangDataDir = (exists ($ENV {'WIKILINTLANGDATADIR'}) ? $ENV {'WIKILINTLANGDATADIR'} : '@PKGLANGDATADIR@') . '/' . $self->{'Language'};
 
-  # Open database.
-  if (exists ($ENV {'WIKILINTUSEAPI'}) && $ENV {'WIKILINTUSEAPI'} eq 'true')
-    {
-      $self->{'APIData'}                        = {};
-      $self->{'MWApi'}                          = MediaWiki::API->new ();
-      $self->{'MWApi'}->{'config'}->{'api_url'} = 'https://' . $self->{'Language'} . '.wikipedia.org/w/api.php';
-      $self->{'DisambiguationPagesState'}       = '(MediaWiki API)';
-      $self->{'RedirectsState'}                 = '(MediaWiki API)';
-      $self->{'MWApi'}->{'ua'}->agent ('wikilint (https://tools.wmflabs.org/wikilint/; tim@tim-landscheidt.de)');
-    }
-  elsif (exists ($ENV {'WIKILINTUSEDB'}) && $ENV {'WIKILINTUSEDB'} eq 'true' &&
-      defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki.labsdb;mysql_read_default_group=client;mysql_read_default_file=' . (getpwuid ($<)) [7] . '/replica.my.cnf')))
-    {
-      $self->{'DB'}->{PrintError}         = 0;
-      $self->{'DB'}->{unicode}            = 1;
-      $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ("SELECT 1 FROM categorylinks JOIN page ON cl_from = page_id WHERE cl_to = 'Begriffsklärung' AND page_namespace = 0 AND page_title = REPLACE(?, ' ', '_') UNION SELECT 1 FROM categorylinks JOIN page AS p1 ON cl_from = p1.page_id JOIN redirect ON rd_namespace = p1.page_namespace AND rd_title = p1.page_title JOIN page AS p2 ON rd_from = p2.page_id WHERE cl_to = 'Begriffsklärung' AND p2.page_namespace = 0 AND p2.page_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
-      $self->{'RedirectionsStatement'}    = $self->{'DB'}->prepare ("SELECT REPLACE(page_title, '_', ' ') AS FromTitle FROM page JOIN redirect ON page_id = rd_from WHERE page_namespace = 0 AND rd_namespace = 0 AND rd_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
-      $self->{'DisambiguationPagesState'} = '(online)';
-      $self->{'RedirectsState'}           = '(online)';
-    }
-  elsif (-e $LangDataDir . '/cache.db' && defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', '')))
-    {
-      $self->{'DB'}->{PrintError}         = 0;
-      $self->{'DB'}->{sqlite_unicode}     = 1;
-      $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ? OR Title = ?;') or die ($self->{'DB'}->errstr ());
-      $self->{'RedirectionsStatement'}    = $self->{'DB'}->prepare ('SELECT FromTitle FROM Redirects WHERE ToTitle = ?;') or die ($self->{'DB'}->errstr ());
-      $self->{'DisambiguationPagesState'} = $self->{'DB'}->selectrow_array ("SELECT datetime(SUBSTR(Title, 2), 'unixepoch') FROM DisambiguationPages WHERE SUBSTR(Title, 1, 1) = '#';") or die ($self->{'DB'}->errstr ());
-      $self->{'RedirectsState'}           = $self->{'DB'}->selectrow_array ("SELECT datetime(ToTitle, 'unixepoch') FROM Redirects WHERE FromTitle = '#';") or die ($self->{'DB'}->errstr ());
+    # Open database.
+    if (exists ($ENV {'WIKILINTUSEAPI'}) && $ENV {'WIKILINTUSEAPI'} eq 'true') {
+        $self->{'APIData'}                        = {};
+        $self->{'MWApi'}                          = MediaWiki::API->new ();
+        $self->{'MWApi'}->{'config'}->{'api_url'} = 'https://' . $self->{'Language'} . '.wikipedia.org/w/api.php';
+        $self->{'DisambiguationPagesState'}       = '(MediaWiki API)';
+        $self->{'RedirectsState'}                 = '(MediaWiki API)';
+        $self->{'MWApi'}->{'ua'}->agent ('wikilint (https://tools.wmflabs.org/wikilint/; tim@tim-landscheidt.de)');
+    } elsif (exists ($ENV {'WIKILINTUSEDB'}) && $ENV {'WIKILINTUSEDB'} eq 'true' &&
+             defined ($self->{'DB'} = DBI->connect ('dbi:mysql:database=' . $self->{'Language'} . 'wiki_p;host=' . $self->{'Language'} . 'wiki.labsdb;mysql_read_default_group=client;mysql_read_default_file=' . (getpwuid ($<)) [7] . '/replica.my.cnf'))) {
+        $self->{'DB'}->{PrintError}         = 0;
+        $self->{'DB'}->{unicode}            = 1;
+        $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ("SELECT 1 FROM categorylinks JOIN page ON cl_from = page_id WHERE cl_to = 'Begriffsklärung' AND page_namespace = 0 AND page_title = REPLACE(?, ' ', '_') UNION SELECT 1 FROM categorylinks JOIN page AS p1 ON cl_from = p1.page_id JOIN redirect ON rd_namespace = p1.page_namespace AND rd_title = p1.page_title JOIN page AS p2 ON rd_from = p2.page_id WHERE cl_to = 'Begriffsklärung' AND p2.page_namespace = 0 AND p2.page_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
+        $self->{'RedirectionsStatement'}    = $self->{'DB'}->prepare ("SELECT REPLACE(page_title, '_', ' ') AS FromTitle FROM page JOIN redirect ON page_id = rd_from WHERE page_namespace = 0 AND rd_namespace = 0 AND rd_title = REPLACE(?, ' ', '_');") or die ($self->{'DB'}->errstr ());
+        $self->{'DisambiguationPagesState'} = '(online)';
+        $self->{'RedirectsState'}           = '(online)';
+    } elsif (-e $LangDataDir . '/cache.db' && defined ($self->{'DB'} = DBI->connect ('dbi:SQLite:dbname=' . $LangDataDir . '/cache.db', '', ''))) {
+        $self->{'DB'}->{PrintError}         = 0;
+        $self->{'DB'}->{sqlite_unicode}     = 1;
+        $self->{'DisambiguationStatement'}  = $self->{'DB'}->prepare ('SELECT 1 FROM DisambiguationPages WHERE Title = ? OR Title = ?;') or die ($self->{'DB'}->errstr ());
+        $self->{'RedirectionsStatement'}    = $self->{'DB'}->prepare ('SELECT FromTitle FROM Redirects WHERE ToTitle = ?;') or die ($self->{'DB'}->errstr ());
+        $self->{'DisambiguationPagesState'} = $self->{'DB'}->selectrow_array ("SELECT datetime(SUBSTR(Title, 2), 'unixepoch') FROM DisambiguationPages WHERE SUBSTR(Title, 1, 1) = '#';") or die ($self->{'DB'}->errstr ());
+        $self->{'RedirectsState'}           = $self->{'DB'}->selectrow_array ("SELECT datetime(ToTitle, 'unixepoch') FROM Redirects WHERE FromTitle = '#';") or die ($self->{'DB'}->errstr ());
     }
 
-  # Words to avoid.
-  $self->{'AvoidWords'} = [];
-  if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/avoid_words.txt'))
-    {
-      while (<$F>)
-        {
-          chomp ();
-          push (@{$self->{'AvoidWords'}}, qr/(\b$_\b)/);
+    # Words to avoid.
+    $self->{'AvoidWords'} = [];
+    if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/avoid_words.txt')) {
+        while (<$F>) {
+            chomp ();
+            push (@{$self->{'AvoidWords'}}, qr/(\b$_\b)/);
         }
-      close ($F);
+        close ($F);
     }
 
-  # Fill words ("aber", "auch", "nun", "dann", "doch", "wohl", "allerdings", "eigentlich", "jeweils").
-  $self->{'FillWords'} = [];
-  if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/fill_words.txt'))
-    {
-      while (<$F>)
-        {
-          chomp ();
-          push (@{$self->{'FillWords'}}, qr/(\b$_\b)/);
+    # Fill words ("aber", "auch", "nun", "dann", "doch", "wohl", "allerdings", "eigentlich", "jeweils").
+    $self->{'FillWords'} = [];
+    if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/fill_words.txt')) {
+        while (<$F>) {
+            chomp ();
+            push (@{$self->{'FillWords'}}, qr/(\b$_\b)/);
         }
-      close ($F);
+        close ($F);
     }
 
-  # Abbreviations.
-  $self->{'Abbreviations'} = [];
-  if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/abbreviations.txt'))
-    {
-      while (<$F>)
-        {
-          chomp ();
-          s/\./\\\./g;
-          push (@{$self->{'Abbreviations'}}, qr/(\b$_)/);
+    # Abbreviations.
+    $self->{'Abbreviations'} = [];
+    if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/abbreviations.txt')) {
+        while (<$F>) {
+            chomp ();
+            s/\./\\\./g;
+            push (@{$self->{'Abbreviations'}}, qr/(\b$_)/);
         }
-      close ($F);
+        close ($F);
     }
 
-  # Typos.
-  $self->{'Typos'} = [];
-  if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/typos.txt'))
-    {
-      while (<$F>)
-        {
-          chomp ();
+    # Typos.
+    $self->{'Typos'} = [];
+    if (open ($F, '<:encoding(UTF-8)', $LangDataDir . '/typos.txt')) {
+        while (<$F>) {
+            chomp ();
 
-          # It's far faster to search for /tree/ and /Tree/ than /tree/i so …
-          my $typo = lc ($_);
+            # It's far faster to search for /tree/ and /Tree/ than /tree/i so …
+            my $typo = lc ($_);
 
-          # Ignore case only in first letter to speed up search (that's factor 5 to complete /i!).
-          $typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
-          push (@{$self->{'Typos'}}, qr/(?<![-\*])\b($typo)\b/);
+            # Ignore case only in first letter to speed up search (that's factor 5 to complete /i!).
+            $typo =~ s/^(.)/\(?i\)$1\(?-i\)/;
+            push (@{$self->{'Typos'}}, qr/(?<![-\*])\b($typo)\b/);
         }
-      close ($F);
+        close ($F);
     }
 
-  return bless ($self, $class);
+    return bless ($self, $class);
 }
 
 =head1 METHODS
@@ -150,11 +136,10 @@ Returns the list of abbreviations for this language.
 
 =cut
 
-sub GetAbbreviations
-{
-  my $self = shift;
+sub GetAbbreviations {
+    my $self = shift;
 
-  return @{$self->{'Abbreviations'}};
+    return @{$self->{'Abbreviations'}};
 }
 
 =item GetAvoidWords ()
@@ -163,11 +148,10 @@ Returns the list of words to avoid for this language.
 
 =cut
 
-sub GetAvoidWords
-{
-  my $self = shift;
+sub GetAvoidWords {
+    my $self = shift;
 
-  return @{$self->{'AvoidWords'}};
+    return @{$self->{'AvoidWords'}};
 }
 
 =item GetFillWords ()
@@ -176,11 +160,10 @@ Returns the list of filler words for this language.
 
 =cut
 
-sub GetFillWords
-{
-  my $self = shift;
+sub GetFillWords {
+    my $self = shift;
 
-  return @{$self->{'FillWords'}};
+    return @{$self->{'FillWords'}};
 }
 
 =item GetRedirects (TITLE)
@@ -190,60 +173,54 @@ to TITLE.
 
 =cut
 
-sub _GetAPIResult
-{
-  my $self    = shift;
-  my ($Query) = @_;
-  my $Result  = [];
+sub _GetAPIResult {
+    my $self    = shift;
+    my ($Query) = @_;
+    my $Result  = [];
 
-  $Query->{'continue'} = '';
-  while (1)
-    {
-      my $r = $self->{'MWApi'}->api ($Query) ||
-          die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
-      push (@{$Result}, $r->{'query'}) if (exists ($r->{'query'}));
-      if (exists ($r->{'continue'}))
-        {
-          @{$Query} {keys ($r->{'continue'})} = values ($r->{'continue'});
-        }
-      else
-        {
-          last;
+    $Query->{'continue'} = '';
+    while (1) {
+        my $r = $self->{'MWApi'}->api ($Query) ||
+            die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
+        push (@{$Result}, $r->{'query'}) if (exists ($r->{'query'}));
+        if (exists ($r->{'continue'})) {
+            @{$Query} {keys ($r->{'continue'})} = values ($r->{'continue'});
+        } else {
+            last;
         }
     }
 
-  return $Result;
+    return $Result;
 }
 
-sub GetRedirects
-{
-  my $self    = shift;
-  my ($Title) = @_;
-  my $r;
+sub GetRedirects {
+    my $self    = shift;
+    my ($Title) = @_;
+    my $r;
 
-  if (defined ($self->{'MWApi'}))
-    {
-      my $r = $self->_GetAPIResult ({'action'      => 'query',
-                                     'titles'      => $Title,
-                                     'prop'        => 'redirects',
-                                     'rdprop'      => 'title',
-                                     'rdnamespace' => 0,
-                                     'rdlimit'     => 500});
-      if (!defined ($r))
-        {
-          die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
+    if (defined ($self->{'MWApi'})) {
+        my $r = $self->_GetAPIResult ({'action'      => 'query',
+                                       'titles'      => $Title,
+                                       'prop'        => 'redirects',
+                                       'rdprop'      => 'title',
+                                       'rdnamespace' => 0,
+                                       'rdlimit'     => 500});
+        if (!defined ($r)) {
+            die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
         }
 
-      return map { map { map { $_->{'title'}; } @{$_->{'redirects'}}; } (values (%{$_->{'pages'}})) } @{$r};
+        return map { map { map { $_->{'title'}; } @{$_->{'redirects'}}; } (values (%{$_->{'pages'}})) } @{$r};
     }
 
-  if (!defined ($self->{'DB'}))   # Fail gracefully if we don't have a database connection.
-    { return (); }
+    if (!defined ($self->{'DB'})) {   # Fail gracefully if we don't have a database connection.
+        return ();
+    }
 
-  if (defined ($r = $self->{'DB'}->selectcol_arrayref ($self->{'RedirectionsStatement'}, {}, $Title)))
-    { return @{$r}; }
-  else
-    { die ($self->{'DB'}->errstr ()); }  
+    if (defined ($r = $self->{'DB'}->selectcol_arrayref ($self->{'RedirectionsStatement'}, {}, $Title))) {
+        return @{$r};
+    } else {
+        die ($self->{'DB'}->errstr ());
+    }
 }
 
 =item GetTypos ()
@@ -252,11 +229,10 @@ Returns the list of typos for this language.
 
 =cut
 
-sub GetTypos
-{
-  my $self = shift;
+sub GetTypos {
+    my $self = shift;
 
-  return @{$self->{'Typos'}};
+    return @{$self->{'Typos'}};
 }
 
 =item IsDisambiguation (PAGE, TITLE)
@@ -266,52 +242,43 @@ disambiguation page in this language.
 
 =cut
 
-sub IsDisambiguation
-{
-  my $self           = shift;
-  my ($Page, $Title) = @_;
+sub IsDisambiguation {
+    my $self           = shift;
+    my ($Page, $Title) = @_;
 
-  if (defined ($self->{'MWApi'}))
-    {
-      if (!exists ($self->{'APIData'}->{$Page}))
-        {
-          my $r = $self->_GetAPIResult ({'action'    => 'query',
-                                         'generator' => 'links',
-                                         'titles'    => $Page,
-                                         'prop'      => 'pageprops',
-                                         'ppprop'    => 'disambiguation',
-                                         'gpllimit'  => 500});
-          if (!defined ($r))
-            {
-              die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
+    if (defined ($self->{'MWApi'})) {
+        if (!exists ($self->{'APIData'}->{$Page})) {
+            my $r = $self->_GetAPIResult ({'action'    => 'query',
+                                           'generator' => 'links',
+                                           'titles'    => $Page,
+                                           'prop'      => 'pageprops',
+                                           'ppprop'    => 'disambiguation',
+                                           'gpllimit'  => 500});
+            if (!defined ($r)) {
+                die ($self->{'MWApi'}->{'error'}->{'code'} . ': ' . $self->{'MWApi'}->{'error'}->{'details'});
             }
 
-          $self->{'APIData'}->{$Page} = {};
-          foreach my $p (map { values ($_->{'pages'}); } @{$r})
-            {
-              if (exists ($p->{'pageprops'}) && exists ($p->{'pageprops'}->{'disambiguation'}))
-                {
-                  $self->{'APIData'}->{$Page}->{$p->{'title'}} = 1;
+            $self->{'APIData'}->{$Page} = {};
+            foreach my $p (map { values ($_->{'pages'}); } @{$r}) {
+                if (exists ($p->{'pageprops'}) && exists ($p->{'pageprops'}->{'disambiguation'})) {
+                    $self->{'APIData'}->{$Page}->{$p->{'title'}} = 1;
                 }
             }
         }
 
-      return exists ($self->{'APIData'}->{$Page}->{$Title}) ? $self->{'APIData'}->{$Page}->{$Title} : 0;
-    }
-  elsif (defined ($self->{'DB'}))
-    {
-      $self->{'DisambiguationStatement'}->execute ($Title, $Title) or die ($self->{'DB'}->errstr ());
-      if ($self->{'DisambiguationStatement'}->fetch ())
-        {
-          $self->{'DisambiguationStatement'}->finish ();
+        return exists ($self->{'APIData'}->{$Page}->{$Title}) ? $self->{'APIData'}->{$Page}->{$Title} : 0;
+    } elsif (defined ($self->{'DB'})) {
+        $self->{'DisambiguationStatement'}->execute ($Title, $Title) or die ($self->{'DB'}->errstr ());
+        if ($self->{'DisambiguationStatement'}->fetch ()) {
+            $self->{'DisambiguationStatement'}->finish ();
 
-          return 1;
+            return 1;
+        } else {
+            return 0;
         }
-      else
-        { return 0; }
+    } else {
+        return 0;
     }
-  else
-    { return 0; }
 }
 
 =item DESTROY
@@ -322,12 +289,12 @@ Closes the database connection if it was open.
 
 =cut
 
-sub DESTROY
-{
-  my $self = shift;
+sub DESTROY {
+    my $self = shift;
 
-  if (defined ($self->{'DB'}))   # Close database if necessary.
-    { $self->{'DB'}->disconnect (); }
+    if (defined ($self->{'DB'})) {   # Close database if necessary.
+        $self->{'DB'}->disconnect ();
+    }
 }
 
 =head1 SEE ALSO

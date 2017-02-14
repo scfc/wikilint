@@ -28,334 +28,311 @@ use HTML::Entities;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape_utf8);
 
-BEGIN
-  {
+BEGIN {
     use Wikilint;
     use Wikilint::Config;
-  }
+}
 
 our ($VERSION) = 0.1;
 
 our ($language, $lemma_org, $search_lemma);
 my ($count_ref, $do_typo_check, $title_lemma, $url);
 
-sub begin_html ($)
-{
-  my ($title_lemma) = @_;
+sub begin_html ($) {
+    my ($title_lemma) = @_;
 
-  print header (-type => 'text/html; charset=utf-8'),
-        start_html (-title => 'wikilint' . (defined ($title_lemma) ? ' ' . $title_lemma : ''),
-                    -encoding => 'utf-8',
-                    -lang => 'de-DE',
-                    -bgcolor => '#FFFFFF',
-                    -style => $static_html_path . 'wp.css'),
-        h1 ({-align => 'center', -face => 'helvetica, arial'}, 'wikilint');
+    print header (-type => 'text/html; charset=utf-8'),
+          start_html (-title => 'wikilint' . (defined ($title_lemma) ? ' ' . $title_lemma : ''),
+                      -encoding => 'utf-8',
+                      -lang => 'de-DE',
+                      -bgcolor => '#FFFFFF',
+                      -style => $static_html_path . 'wp.css'),
+          h1 ({-align => 'center', -face => 'helvetica, arial'}, 'wikilint');
 }
 
-sub print_explanation ()
-{
-  print table ({border => 0},
-               Tr (td (img ({src => $static_html_path . 'deflag.jpg', alt => 'Deutsche Flagge'}) . b ('Dieser Dienst prüft automatisch Wikipedia-Seiten auf häufige Fehler. Bisher wird nur Deutsch und Englisch unterstützt.') . br () .
-                       b ('Bitte Kommentare, Fehler und Ideen ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'hier') . ' eintragen. (' .
-                          a ({href => '#explanations'}, 'Liste der Funktionen') . ')'))) .
-               Tr (td (img ({src => $static_html_path . 'gbflag.gif', alt => 'English flag'}) . 'This service automatically reviews Wikipedia articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs &amp; ideas ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'here') . '.')));
+sub print_explanation () {
+    print table ({border => 0},
+                 Tr (td (img ({src => $static_html_path . 'deflag.jpg', alt => 'Deutsche Flagge'}) . b ('Dieser Dienst prüft automatisch Wikipedia-Seiten auf häufige Fehler. Bisher wird nur Deutsch und Englisch unterstützt.') . br () .
+                         b ('Bitte Kommentare, Fehler und Ideen ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'hier') . ' eintragen. (' .
+                            a ({href => '#explanations'}, 'Liste der Funktionen') . ')'))) .
+                 Tr (td (img ({src => $static_html_path . 'gbflag.gif', alt => 'English flag'}) . 'This service automatically reviews Wikipedia articles for some common problems. So far only German and English are supported as article languages. Leave comments, bugs &amp; ideas ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'here') . '.')));
 }
 
-sub print_form ($)
-{
-  my ($url) = @_;
+sub print_form ($) {
+    my ($url) = @_;
 
-  $url = $url || 'http://de.wikipedia.org/wiki/Amphetamin';
+    $url = $url || 'http://de.wikipedia.org/wiki/Amphetamin';
 
-  param ('url', $url);
+    param ('url', $url);
 
-  print start_form (-method => 'GET',
-                    -action => $tool_path,
-                    -'accept-charset' => 'utf8',
-                    -enctype => 'application/x-www-form-urlencoded'),
-        'URL/Lemma: ', textfield (-name => 'url',
-                                  -default => $url,
-                                  -size => 70)," (Bei Problemen mit deutschen Umlauten die URL von Wikipedia kopieren)", p,
-        checkbox (-name => 'remove_century',
-                  -checked => 0,
-                  -value => 'ON',
-                  -label => ''),
-        b ('[[18. Jahrhundert]], [[April]], [[1960er]] auch entfernen') . '/also remove century links', br (),
-        checkbox (-name => 'do_typo_check',
-                  -checked => 1,
-                  -value => 'ON',
-                  -label => ''),
-        b ('Tippfehler-Prüfung (dauert etwas länger)') . '/Typo check',
-        '&nbsp;&nbsp;&nbsp;',
-        checkbox (-name => 'rnd',
-                  -checked => 0,
-                  -value => 'ON',
-                  -label => ''),
-        b ('Zufällige Seite') . '/Random Page',
-        '&nbsp;&nbsp;&nbsp;',
-        checkbox (-name => 'testpage',
-                  -checked => 0,
-                  -value => 'ON',
-                  -label => ''),
-        b ('Test Seite') . '/Testpage', br (),
-        b ('Sprache') . '/Language: ',
-        popup_menu (-name => 'l',
-                    -values => ['de', 'en']), ' (English language limited)', br (),
-        submit (-name => 'Go!'),
-        end_form ();
+    print start_form (-method => 'GET',
+                      -action => $tool_path,
+                      -'accept-charset' => 'utf8',
+                      -enctype => 'application/x-www-form-urlencoded'),
+          'URL/Lemma: ', textfield (-name => 'url',
+                                    -default => $url,
+                                    -size => 70)," (Bei Problemen mit deutschen Umlauten die URL von Wikipedia kopieren)", p,
+          checkbox (-name => 'remove_century',
+                    -checked => 0,
+                    -value => 'ON',
+                    -label => ''),
+          b ('[[18. Jahrhundert]], [[April]], [[1960er]] auch entfernen') . '/also remove century links', br (),
+          checkbox (-name => 'do_typo_check',
+                    -checked => 1,
+                    -value => 'ON',
+                    -label => ''),
+          b ('Tippfehler-Prüfung (dauert etwas länger)') . '/Typo check',
+          '&nbsp;&nbsp;&nbsp;',
+          checkbox (-name => 'rnd',
+                    -checked => 0,
+                    -value => 'ON',
+                    -label => ''),
+          b ('Zufällige Seite') . '/Random Page',
+          '&nbsp;&nbsp;&nbsp;',
+          checkbox (-name => 'testpage',
+                    -checked => 0,
+                    -value => 'ON',
+                    -label => ''),
+          b ('Test Seite') . '/Testpage', br (),
+          b ('Sprache') . '/Language: ',
+          popup_menu (-name => 'l',
+                      -values => ['de', 'en']), ' (English language limited)', br (),
+          submit (-name => 'Go!'),
+          end_form ();
 }
 
-sub parse_form ()
-{
-  my $url = param ('url');
-  my $language = param ('l');
-  my $random_page = param ('rnd');
-  my $lemma = param ('lemma');
-  my $testpage = param ('testpage');
-  my $remove_century = param ('remove_century');
-  my $action = param ('action');
-  my $oldid = param ('oldid');
-  my $do_typo_check = param ('do_typo_check');
+sub parse_form () {
+    my $url = param ('url');
+    my $language = param ('l');
+    my $random_page = param ('rnd');
+    my $lemma = param ('lemma');
+    my $testpage = param ('testpage');
+    my $remove_century = param ('remove_century');
+    my $action = param ('action');
+    my $oldid = param ('oldid');
+    my $do_typo_check = param ('do_typo_check');
 
-  # Normalize values.
-  $do_typo_check = 1 if ($do_typo_check);
+    # Normalize values.
+    $do_typo_check = 1 if ($do_typo_check);
 
-  die if ($oldid && $oldid =~ /\D/);
-  die if ($language && $language !~ /^\w\w$/);
+    die if ($oldid && $oldid =~ /\D/);
+    die if ($language && $language !~ /^\w\w$/);
 
-  utf8::decode ($url);
-  utf8::decode ($lemma);
+    utf8::decode ($url);
+    utf8::decode ($lemma);
 
-  # Empty URL/lemma.
-  if ($url eq '' && $lemma eq '')
-    {
-      begin_html ($title_lemma);
-      print h3 ('Fehler: Keine URL angegeben.'), hr (), p ();
-      print_form (undef);
-      exit;
+    # Empty URL/lemma.
+    if ($url eq '' && $lemma eq '') {
+        begin_html ($title_lemma);
+        print h3 ('Fehler: Keine URL angegeben.'), hr (), p ();
+        print_form (undef);
+        exit;
     }
 
-  # If people enter only the lemma in the URL field.
-  if ($url =~ /^[\w öäüÖÄÜß\-()]+$/ && $lemma eq '')
-    {
-      $lemma = $url;
-      $url   = '';
+    # If people enter only the lemma in the URL field.
+    if ($url =~ /^[\w öäüÖÄÜß\-()]+$/ && $lemma eq '') {
+        $lemma = $url;
+        $url   = '';
     }
 
-  # Strip "#Section".
-  $url =~ s/#.*$//;
+    # Strip "#Section".
+    $url =~ s/#.*$//;
 
-  $language = param ('language') if ($language eq '');
+    $language = param ('language') if ($language eq '');
 
-  # Check URL.
-  if ($url ne '' && ($url =~ /\.\./ || $url =~ /;/ || length ($url) > 150 ||
-      # If URL is passed only to wikipedia.org.
-      (($url =~ /https?:/ || $url =~ /:\/\//) && $url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i)))
-    {
-      begin_html ($title_lemma);
-      print "Wrong URL or lemma $url", p ();
-      exit;
+    # Check URL.
+    if ($url ne '' && ($url =~ /\.\./ || $url =~ /;/ || length ($url) > 150 ||
+        # If URL is passed only to wikipedia.org.
+        (($url =~ /https?:/ || $url =~ /:\/\//) && $url !~ /^http:\/\/\w\w\.wikipedia.org\/w(iki)?\//i))) {
+        begin_html ($title_lemma);
+        print "Wrong URL or lemma $url", p ();
+        exit;
     }
 
-  # Only German or English so far.
-  if ($language ne 'de' && $language ne 'en')
-    {
-      begin_html ($title_lemma);
-      print "Wrong language", p ();
-      exit;
+    # Only German or English so far.
+    if ($language ne 'de' && $language ne 'en') {
+        begin_html ($title_lemma);
+        print "Wrong language", p ();
+        exit;
     }
 
-  if ($url eq '' && $lemma ne '')
-    {
-      # Default to typo-check if lemma is passed.
-      $do_typo_check = 1;
+    if ($url eq '' && $lemma ne '') {
+        # Default to typo-check if lemma is passed.
+        $do_typo_check = 1;
 
-      $url = 'http://' . $language . '.wikipedia.org/wiki/' . uri_escape_utf8 ($lemma);
+        $url = 'http://' . $language . '.wikipedia.org/wiki/' . uri_escape_utf8 ($lemma);
     }
 
-  return ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
+    return ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check);
 }
 
-sub output ($$$$$$$$$$$$$$)
-{
-  my ($page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words, $DatabaseState) = @_;
+sub output ($$$$$$$$$$$$$$) {
+    my ($page, $url, $lang, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words, $DatabaseState) = @_;
 
-  # Include HTML line-breaks.
-  $page =~ s/\n/br () . "\n"/eg;
+    # Include HTML line-breaks.
+    $page =~ s/\n/br () . "\n"/eg;
 
-  # Include '<a name="…">' for each "== Section ==", tricky because of my own HTML in section titles, e. g.:
-  # "== Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte ==<br />".
-  $page =~ s/((={2,9})\s*(.*?)<.*?>(.*?)<.*>(.*?)\s*\2)/a ({id => EscapeSectionTitle ($3 . $4 . $5)}, $1)/eg;
-  # Now sections without HTML aka [^<].
-  $page =~ s/((={2,9})\s*([^<]+?)\s*\2)/a ({id => EscapeSectionTitle ($3)}, $1)/eg;
+    # Include '<a name="…">' for each "== Section ==", tricky because of my own HTML in section titles, e. g.:
+    # "== Veröffentlichungs<span class="sometimes">-</span><sup class="reference"><a href=#colon_minus_section>[CMS]</a></sup> und Rezeptionsgeschichte ==<br />".
+    $page =~ s/((={2,9})\s*(.*?)<.*?>(.*?)<.*>(.*?)\s*\2)/a ({id => EscapeSectionTitle ($3 . $4 . $5)}, $1)/eg;
+    # Now sections without HTML aka [^<].
+    $page =~ s/((={2,9})\s*([^<]+?)\s*\2)/a ({id => EscapeSectionTitle ($3)}, $1)/eg;
 
-  if ($language eq 'de')
-    {
-      my $formattedquotient;
+    if ($language eq 'de') {
+        my $formattedquotient;
 
-      ($formattedquotient = $quotient) =~ tr/./,/;
-      print h3 ('Geprüfter Artikel: ' . a ({href => $url}, $search_lemma) . ' '  . small ('[' . a ({href => create_edit_link ($lemma_org, 'de')}, 'Bearbeiten in Wikipedia') . ']'));
-      print 'Link zu dieser Seite: ' . encode_entities (create_ar_link ($link_lemma, 'de', $oldid, $do_typo_check)) . br ();
+        ($formattedquotient = $quotient) =~ tr/./,/;
+        print h3 ('Geprüfter Artikel: ' . a ({href => $url}, $search_lemma) . ' '  . small ('[' . a ({href => create_edit_link ($lemma_org, 'de')}, 'Bearbeiten in Wikipedia') . ']'));
+        print 'Link zu dieser Seite: ' . encode_entities (create_ar_link ($link_lemma, 'de', $oldid, $do_typo_check)) . br ();
 
-      print h1 ('Achtung, dieses Review betrifft eine alte Version dieses Artikels!') if ($oldid);
+        print h1 ('Achtung, dieses Review betrifft eine alte Version dieses Artikels!') if ($oldid);
 
-      print '<p /><table border="1"><tr><td bgcolor="#cccccc">';
-      print_explanation ();
-      print_form ($url);
-      print '</td></tr></table>';
+        print '<p /><table border="1"><tr><td bgcolor="#cccccc">';
+        print_explanation ();
+        print_form ($url);
+        print '</td></tr></table>';
 
-      print p (b (span ({color => 'red'}, 'Obacht!') . ' Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22. April 2007. Bitte die Hinweise nicht unreflektiert übernehmen; wenn sich das automatisieren lassen würde, hätte ich einen ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Bots'}, 'Bot') . ' daraus gemacht ;). Der Inhalt ist immer wichtiger als die Formatierung!'));
+        print p (b (span ({color => 'red'}, 'Obacht!') . ' Dieses Programm gibt nur Anregungen nach den deutschen Wikipedia-Empfehlungen vom 22. April 2007. Bitte die Hinweise nicht unreflektiert übernehmen; wenn sich das automatisieren lassen würde, hätte ich einen ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Bots'}, 'Bot') . ' daraus gemacht ;). Der Inhalt ist immer wichtiger als die Formatierung!'));
 
-      print br (), 'Problem-Quote für ', a ({href => $url}, $search_lemma), ': ', b ($formattedquotient), ' (nur bedingt aussagekräftig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)', p ();
+        print br (), 'Problem-Quote für ', a ({href => $url}, $search_lemma), ': ', b ($formattedquotient), ' (nur bedingt aussagekräftig und vergleichbar, insbesondere weil dieser Dienst manchmal auch Falschmeldungen produziert!)', p ();
 
-      create_review_summary_html ($review_letters, $language);
+        create_review_summary_html ($review_letters, $language);
 
-      print br (), 'Anzahl der Einzelnachweise: ', b ($count_ref), p ();
-      my $fillwords_quot;
-      # Avoid division by zero.
-      $fillwords_quot = $count_fillwords ? int ($num_words / $count_fillwords) : 0;
+        print br (), 'Anzahl der Einzelnachweise: ', b ($count_ref), p ();
+        my $fillwords_quot;
+        # Avoid division by zero.
+        $fillwords_quot = $count_fillwords ? int ($num_words / $count_fillwords) : 0;
 
-      print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)", p ();
+        print "Anzahl der potentiellen Füllwörter: $count_fillwords von $num_words Wörtern = 1 Füllwort pro $fillwords_quot Wörter im Artikel (Durchschnitt der Exzellenten: 1/147, mehr als 1/$fillwords_per_words geht nicht in die Problem-Quote ein)", p ();
 
-      print p ("Stand der Datenbanken: " . $DatabaseState);
-    }
-  elsif ($language eq 'en')
-    {
-      print h3 ('Lint: ' . a ({href => $url}, $search_lemma) . ' ' . small ('[' . a ({href => create_edit_link ($lemma_org, 'en')}, 'edit in Wikipedia') . '] [' . a ({href => $tool_path}, 'New review') . ']'), br (), 'Level: ', b ($review_level), p ());
-      print_explanation ();
+        print p ("Stand der Datenbanken: " . $DatabaseState);
+    } elsif ($language eq 'en') {
+        print h3 ('Lint: ' . a ({href => $url}, $search_lemma) . ' ' . small ('[' . a ({href => create_edit_link ($lemma_org, 'en')}, 'edit in Wikipedia') . '] [' . a ({href => $tool_path}, 'New review') . ']'), br (), 'Level: ', b ($review_level), p ());
+        print_explanation ();
     }
 
-  print p (), hr (), p ();
+    print p (), hr (), p ();
 
-  if ($language eq 'de' && $propose_page && $removed_links > 1)
-    {
-      print h3 ('Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen (' . $removed_links . ' Stück).');
-      print '(Am einfachsten kopieren durch "reinklicken", [Strg-A], [Strg-C], in Wikipedia einfügen mit [Strg-A], [Strg-V] und dann mit "Änderungen zeigen" kontrollieren.)', br ();
-      print textarea ({readonly => 1, name => 'page_without_links_to_years_and_dates', rows => 10, cols => 80, default => $propose_page});
+    if ($language eq 'de' && $propose_page && $removed_links > 1) {
+        print h3 ('Wiki-Quelltext mit entfernten Links zu Jahreszahlen und Tagen (' . $removed_links . ' Stück).');
+        print '(Am einfachsten kopieren durch "reinklicken", [Strg-A], [Strg-C], in Wikipedia einfügen mit [Strg-A], [Strg-V] und dann mit "Änderungen zeigen" kontrollieren.)', br ();
+        print textarea ({readonly => 1, name => 'page_without_links_to_years_and_dates', rows => 10, cols => 80, default => $propose_page});
     }
 
-  if ($extra_message)
-    {
-      $extra_message =~ s/^(.*)$/<li>$1<\/li>/gm;
-      if ($language eq 'de')
-        {
-          print hr, h3 ('Allgemeine Anmerkungen (weitere unten in dem Wiki-Quelltext):');
-          print table ({border => 1}, Tr (th (b ('Legende:'))) .
-                                      Tr (td ('Ist ' . $never . 'sehr selten</span> sinnvoll.')) .
-                                      Tr (td ('Ist ' . $seldom . 'selten</span> sinnvoll, bitte prüfen.')) .
-                                      Tr (td ('Ist ' . $sometimes . 'manchmal</span> sinnvoll, bitte prüfen.')) .
-                                      Tr (td ($proposal . 'Vorschlag</span>, bitte prüfen, ob sinnvoll.')));
-          print p (), ul ($extra_message), p (), hr (), p ();
-        }
-      elsif ($language eq 'en')
-        {
-          print hr (), h3 ('General comments:');
-          print 'Is ' . $never . 'never</span> reasonable', br ();
-          print 'Is ' . $seldom . 'seldom</span> reasonable, please check.', br ();
-          print 'Is ' . $sometimes . 'sometimes</span> reasonable, please check.', br ();
-          print p (), ul ($extra_message), p (), hr (), p ();
+    if ($extra_message) {
+        $extra_message =~ s/^(.*)$/<li>$1<\/li>/gm;
+        if ($language eq 'de') {
+            print hr, h3 ('Allgemeine Anmerkungen (weitere unten in dem Wiki-Quelltext):');
+            print table ({border => 1}, Tr (th (b ('Legende:'))) .
+                                        Tr (td ('Ist ' . $never . 'sehr selten</span> sinnvoll.')) .
+                                        Tr (td ('Ist ' . $seldom . 'selten</span> sinnvoll, bitte prüfen.')) .
+                                        Tr (td ('Ist ' . $sometimes . 'manchmal</span> sinnvoll, bitte prüfen.')) .
+                                        Tr (td ($proposal . 'Vorschlag</span>, bitte prüfen, ob sinnvoll.')));
+            print p (), ul ($extra_message), p (), hr (), p ();
+        } elsif ($language eq 'en') {
+            print hr (), h3 ('General comments:');
+            print 'Is ' . $never . 'never</span> reasonable', br ();
+            print 'Is ' . $seldom . 'seldom</span> reasonable, please check.', br ();
+            print 'Is ' . $sometimes . 'sometimes</span> reasonable, please check.', br ();
+            print p (), ul ($extra_message), p (), hr (), p ();
         }
     }
 
-  print hr ();
+    print hr ();
 
-  # Order is important here!
-  # To preserve &nbsp; in browser-view, do only 3-5 to avoid doing &lt; and &gt; which this script abuses.
-  $page =~ s/&([a-zA-Z]{3,5};)/&amp;$1/g;
-  # To preserve &#x2011; in browser-view.
-  $page =~ s/&(#x?\d{1,5};)/&amp;$1/g;
-  # To preserve leading spaces in browser-view.
-  $page =~ s/^ /&nbsp;/gm;
+    # Order is important here!
+    # To preserve &nbsp; in browser-view, do only 3-5 to avoid doing &lt; and &gt; which this script abuses.
+    $page =~ s/&([a-zA-Z]{3,5};)/&amp;$1/g;
+    # To preserve &#x2011; in browser-view.
+    $page =~ s/&(#x?\d{1,5};)/&amp;$1/g;
+    # To preserve leading spaces in browser-view.
+    $page =~ s/^ /&nbsp;/gm;
 
-  print h3 ('Wiki-Quelltext mit Anmerkungen:');
-  print font ({face => 'courier'}, $page);
-  print hr ();
+    print h3 ('Wiki-Quelltext mit Anmerkungen:');
+    print font ({face => 'courier'}, $page);
+    print hr ();
 
-  if ($language eq 'de')
-    {
-      print h3 ({id => 'explanations'}, 'Erläuterungen') .
-            dl (dt ({id => 'links_to_numbers'}, 'LTN') .
-                dd ('Links to numbers: Jahre und Jahrestage sollten im Allgemeinen nicht verlinkt werden, da es sehr selten jemandem hilft, auf das Jahr XY zu klicken (Ausnahme unter anderem Geburts- und Sterbedaten in Personenartikeln), siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#Daten_verlinken'}, 'WP:VL#Daten verlinken') . '. Das Verlinken von Monaten, Jahrzehnten und Jahrhunderten ist auch nur in Ausnahmefällen sinnvoll. Dazu gibt es auch ein ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Browser-Unterst%C3%BCtzung#Bookmarklet_zum_Entlinken_von_Jahreszahlen'}, 'Bookmarklet') . '.') .
-                dt ({id => 'plenk'}, 'Plenk') .
-                dd ('Leerzeichen vor Satzzeichen, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Plenk'}, 'Plenk') . '.') .
-                dt ({id => 'klemp'}, 'Klempen') .
-                dd ('Kein Leerzeichen nach Satzzeichen (oder fehlendes Leerzeichen nach Abkürzung?), siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Klempen'}, 'Klempen') . '.') .
-                dt ({id => 'link_in_section_title'}, 'LiST') .
-                dd ('Zwischenüberschriften sollten keine Wikilinks sein oder enthalten. In der Regel lässt sich derselbe Link genauso gut in den ersten Sätzen des folgenden Abschnitts setzen. Eine Ausnahme sind listenartige Artikel, bei denen die Überschriften nur der Gruppierung von Einzelpunkten dienen. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze'}, 'WP:WSIGA') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#.C3.9Cberschriften'}, 'WP:VL#Überschriften') . '. Achtung, wenn der Link sinnvoll zum Textverständnis sein kann, bitte nicht einfach entfernen, sondern in den Text übernehmen.') .
-                dt ({id => 'colon_minus_section'}, 'CMS') .
-                dd ('":", "-", "!" oder "?" in Überschrift, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze'}, 'Wikipedia:Wie schreibe ich gute Artikel#Überschriften und Absätze') . '.') .
-                dt ({id => 'DL'}, 'DL') .
-                dd ('Doppelter Link hintereinander, für den Leser ist die Grenze nicht ersichtlich, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#Verlinkung_von_Teilw.C3.B6rtern'}, 'Wikipedia:Verlinken#Verlinkung von Teilwörtern') . '.') .
-                dt ({id => 'EM'}, 'EM') .
-                dd ('Ausrufezeichen vermeiden.') .
-                dt ({id => 'WORDS'}, 'WORDS') .
-                dd ('Wörter, die man vermeiden sollte. Dies sind beispielsweise Wörter, die den ' . a ({href => 'http://de.wikipedia.org/wiki/WP:NPOV'}, 'neutralen Standpunkt') . ' verletzen, ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Schreibweise_von_Zahlen#Zahlen_null_bis_zw.C3.B6lf_als_Flie.C3.9Ftext'}, 'Zahlen über zwölf') . ' (mit Ausnahmen!), relative Zeitangaben, die bald nicht mehr stimmen (beispielsweise "derzeit") und Anglizismen. Siehe ' . a ({href => 'http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten'}, 'Wörter, die nicht in Wikipedia stehen sollten') . '.') .
-                dt ({id => 'FILLWORD'}, 'Maybe fillword') .
-                dd ('Potentielle Füllwörter, die man ' . b ('manchmal') . ' ersatzlos streichen kann. Bitte den Satz oder Absatz vorher komplett lesen, ob das Wort nicht doch sinnvoll ist oder das Verständnis erleichtert. Ein gewisse Menge an Füllwörtern ist normal. Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Wortwahl'}, 'Wikipedia:Wie schreibe ich gute Artikel#Wortwahl') . '.') .
-                dt ({id => 'BOLD'}, 'BOLD') .
-                dd ('Fettschrift ist zu vermeiden. Nur an dem Artikelanfang wird das Lemma eines Artikels noch einmal fett geschrieben sowie Synonyme (für die dann auch Redirects angelegt sein sollten). Fremdwörter bitte nicht fett, sondern kursiv schreiben (' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Fremdwortformatierung'}, 'WP:Fremdwortformatierung') . '). Manchmal ist Fettschrift noch sinnvoll in Formeln und bei Tabellenüberschriften. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_gute_Artikel_aussehen#Sonstiges'}, 'WP:WGAA#Sonstiges') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Auszeichnung'}, 'Wikipedia:Typografie#Auszeichnung') . '.') .
-                dt ({id => 'BOLD-INSTEAD-OF-SECTION'}, 'BOLD-INSTEAD-OF-SECTION') .
-                dd ('Hier wurde eventuell Fettschrift statt eines Wikipedia-Abschnitts mit "== XYZ ==" verwendet. Bitte prüfen, ob sich ein Abschnitt lohnt. Eventuell mehrere Pseudo-Abschnitte zusammenfassen.') .
-                dt ({id => 'LC'}, 'LC') .
-                dd ('Lowercase: Zeile oder Überschrift, die mit einem Kleinbuchstaben beginnt. Selten sinnvoll außer beispielsweise in Formeln.') .
-                dt ({id => 'BKL'}, 'BKL') .
-                dd ('Link zu einer Begriffserklärungsseite. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich, da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, beispielsweise ' . a ({href => 'http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650'}, 'Disteln') . '. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#Gut_zielen'}, 'WP:VL#Gut zielen') . '.') .
-                dt ({id => 'ABBREVIATION'}, 'ABBREVIATION') .
-                dd ('Abkürzungen vermeiden: Statt "z. B." kann man so auch "beispielsweise" schreiben, statt "i. d. R." auch "meistens" oder einfach nur "meist". Das Wort "beziehungsweise", abgekürzt "bzw.", das aus der Kanzleisprache stammt, lässt sich meist besser durch "oder" ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch "und im anderen Fall" oder schlicht durch "und" ausdrücken, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen'}, 'Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen') . '.') .
-                dt ({id => 'NBSP'}, 'NBSP') .
-                dd ('Zwischen einer Zahl und einer Einheit sollte ein geschütztes Leerzeichen stehen. Dadurch wird ein automatischer Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindert. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung'}, 'Wikipedia:Textgestaltung') . '.') .
-                dt ({id => 'ISBN'}, 'ISBN') .
-                dd ('Falsch formatierte ISBN, durch den Doppelpunkt wird kein Link erzeugt.') .
-                dt ({id => 'TAG'}, 'TAG') .
-                dd ("\"&lt;i&gt;\" oder \"&lt;b&gt;\" statt \"''\" oder \"'''\".") .
-                dt ({id => 'TAG2'}, 'TAG2') .
-                dd ('Tags, die außerhalb von Tabellen nicht verwendet werden sollten: "&lt;br /&gt;", "&lt;s&gt;", "&lt;u&gt;", "&lt;small&gt;", "&lt;big&gt;", "&lt;div align="center"&gt;" oder "&lt;div align="right"&gt;". Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung'}, 'Wikipedia:Textgestaltung') . '.') .
-                dt ({id => 'FROMTO'}, 'FROMTO') .
-                dd ('Sollte so formatiert sein: "von 1971 bis 1986". Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Datumskonventionen'}, 'Wikipedia:Datumskonventionen') . '.') .
-                dt ({id => 'DOTDOTDOT'}, 'DOTDOTDOT') .
-                dd ('"..." (drei Zeichen) statt "…".') .
-                dt ({id => 'SELFLINK'}, 'SELFLINK') .
-                dd ('Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect).') .
-                dt ({id => 'DOUBLEWORD'}, 'DOUBLEWORD') .
-                dd ('Wortdopplung?') .
-                dt ({id => 'BISSTRICH'}, 'BISSTRICH') .
-                dd ('Bei Zeitangaben Bis-Strich verwenden, am einfachsten den folgenden per Kopieren und Einfügen: "–". Obacht: In diversen Zeichensätzen sind die Unterschiede zwischen den einzelnen Strichen nicht erkennbar. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Bis-Strich'}, 'Wikipedia:Typografie#Bis-Strich') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Bis-Strich#Bis-Strich'}, 'Bis-Strich') . '.') .
-                dt ({id => 'TYPO'}, 'TYPO') .
-                dd ('Häufige Tippfehler. Tippfehler, die im Wikicode mit "&lt;!--sic--&gt;" markiert sind, wurden absichtlich so zitiert, siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Zitate#Zitate_im_Flie.C3.9Ftext'}, 'Wikipedia:Zitate#Zitate im Fließtext') . '. Artikel mit Schweizer Rechtschreibung am Anfang mit "&lt;!--schweizbezogen--&gt;" markieren, dann findet keine Prüfung statt. Bei Falschmeldungen bitte auf meiner ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'Diskussionsseite') . ' Bescheid sagen.') .
-                dt ({id => 'APOSTROPH'}, 'APOSTROPH') .
-                dd ("Eventuell falsches Apostroph, im Deutschen \"'\" statt \"’\". Siehe auch " . a ({href => 'http://de.wikipedia.org/wiki/Apostroph#Typografisch_korrekt'}, 'Apostroph#Typografisch korrekt') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Weitere_Zeichen'}, 'Wikipedia:Typografie#Weitere Zeichen') . '.') .
-                dt ({id => 'GS'}, 'GS') .
-                dd ('Bindestrich ("-") statt Gedankenstrich ("–"). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Gedankenstrich'}, 'Wikipedia:Typografie#Gedankenstrich') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Halbgeviertstrich#Gedankenstrich'}, 'Halbgeviertstrich#Gedankenstrich') . '.') .
-                dt ({id => 'BRACKET'}, 'BRACKET') .
-                dd ('Ungleiche Anzahl von Klammern.') .
-                dt ({id => 'BRACKET2'}, 'BRACKET2') .
-                dd ('Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.') .
-                dt ({id => 'QUOTATION'}, 'QUOTATION') .
-                dd ("Einfache Anführungszeichen ('\"…\"') statt den typografisch korrekten (\"„…“\"). Siehe auch " . a ({href => 'http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur'}, 'Erzeugung von Anführungszeichen') . '.'));
-    }
-  else
-    {
-      print h3 ('Explanation:') .
-            dl (dt ({id => 'links_to_numbers'}, 'LTN') .
-                dd ('Links to years and days should usually be avoided.') .
-                dt ({id => 'plenk'}, 'Plenk') .
-                dd ('Blank placed before a punctuation character, see also ' . a ({href => 'http://en.wikipedia.org/Plenk'}, 'Plenk') . '.') .
-                dt ({id => 'link_in_section_title'}, 'LiST') .
-                dd ('Link in section title.') .
-                dt ({id => 'colon_minus_section'}, 'CMS') .
-                dd ('"!", "?", "-" or ":" in section title.') .
-                dt ({id => 'DL'}, 'DL') .
-                dd ('Double link, reader cannot recognize the border between the two.') .
-                dt ({id => 'EM'}, 'EM') .
-                dd ('Avoid exclamation marks.') .
-                dt ({id => 'WORDS'}, 'WORDS') .
-                dd ('Words to avoid, see ' . a ({href => 'http://en.wikipedia.org/wiki/Wikipedia:Words_to_avoid'}, 'WP:Words to avoid') . '.'));
+    if ($language eq 'de') {
+        print h3 ({id => 'explanations'}, 'Erläuterungen') .
+              dl (dt ({id => 'links_to_numbers'}, 'LTN') .
+                  dd ('Links to numbers: Jahre und Jahrestage sollten im Allgemeinen nicht verlinkt werden, da es sehr selten jemandem hilft, auf das Jahr XY zu klicken (Ausnahme unter anderem Geburts- und Sterbedaten in Personenartikeln), siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#Daten_verlinken'}, 'WP:VL#Daten verlinken') . '. Das Verlinken von Monaten, Jahrzehnten und Jahrhunderten ist auch nur in Ausnahmefällen sinnvoll. Dazu gibt es auch ein ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Browser-Unterst%C3%BCtzung#Bookmarklet_zum_Entlinken_von_Jahreszahlen'}, 'Bookmarklet') . '.') .
+                  dt ({id => 'plenk'}, 'Plenk') .
+                  dd ('Leerzeichen vor Satzzeichen, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Plenk'}, 'Plenk') . '.') .
+                  dt ({id => 'klemp'}, 'Klempen') .
+                  dd ('Kein Leerzeichen nach Satzzeichen (oder fehlendes Leerzeichen nach Abkürzung?), siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Klempen'}, 'Klempen') . '.') .
+                  dt ({id => 'link_in_section_title'}, 'LiST') .
+                  dd ('Zwischenüberschriften sollten keine Wikilinks sein oder enthalten. In der Regel lässt sich derselbe Link genauso gut in den ersten Sätzen des folgenden Abschnitts setzen. Eine Ausnahme sind listenartige Artikel, bei denen die Überschriften nur der Gruppierung von Einzelpunkten dienen. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze'}, 'WP:WSIGA') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#.C3.9Cberschriften'}, 'WP:VL#Überschriften') . '. Achtung, wenn der Link sinnvoll zum Textverständnis sein kann, bitte nicht einfach entfernen, sondern in den Text übernehmen.') .
+                  dt ({id => 'colon_minus_section'}, 'CMS') .
+                  dd ('":", "-", "!" oder "?" in Überschrift, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#.C3.9Cberschriften_und_Abs.C3.A4tze'}, 'Wikipedia:Wie schreibe ich gute Artikel#Überschriften und Absätze') . '.') .
+                  dt ({id => 'DL'}, 'DL') .
+                  dd ('Doppelter Link hintereinander, für den Leser ist die Grenze nicht ersichtlich, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#Verlinkung_von_Teilw.C3.B6rtern'}, 'Wikipedia:Verlinken#Verlinkung von Teilwörtern') . '.') .
+                  dt ({id => 'EM'}, 'EM') .
+                  dd ('Ausrufezeichen vermeiden.') .
+                  dt ({id => 'WORDS'}, 'WORDS') .
+                  dd ('Wörter, die man vermeiden sollte. Dies sind beispielsweise Wörter, die den ' . a ({href => 'http://de.wikipedia.org/wiki/WP:NPOV'}, 'neutralen Standpunkt') . ' verletzen, ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Schreibweise_von_Zahlen#Zahlen_null_bis_zw.C3.B6lf_als_Flie.C3.9Ftext'}, 'Zahlen über zwölf') . ' (mit Ausnahmen!), relative Zeitangaben, die bald nicht mehr stimmen (beispielsweise "derzeit") und Anglizismen. Siehe ' . a ({href => 'http://meta.wikimedia.org/wiki/W%C3%B6rter%2C_die_nicht_in_Wikipedia_stehen_sollten'}, 'Wörter, die nicht in Wikipedia stehen sollten') . '.') .
+                  dt ({id => 'FILLWORD'}, 'Maybe fillword') .
+                  dd ('Potentielle Füllwörter, die man ' . b ('manchmal') . ' ersatzlos streichen kann. Bitte den Satz oder Absatz vorher komplett lesen, ob das Wort nicht doch sinnvoll ist oder das Verständnis erleichtert. Ein gewisse Menge an Füllwörtern ist normal. Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Wortwahl'}, 'Wikipedia:Wie schreibe ich gute Artikel#Wortwahl') . '.') .
+                  dt ({id => 'BOLD'}, 'BOLD') .
+                  dd ('Fettschrift ist zu vermeiden. Nur an dem Artikelanfang wird das Lemma eines Artikels noch einmal fett geschrieben sowie Synonyme (für die dann auch Redirects angelegt sein sollten). Fremdwörter bitte nicht fett, sondern kursiv schreiben (' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Fremdwortformatierung'}, 'WP:Fremdwortformatierung') . '). Manchmal ist Fettschrift noch sinnvoll in Formeln und bei Tabellenüberschriften. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_gute_Artikel_aussehen#Sonstiges'}, 'WP:WGAA#Sonstiges') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Auszeichnung'}, 'Wikipedia:Typografie#Auszeichnung') . '.') .
+                  dt ({id => 'BOLD-INSTEAD-OF-SECTION'}, 'BOLD-INSTEAD-OF-SECTION') .
+                  dd ('Hier wurde eventuell Fettschrift statt eines Wikipedia-Abschnitts mit "== XYZ ==" verwendet. Bitte prüfen, ob sich ein Abschnitt lohnt. Eventuell mehrere Pseudo-Abschnitte zusammenfassen.') .
+                  dt ({id => 'LC'}, 'LC') .
+                  dd ('Lowercase: Zeile oder Überschrift, die mit einem Kleinbuchstaben beginnt. Selten sinnvoll außer beispielsweise in Formeln.') .
+                  dt ({id => 'BKL'}, 'BKL') .
+                  dd ('Link zu einer Begriffserklärungsseite. Wikilinks sollten direkt zu der gewünschten Seite zeigen. Dies ist manchmal nicht immer möglich, da manche Oberbegriffe in Wikipedia noch keinen Artikel haben, beispielsweise ' . a ({href => 'http://de.wikipedia.org/w/index.php?title=Disteln&oldid=30266650'}, 'Disteln') . '. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/WP:VL#Gut_zielen'}, 'WP:VL#Gut zielen') . '.') .
+                  dt ({id => 'ABBREVIATION'}, 'ABBREVIATION') .
+                  dd ('Abkürzungen vermeiden: Statt "z. B." kann man so auch "beispielsweise" schreiben, statt "i. d. R." auch "meistens" oder einfach nur "meist". Das Wort "beziehungsweise", abgekürzt "bzw.", das aus der Kanzleisprache stammt, lässt sich meist besser durch "oder" ersetzen. Falls tatsächlich ein Bezug auf zwei verschiedene Substantive vorliegt, kann man es manchmal vorteilhafter durch "und im anderen Fall" oder schlicht durch "und" ausdrücken, siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Wie_schreibe_ich_gute_Artikel#Abk.C3.BCrzungen'}, 'Wikipedia:Wie schreibe ich gute Artikel#Abkürzungen') . '.') .
+                  dt ({id => 'NBSP'}, 'NBSP') .
+                  dd ('Zwischen einer Zahl und einer Einheit sollte ein geschütztes Leerzeichen stehen. Dadurch wird ein automatischer Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindert. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung'}, 'Wikipedia:Textgestaltung') . '.') .
+                  dt ({id => 'ISBN'}, 'ISBN') .
+                  dd ('Falsch formatierte ISBN, durch den Doppelpunkt wird kein Link erzeugt.') .
+                  dt ({id => 'TAG'}, 'TAG') .
+                  dd ("\"&lt;i&gt;\" oder \"&lt;b&gt;\" statt \"''\" oder \"'''\".") .
+                  dt ({id => 'TAG2'}, 'TAG2') .
+                  dd ('Tags, die außerhalb von Tabellen nicht verwendet werden sollten: "&lt;br /&gt;", "&lt;s&gt;", "&lt;u&gt;", "&lt;small&gt;", "&lt;big&gt;", "&lt;div align="center"&gt;" oder "&lt;div align="right"&gt;". Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Textgestaltung'}, 'Wikipedia:Textgestaltung') . '.') .
+                  dt ({id => 'FROMTO'}, 'FROMTO') .
+                  dd ('Sollte so formatiert sein: "von 1971 bis 1986". Siehe ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Datumskonventionen'}, 'Wikipedia:Datumskonventionen') . '.') .
+                  dt ({id => 'DOTDOTDOT'}, 'DOTDOTDOT') .
+                  dd ('"..." (drei Zeichen) statt "…".') .
+                  dt ({id => 'SELFLINK'}, 'SELFLINK') .
+                  dd ('Selbstlink ohne Sprung zu Kapitel (eventuell über Redirect).') .
+                  dt ({id => 'DOUBLEWORD'}, 'DOUBLEWORD') .
+                  dd ('Wortdopplung?') .
+                  dt ({id => 'BISSTRICH'}, 'BISSTRICH') .
+                  dd ('Bei Zeitangaben Bis-Strich verwenden, am einfachsten den folgenden per Kopieren und Einfügen: "–". Obacht: In diversen Zeichensätzen sind die Unterschiede zwischen den einzelnen Strichen nicht erkennbar. Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Bis-Strich'}, 'Wikipedia:Typografie#Bis-Strich') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Bis-Strich#Bis-Strich'}, 'Bis-Strich') . '.') .
+                  dt ({id => 'TYPO'}, 'TYPO') .
+                  dd ('Häufige Tippfehler. Tippfehler, die im Wikicode mit "&lt;!--sic--&gt;" markiert sind, wurden absichtlich so zitiert, siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Zitate#Zitate_im_Flie.C3.9Ftext'}, 'Wikipedia:Zitate#Zitate im Fließtext') . '. Artikel mit Schweizer Rechtschreibung am Anfang mit "&lt;!--schweizbezogen--&gt;" markieren, dann findet keine Prüfung statt. Bei Falschmeldungen bitte auf meiner ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer_Diskussion:Tim.landscheidt'}, 'Diskussionsseite') . ' Bescheid sagen.') .
+                  dt ({id => 'APOSTROPH'}, 'APOSTROPH') .
+                  dd ("Eventuell falsches Apostroph, im Deutschen \"'\" statt \"’\". Siehe auch " . a ({href => 'http://de.wikipedia.org/wiki/Apostroph#Typografisch_korrekt'}, 'Apostroph#Typografisch korrekt') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Weitere_Zeichen'}, 'Wikipedia:Typografie#Weitere Zeichen') . '.') .
+                  dt ({id => 'GS'}, 'GS') .
+                  dd ('Bindestrich ("-") statt Gedankenstrich ("–"). Siehe auch ' . a ({href => 'http://de.wikipedia.org/wiki/Wikipedia:Typografie#Gedankenstrich'}, 'Wikipedia:Typografie#Gedankenstrich') . ' und ' . a ({href => 'http://de.wikipedia.org/wiki/Halbgeviertstrich#Gedankenstrich'}, 'Halbgeviertstrich#Gedankenstrich') . '.') .
+                  dt ({id => 'BRACKET'}, 'BRACKET') .
+                  dd ('Ungleiche Anzahl von Klammern.') .
+                  dt ({id => 'BRACKET2'}, 'BRACKET2') .
+                  dd ('Kein Leerzeichen vor einer öffnenden oder nach einer schließenden Klammer.') .
+                  dt ({id => 'QUOTATION'}, 'QUOTATION') .
+                  dd ("Einfache Anführungszeichen ('\"…\"') statt den typografisch korrekten (\"„…“\"). Siehe auch " . a ({href => 'http://de.wikipedia.org/wiki/Anf%C3%BChrungszeichen#Direkte_Eingabe_per_Tastatur'}, 'Erzeugung von Anführungszeichen') . '.'));
+    } else {
+        print h3 ('Explanation:') .
+              dl (dt ({id => 'links_to_numbers'}, 'LTN') .
+                  dd ('Links to years and days should usually be avoided.') .
+                  dt ({id => 'plenk'}, 'Plenk') .
+                  dd ('Blank placed before a punctuation character, see also ' . a ({href => 'http://en.wikipedia.org/Plenk'}, 'Plenk') . '.') .
+                  dt ({id => 'link_in_section_title'}, 'LiST') .
+                  dd ('Link in section title.') .
+                  dt ({id => 'colon_minus_section'}, 'CMS') .
+                  dd ('"!", "?", "-" or ":" in section title.') .
+                  dt ({id => 'DL'}, 'DL') .
+                  dd ('Double link, reader cannot recognize the border between the two.') .
+                  dt ({id => 'EM'}, 'EM') .
+                  dd ('Avoid exclamation marks.') .
+                  dt ({id => 'WORDS'}, 'WORDS') .
+                  dd ('Words to avoid, see ' . a ({href => 'http://en.wikipedia.org/wiki/Wikipedia:Words_to_avoid'}, 'WP:Words to avoid') . '.'));
     }
 }
 
 binmode (STDOUT, ':encoding(UTF-8)');
-if (param ())
-  {
+if (param ()) {
     my ($action, $oldid, $page, $random_page, $remove_century, $testpage);
 
     ($url, $language, $random_page, $testpage, $remove_century, $action, $oldid, $do_typo_check) = parse_form ();
@@ -364,17 +341,14 @@ if (param ())
 
     my ($link_lemma, $selftest);
 
-    if ($url =~ /title=/)
-      {
+    if ($url =~ /title=/) {
         $url =~ /title=(.+)&/;
         $link_lemma = $1;
-      }
-    else
-      {
+    } else {
         # Get last part of URL as lemma.
         $url =~ /.+\/(.+)/;
         $link_lemma = $1;
-      }
+    }
     $title_lemma = $link_lemma;
     $title_lemma =~ s/%([0-9A-Fa-f]{2})/chr (hex ($1))/eg;
     utf8::decode ($title_lemma);
@@ -383,34 +357,28 @@ if (param ())
 
     begin_html ($title_lemma);
 
-    if ($selftest = $testpage)
-      {
+    if ($selftest = $testpage) {
         local ($/);
 
         open (TEST, '<', 'test.html') || die ('Cannot open test.html');
         $page = <TEST>;
         close (TEST);
-      }
-    elsif (!defined ($ENV {'REMOTE_ADDR'}) && defined ($lemma_org = $search_lemma = param ('testhtml')))
-      {
+    } elsif (!defined ($ENV {'REMOTE_ADDR'}) && defined ($lemma_org = $search_lemma = param ('testhtml'))) {
         local ($/);
 
         open (TEST, '<:encoding(UTF-8)', 'testcases/de/' . param ('testhtml') . '.wiki') || die ('Cannot open testcases/de/' . param ('testhtml') . '.wiki');
         $page = <TEST>;
         close (TEST);
-      }
-    else
-      { $page = download_page ($url, '', $language, $oldid); }
+    } else {
+        $page = download_page ($url, '', $language, $oldid);
+    }
 
     # [^'] to avoid jumping on #REDIRECT [[',']].
-    if ($page =~ /#REDIRECT ?\[\[([^']+?)\]\]/)
-      {
+    if ($page =~ /#REDIRECT ?\[\[([^']+?)\]\]/) {
         my $to = $1;
 
         print h3 ('Wikipedia redirect, please follow this link: ' . a ({href => create_ar_link ($to, 'de', $oldid, $do_typo_check)}, $to)). p ();
-      }
-    else
-      {
+    } else {
         my ($count_fillwords, $extra_message, $num_words, $propose_page, $quotient, $removed_links, $review_letters, $review_level, $DatabaseState);
 
         ($page, $review_level, $num_words, $extra_message, $quotient, $review_letters, $propose_page, $removed_links, $count_ref, $count_fillwords, $DatabaseState) = do_review ($page, $language, $remove_century, $link_lemma, $do_typo_check);
@@ -422,14 +390,13 @@ if (param ())
 
         $propose_page = '' unless ($removed_links);
 
-        if ($selftest)
-          { selftest ($page, $extra_message); }
-        else
-          { output ($page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words, $DatabaseState); }
-      }
-  }
-else
-  {
+        if ($selftest) {
+            selftest ($page, $extra_message);
+        } else {
+            output ($page, $url, $language, $review_level, $extra_message, $propose_page, $link_lemma, $quotient, $review_letters, $removed_links, $oldid, $count_fillwords, $num_words, $DatabaseState);
+        }
+    }
+} else {
     begin_html ($title_lemma);
     print_explanation ();
     print_form (undef);
@@ -438,7 +405,7 @@ else
           hr (),
           'Veröffentlicht unter GPL.', br (),
           'Kontakt: ' . a ({href => 'http://de.wikipedia.org/wiki/Benutzer:Tim.landscheidt'}, 'Tim&nbsp;Landscheidt');
-  }
+}
 
 print "</body></html>\n";
 
